@@ -1,10 +1,11 @@
 # livel_1
 
-A new Flutter application.
+This is our new Flutter Application, called Livel.
+Our team consists of Trinh, Huy, Ngan, and Khoa.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is an application of Flutter.
 
 A few resources to get you started if this is your first Flutter project:
 

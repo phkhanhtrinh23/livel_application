@@ -1,4 +1,4 @@
-# livel_1
+# livel_application
 
 This is our new Flutter Application, called Livel.
 Our team consists of Trinh, Huy, Ngan, and Khoa.

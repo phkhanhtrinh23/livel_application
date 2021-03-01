@@ -1,6 +1,18 @@
 # livel_application
 
-A new Flutter project.
+Here is our team's project, which is called Livel!
+
+This is an application on Live Traveling, which helps people travel online and broadcast the journey on the Internet. That sounds great!
+
+Our team consists of 4 members, who are:
+
+- Pham Khanh Trinh
+
+- Pham Nhut Huy
+
+- Nguyen Thanh Ngan
+
+- Tran Dang Khoa
 
 ## Getting Started
 
@@ -10,7 +22,3 @@ A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

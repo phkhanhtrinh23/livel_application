@@ -1,8 +1,8 @@
 # livel_application
 
-Here is our team's project, which is called Livel!
+Here is our team's project, which is called Livel.
 
-This is an application on Live Traveling, which helps people travel online and broadcast the journey on the Internet. That sounds great!
+This is an application on Live Traveling which helps people travel online and broadcast the journey on the Internet.
 
 Our team consists of 4 members, who are:
 

@@ -69,26 +69,30 @@ class ThirdScreen extends StatelessWidget {
                 'LIVEL',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 80,
+                  fontSize: 100,
                   color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
             Spacer(),
-            FlatButton(
-              onPressed: () => _navigateNextRoute(context),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: Text(
-                'Get Started',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: _color2,
+            SizedBox(
+              width: 300,
+                height: 50,
+              child: FlatButton(
+                onPressed: () => _navigateNextRoute(context),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
                 ),
+                child: Text(
+                  'Get Started',
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: _color2,
+                  ),
+                ),
+                color: _color1,
               ),
-              color: _color1,
             ),
             Spacer(),
             Spacer(),

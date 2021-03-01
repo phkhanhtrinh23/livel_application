@@ -46,19 +46,23 @@ class FirstScreen extends StatelessWidget {
               ),
             ),
             Spacer(),
-            FlatButton(
-              onPressed: () => _navigateNextRoute(context),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: Text(
-                'Get Started',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: _color1,
+            SizedBox(
+              width: 300,
+              height: 50,
+              child: FlatButton(
+                onPressed: () => _navigateNextRoute(context),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
                 ),
+                child: Text(
+                  'Get Started',
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: _color1,
+                  ),
+                ),
+                color: _color2,
               ),
-              color: _color2,
             ),
             Spacer(),
           ],

@@ -21,7 +21,7 @@ class SecondScreen extends StatelessWidget {
                 ),
                 Icon(
                   Icons.lens_outlined,
-                  size: 10,
+                  size: 8,
                 ),
               ],
             ),

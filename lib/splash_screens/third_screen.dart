@@ -27,7 +27,7 @@ class ThirdScreen extends StatelessWidget {
               children: [
                 Icon(
                   Icons.lens_outlined,
-                  size: 10,
+                  size: 8,
                 ),
                 Icon(
                   Icons.lens_sharp,

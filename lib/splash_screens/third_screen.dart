@@ -31,7 +31,7 @@ class ThirdScreen extends StatelessWidget {
                 ),
                 Icon(
                   Icons.lens_sharp,
-                  size: 10,
+                  size: 12,
                 ),
               ],
             ),
@@ -78,7 +78,7 @@ class ThirdScreen extends StatelessWidget {
             Spacer(),
             SizedBox(
               width: 300,
-                height: 50,
+              height: 50,
               child: FlatButton(
                 onPressed: () => _navigateNextRoute(context),
                 shape: RoundedRectangleBorder(

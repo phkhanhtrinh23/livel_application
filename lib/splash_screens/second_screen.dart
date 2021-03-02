@@ -17,7 +17,7 @@ class SecondScreen extends StatelessWidget {
               children: [
                 Icon(
                   Icons.lens_sharp,
-                  size: 10,
+                  size: 12,
                 ),
                 Icon(
                   Icons.lens_outlined,

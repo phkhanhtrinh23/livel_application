@@ -1,18 +1,18 @@
 # livel_application
 
-Here is our team's project, which is called Livel.
+Here is our team's project, which is called **Livel**.
 
-This is an application on Live Traveling which helps people travel online and broadcast the journey on the Internet.
+This is an application on *Live Traveling* which helps people travel online and broadcast the journey on the Internet.
 
 Our team consists of 4 members, who are:
 
-- Pham Khanh Trinh
+- **Pham Khanh Trinh**
 
-- Pham Nhut Huy
+- **Pham Nhut Huy**
 
-- Nguyen Thanh Ngan
+- **Nguyen Thanh Ngan**
 
-- Tran Dang Khoa
+- **Tran Dang Khoa**
 
 ## Getting Started
 

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-// import 'package:livel_application/log_in_screens/HomeMain.dart';
+import 'package:livel_application/log_in_screens/HomeMain.dart';
 
 class ThirdScreen extends StatelessWidget {
   final _color1 = Color(0xFF687EF4);
   final _color2 = Color(0xFFF0FBFF);
 
   void _navigateNextRoute(BuildContext context) {
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //       builder: (BuildContext context) => HomeMain(),
-    //     ));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => HomeMain(),
+        ));
   }
 
   @override

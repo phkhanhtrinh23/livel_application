@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/log_in_screens/HomeMain.dart';
 import 'authentication_service.dart';
 import 'package:provider/provider.dart';
-import 'HomeMain.dart';
 
 class SignUpPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -31,6 +31,9 @@ class SignUpPage extends StatelessWidget {
               ),
               //fillColor: Colors.green
             ),
+            validator: (String value) {
+              return !value.contains('@') ? 'Invalid email' : null;
+            },
           ),
           Padding(
             padding: EdgeInsets.only(top: 15.0),
@@ -45,18 +48,12 @@ class SignUpPage extends StatelessWidget {
                 ),
                 //fillColor: Colors.green
               ),
+              obscureText: true,
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              RaisedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeMain()));
-                },
-                child: Text("Sign in"),
-              ),
               RaisedButton(
                 hoverColor: Colors.lightGreen,
                 onPressed: () {
@@ -65,6 +62,12 @@ class SignUpPage extends StatelessWidget {
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                         );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => HomeMain(),
+                      ),
+                    );
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'weak-password') {
                       print('The password provided is too weak.');

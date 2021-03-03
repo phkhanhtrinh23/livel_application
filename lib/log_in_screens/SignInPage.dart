@@ -68,6 +68,7 @@ class SignInPage extends StatelessWidget {
                 ),
                 //fillColor: Colors.green
               ),
+              obscureText: true,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

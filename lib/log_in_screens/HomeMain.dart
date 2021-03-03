@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'SignInPage.dart';
@@ -10,9 +9,6 @@ import 'authentication_service.dart';
 class HomeMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    WidgetsFlutterBinding.ensureInitialized();
-    Firebase.initializeApp();
-
     return MultiProvider(
       providers: [
         Provider<AuthenticationService>(
@@ -24,6 +20,7 @@ class HomeMain extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Livel',
         theme: ThemeData(
           primarySwatch: Colors.blue,

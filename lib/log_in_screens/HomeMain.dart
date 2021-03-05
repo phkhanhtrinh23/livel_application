@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'SignInPage.dart';
+import 'package:livel_application/log_in_screens/components/SignInPage.dart';
 import 'package:provider/provider.dart';
-import 'HomePage.dart';
-import 'authentication_service.dart';
+import 'package:livel_application/log_in_screens/components/authentication_service.dart';
 
 class HomeMain extends StatelessWidget {
   @override
@@ -26,20 +25,8 @@ class HomeMain extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: AuthenticationWrapper(),
+        home: SignInPage(),
       ),
     );
-  }
-}
-
-class AuthenticationWrapper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    if (firebaseUser != null) {
-      return HomePage();
-    }
-    return SignInPage();
   }
 }

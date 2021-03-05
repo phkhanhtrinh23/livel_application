@@ -31,9 +31,6 @@ class SignUpPage extends StatelessWidget {
               ),
               //fillColor: Colors.green
             ),
-            validator: (String value) {
-              return !value.contains('@') ? 'Invalid email' : null;
-            },
           ),
           Padding(
             padding: EdgeInsets.only(top: 15.0),
@@ -62,12 +59,8 @@ class SignUpPage extends StatelessWidget {
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                         );
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => HomeMain(),
-                      ),
-                    );
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeMain()));
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'weak-password') {
                       print('The password provided is too weak.');

@@ -1,9 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:livel_application/log_in_screens/components/SignInPage.dart';
 import 'package:provider/provider.dart';
+import 'package:livel_application/log_in_screens/components/HomePage.dart';
 import 'package:livel_application/log_in_screens/components/authentication_service.dart';
+
+Future<void> firebase() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(HomeMain());
+}
 
 class HomeMain extends StatelessWidget {
   @override
@@ -19,14 +27,25 @@ class HomeMain extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
         title: 'Livel',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: SignInPage(),
+        home: AuthenticationWrapper(),
       ),
     );
+  }
+}
+
+class AuthenticationWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
+
+    if (firebaseUser != null) {
+      return HomePage();
+    }
+    return SignInPage();
   }
 }

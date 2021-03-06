@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import 'package:livel_application/home_screens/HomeScreen.dart';
+import 'HomePage.dart';
 import 'signInWithGoogle.dart';
-import 'SignUpPage.dart';
-
 import 'package:provider/provider.dart';
+
+import 'SignUpPage.dart';
 import 'authentication_service.dart';
 
 class SignInPage extends StatelessWidget {
@@ -79,10 +79,6 @@ class SignInPage extends StatelessWidget {
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                         );
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => HomePage()));
                   },
                   child: Text("Sign in"),
                 ),

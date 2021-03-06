@@ -10,7 +10,7 @@ class MainHome extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
 
     return ListView(
-      padding: const EdgeInsets.only(top: 150.0),
+      padding: const EdgeInsets.only(top: 96.0),
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(16.0),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/home.dart';
-import 'package:livel_application/log_in_screens/HomeMain.dart';
+// import 'package:livel_application/log_in_screens/HomeMain.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({Key key}) : super(key: key);
@@ -20,6 +20,14 @@ class _NavBar extends State<NavBar> {
       'Index 1: User',
       style: optionStyle,
     ),
+    Text(
+      'Index 1: User',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: User',
+      style: optionStyle,
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -33,6 +41,7 @@ class _NavBar extends State<NavBar> {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
         child: BottomNavigationBar(
           iconSize: 25,
           showSelectedLabels: false,
@@ -43,6 +52,14 @@ class _NavBar extends State<NavBar> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt),
+              label: 'List',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              label: 'Notification',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'User',
             ),
@@ -50,22 +67,21 @@ class _NavBar extends State<NavBar> {
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.orange,
           onTap: _onItemTapped,
-          backgroundColor: Color(0xFF687EF4),
         ),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        shape: CircularNotchedRectangle(),
+        // clipBehavior: Clip.antiAliasWithSaveLayer,
+        // shape: CircularNotchedRectangle(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) => HomeMain()));
-        },
-        child: Icon(
-          Icons.search,
-        ),
-        elevation: 4.0,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(context,
+      //         MaterialPageRoute(builder: (BuildContext context) => HomeMain()));
+      //   },
+      //   child: Icon(
+      //     Icons.search,
+      //   ),
+      //   elevation: 4.0,
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
-class AvailableElement extends StatelessWidget {
-  const AvailableElement({
+class TripElement extends StatelessWidget {
+  const TripElement({
     Key key,
     this.name,
-    this.day,
+    this.number,
     this.image,
   }) : super(key: key);
 
-  final String name, day, image;
+  final String name, image;
+  final int number;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
-        right: 16.0,
-        left: 14.0,
-        bottom: 16.0,
+        right: 4.0,
+        left: 16.0,
+        bottom: 48.0,
       ),
       child: FlatButton(
         onPressed: () {},
@@ -24,37 +25,23 @@ class AvailableElement extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               image,
-              width: 208,
-              height: 200,
+              width: 142,
+              height: 190,
             ),
             Container(
-              width: 208,
-              height: 30,
-              child: Text(
-                '$name',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              width: 208,
-              height: 30,
+              width: 142,
+              height: 24,
               child: Row(
                 children: [
                   Text(
-                    '$day',
-                    textAlign: TextAlign.right,
+                    name,
                     style: TextStyle(
                       fontSize: 15,
                     ),
                   ),
                   Spacer(),
                   Text(
-                    'Cost:',
-                    textAlign: TextAlign.end,
+                    '$number places',
                     style: TextStyle(
                       fontSize: 15,
                     ),

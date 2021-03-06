@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {
-  final _color2 = Color(0xFFF0FBFF);
+  final _color2 = Color(0xFFDBE1FF);
 
   @override
   Widget build(BuildContext context) {

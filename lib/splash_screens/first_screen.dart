@@ -3,7 +3,7 @@ import 'package:livel_application/splash_screens/page_view_screen.dart';
 
 class FirstScreen extends StatelessWidget {
   final _color1 = Color(0xFF687EF4);
-  final _color2 = Color(0xFFF0FBFF);
+  final _color2 = Color(0xFFDBE1FF);
 
   void _navigateNextRoute(BuildContext context) {
     Navigator.push(

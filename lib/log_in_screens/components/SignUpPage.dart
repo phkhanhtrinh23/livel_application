@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'authentication_service.dart';
 import 'package:provider/provider.dart';
-import 'package:livel_application/log_in_screens/HomeMain.dart';
+// import 'package:livel_application/log_in_screens/HomeMain.dart';
 
 class SignUpPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -56,8 +56,7 @@ class SignUpPage extends StatelessWidget {
             children: [
               RaisedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeMain()));
+                  Navigator.pop(context);
                 },
                 child: Text("Sign in"),
               ),

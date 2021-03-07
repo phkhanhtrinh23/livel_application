@@ -20,6 +20,7 @@ class HomeMain extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Livel',
         theme: ThemeData(
           primarySwatch: Colors.blue,

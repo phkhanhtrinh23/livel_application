@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:livel_application/trip_content/trip_main.dart';
 
 class AvailableElement extends StatelessWidget {
   const AvailableElement({
@@ -19,7 +20,14 @@ class AvailableElement extends StatelessWidget {
         bottom: 16.0,
       ),
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => TripContent(),
+            ),
+          );
+        },
         child: Column(
           children: <Widget>[
             Image.asset(

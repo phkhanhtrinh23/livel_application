@@ -16,40 +16,37 @@ class TripElement extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(
         right: 4.0,
-        left: 16.0,
+        left: 4.0,
         bottom: 48.0,
       ),
       child: FlatButton(
         onPressed: () {},
-        child: Column(
-          children: <Widget>[
-            Image.asset(
-              image,
-              width: 142,
-              height: 190,
+        child: Container(
+          width: 142,
+          height: 190,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/usa.png'),
+              fit: BoxFit.cover,
             ),
-            Container(
-              width: 142,
-              height: 24,
-              child: Row(
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                  Spacer(),
-                  Text(
-                    '$number places',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                style: TextStyle(
+                  fontSize: 15,
+                ),
               ),
-            ),
-          ],
+              Text(
+                '$number places',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

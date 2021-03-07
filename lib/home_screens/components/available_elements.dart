@@ -15,7 +15,7 @@ class AvailableElement extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(
         right: 16.0,
-        left: 14.0,
+        left: 4.0,
         bottom: 16.0,
       ),
       child: FlatButton(

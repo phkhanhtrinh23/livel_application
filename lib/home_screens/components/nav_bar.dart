@@ -30,19 +30,13 @@ class _NavBar extends State<NavBar> {
     ),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.blue,
         child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           iconSize: 25,
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -66,7 +60,12 @@ class _NavBar extends State<NavBar> {
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.orange,
-          onTap: _onItemTapped,
+          onTap: (value) {
+            setState(() {
+              _selectedIndex = value;
+            });
+          },
+          backgroundColor: Color(0xFFDBE1FF),
         ),
         // clipBehavior: Clip.antiAliasWithSaveLayer,
         // shape: CircularNotchedRectangle(),

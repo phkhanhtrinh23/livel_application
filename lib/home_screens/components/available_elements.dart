@@ -36,6 +36,7 @@ class AvailableElement extends StatelessWidget {
               height: 200,
             ),
             Container(
+              color: Color(0xFFDBE1FF),
               width: 208,
               height: 30,
               child: Text(

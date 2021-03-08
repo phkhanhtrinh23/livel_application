@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:livel_application/trip_screen/trip_screen.dart';
 
 class TripElement extends StatelessWidget {
   const TripElement({
@@ -11,6 +12,37 @@ class TripElement extends StatelessWidget {
   final String name, image;
   final int number;
 
+  void _navigateToTripScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute<Null>(
+      builder: (BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Explore',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+            centerTitle: true,
+            actions: [
+              IconButton(
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.black,
+                ),
+                onPressed: () {},
+              ),
+            ],
+            backgroundColor: Colors.grey,
+          ),
+          body: TripScreen(
+            name: name,
+          ),
+        );
+      },
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,13 +52,13 @@ class TripElement extends StatelessWidget {
         bottom: 48.0,
       ),
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () => _navigateToTripScreen(context),
         child: Container(
           width: 142,
           height: 190,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/usa.png'),
+              image: AssetImage(image),
               fit: BoxFit.cover,
             ),
           ),

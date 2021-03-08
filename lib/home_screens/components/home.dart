@@ -12,6 +12,15 @@ class MainHome extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.only(top: 100),
       children: <Widget>[
+        Container(
+          alignment: Alignment.topLeft,
+          child: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.all(17.0),
           child: Text(
@@ -43,9 +52,6 @@ class MainHome extends StatelessWidget {
                     hintText: 'Search',
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
-                    // surffix isn't working properly  with SVG
-                    // thats why we use row
-                    // suffixIcon: SvgPicture.asset("assets/icons/search.svg"),
                   ),
                 ),
               ),
@@ -100,7 +106,7 @@ class MainHome extends StatelessWidget {
                 number: 10,
               ),
               TripElement(
-                image: 'images/usa.png',
+                image: 'images/uk.png',
                 name: 'USA',
                 number: 10,
               ),
@@ -110,7 +116,7 @@ class MainHome extends StatelessWidget {
                 number: 10,
               ),
               TripElement(
-                image: 'images/usa.png',
+                image: 'images/uk.png',
                 name: 'USA',
                 number: 10,
               ),

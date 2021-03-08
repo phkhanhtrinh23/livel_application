@@ -44,7 +44,6 @@ class HomePage extends StatelessWidget {
             RaisedButton(
               textColor: Colors.red,
               onPressed: () {
-                context.read<AuthenticationService>().signOut();
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => HomeScreen()),

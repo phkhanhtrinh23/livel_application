@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/trip_content/components/main_screen.dart';
+import 'package:livel_application/home_screens/components/trip_content/components/main_screen.dart';
 
 class TripContent extends StatelessWidget {
   @override
@@ -13,7 +13,7 @@ class TripContent extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFFDBE1FF),
       ),
       body: MainContent(),
     );

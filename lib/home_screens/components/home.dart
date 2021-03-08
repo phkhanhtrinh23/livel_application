@@ -167,27 +167,27 @@ class MainHome extends StatelessWidget {
           child: Row(
             children: <Widget>[
               AvailableElement(
-                image: 'images/boat.png',
+                image: 'images/boat_1.png',
                 name: 'Khoa',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
-                image: 'images/boat.png',
+                image: 'images/boat_1.png',
                 name: 'Khoa',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
-                image: 'images/boat.png',
+                image: 'images/boat_1.png',
                 name: 'Khoa',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
-                image: 'images/boat.png',
+                image: 'images/boat_1.png',
                 name: 'Khoa',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
-                image: 'images/boat.png',
+                image: 'images/boat_1.png',
                 name: 'Khoa',
                 day: 'Mar 07, 2021',
               ),

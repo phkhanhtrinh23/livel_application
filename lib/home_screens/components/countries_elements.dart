@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/trip_screen/trip_screen.dart';
+import 'package:livel_application/home_screens/components/trip_screen/trip_screen.dart';
 
 class TripElement extends StatelessWidget {
   const TripElement({
@@ -33,7 +33,7 @@ class TripElement extends StatelessWidget {
                 onPressed: () {},
               ),
             ],
-            backgroundColor: Colors.grey,
+            backgroundColor: Color(0xFFDBE1FF),
           ),
           body: TripScreen(
             name: name,

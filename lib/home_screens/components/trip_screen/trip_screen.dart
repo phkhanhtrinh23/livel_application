@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/trip_screen/components/each_place.dart';
+import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
 
 class TripScreen extends StatelessWidget {
   const TripScreen({

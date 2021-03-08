@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/home.dart';
+import 'package:livel_application/home_screens/user_screen/user_main.dart';
+import 'package:livel_application/home_screens/your_trip/your_trip.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -10,23 +12,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreen extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     //TODO: Route is here!
     MainHome(),
+    YourTrip(),
     Text(
-      'Index 1: User',
-      style: optionStyle,
+      'Notifications page',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 50,
+      ),
     ),
-    Text(
-      'Index 1: User',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: User',
-      style: optionStyle,
-    ),
+    UserScreen(),
   ];
 
   @override

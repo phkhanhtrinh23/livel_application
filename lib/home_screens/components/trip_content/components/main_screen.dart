@@ -110,11 +110,34 @@ class MainContent extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(
-              bottom: 40,
+            margin: const EdgeInsets.only(
+              right: 23,
+              left: 23,
+              top: 42,
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.map_outlined),
+                Spacer(),
+                Text(
+                  'Tour Guide',
+                  style: TextStyle(
+                    fontSize: 26,
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Spacer(),
+                Image.asset('images/line.png'),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(
+              bottom: 200,
               right: 43,
               left: 43,
-              top: 50,
+              top: 34,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -123,11 +146,16 @@ class MainContent extends StatelessWidget {
                 Column(
                   children: [
                     Image.asset(
-                      'images/bulb.png',
+                      'images/khoa.png',
                       width: 100,
                       height: 100,
                     ),
-                    Text('Bulb'),
+                    Text(
+                      'Khoa Tran',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
                 Spacer(),
@@ -137,7 +165,7 @@ class MainContent extends StatelessWidget {
                     Row(
                       children: [
                         Icon(Icons.phone),
-                        Text('123456789'),
+                        Text('090 287 6927'),
                       ],
                     ),
                     Row(
@@ -158,20 +186,25 @@ class MainContent extends StatelessWidget {
               ],
             ),
           ),
-          FlatButton(
-            minWidth: 213,
-            height: 51,
-            color: Colors.orange,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
+          Container(
+            margin: const EdgeInsets.only(
+              bottom: 20,
             ),
-            child: Text(
-              'JOIN',
-              style: TextStyle(
-                color: Colors.white,
+            child: FlatButton(
+              minWidth: 213,
+              height: 51,
+              color: Colors.orange,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
               ),
+              child: Text(
+                'JOIN',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {},
             ),
-            onPressed: () {},
           ),
         ],
       ),

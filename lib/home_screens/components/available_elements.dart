@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/trip_content/trip_main.dart';
+import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
 class AvailableElement extends StatelessWidget {
   const AvailableElement({
@@ -33,10 +33,9 @@ class AvailableElement extends StatelessWidget {
             Image.asset(
               image,
               width: 208,
-              height: 200,
+              height: 184,
             ),
             Container(
-              color: Color(0xFFDBE1FF),
               width: 208,
               height: 30,
               child: Text(
@@ -45,6 +44,13 @@ class AvailableElement extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xFFDBE1FF),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
                 ),
               ),
             ),

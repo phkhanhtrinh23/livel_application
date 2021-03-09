@@ -136,7 +136,7 @@ class MainHome extends StatelessWidget {
                 bottom: 8.0,
               ),
               child: Text(
-                'Available trips',
+                'Upcoming trips',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,

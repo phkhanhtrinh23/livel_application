@@ -14,7 +14,7 @@ class UserScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFFDBE1FF),
+        backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -29,28 +29,23 @@ class UserScreen extends StatelessWidget {
               ),
             ),
             ProfileMenu(
-              text: " My Account",
-              icon: Icon(Icons.person),
+              text: "My Account",
+              icon: Icon(Icons.person_outline),
               press: () => {},
             ),
             ProfileMenu(
-              text: " Notifications",
-              icon: Icon(Icons.notifications),
+              text: "Help Center",
+              icon: Icon(Icons.help_center_outlined),
               press: () {},
             ),
             ProfileMenu(
-              text: " Settings",
-              icon: Icon(Icons.settings),
-              press: () {},
+              text: "Guidelines",
+              icon: Icon(Icons.bookmark_border_outlined),
+              press: () => {},
             ),
             ProfileMenu(
-              text: " Help Center",
-              icon: Icon(Icons.book),
-              press: () {},
-            ),
-            ProfileMenu(
-              text: " Log Out",
-              icon: Icon(Icons.backspace),
+              text: "Log Out",
+              icon: Icon(Icons.backspace_outlined),
               press: () {},
             ),
           ],
@@ -81,12 +76,16 @@ class ProfileMenu extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        color: Color(0xFFF5F6F9),
+        color: Colors.grey[200],
         onPressed: press,
         child: Row(
           children: [
             icon,
-            Expanded(child: Text(text)),
+            Container(
+              child: Text(text),
+              margin: const EdgeInsets.only(left: 5.0),
+            ),
+            Spacer(),
             Icon(Icons.arrow_forward_ios),
           ],
         ),
@@ -94,44 +93,3 @@ class ProfileMenu extends StatelessWidget {
     );
   }
 }
-
-// class ProfilePic extends StatelessWidget {
-//   const ProfilePic({
-//     Key key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 125,
-//       width: 125,
-//       child: Stack(
-//         fit: StackFit.expand,
-//         overflow: Overflow.visible,
-//         children: [
-//           CircleAvatar(
-//             backgroundColor: Colors.blue[123],
-//           ),
-//           Positioned(
-//             top: 150,
-//             right: 10,
-//             bottom: 10,
-//             child: SizedBox(
-//               height: 46,
-//               width: 46,
-//               child: FlatButton(
-//                 shape: RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.circular(50),
-//                   side: BorderSide(color: Colors.white),
-//                 ),
-//                 color: Color(0xFFF5F6F9),
-//                 onPressed: () {},
-//                 child: null,
-//               ),
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }

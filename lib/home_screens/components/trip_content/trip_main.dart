@@ -13,7 +13,7 @@ class TripContent extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFFDBE1FF),
+        backgroundColor: Colors.white,
       ),
       body: MainContent(),
     );

@@ -25,15 +25,13 @@ class TripElement extends StatelessWidget {
             ),
             centerTitle: true,
             actions: [
-              IconButton(
-                icon: Icon(
-                  Icons.settings,
-                  color: Colors.black,
-                ),
+              FlatButton(
+                minWidth: 2.5,
                 onPressed: () {},
-              ),
+                child: Image.asset('images/slider.png'),
+              )
             ],
-            backgroundColor: Color(0xFFDBE1FF),
+            backgroundColor: Colors.white,
           ),
           body: TripScreen(
             name: name,
@@ -54,6 +52,7 @@ class TripElement extends StatelessWidget {
       child: FlatButton(
         onPressed: () => _navigateToTripScreen(context),
         child: Container(
+          alignment: Alignment.topRight,
           width: 142,
           height: 190,
           decoration: BoxDecoration(
@@ -62,22 +61,32 @@ class TripElement extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: TextStyle(
-                  fontSize: 15,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: Colors.blue[300],
+            ),
+            width: 62,
+            height: 36,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  name,
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                '$number places',
-                style: TextStyle(
-                  fontSize: 15,
+                Text(
+                  '$number places',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

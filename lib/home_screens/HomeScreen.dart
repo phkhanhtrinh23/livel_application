@@ -61,7 +61,6 @@ class _HomeScreen extends State<HomeScreen> {
               _selectedIndex = value;
             });
           },
-          backgroundColor: Color(0xFFDBE1FF),
         ),
         // clipBehavior: Clip.antiAliasWithSaveLayer,
         // shape: CircularNotchedRectangle(),

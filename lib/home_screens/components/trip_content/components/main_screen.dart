@@ -16,6 +16,7 @@ class MainContent extends StatelessWidget {
               left: 18.0,
               top: 8.0,
               bottom: 8.0,
+              right: 18.0,
             ),
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -25,15 +26,35 @@ class MainContent extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'HANOI',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      'HANOI',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      alignment: Alignment.center,
+                      width: 52,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[800],
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Text(
+                        '\$9',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -83,7 +104,6 @@ class MainContent extends StatelessWidget {
             child: Row(
               children: [
                 Icon(Icons.map_outlined),
-                Spacer(),
                 Text(
                   'Information',
                   style: TextStyle(
@@ -92,7 +112,6 @@ class MainContent extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Spacer(),
                 Image.asset('images/line.png'),
               ],
             ),
@@ -118,7 +137,6 @@ class MainContent extends StatelessWidget {
             child: Row(
               children: [
                 Icon(Icons.map_outlined),
-                Spacer(),
                 Text(
                   'Tour Guide',
                   style: TextStyle(
@@ -127,14 +145,13 @@ class MainContent extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Spacer(),
                 Image.asset('images/line.png'),
               ],
             ),
           ),
           Container(
             margin: const EdgeInsets.only(
-              bottom: 200,
+              bottom: 23,
               right: 43,
               left: 43,
               top: 34,
@@ -184,6 +201,41 @@ class MainContent extends StatelessWidget {
                 ),
                 Spacer(),
               ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(
+              right: 23,
+              left: 23,
+              top: 42,
+              bottom: 23,
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.map_outlined),
+                Text(
+                  'Note',
+                  style: TextStyle(
+                    fontSize: 26,
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Image.asset('images/line.png'),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(
+              right: 23,
+              left: 23,
+              bottom: 200,
+            ),
+            child: Text(
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scramble.\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scramble',
+              style: TextStyle(
+                fontSize: 15,
+              ),
             ),
           ),
           Container(

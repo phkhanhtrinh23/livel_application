@@ -23,11 +23,23 @@ class MainHome extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(17.0),
-          child: Text(
-            'Hello Khoa Tran,\nwhich trip you want to go today?',
-            style: TextStyle(
-              fontSize: 25,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Hello Khoa Tran,',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+              Text(
+                'which trip you want to go today?',
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
           ),
         ),
         Container(
@@ -74,6 +86,7 @@ class MainHome extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
+                  color: Colors.orange[800],
                 ),
               ),
             ),
@@ -84,7 +97,7 @@ class MainHome extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              color: Color(0xFFDBE1FF),
+              color: Colors.grey[300],
               onPressed: () {},
               child: Text(
                 "View all",
@@ -107,7 +120,7 @@ class MainHome extends StatelessWidget {
               ),
               TripElement(
                 image: 'images/uk.png',
-                name: 'USA',
+                name: 'UK',
                 number: 10,
               ),
               TripElement(
@@ -117,7 +130,7 @@ class MainHome extends StatelessWidget {
               ),
               TripElement(
                 image: 'images/uk.png',
-                name: 'USA',
+                name: 'UK',
                 number: 10,
               ),
               TripElement(
@@ -140,6 +153,7 @@ class MainHome extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
+                  color: Colors.orange[800],
                 ),
               ),
             ),
@@ -150,7 +164,7 @@ class MainHome extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              color: Color(0xFFDBE1FF),
+              color: Colors.grey[300],
               onPressed: () {},
               child: Text(
                 "View all",
@@ -168,27 +182,37 @@ class MainHome extends StatelessWidget {
             children: <Widget>[
               AvailableElement(
                 image: 'images/boat_1.png',
-                name: 'Khoa',
+                place: 'Museum',
+                cost: 9,
+                country: 'Hanoi',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
                 image: 'images/boat_1.png',
-                name: 'Khoa',
+                place: 'Museum',
+                cost: 9,
+                country: 'Hanoi',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
                 image: 'images/boat_1.png',
-                name: 'Khoa',
+                place: 'Museum',
+                cost: 9,
+                country: 'Hanoi',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
                 image: 'images/boat_1.png',
-                name: 'Khoa',
+                place: 'Museum',
+                cost: 9,
+                country: 'Hanoi',
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
                 image: 'images/boat_1.png',
-                name: 'Khoa',
+                place: 'Museum',
+                cost: 9,
+                country: 'Hanoi',
                 day: 'Mar 07, 2021',
               ),
             ],

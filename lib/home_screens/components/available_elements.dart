@@ -4,12 +4,15 @@ import 'package:livel_application/home_screens/components/trip_content/trip_main
 class AvailableElement extends StatelessWidget {
   const AvailableElement({
     Key key,
-    this.name,
-    this.day,
+    this.country,
+    this.place,
     this.image,
+    this.day,
+    this.cost,
   }) : super(key: key);
 
-  final String name, day, image;
+  final String country, place, image, day;
+  final int cost;
 
   @override
   Widget build(BuildContext context) {
@@ -30,53 +33,83 @@ class AvailableElement extends StatelessWidget {
         },
         child: Column(
           children: <Widget>[
-            Image.asset(
-              image,
-              width: 208,
-              height: 184,
+            Container(
+              alignment: Alignment.topRight,
+              width: 229,
+              height: 130,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: Container(
+                alignment: Alignment.center,
+                width: 52,
+                height: 32,
+                decoration: BoxDecoration(
+                  color: Colors.orange[800],
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(8.0),
+                    topRight: Radius.circular(8.0),
+                  ),
+                ),
+                child: Text(
+                  '\$$cost',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
             ),
             Container(
-              width: 208,
-              height: 30,
-              child: Text(
-                '$name',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              padding: const EdgeInsets.only(
+                bottom: 16,
+                left: 5,
+                right: 6,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFDBE1FF),
+                color: Colors.blue[300],
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
+                  bottomLeft: Radius.circular(8.0),
+                  bottomRight: Radius.circular(8.0),
                 ),
               ),
-            ),
-            Container(
-              width: 208,
-              height: 30,
+              width: 229,
+              height: 60,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    '$day',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '$place',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      Text(
+                        '$country',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      )
+                    ],
                   ),
                   Spacer(),
                   Text(
-                    'Cost:',
-                    textAlign: TextAlign.end,
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
+                    '$day',
+                    style:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                  )
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

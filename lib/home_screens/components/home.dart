@@ -30,13 +30,14 @@ class MainHome extends StatelessWidget {
                 'Hello Khoa Tran,',
                 style: TextStyle(
                   fontSize: 25,
+                  color: Colors.orange[800],
                 ),
               ),
               Text(
                 'which trip you want to go today?',
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
@@ -49,7 +50,7 @@ class MainHome extends StatelessWidget {
           height: 54,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(8),
             border: Border.all(
               color: Colors.grey,
             ),

@@ -70,7 +70,7 @@ class AvailableElement extends StatelessWidget {
                 right: 6,
               ),
               decoration: BoxDecoration(
-                color: Colors.blue[300],
+                color: Colors.blue[600],
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(8.0),
                   bottomRight: Radius.circular(8.0),
@@ -104,8 +104,10 @@ class AvailableElement extends StatelessWidget {
                   Spacer(),
                   Text(
                     '$day',
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                    ),
                   )
                 ],
               ),

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
+import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
+import 'package:livel_application/home_screens/user_screen/components/profile_info.dart';
 
 class UserScreen extends StatelessWidget {
   @override
@@ -31,21 +34,42 @@ class UserScreen extends StatelessWidget {
             ProfileMenu(
               text: "My Account",
               icon: Icon(Icons.person_outline),
-              press: () => {},
+              press: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => ProfileScreen(),
+                  ),
+                ),
+              },
             ),
             ProfileMenu(
               text: "Help Center",
               icon: Icon(Icons.help_center_outlined),
-              press: () {},
+              press: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => HelpCenterScreen(),
+                  ),
+                ),
+              },
             ),
             ProfileMenu(
               text: "Guidelines",
               icon: Icon(Icons.bookmark_border_outlined),
-              press: () => {},
+              press: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => GuidelinesScreen(),
+                  ),
+                ),
+              },
             ),
             ProfileMenu(
               text: "Log Out",
-              icon: Icon(Icons.backspace_outlined),
+              icon: Icon(Icons.logout),
               press: () {},
             ),
           ],
@@ -76,7 +100,7 @@ class ProfileMenu extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        color: Colors.grey[200],
+        color: Colors.blue[300],
         onPressed: press,
         child: Row(
           children: [

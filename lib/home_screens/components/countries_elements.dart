@@ -64,7 +64,7 @@ class TripElement extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: Colors.blue[300],
+              color: Colors.blue[600],
             ),
             width: 62,
             height: 36,

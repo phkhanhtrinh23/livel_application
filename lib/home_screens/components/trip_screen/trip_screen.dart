@@ -18,7 +18,6 @@ class TripScreen extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             margin: const EdgeInsets.only(
               top: 35,
-              right: 76,
               bottom: 23,
               left: 21,
             ),

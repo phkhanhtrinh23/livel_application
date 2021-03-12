@@ -14,7 +14,7 @@ class HelpCenterScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Colors.blue[300],
+        backgroundColor: Color(0xFF5197E1),
         centerTitle: true,
         title: Text(
           'Help Center',
@@ -37,7 +37,7 @@ class HelpCenterScreen extends StatelessWidget {
                   width: _width,
                   height: 160,
                   decoration: BoxDecoration(
-                    color: Colors.blue[300],
+                    color: Color(0xFF5197E1),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8),

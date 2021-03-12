@@ -64,7 +64,6 @@ class MainContent extends StatelessWidget {
             padding: const EdgeInsets.only(
               top: 30.0,
               left: 18.0,
-              right: 145.0,
               bottom: 42.0,
             ),
             child: Text(
@@ -112,7 +111,6 @@ class MainContent extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Image.asset('images/line.png'),
               ],
             ),
           ),
@@ -145,7 +143,6 @@ class MainContent extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Image.asset('images/line.png'),
               ],
             ),
           ),
@@ -221,7 +218,6 @@ class MainContent extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Image.asset('images/line.png'),
               ],
             ),
           ),

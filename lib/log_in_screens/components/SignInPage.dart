@@ -15,7 +15,6 @@ class SignInPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset('images/travel.png'),
             Text(

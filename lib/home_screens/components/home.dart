@@ -191,7 +191,7 @@ class MainHome extends StatelessWidget {
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
-                image: 'images/boat_1.png',
+                image: 'images/stadium.png',
                 place: 'Museum',
                 cost: 9,
                 country: 'Hanoi',
@@ -205,7 +205,7 @@ class MainHome extends StatelessWidget {
                 day: 'Mar 07, 2021',
               ),
               AvailableElement(
-                image: 'images/boat_1.png',
+                image: 'images/stadium.png',
                 place: 'Museum',
                 cost: 9,
                 country: 'Hanoi',

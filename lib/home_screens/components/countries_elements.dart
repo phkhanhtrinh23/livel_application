@@ -34,7 +34,7 @@ class TripElement extends StatelessWidget {
                 ),
               )
             ],
-            backgroundColor: Colors.blue[300],
+            backgroundColor: Color(0xFF5197E1),
           ),
           body: TripScreen(
             name: name,

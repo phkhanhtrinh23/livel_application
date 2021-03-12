@@ -25,7 +25,7 @@ class UserScreen extends StatelessWidget {
                   bottomLeft: Radius.circular(16),
                   bottomRight: Radius.circular(16),
                 ),
-                color: Colors.blue[300],
+                color: Color(0xFF5197E1),
               ),
               child: Text(
                 'Your Profile',

@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Colors.blue[300],
+        backgroundColor: Color(0xFF5197E1),
         centerTitle: true,
         title: Text(
           'My Account',
@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                   width: _width,
                   height: 160,
                   decoration: BoxDecoration(
-                    color: Colors.blue[300],
+                    color: Color(0xFF5197E1),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8),
@@ -61,14 +61,15 @@ class ProfileScreen extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(
-              left: 32,
-              right: 64,
+              left: 16,
+              right: 16,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.only(
                     bottom: 8,
                   ),
@@ -101,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.only(
                     bottom: 8,
                   ),

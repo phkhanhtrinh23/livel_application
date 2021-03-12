@@ -19,7 +19,7 @@ class YourTrip extends StatelessWidget {
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
                   ),
-                  color: Colors.blue[300],
+                  color: Color(0xFF5197E1),
                 ),
                 child: Text(
                   'Your Trips',
@@ -39,7 +39,6 @@ class YourTrip extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(Icons.map_outlined),
-                    Spacer(),
                     Text(
                       'Complete Trips',
                       style: TextStyle(
@@ -48,7 +47,6 @@ class YourTrip extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Image.asset('images/line.png'),
                   ],
                 ),
               ),

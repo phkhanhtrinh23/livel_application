@@ -2,26 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/log_in_screens/HomeMain.dart';
 
 class ThirdScreen extends StatelessWidget {
-  final _color1 = Color(0xFF687EF4);
-  final _color2 = Color(0xFFDBE1FF);
-
-  void _navigateNextRoute(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => HomeMain(),
-        ));
-  }
-
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: _color2,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Spacer(),
+            Container(
+              height: 560,
+              width: _width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+                color: Color(0xFFF0FBFF),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'images/saly2.png',
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'LET\'S TRAVEL\nwith LIVEL',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.black,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'A whole new experience for home-based tourist',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -35,67 +65,36 @@ class ThirdScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
-            Spacer(),
-            Image.asset(
-              'images/bike_rider.png',
-              scale: 3.5,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'LET\'S TRAVEL',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+            Container(
+              margin: const EdgeInsets.only(
+                top: 24,
+                left: 24,
+                right: 24,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'with',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Color(0xFF5197E1),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'LIVEL',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 100,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Spacer(),
-            SizedBox(
-              width: 300,
-              height: 50,
               child: FlatButton(
-                onPressed: () => _navigateNextRoute(context),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
+                minWidth: 335,
+                height: 68,
                 child: Text(
-                  'Get Started',
+                  'LET\'S GO',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 40,
-                    color: _color2,
+                    fontSize: 24,
                   ),
                 ),
-                color: _color1,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeMain(),
+                    ),
+                  );
+                },
               ),
             ),
-            Spacer(),
-            Spacer(),
           ],
         ),
       ),

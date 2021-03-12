@@ -1,16 +1,31 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/splash_screens/page_view_screen.dart';
 
-class FirstScreen extends StatelessWidget {
-  final _color1 = Color(0xFF687EF4);
-  final _color2 = Color(0xFFDBE1FF);
+class FirstScreen extends StatefulWidget {
+  FirstScreen({Key key}) : super(key: key);
 
-  void _navigateNextRoute(BuildContext context) {
-    Navigator.push(
+  @override
+  _FirstScreen createState() => _FirstScreen();
+}
+
+class _FirstScreen extends State<FirstScreen> {
+  final _color1 = Color(0xFF5197E1);
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+      Duration(seconds: 3),
+      () => Navigator.push(
         context,
         MaterialPageRoute(
           builder: (BuildContext context) => PageViewing(),
-        ));
+        ),
+      ),
+    );
   }
 
   @override
@@ -21,8 +36,6 @@ class FirstScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Spacer(),
-            Spacer(),
             Text(
               'Welcome',
               style: TextStyle(
@@ -39,32 +52,14 @@ class FirstScreen extends StatelessWidget {
             ),
             Text(
               'LIVEL',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 120,
+              style: GoogleFonts.permanentMarker(
                 color: Colors.white,
+                fontSize: 100,
               ),
             ),
-            Spacer(),
-            SizedBox(
-              width: 300,
-              height: 50,
-              child: FlatButton(
-                onPressed: () => _navigateNextRoute(context),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Text(
-                  'Get Started',
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: _color1,
-                  ),
-                ),
-                color: _color2,
-              ),
+            CircularProgressIndicator(
+              backgroundColor: Colors.white,
             ),
-            Spacer(),
           ],
         ),
       ),

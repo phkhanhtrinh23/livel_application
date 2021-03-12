@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class MainContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double _expandWidth = MediaQuery.of(context).size.width;
+    double _width = MediaQuery.of(context).size.width;
 
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: _expandWidth,
+            width: _width,
             height: 335,
             padding: const EdgeInsets.only(
               left: 18.0,

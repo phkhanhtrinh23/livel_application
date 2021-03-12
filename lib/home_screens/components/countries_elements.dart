@@ -20,7 +20,7 @@ class TripElement extends StatelessWidget {
             title: Text(
               'Explore',
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             centerTitle: true,
@@ -28,10 +28,13 @@ class TripElement extends StatelessWidget {
               FlatButton(
                 minWidth: 2.5,
                 onPressed: () {},
-                child: Image.asset('images/slider.png'),
+                child: Image.asset(
+                  'images/slider.png',
+                  color: Colors.white,
+                ),
               )
             ],
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.blue[300],
           ),
           body: TripScreen(
             name: name,
@@ -52,7 +55,7 @@ class TripElement extends StatelessWidget {
       child: FlatButton(
         onPressed: () => _navigateToTripScreen(context),
         child: Container(
-          alignment: Alignment.topRight,
+          alignment: Alignment.topLeft,
           width: 142,
           height: 190,
           decoration: BoxDecoration(
@@ -64,7 +67,7 @@ class TripElement extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: Colors.blue[600],
+              color: Color(0xFF5197E1),
             ),
             width: 62,
             height: 36,

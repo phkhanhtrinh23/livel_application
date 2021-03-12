@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/log_in_screens/HomeMain.dart';
+// import 'package:livel_application/log_in_screens/HomeMain.dart';
 import 'package:livel_application/video_call/index.dart';
 // import 'package:livel_application/log_in_screens/HomeMain.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
-import 'package:provider/provider.dart';
-import 'authentication_service.dart';
+// import 'package:provider/provider.dart';
+// import 'authentication_service.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -28,19 +28,19 @@ class HomePage extends StatelessWidget {
               },
               child: Text('Agora'),
             ),
-            RaisedButton(
-              textColor: Colors.red,
-              onPressed: () {
-                context.read<AuthenticationService>().signOut();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => HomeMain(),
-                  ),
-                );
-              },
-              child: Text('Sign out'),
-            ),
+            // RaisedButton(
+            //   textColor: Colors.red,
+            //   onPressed: () {
+            //     context.read<AuthenticationService>().signOut();
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (BuildContext context) => HomeMain(),
+            //       ),
+            //     );
+            //   },
+            //   child: Text('Sign out'),
+            // ),
             RaisedButton(
               textColor: Colors.red,
               onPressed: () {

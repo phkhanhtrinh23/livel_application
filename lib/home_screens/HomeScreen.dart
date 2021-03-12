@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/home.dart';
-import 'package:livel_application/log_in_screens/components/user_main.dart';
+import 'package:livel_application/home_screens/user_screen/user_main.dart';
 import 'package:livel_application/home_screens/your_trip/your_trip.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -31,12 +31,14 @@ class MainHome extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.orange[800],
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 'which trip you want to go today?',
                 style: TextStyle(
                   fontSize: 25,
+                  color: Colors.orange[800],
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -52,7 +54,7 @@ class MainHome extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: Colors.grey,
+              color: Colors.grey[800],
             ),
           ),
           child: Row(
@@ -125,8 +127,8 @@ class MainHome extends StatelessWidget {
                 number: 10,
               ),
               TripElement(
-                image: 'images/usa.png',
-                name: 'USA',
+                image: 'images/swhere.png',
+                name: 'Japan',
                 number: 10,
               ),
               TripElement(

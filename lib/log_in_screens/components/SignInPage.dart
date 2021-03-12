@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'HomePage.dart';
 import 'signInWithGoogle.dart';
 import 'package:provider/provider.dart';
-
 import 'SignUpPage.dart';
 import 'authentication_service.dart';
 
@@ -15,19 +12,21 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(padding: EdgeInsets.all(30.0)),
+            Image.asset('images/travel.png'),
             Text(
-              'Welcome to Livel',
-              style: new TextStyle(color: Colors.blueAccent, fontSize: 25.0),
+              'Log in',
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            //new Padding(padding: EdgeInsets.only(top: 50.0)),
-            SignInButton(
-              Buttons.Google,
-              text: "Sign in with Google",
+            FlatButton(
+              child: Image.asset('images/googlebutton.png'),
               onPressed: () {
                 signInWithGoogle().then(
                   (result) {
@@ -44,19 +43,22 @@ class SignInPage extends StatelessWidget {
                 );
               },
             ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 16.0),
+            ),
             TextFormField(
               controller: emailController,
-              decoration: new InputDecoration(
+              decoration: InputDecoration(
                 labelText: "Email",
                 fillColor: Colors.white,
-                border: new OutlineInputBorder(
-                  borderRadius: new BorderRadius.circular(25.0),
-                  borderSide: new BorderSide(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
                 ),
-                //fillColor: Colors.green
               ),
             ),
-            Padding(padding: EdgeInsets.only(bottom: 15.0)),
+            Padding(
+              padding: EdgeInsets.only(bottom: 16.0),
+            ),
             TextFormField(
               controller: passwordController,
               decoration: new InputDecoration(
@@ -70,19 +72,30 @@ class SignInPage extends StatelessWidget {
               ),
               obscureText: true,
             ),
-            Row(
+            Padding(
+              padding: EdgeInsets.only(bottom: 16.0),
+            ),
+            Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                RaisedButton(
-                  onPressed: () {
-                    context.read<AuthenticationService>().signIn(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                        );
-                  },
-                  child: Text("Sign in"),
+                Container(
+                  width: 343,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFEE6C4D),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: FlatButton(
+                    onPressed: () {
+                      context.read<AuthenticationService>().signIn(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          );
+                    },
+                    child: Text("Log in"),
+                  ),
                 ),
-                RaisedButton(
+                FlatButton(
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -92,10 +105,10 @@ class SignInPage extends StatelessWidget {
                   child: Text("Sign up"),
                 ),
               ],
-            )
+            ),
           ],
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

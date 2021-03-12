@@ -9,11 +9,11 @@ class TripContent extends StatelessWidget {
         title: Text(
           'Content',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue[300],
       ),
       body: MainContent(),
     );

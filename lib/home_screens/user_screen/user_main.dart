@@ -1,28 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
 import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/home_screens/user_screen/components/profile_info.dart';
+import 'package:livel_application/log_in_screens/components/authentication_service.dart';
 
 class UserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Profile',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            Container(
+              width: _width,
+              height: 148,
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+                color: Colors.blue[300],
+              ),
+              child: Text(
+                'Your Profile',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
+                ),
+              ),
+            ),
             SizedBox(height: 10),
             Container(
               width: 200,
@@ -70,7 +83,10 @@ class UserScreen extends StatelessWidget {
             ProfileMenu(
               text: "Log Out",
               icon: Icon(Icons.logout),
-              press: () {},
+              press: () {
+                context.read<AuthenticationService>().signOut();
+                Navigator.of(context).pop();
+              },
             ),
           ],
         ),

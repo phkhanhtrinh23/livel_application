@@ -70,7 +70,7 @@ class AvailableElement extends StatelessWidget {
                 right: 6,
               ),
               decoration: BoxDecoration(
-                color: Colors.blue[600],
+                color: Colors.blue[300],
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(8.0),
                   bottomRight: Radius.circular(8.0),

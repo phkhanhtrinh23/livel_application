@@ -34,7 +34,7 @@ class AvailableElement extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              alignment: Alignment.topRight,
+              alignment: Alignment.topLeft,
               width: 229,
               height: 130,
               decoration: BoxDecoration(

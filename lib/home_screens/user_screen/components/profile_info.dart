@@ -62,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(
               left: 16,
-              right: 16,
+              right: 32,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

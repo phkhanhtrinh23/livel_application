@@ -27,48 +27,39 @@ class PlaceScreen extends StatelessWidget {
           fit: BoxFit.fill,
         ),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                'Title',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                ),
+          Container(
+            alignment: Alignment.center,
+            width: 47,
+            height: 32,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: Colors.blue[300],
+            ),
+            child: Text(
+              '\$9',
+              style: TextStyle(
+                fontSize: 15,
               ),
-              Text(
-                'Mar 08, 2021',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                ),
-              )
-            ],
+            ),
           ),
           Spacer(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                alignment: Alignment.center,
-                width: 47,
-                height: 32,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.blue[300],
-                ),
-                child: Text(
-                  '\$9',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            'Title',
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+            ),
           ),
+          Text(
+            'Mar 08, 2021',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white,
+            ),
+          )
         ],
       ),
     );

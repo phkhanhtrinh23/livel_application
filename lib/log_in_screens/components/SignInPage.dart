@@ -5,9 +5,18 @@ import 'package:provider/provider.dart';
 import 'SignUpPage.dart';
 import 'authentication_service.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
+  const SignInPage({Key key}) : super(key: key);
+
+  @override
+  _SignInPage createState() => _SignInPage();
+}
+
+class _SignInPage extends State<SignInPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  bool _dontShowPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +25,9 @@ class SignInPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(48.0),
+            ),
             Image.asset('images/travel.png'),
             Text(
               'Log in',
@@ -43,33 +55,53 @@ class SignInPage extends StatelessWidget {
               },
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 16.0),
-            ),
-            TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: "Email",
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
+              padding: EdgeInsets.only(
+                top: 16.0,
+              ),
+              child: Container(
+                width: 343,
+                height: 53,
+                child: TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: "Email",
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                      borderSide: BorderSide(),
+                    ),
+                  ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 16.0),
-            ),
-            TextFormField(
-              controller: passwordController,
-              decoration: new InputDecoration(
-                labelText: "Password",
-                fillColor: Colors.white,
-                border: new OutlineInputBorder(
-                  borderRadius: new BorderRadius.circular(25.0),
-                  borderSide: new BorderSide(),
-                ),
-                //fillColor: Colors.green
+              padding: EdgeInsets.only(
+                top: 16.0,
               ),
-              obscureText: true,
+              child: Container(
+                width: 343,
+                height: 53,
+                child: TextFormField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.remove_red_eye_outlined),
+                      onPressed: () {
+                        setState(() {
+                          _dontShowPassword = !_dontShowPassword;
+                        });
+                      },
+                    ),
+                    labelText: "Password",
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                      borderSide: BorderSide(),
+                    ),
+                  ),
+                  obscureText: _dontShowPassword,
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 16.0),
@@ -91,7 +123,10 @@ class SignInPage extends StatelessWidget {
                             password: passwordController.text.trim(),
                           );
                     },
-                    child: Text("Log in"),
+                    child: Text(
+                      "Log in",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
                 FlatButton(

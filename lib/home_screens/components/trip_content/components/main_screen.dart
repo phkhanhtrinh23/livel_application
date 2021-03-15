@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
 
 class MainContent extends StatelessWidget {
+  const MainContent({
+    Key key,
+    this.country,
+    this.place,
+    this.image,
+    this.day,
+    this.cost,
+    this.duration,
+  }) : super(key: key);
+
+  final String country, place, image, day;
+  final int cost, duration;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -20,17 +33,36 @@ class MainContent extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/museum.png'),
+                image: AssetImage('$image'),
                 fit: BoxFit.fill,
+              ),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
               ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_sharp,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    )
+                  ],
+                ),
+                Spacer(),
+                Row(
                   children: [
                     Text(
-                      'HANOI',
+                      '$country',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 26,
@@ -43,11 +75,11 @@ class MainContent extends StatelessWidget {
                       width: 52,
                       height: 32,
                       decoration: BoxDecoration(
-                        color: Colors.orange[800],
+                        color: Color(0xFFEE6C4D),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Text(
-                        '\$9',
+                        '\$$cost',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -67,11 +99,12 @@ class MainContent extends StatelessWidget {
               bottom: 42.0,
             ),
             child: Text(
-              'National Museum',
+              '$place',
               textAlign: TextAlign.start,
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
+                color: Color(0xFF5197E1),
               ),
             ),
           ),
@@ -83,13 +116,13 @@ class MainContent extends StatelessWidget {
             child: Row(
               children: [
                 Icon(Icons.timer),
-                Text('45 min'),
+                Text('$duration min'),
                 Spacer(),
                 Icon(Icons.face),
                 Text('4.4/5'),
                 Spacer(),
                 Icon(Icons.calendar_today_sharp),
-                Text('March 07, 2021'),
+                Text('$day'),
               ],
             ),
           ),
@@ -107,8 +140,8 @@ class MainContent extends StatelessWidget {
                   'Information',
                   style: TextStyle(
                     fontSize: 26,
-                    color: Colors.orange,
-                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFEE6C4D),
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ],
@@ -139,8 +172,8 @@ class MainContent extends StatelessWidget {
                   'Tour Guide',
                   style: TextStyle(
                     fontSize: 26,
-                    color: Colors.orange,
-                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFEE6C4D),
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ],
@@ -167,7 +200,7 @@ class MainContent extends StatelessWidget {
                     Text(
                       'Khoa Tran',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ],
@@ -214,8 +247,8 @@ class MainContent extends StatelessWidget {
                   'Note',
                   style: TextStyle(
                     fontSize: 26,
-                    color: Colors.orange,
-                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFEE6C4D),
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ],
@@ -241,7 +274,7 @@ class MainContent extends StatelessWidget {
             child: FlatButton(
               minWidth: 213,
               height: 51,
-              color: Colors.orange,
+              color: Color(0xFFEE6C4D),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),

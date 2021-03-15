@@ -39,20 +39,6 @@ class SecondScreen extends StatelessWidget {
           ],
         ),
       ),
-      // Spacer(),
-      // Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: [
-      //     Icon(
-      //       Icons.lens_sharp,
-      //       size: 12,
-      //     ),
-      //     Icon(
-      //       Icons.lens_outlined,
-      //       size: 8,
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

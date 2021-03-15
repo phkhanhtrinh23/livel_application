@@ -89,7 +89,6 @@ class MainHome extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: Colors.orange[800],
                 ),
               ),
             ),
@@ -100,13 +99,14 @@ class MainHome extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              color: Colors.grey[300],
+              color: Color(0xFF5197E1),
               onPressed: () {},
               child: Text(
                 "View all",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -156,7 +156,6 @@ class MainHome extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: Colors.orange[800],
                 ),
               ),
             ),
@@ -167,13 +166,14 @@ class MainHome extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              color: Colors.grey[300],
+              color: Color(0xFF5197E1),
               onPressed: () {},
               child: Text(
                 "View all",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -184,39 +184,44 @@ class MainHome extends StatelessWidget {
           child: Row(
             children: <Widget>[
               AvailableElement(
-                image: 'images/boat_1.png',
-                place: 'Museum',
+                image: 'images/museum.png',
+                place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
                 day: 'Mar 07, 2021',
+                duration: 45,
               ),
               AvailableElement(
-                image: 'images/stadium.png',
-                place: 'Museum',
+                image: 'images/museum.png',
+                place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
                 day: 'Mar 07, 2021',
+                duration: 45,
               ),
               AvailableElement(
-                image: 'images/boat_1.png',
-                place: 'Museum',
+                image: 'images/museum.png',
+                place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
                 day: 'Mar 07, 2021',
+                duration: 45,
               ),
               AvailableElement(
-                image: 'images/stadium.png',
-                place: 'Museum',
+                image: 'images/museum.png',
+                place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
                 day: 'Mar 07, 2021',
+                duration: 45,
               ),
               AvailableElement(
-                image: 'images/boat_1.png',
-                place: 'Museum',
+                image: 'images/museum.png',
+                place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
                 day: 'Mar 07, 2021',
+                duration: 45,
               ),
             ],
           ),

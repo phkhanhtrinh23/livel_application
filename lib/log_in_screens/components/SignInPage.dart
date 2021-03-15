@@ -23,124 +23,136 @@ class _SignInPage extends State<SignInPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(48.0),
-            ),
-            Image.asset('images/travel.png'),
-            Text(
-              'Log in',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(48.0),
               ),
-            ),
-            FlatButton(
-              child: Image.asset('images/googlebutton.png'),
-              onPressed: () {
-                signInWithGoogle().then(
-                  (result) {
-                    if (result != null) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return HomePage();
-                          },
-                        ),
-                      );
-                    }
-                  },
-                );
-              },
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 16.0,
-              ),
-              child: Container(
-                width: 343,
-                height: 53,
-                child: TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    labelText: "Email",
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                      borderSide: BorderSide(),
-                    ),
-                  ),
+              Image.asset('images/newimage.png'),
+              Text(
+                'Log in',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 16.0,
-              ),
-              child: Container(
-                width: 343,
-                height: 53,
-                child: TextFormField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.remove_red_eye_outlined),
-                      onPressed: () {
-                        setState(() {
-                          _dontShowPassword = !_dontShowPassword;
-                        });
-                      },
-                    ),
-                    labelText: "Password",
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                      borderSide: BorderSide(),
-                    ),
-                  ),
-                  obscureText: _dontShowPassword,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 16.0),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 343,
-                  height: 56,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFEE6C4D),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: FlatButton(
-                    onPressed: () {
-                      context.read<AuthenticationService>().signIn(
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim(),
-                          );
+              FlatButton(
+                child: Image.asset('images/googlebutton.png'),
+                onPressed: () {
+                  signInWithGoogle().then(
+                    (result) {
+                      if (result != null) {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return HomePage();
+                            },
+                          ),
+                        );
+                      }
                     },
-                    child: Text(
-                      "Log in",
-                      style: TextStyle(color: Colors.white),
+                  );
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 16.0,
+                ),
+                child: Container(
+                  width: 343,
+                  height: 53,
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        borderSide: BorderSide(),
+                      ),
                     ),
                   ),
                 ),
-                FlatButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()),
-                    );
-                  },
-                  child: Text("Sign up"),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 16.0,
                 ),
-              ],
-            ),
-          ],
+                child: Container(
+                  width: 343,
+                  height: 53,
+                  child: TextFormField(
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.remove_red_eye_outlined),
+                        onPressed: () {
+                          setState(() {
+                            _dontShowPassword = !_dontShowPassword;
+                          });
+                        },
+                      ),
+                      labelText: "Password",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        borderSide: BorderSide(),
+                      ),
+                    ),
+                    obscureText: _dontShowPassword,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 16.0),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 343,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFEE6C4D),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: FlatButton(
+                      onPressed: () {
+                        context.read<AuthenticationService>().signIn(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                            );
+                      },
+                      child: Text(
+                        "Log in",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 8),
+                    width: 343,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpPage()),
+                        );
+                      },
+                      child: Text("Sign up"),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

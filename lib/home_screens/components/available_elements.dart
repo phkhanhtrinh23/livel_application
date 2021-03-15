@@ -9,10 +9,11 @@ class AvailableElement extends StatelessWidget {
     this.image,
     this.day,
     this.cost,
+    this.duration,
   }) : super(key: key);
 
   final String country, place, image, day;
-  final int cost;
+  final int cost, duration;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,14 @@ class AvailableElement extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => TripContent(),
+              builder: (BuildContext context) => TripContent(
+                country: country,
+                place: place,
+                image: image,
+                day: day,
+                cost: cost,
+                duration: duration,
+              ),
             ),
           );
         },
@@ -42,13 +50,17 @@ class AvailableElement extends StatelessWidget {
                   image: AssetImage(image),
                   fit: BoxFit.fill,
                 ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
               ),
               child: Container(
                 alignment: Alignment.center,
                 width: 52,
                 height: 32,
                 decoration: BoxDecoration(
-                  color: Colors.orange[800],
+                  color: Color(0xFF5197E1),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(8.0),
                     topRight: Radius.circular(8.0),
@@ -70,11 +82,12 @@ class AvailableElement extends StatelessWidget {
                 right: 6,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFF5197E1),
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(8.0),
                   bottomRight: Radius.circular(8.0),
                 ),
+                border: Border.all(color: Colors.grey),
               ),
               width: 229,
               height: 60,

@@ -72,20 +72,6 @@ class ThirdScreen extends StatelessWidget {
                 },
               ),
             ),
-            // Spacer(),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     Icon(
-            //       Icons.lens_outlined,
-            //       size: 8,
-            //     ),
-            //     Icon(
-            //       Icons.lens_sharp,
-            //       size: 12,
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),

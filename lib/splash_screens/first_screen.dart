@@ -18,7 +18,7 @@ class _FirstScreen extends State<FirstScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 5),
       () => Navigator.push(
         context,
         MaterialPageRoute(
@@ -37,26 +37,13 @@ class _FirstScreen extends State<FirstScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Welcome',
-              style: TextStyle(
-                fontSize: 60,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              'to',
-              style: TextStyle(
-                fontSize: 60,
-                color: Colors.white,
-              ),
-            ),
-            Text(
               'LIVEL',
               style: GoogleFonts.permanentMarker(
                 color: Colors.white,
-                fontSize: 100,
+                fontSize: 80,
               ),
             ),
+            Image.asset('images/logo.png'),
             CircularProgressIndicator(
               backgroundColor: Colors.white,
             ),

@@ -13,6 +13,9 @@ class YourTrip extends StatelessWidget {
               Container(
                 width: _width,
                 height: 148,
+                padding: const EdgeInsets.only(
+                  bottom: 21,
+                ),
                 alignment: Alignment.bottomCenter,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -30,40 +33,40 @@ class YourTrip extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(
-                  right: 23,
-                  left: 23,
-                  top: 42,
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.map_outlined),
-                    Text(
-                      'Complete Trips',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.orange,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+              YourTripScreen(
+                image: 'images/rmit.png',
+                time: 8,
+                date: 'March 29, 2021',
+                place: 'Bach Khoa Uni, HCM City',
+                cost: 9,
               ),
               YourTripScreen(
-                image: 'images/1.png',
+                image: 'images/rmit.png',
+                time: 8,
+                date: 'March 29, 2021',
+                place: 'Bach Khoa Uni, HCM City',
+                cost: 9,
               ),
               YourTripScreen(
-                image: 'images/2.png',
+                image: 'images/rmit.png',
+                time: 8,
+                date: 'March 29, 2021',
+                place: 'Bach Khoa Uni, HCM City',
+                cost: 9,
               ),
               YourTripScreen(
-                image: 'images/3.png',
+                image: 'images/rmit.png',
+                time: 8,
+                date: 'March 29, 2021',
+                place: 'Bach Khoa Uni, HCM City',
+                cost: 9,
               ),
               YourTripScreen(
-                image: 'images/2.png',
-              ),
-              YourTripScreen(
-                image: 'images/1.png',
+                image: 'images/rmit.png',
+                time: 8,
+                date: 'March 29, 2021',
+                place: 'Bach Khoa Uni, HCM City',
+                cost: 9,
               ),
             ],
           ),

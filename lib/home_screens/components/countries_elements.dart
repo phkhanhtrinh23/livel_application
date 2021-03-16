@@ -12,80 +12,67 @@ class TripElement extends StatelessWidget {
   final String name, image;
   final int number;
 
-  void _navigateToTripScreen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute<Null>(
-      builder: (BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Explore',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            centerTitle: true,
-            actions: [
-              FlatButton(
-                minWidth: 2.5,
-                onPressed: () {},
-                child: Image.asset(
-                  'images/slider.png',
-                  color: Colors.white,
-                ),
-              )
-            ],
-            backgroundColor: Color(0xFF5197E1),
-          ),
-          body: TripScreen(
-            name: name,
-          ),
-        );
-      },
-    ));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-        right: 4.0,
-        left: 4.0,
-        bottom: 48.0,
+      width: 182,
+      height: 248,
+      margin: const EdgeInsets.only(
+        left: 16,
+        right: 4,
+        bottom: 40,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Color(0xFF5197E1),
       ),
       child: FlatButton(
-        onPressed: () => _navigateToTripScreen(context),
+        padding: const EdgeInsets.all(0),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => TripScreen(
+              name: name,
+            ),
+          ),
+        ),
         child: Container(
           alignment: Alignment.topLeft,
-          width: 142,
-          height: 190,
+          width: 164,
+          height: 230,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(image),
               fit: BoxFit.cover,
             ),
+            borderRadius: BorderRadius.circular(16),
           ),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(16),
+                topLeft: Radius.circular(16),
+              ),
               color: Color(0xFF5197E1),
             ),
-            width: 62,
-            height: 36,
+            width: 77,
+            height: 45,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   name,
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
                 Text(
                   '$number places',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 14,
                     fontWeight: FontWeight.normal,
+                    color: Colors.white,
                   ),
                 ),
               ],

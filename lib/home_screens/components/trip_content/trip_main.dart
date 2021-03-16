@@ -7,13 +7,14 @@ class TripContent extends StatelessWidget {
     this.country,
     this.place,
     this.image,
-    this.day,
+    this.date,
     this.cost,
     this.duration,
+    this.time,
   }) : super(key: key);
 
-  final String country, place, image, day;
-  final int cost, duration;
+  final String country, place, image, date;
+  final int cost, duration, time;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,10 @@ class TripContent extends StatelessWidget {
         country: country,
         place: place,
         image: image,
-        day: day,
+        date: date,
         cost: cost,
         duration: duration,
+        time: time,
       ),
     );
   }

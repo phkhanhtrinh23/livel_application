@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'HomePage.dart';
+import 'package:livel_application/home_screens/HomeScreen.dart';
 import 'signInWithGoogle.dart';
 import 'package:provider/provider.dart';
 import 'SignUpPage.dart';
@@ -27,9 +27,9 @@ class _SignInPage extends State<SignInPage> {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(48.0),
+                padding: const EdgeInsets.all(16),
               ),
-              Image.asset('images/newimage.png'),
+              Image.asset('images/travel.png'),
               Text(
                 'Log in',
                 style: TextStyle(
@@ -46,7 +46,7 @@ class _SignInPage extends State<SignInPage> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return HomePage();
+                              return HomeScreen();
                             },
                           ),
                         );
@@ -105,7 +105,7 @@ class _SignInPage extends State<SignInPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 16.0),
+                padding: EdgeInsets.only(bottom: 48.0),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,

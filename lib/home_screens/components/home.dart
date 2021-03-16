@@ -1,84 +1,132 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/available_elements.dart';
 import 'package:livel_application/home_screens/components/countries_elements.dart';
+import 'package:livel_application/home_screens/components/event_elements.dart';
 
 class MainHome extends StatelessWidget {
   MainHome({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
+    // double _width = MediaQuery.of(context).size.width;
+    var date = DateTime.now();
+    var day = date.day, month = date.month, year = date.year;
 
     return ListView(
-      padding: const EdgeInsets.only(top: 100),
+      padding: const EdgeInsets.only(top: 50),
       children: <Widget>[
         Container(
-          alignment: Alignment.topLeft,
-          child: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+          margin: const EdgeInsets.all(8),
+          padding: const EdgeInsets.only(
+            top: 16,
+            left: 8,
+            right: 8,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(17.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Hello Khoa Tran,',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.orange[800],
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'which trip you want to go today?',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.orange[800],
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.all(8.0),
-          padding: EdgeInsets.all(8.0),
-          height: 54,
+          width: 348,
+          height: 184,
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Colors.grey[800],
-            ),
+            color: Color(0xFF5197E1),
+            borderRadius: BorderRadius.circular(16),
           ),
-          child: Row(
-            children: <Widget>[
-              Icon(Icons.search),
-              Expanded(
-                child: TextField(
-                  onChanged: (value) {},
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  'Today: $day/$month/$year',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFFFFBE9A),
                   ),
                 ),
               ),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 8,
+                  bottom: 8,
+                ),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Hello Khoa Tran,',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(
+                  top: 32,
+                ),
+                padding: EdgeInsets.all(8.0),
+                height: 54,
+                width: 300,
+                decoration: BoxDecoration(
+                  color: Color(0xFF5197E1),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Icon(Icons.search, color: Colors.white),
+                    Expanded(
+                      child: TextFormField(
+                        onChanged: (value) {},
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          hintText: 'Search',
+                          hintStyle: TextStyle(color: Colors.white),
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    Image.asset('images/logo.png'),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
         Container(
-          child: Image.asset(
-            'images/ha_long.jpg',
-            width: _width,
+          margin: const EdgeInsets.only(
+            left: 14,
+            top: 40,
           ),
-          padding: const EdgeInsets.only(top: 40.0, bottom: 40.0),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Events',
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: <Widget>[
+              EventElements(
+                image: 'images/ha_long.jpg',
+              ),
+              EventElements(
+                image: 'images/ha_long.jpg',
+              ),
+              EventElements(
+                image: 'images/ha_long.jpg',
+              ),
+              EventElements(
+                image: 'images/ha_long.jpg',
+              ),
+              EventElements(
+                image: 'images/ha_long.jpg',
+              ),
+            ],
+          ),
         ),
         Row(
           children: <Widget>[
@@ -89,24 +137,6 @@ class MainHome extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Spacer(),
-            FlatButton(
-              minWidth: 10,
-              height: 20,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color(0xFF5197E1),
-              onPressed: () {},
-              child: Text(
-                "View all",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
                 ),
               ),
             ),
@@ -159,24 +189,6 @@ class MainHome extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(),
-            FlatButton(
-              minWidth: 10,
-              height: 20,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color(0xFF5197E1),
-              onPressed: () {},
-              child: Text(
-                "View all",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                ),
-              ),
-            ),
           ],
         ),
         SingleChildScrollView(
@@ -188,40 +200,45 @@ class MainHome extends StatelessWidget {
                 place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
-                day: 'Mar 07, 2021',
+                date: 'Mar 07, 2021',
                 duration: 45,
+                time: 8,
               ),
               AvailableElement(
                 image: 'images/museum.png',
                 place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
-                day: 'Mar 07, 2021',
+                date: 'Mar 07, 2021',
                 duration: 45,
+                time: 8,
               ),
               AvailableElement(
                 image: 'images/museum.png',
                 place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
-                day: 'Mar 07, 2021',
+                date: 'Mar 07, 2021',
                 duration: 45,
+                time: 8,
               ),
               AvailableElement(
                 image: 'images/museum.png',
                 place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
-                day: 'Mar 07, 2021',
+                date: 'Mar 07, 2021',
                 duration: 45,
+                time: 8,
               ),
               AvailableElement(
                 image: 'images/museum.png',
                 place: 'National Museum',
                 cost: 9,
                 country: 'Hanoi',
-                day: 'Mar 07, 2021',
+                date: 'Mar 07, 2021',
                 duration: 45,
+                time: 8,
               ),
             ],
           ),

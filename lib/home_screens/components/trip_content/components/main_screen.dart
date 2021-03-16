@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:livel_application/video_call/index.dart';
 
 class MainContent extends StatelessWidget {
   const MainContent({
@@ -6,13 +7,14 @@ class MainContent extends StatelessWidget {
     this.country,
     this.place,
     this.image,
-    this.day,
+    this.date,
     this.cost,
     this.duration,
+    this.time,
   }) : super(key: key);
 
-  final String country, place, image, day;
-  final int cost, duration;
+  final String country, place, image, date;
+  final int cost, duration, time;
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +124,13 @@ class MainContent extends StatelessWidget {
                 Text('4.4/5'),
                 Spacer(),
                 Icon(Icons.calendar_today_sharp),
-                Text('$day'),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('$time:00'),
+                    Text('$date'),
+                  ],
+                ),
               ],
             ),
           ),
@@ -284,7 +292,12 @@ class MainContent extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => IndexPage()),
+                );
+              },
             ),
           ),
         ],

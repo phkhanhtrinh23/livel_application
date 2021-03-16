@@ -28,7 +28,7 @@ class UserScreen extends StatelessWidget {
                 color: Color(0xFF5197E1),
               ),
               child: Text(
-                'Your Profile',
+                'Your Account',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -36,8 +36,10 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
             Container(
+              margin: const EdgeInsets.only(
+                top: 8.0,
+              ),
               width: 200,
               height: 100,
               child: Center(
@@ -45,7 +47,7 @@ class UserScreen extends StatelessWidget {
               ),
             ),
             ProfileMenu(
-              text: "My Account",
+              text: "My Profile",
               icon: Icon(Icons.person_outline),
               press: () => {
                 Navigator.push(
@@ -115,8 +117,9 @@ class ProfileMenu extends StatelessWidget {
         padding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
+          side: BorderSide(color: Color(0xFF5197E1)),
         ),
-        color: Colors.blue[300],
+        color: Colors.white,
         onPressed: press,
         child: Row(
           children: [

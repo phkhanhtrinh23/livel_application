@@ -46,8 +46,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 Positioned(
                   child: Container(
-                    width: 80,
-                    height: 80,
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
@@ -89,9 +89,7 @@ class ProfileScreen extends StatelessWidget {
                     bottom: 32,
                   ),
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
+                    border: Border.all(color: Color(0xFF5197E1)),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -122,9 +120,7 @@ class ProfileScreen extends StatelessWidget {
                     bottom: 32,
                   ),
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
+                    border: Border.all(color: Color(0xFF5197E1)),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -161,9 +157,7 @@ class ProfileScreen extends StatelessWidget {
                             bottom: 16,
                           ),
                           decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
+                            border: Border.all(color: Color(0xFF5197E1)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
@@ -200,9 +194,7 @@ class ProfileScreen extends StatelessWidget {
                             bottom: 16,
                           ),
                           decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
+                            border: Border.all(color: Color(0xFF5197E1)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(

@@ -7,13 +7,14 @@ class AvailableElement extends StatelessWidget {
     this.country,
     this.place,
     this.image,
-    this.day,
+    this.date,
     this.cost,
     this.duration,
+    this.time,
   }) : super(key: key);
 
-  final String country, place, image, day;
-  final int cost, duration;
+  final String country, place, image, date;
+  final int cost, duration, time;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,10 @@ class AvailableElement extends StatelessWidget {
                 country: country,
                 place: place,
                 image: image,
-                day: day,
+                date: date,
                 cost: cost,
                 duration: duration,
+                time: time,
               ),
             ),
           );
@@ -62,8 +64,8 @@ class AvailableElement extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Color(0xFF5197E1),
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(8.0),
-                    topRight: Radius.circular(8.0),
+                    bottomRight: Radius.circular(16.0),
+                    topLeft: Radius.circular(16.0),
                   ),
                 ),
                 child: Text(
@@ -101,7 +103,7 @@ class AvailableElement extends StatelessWidget {
                       Text(
                         '$place',
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -109,14 +111,14 @@ class AvailableElement extends StatelessWidget {
                         '$country',
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.bold,
                         ),
                       )
                     ],
                   ),
                   Spacer(),
                   Text(
-                    '$day',
+                    '$date',
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.normal,

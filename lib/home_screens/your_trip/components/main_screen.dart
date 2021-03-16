@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
 class YourTripScreen extends StatelessWidget {
   const YourTripScreen({
@@ -17,9 +18,9 @@ class YourTripScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(
-        top: 16,
         left: 10,
         right: 10,
+        bottom: 16,
       ),
       width: 355,
       height: 135,
@@ -28,7 +29,19 @@ class YourTripScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => TripContent(
+                cost: cost,
+                place: place,
+                image: image,
+                date: date,
+                time: time,
+              ),
+            ),
+          );
+        },
         child: Row(
           children: [
             Image.asset(

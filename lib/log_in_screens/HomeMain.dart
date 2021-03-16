@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/HomeScreen.dart';
+import 'package:livel_application/log_in_screens/components/HomePage.dart';
 
 import 'package:livel_application/log_in_screens/components/SignInPage.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +38,7 @@ class AuthenticationWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return HomeScreen();
+      return HomePage();
     }
     return SignInPage();
   }

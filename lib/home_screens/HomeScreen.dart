@@ -54,8 +54,9 @@ class _HomeScreen extends State<HomeScreen> {
               label: 'User',
             ),
           ],
+          backgroundColor: Colors.grey[350],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.orange,
+          selectedItemColor: Color(0xFF5197E1),
           onTap: (value) {
             setState(() {
               _selectedIndex = value;

@@ -19,12 +19,16 @@ class AvailableElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(
+        left: 8.0,
+      ),
       padding: const EdgeInsets.only(
         right: 16.0,
-        left: 4.0,
+        left: 8.0,
         bottom: 16.0,
       ),
       child: FlatButton(
+        padding: const EdgeInsets.all(0),
         onPressed: () {
           Navigator.push(
             context,
@@ -45,8 +49,8 @@ class AvailableElement extends StatelessWidget {
           children: <Widget>[
             Container(
               alignment: Alignment.topLeft,
-              width: 229,
-              height: 130,
+              width: 249,
+              height: 155,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(image),
@@ -91,8 +95,8 @@ class AvailableElement extends StatelessWidget {
                 ),
                 border: Border.all(color: Colors.grey),
               ),
-              width: 229,
-              height: 60,
+              width: 249,
+              height: 66,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [

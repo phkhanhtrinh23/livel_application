@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 import 'call.dart';
 
@@ -50,7 +52,7 @@ class IndexState extends State<IndexPage> {
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(width: 1),
                       ),
-                      hintText: 'Your tourguide name',
+                      hintText: 'Your channel name',
                     ),
                   ))
                 ],
@@ -89,7 +91,9 @@ class IndexState extends State<IndexPage> {
                   children: <Widget>[
                     Expanded(
                       child: RaisedButton(
-                        onPressed: onJoin,
+                        onPressed: () {
+                          onJoin();
+                        },
                         child: Text('Join'),
                         color: Colors.blueAccent,
                         textColor: Colors.white,
@@ -105,6 +109,21 @@ class IndexState extends State<IndexPage> {
     );
   }
 
+  Future<String> getRtcToken() async {
+    if (FirebaseAuth.instance.currentUser != null) {
+      HttpsCallable callable =
+          FirebaseFunctions.instance.httpsCallable('generateRtcToken');
+
+      var rtcToken = await callable(
+          {"channelName": _channelController.text, "duration": 300});
+
+      return rtcToken.data;
+    } else {
+      //user is not logged in
+      throw new Exception("You are not logged in");
+    }
+  }
+
   Future<void> onJoin() async {
     // update input validation
     setState(() {
@@ -116,6 +135,30 @@ class IndexState extends State<IndexPage> {
       // await for camera and mic permissions before pushing video page
       await _handleCameraAndMic(Permission.camera);
       await _handleCameraAndMic(Permission.microphone);
+
+      //await for RTC token to be created
+      String rtcToken;
+      try {
+        rtcToken = await getRtcToken();
+      } catch (error) {
+        showDialog(
+            context: context,
+            builder: (_) => new AlertDialog(
+                  title: new Text("Error"),
+                  content: new Text(error.toString()),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('OK'),
+                      onPressed: () {
+                        Navigator.of(context, rootNavigator: true).pop();
+                      },
+                    )
+                  ],
+                ));
+
+        return;
+      }
+
       // push video page with given channel name
       await Navigator.push(
         context,
@@ -123,6 +166,7 @@ class IndexState extends State<IndexPage> {
           builder: (context) => CallPage(
             channelName: _channelController.text,
             role: _role,
+            rtcToken: rtcToken,
           ),
         ),
       );

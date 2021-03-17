@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/home.dart';
+import 'package:livel_application/home_screens/notifications/notification.dart';
 import 'package:livel_application/home_screens/user_screen/user_main.dart';
 import 'package:livel_application/home_screens/your_trip/your_trip.dart';
 
@@ -13,16 +14,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
-    //TODO: Route is here!
     MainHome(),
     YourTrip(),
-    Text(
-      'Notifications page',
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 50,
-      ),
-    ),
+    NotificationScreen(),
     UserScreen(),
   ];
 

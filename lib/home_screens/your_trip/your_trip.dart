@@ -12,10 +12,7 @@ class YourTrip extends StatelessWidget {
             Container(
               width: _width,
               height: 148,
-              padding: const EdgeInsets.only(
-                top: 24,
-                bottom: 21,
-              ),
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -35,6 +32,7 @@ class YourTrip extends StatelessWidget {
                       )
                     ],
                   ),
+                  Spacer(),
                   Text(
                     'Your Trips',
                     style: TextStyle(

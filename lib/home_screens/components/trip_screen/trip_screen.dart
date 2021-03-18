@@ -17,9 +17,7 @@ class TripScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-                padding: const EdgeInsets.only(
-                  bottom: 21,
-                ),
+                padding: const EdgeInsets.only(top: 24, bottom: 16),
                 width: _width,
                 height: 148,
                 decoration: BoxDecoration(

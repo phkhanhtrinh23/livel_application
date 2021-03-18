@@ -34,7 +34,6 @@ class TripScreen extends StatelessWidget {
                   children: [
                     Spacer(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconButton(
                           icon: Icon(

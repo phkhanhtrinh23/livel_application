@@ -85,6 +85,9 @@ flutter:
     - images/newimage.png
     - images/rmit.png
     - images/market.png
+    - images/events_1.png
+    - images/events_2.png
+    - images/events_3.png
   
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:livel_application/splash_screens/page_view_screen.dart';
+import 'package:livel_application/splash_screens/second_screen.dart';
 
 class FirstScreen extends StatefulWidget {
   FirstScreen({Key key}) : super(key: key);
@@ -18,11 +18,11 @@ class _FirstScreen extends State<FirstScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 5),
+      Duration(seconds: 3),
       () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => PageViewing(),
+          builder: (BuildContext context) => SecondScreen(),
         ),
       ),
     );

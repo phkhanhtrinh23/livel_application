@@ -53,7 +53,13 @@ class UserScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (BuildContext context) => ProfileScreen(),
+                    builder: (BuildContext context) => ProfileScreen(
+                      image: 'images/khoa.png',
+                      name: 'Tran Dang Khoa',
+                      career: 'UI/UX Designer',
+                      birthday: 'June 06, 2001',
+                      gender: 'Male',
+                    ),
                   ),
                 ),
               },
@@ -87,7 +93,6 @@ class UserScreen extends StatelessWidget {
               icon: Icon(Icons.logout),
               press: () {
                 context.read<AuthenticationService>().signOut();
-                Navigator.of(context).pop();
               },
             ),
           ],

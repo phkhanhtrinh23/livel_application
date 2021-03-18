@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/home.dart';
-import 'package:livel_application/home_screens/notifications/notification.dart';
 import 'package:livel_application/home_screens/user_screen/user_main.dart';
 import 'package:livel_application/home_screens/your_trip/your_trip.dart';
 
@@ -15,8 +14,6 @@ class _HomeScreen extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     MainHome(),
-    YourTrip(),
-    NotificationScreen(),
     UserScreen(),
   ];
 
@@ -36,14 +33,6 @@ class _HomeScreen extends State<HomeScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt),
-              label: 'List',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.notifications),
-              label: 'Notification',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'User',
             ),
@@ -57,20 +46,21 @@ class _HomeScreen extends State<HomeScreen> {
             });
           },
         ),
-        // clipBehavior: Clip.antiAliasWithSaveLayer,
-        // shape: CircularNotchedRectangle(),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        shape: CircularNotchedRectangle(),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.push(context,
-      //         MaterialPageRoute(builder: (BuildContext context) => HomeMain()));
-      //   },
-      //   child: Icon(
-      //     Icons.search,
-      //   ),
-      //   elevation: 4.0,
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFF5197E1),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) => YourTrip()));
+        },
+        child: Icon(
+          Icons.list_rounded,
+        ),
+        elevation: 4.0,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

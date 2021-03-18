@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/available_elements.dart';
 import 'package:livel_application/home_screens/components/countries_elements.dart';
-import 'package:livel_application/home_screens/components/event_elements.dart';
 
-class MainHome extends StatelessWidget {
+class EventElements extends StatelessWidget {
+  const EventElements({
+    Key key,
+    this.image,
+  }) : super(key: key);
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 329,
+      height: 185,
+      padding: const EdgeInsets.all(8),
+      margin: const EdgeInsets.only(
+        top: 8,
+        left: 16,
+        right: 8,
+        bottom: 40,
+      ),
+      decoration: BoxDecoration(
+        color: Color(0xFFFFEADE),
+        borderRadius: BorderRadius.circular(16),
+        image: DecorationImage(
+          image: AssetImage(image),
+          fit: BoxFit.fill,
+        ),
+      ),
+    );
+  }
+}
+
+class MainHome extends StatefulWidget {
   MainHome({Key key}) : super(key: key);
 
+  @override
+  _MainHome createState() => _MainHome();
+}
+
+class _MainHome extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     // double _width = MediaQuery.of(context).size.width;
@@ -13,7 +49,10 @@ class MainHome extends StatelessWidget {
     var day = date.day, month = date.month, year = date.year;
 
     return ListView(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(
+        top: 40,
+        bottom: 24,
+      ),
       children: <Widget>[
         Container(
           margin: const EdgeInsets.all(8),
@@ -109,21 +148,15 @@ class MainHome extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: <Widget>[
+            children: [
               EventElements(
-                image: 'images/ha_long.jpg',
+                image: 'images/events_1.png',
               ),
               EventElements(
-                image: 'images/ha_long.jpg',
+                image: 'images/events_2.png',
               ),
               EventElements(
-                image: 'images/ha_long.jpg',
-              ),
-              EventElements(
-                image: 'images/ha_long.jpg',
-              ),
-              EventElements(
-                image: 'images/ha_long.jpg',
+                image: 'images/events_3.png',
               ),
             ],
           ),

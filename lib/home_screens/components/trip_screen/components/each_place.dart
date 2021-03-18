@@ -20,7 +20,7 @@ class PlaceScreen extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(
         left: 22,
-        right: 28,
+        right: 22,
         bottom: 12,
       ),
       width: 330,

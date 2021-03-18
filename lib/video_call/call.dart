@@ -296,9 +296,9 @@ class _CallPageState extends State<CallPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lets start with Livel'),
+        title: Text('Video Call'),
+        backgroundColor: Colors.blue,
       ),
-      backgroundColor: Colors.black,
       body: Center(
         child: Stack(
           children: <Widget>[

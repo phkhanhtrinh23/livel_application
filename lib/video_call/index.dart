@@ -60,7 +60,7 @@ class IndexState extends State<IndexPage> {
                 ),
                 Spacer(),
                 Text(
-                  'Live Channel',
+                  'Livel',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

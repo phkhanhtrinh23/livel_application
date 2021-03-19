@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/available_elements.dart';
 import 'package:livel_application/home_screens/components/countries_elements.dart';
@@ -15,7 +17,10 @@ class EventElements extends StatelessWidget {
     return Container(
       width: 329,
       height: 185,
-      margin: const EdgeInsets.only(top: 8),
+      margin: const EdgeInsets.only(
+        top: 8,
+        bottom: 40,
+      ),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Color(0xFFFFEADE),
@@ -36,7 +41,7 @@ class MainHome extends StatefulWidget {
   _MainHome createState() => _MainHome();
 }
 
-class _MainHome extends State<MainHome> {
+class _MainHome extends State<MainHome> with TickerProviderStateMixin {
   List<EventElements> _events = [
     EventElements(
       image: 'images/events_1.png',
@@ -49,9 +54,28 @@ class _MainHome extends State<MainHome> {
     ),
   ];
   int _index = 0;
+  Timer _timer;
+  Duration _duration = Duration(seconds: 3);
+
+  @override
+  void initState() {
+    _timer = Timer.periodic(_duration, (Timer timer) {
+      setState(() {
+        _index = _index == _events.length - 1 ? 0 : _index + 1;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    _timer = null;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // double _width = MediaQuery.of(context).size.width;
     var date = DateTime.now();
     var day = date.day, month = date.month, year = date.year;
 
@@ -153,42 +177,12 @@ class _MainHome extends State<MainHome> {
           ),
         ),
         AnimatedSwitcher(
-          duration: Duration(seconds: 1),
+          duration: Duration(seconds: 3),
           transitionBuilder: (Widget child, Animation<double> animation) {
-            return ScaleTransition(child: child, scale: animation);
+            return FadeTransition(child: child, opacity: animation);
           },
           child: _events[_index],
         ),
-        Container(
-            padding: const EdgeInsets.only(left: 32, right: 32),
-            width: 329,
-            height: 40,
-            alignment: Alignment.center,
-            child: Row(
-              children: [
-                _index != 0
-                    ? IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        onPressed: () {
-                          setState(() {
-                            _index = _index - 1;
-                          });
-                        },
-                      )
-                    : Container(),
-                Spacer(),
-                _index != _events.length - 1
-                    ? IconButton(
-                        icon: Icon(Icons.arrow_forward),
-                        onPressed: () {
-                          setState(() {
-                            _index = _index + 1;
-                          });
-                        },
-                      )
-                    : Container(),
-              ],
-            )),
         Row(
           children: <Widget>[
             Padding(

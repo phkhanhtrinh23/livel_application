@@ -39,18 +39,36 @@ class ExploreScreen extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.only(
-                top: 35,
-                bottom: 23,
-                left: 21,
+              margin: EdgeInsets.only(
+                top: 16,
+                bottom: 16,
               ),
-              child: Text(
-                'Welcome to $name',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Color(0xFFEE6C4D),
-                  fontWeight: FontWeight.bold,
+              padding: EdgeInsets.all(8.0),
+              height: 54,
+              width: 330,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: Colors.black,
                 ),
+              ),
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.search),
+                  Expanded(
+                    child: TextFormField(
+                      onChanged: (value) {},
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        hintText: 'Search',
+                        hintStyle: TextStyle(color: Colors.black),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             PlaceScreen(

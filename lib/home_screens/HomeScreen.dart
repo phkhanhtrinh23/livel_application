@@ -36,7 +36,7 @@ class _HomeScreen extends State<HomeScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
+              icon: Icon(Icons.search),
               label: 'Explore',
             ),
             BottomNavigationBarItem(

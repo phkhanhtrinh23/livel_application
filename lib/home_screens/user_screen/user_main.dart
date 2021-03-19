@@ -20,6 +20,7 @@ class UserScreen extends StatelessWidget {
               width: _width,
               height: 148,
               alignment: Alignment.bottomCenter,
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),

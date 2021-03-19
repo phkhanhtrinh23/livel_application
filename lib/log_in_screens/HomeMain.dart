@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
-// import 'package:livel_application/log_in_screens/components/HomePage.dart';
 import 'package:livel_application/log_in_screens/components/SignInPage.dart';
 import 'package:provider/provider.dart';
 import 'package:livel_application/log_in_screens/components/authentication_service.dart';

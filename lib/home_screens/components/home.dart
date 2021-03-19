@@ -243,7 +243,7 @@ class _MainHome extends State<MainHome> {
                 bottom: 8.0,
               ),
               child: Text(
-                'Upcoming trips',
+                'Recommended trips',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,

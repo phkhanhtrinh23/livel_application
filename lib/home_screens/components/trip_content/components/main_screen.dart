@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/video_call/index.dart';
+import 'package:livel_application/video_call/tourist.dart';
 
 class MainContent extends StatelessWidget {
   const MainContent({
@@ -294,7 +294,7 @@ class MainContent extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => IndexPage()),
+                  MaterialPageRoute(builder: (context) => TouristPage()),
                 );
               },
             ),

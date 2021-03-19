@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
+import 'package:livel_application/video_call/tourguide.dart';
 import 'signInWithGoogle.dart';
 import 'package:provider/provider.dart';
 import 'SignUpPage.dart';
@@ -148,6 +149,16 @@ class _SignInPage extends State<SignInPage> {
                       },
                       child: Text("Sign up"),
                     ),
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TourguidePage()),
+                      );
+                    },
+                    child: Text("Log in as a tourguide"),
                   ),
                 ],
               ),

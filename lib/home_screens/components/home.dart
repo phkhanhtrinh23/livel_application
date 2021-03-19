@@ -15,13 +15,8 @@ class EventElements extends StatelessWidget {
     return Container(
       width: 329,
       height: 185,
-      padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.only(
-        top: 8,
-        left: 16,
-        right: 8,
-        bottom: 40,
-      ),
+      margin: const EdgeInsets.only(top: 8),
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Color(0xFFFFEADE),
         borderRadius: BorderRadius.circular(16),
@@ -42,6 +37,18 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHome extends State<MainHome> {
+  List<EventElements> _events = [
+    EventElements(
+      image: 'images/events_1.png',
+    ),
+    EventElements(
+      image: 'images/events_2.png',
+    ),
+    EventElements(
+      image: 'images/events_3.png',
+    ),
+  ];
+  int _index = 0;
   @override
   Widget build(BuildContext context) {
     // double _width = MediaQuery.of(context).size.width;
@@ -145,22 +152,43 @@ class _MainHome extends State<MainHome> {
             ),
           ),
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              EventElements(
-                image: 'images/events_1.png',
-              ),
-              EventElements(
-                image: 'images/events_2.png',
-              ),
-              EventElements(
-                image: 'images/events_3.png',
-              ),
-            ],
-          ),
+        AnimatedSwitcher(
+          duration: Duration(seconds: 1),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return ScaleTransition(child: child, scale: animation);
+          },
+          child: _events[_index],
         ),
+        Container(
+            padding: const EdgeInsets.only(left: 32, right: 32),
+            width: 329,
+            height: 40,
+            alignment: Alignment.center,
+            child: Row(
+              children: [
+                _index != 0
+                    ? IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        onPressed: () {
+                          setState(() {
+                            _index = _index - 1;
+                          });
+                        },
+                      )
+                    : Container(),
+                Spacer(),
+                _index != _events.length - 1
+                    ? IconButton(
+                        icon: Icon(Icons.arrow_forward),
+                        onPressed: () {
+                          setState(() {
+                            _index = _index + 1;
+                          });
+                        },
+                      )
+                    : Container(),
+              ],
+            )),
         Row(
           children: <Widget>[
             Padding(

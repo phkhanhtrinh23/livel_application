@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/splash_screens/second_screen.dart';
+// import 'package:livel_application/log_in_screens/components/authentication_service.dart';
 
 class FirstScreen extends StatefulWidget {
   FirstScreen({Key key}) : super(key: key);
@@ -18,7 +19,7 @@ class _FirstScreen extends State<FirstScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 5),
       () => Navigator.push(
         context,
         MaterialPageRoute(

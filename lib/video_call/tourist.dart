@@ -8,19 +8,19 @@ import 'package:cloud_functions/cloud_functions.dart';
 
 import 'call.dart';
 
-class IndexPage extends StatefulWidget {
+class TouristPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => IndexState();
+  _TouristPage createState() => _TouristPage();
 }
 
-class IndexState extends State<IndexPage> {
+class _TouristPage extends State<TouristPage> {
   /// create a channelController to retrieve text value
   final _channelController = TextEditingController();
 
   /// if channel textField is validated to have error
   bool _validateError = false;
 
-  ClientRole _role = ClientRole.Broadcaster;
+  ClientRole _role = ClientRole.Audience;
 
   @override
   void dispose() {
@@ -100,18 +100,18 @@ class IndexState extends State<IndexPage> {
                   ),
                 ),
               ),
-              ListTile(
-                title: Text(ClientRole.Broadcaster.toString()),
-                leading: Radio(
-                  value: ClientRole.Broadcaster,
-                  groupValue: _role,
-                  onChanged: (ClientRole value) {
-                    setState(() {
-                      _role = value;
-                    });
-                  },
-                ),
-              ),
+              // ListTile(
+              //   title: Text(ClientRole.Broadcaster.toString()),
+              //   leading: Radio(
+              //     value: ClientRole.Broadcaster,
+              //     groupValue: _role,
+              //     onChanged: (ClientRole value) {
+              //       setState(() {
+              //         _role = value;
+              //       });
+              //     },
+              //   ),
+              // ),
               ListTile(
                 title: Text(ClientRole.Audience.toString()),
                 leading: Radio(

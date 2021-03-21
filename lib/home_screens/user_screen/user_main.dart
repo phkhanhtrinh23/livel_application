@@ -44,9 +44,11 @@ class UserScreen extends StatelessWidget {
               ),
               width: 100,
               height: 100,
-              child: CircleAvatar(
+              child: ClipOval(
                 child: Image.asset(
                   'images/unknown.jpg',
+                  width: 100,
+                  height: 100,
                 ),
               ),
             ),

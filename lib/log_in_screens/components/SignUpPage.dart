@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/log_in_screens/HomeMain.dart';
+
 import 'authentication_service.dart';
 import 'package:provider/provider.dart';
 
@@ -151,12 +152,8 @@ class _SignUpPage extends State<SignUpPage> {
                               FlatButton(
                                 child: Text('Okay'),
                                 onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          HomeMain(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => HomeMain()));
                                 },
                               ),
                             ],

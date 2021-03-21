@@ -18,8 +18,9 @@ class HomeMain extends StatelessWidget {
               context.read<AuthenticationService>().authStateChanges,
         )
       ],
-      child: Scaffold(
-        body: AuthenticationWrapper(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: AuthenticationWrapper(),
       ),
     );
   }
@@ -30,6 +31,7 @@ class AuthenticationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
 
+    //check if user has logged in
     if (firebaseUser != null) {
       return HomeScreen();
     }

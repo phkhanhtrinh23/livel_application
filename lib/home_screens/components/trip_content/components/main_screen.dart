@@ -203,11 +203,12 @@ class MainContent extends StatelessWidget {
                     children: [
                       ClipOval(
                         child: Image.asset(
-                          'images/khoa.png',
+                          'images/unknown.jpg',
                           width: 100,
                           height: 100,
                         ),
                       ),
+                      Padding(padding: const EdgeInsets.all(8)),
                       Text(
                         'Khoa Tran',
                         style: TextStyle(

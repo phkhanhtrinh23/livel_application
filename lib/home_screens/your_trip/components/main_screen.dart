@@ -22,7 +22,6 @@ class YourTripScreen extends StatelessWidget {
         right: 10,
         bottom: 16,
       ),
-      width: 355,
       height: 135,
       decoration: BoxDecoration(
         color: Color(0xFFDBEEFD),
@@ -44,12 +43,14 @@ class YourTripScreen extends StatelessWidget {
         },
         child: Row(
           children: [
-            Image.asset(
-              image,
-              width: 111,
-              height: 119,
+            Container(
+              margin: const EdgeInsets.only(right: 32, left: 8),
+              child: Image.asset(
+                image,
+                width: 111,
+                height: 119,
+              ),
             ),
-            Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,

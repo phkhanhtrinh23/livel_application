@@ -7,6 +7,16 @@ import 'package:livel_application/home_screens/user_screen/components/help_cente
 import 'package:livel_application/home_screens/user_screen/components/profile_info.dart';
 import 'package:livel_application/log_in_screens/components/authentication_service.dart';
 
+class MyClip extends CustomClipper<Rect> {
+  Rect getClip(Size size) {
+    return Rect.fromLTWH(0, 0, 100, 100);
+  }
+
+  bool shouldReclip(oldClipper) {
+    return false;
+  }
+}
+
 class UserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -43,8 +53,12 @@ class UserScreen extends StatelessWidget {
               ),
               width: 200,
               height: 100,
-              child: Center(
-                child: Image.asset('images/khoa.png'),
+              child: ClipOval(
+                child: Image.asset(
+                  'images/khoa.png',
+                  width: 100,
+                  height: 100,
+                ),
               ),
             ),
             ProfileMenu(

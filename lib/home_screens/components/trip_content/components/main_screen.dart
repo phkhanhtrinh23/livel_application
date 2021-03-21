@@ -189,54 +189,60 @@ class MainContent extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(
               bottom: 23,
-              right: 43,
-              left: 43,
               top: 34,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
-                Column(
-                  children: [
-                    Image.asset(
-                      'images/khoa.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                    Text(
-                      'Khoa Tran',
-                      style: TextStyle(
-                        fontWeight: FontWeight.normal,
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 48,
+                    right: 38,
+                  ),
+                  child: Column(
+                    children: [
+                      ClipOval(
+                        child: Image.asset(
+                          'images/khoa.png',
+                          width: 100,
+                          height: 100,
+                        ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        'Khoa Tran',
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Spacer(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.phone),
-                        Text('090 287 6927'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.check),
-                        Text('2 years exp.'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.calendar_today_sharp),
-                        Text('20 years old'),
-                      ],
-                    ),
-                  ],
+                Container(
+                  margin: const EdgeInsets.only(right: 48),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.phone),
+                          Text('090 287 6927'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.check),
+                          Text('2 years exp.'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.calendar_today_sharp),
+                          Text('20 years old'),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Spacer(),
               ],
             ),
           ),

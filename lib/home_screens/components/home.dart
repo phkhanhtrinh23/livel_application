@@ -55,7 +55,7 @@ class _MainHome extends State<MainHome> with TickerProviderStateMixin {
   ];
   int _index = 0;
   Timer _timer;
-  Duration _duration = Duration(seconds: 3);
+  Duration _duration = Duration(seconds: 1);
 
   @override
   void initState() {
@@ -177,7 +177,7 @@ class _MainHome extends State<MainHome> with TickerProviderStateMixin {
           ),
         ),
         AnimatedSwitcher(
-          duration: Duration(seconds: 3),
+          duration: Duration(seconds: 1),
           transitionBuilder: (Widget child, Animation<double> animation) {
             return FadeTransition(child: child, opacity: animation);
           },

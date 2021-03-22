@@ -7,22 +7,6 @@ class GuidelinesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: Color(0xFF5197E1),
-        centerTitle: true,
-        title: Text(
-          'Guidelines',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
       body: Column(
         children: [
           Container(
@@ -41,6 +25,31 @@ class GuidelinesScreen extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8),
+                    ),
+                  ),
+                  child: Container(
+                    width: _width,
+                    height: 160,
+                    alignment: Alignment.topLeft,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF5197E1),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 24),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_sharp,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
                     ),
                   ),
                 ),

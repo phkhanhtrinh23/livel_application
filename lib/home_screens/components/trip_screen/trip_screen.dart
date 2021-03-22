@@ -17,42 +17,44 @@ class TripScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-                padding: const EdgeInsets.only(top: 24, bottom: 16),
-                width: _width,
-                height: 148,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
-                  ),
-                  color: Color(0xFF5197E1),
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
+              width: _width,
+              height: 148,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Spacer(),
-                    Row(
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                          ),
-                          onPressed: () => Navigator.of(context).pop(),
-                        )
-                      ],
+                color: Color(0xFF5197E1),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        onPressed: () => Navigator.of(context).pop(),
+                      )
+                    ],
+                  ),
+                  Spacer(),
+                  Text(
+                    'Explore',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
                     ),
-                    Spacer(),
-                    Text(
-                      'Explore',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32,
-                      ),
-                    ),
-                  ],
-                )),
+                  ),
+                ],
+              ),
+            ),
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(

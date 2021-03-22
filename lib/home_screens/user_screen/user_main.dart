@@ -60,7 +60,7 @@ class UserScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => ProfileScreen(
-                      image: 'images/khoa.png',
+                      image: 'images/unknown.jpg',
                       name: 'Tran Dang Khoa',
                       career: 'UI/UX Designer',
                       birthday: 'June 06, 2001',

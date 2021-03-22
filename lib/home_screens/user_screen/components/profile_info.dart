@@ -16,22 +16,6 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: Color(0xFF5197E1),
-        centerTitle: true,
-        title: Text(
-          'My Account',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -46,11 +30,25 @@ class ProfileScreen extends StatelessWidget {
                   Container(
                     width: _width,
                     height: 160,
+                    alignment: Alignment.topLeft,
                     decoration: BoxDecoration(
                       color: Color(0xFF5197E1),
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(8),
-                        bottomRight: Radius.circular(8),
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 24),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_sharp,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
                     ),
                   ),
@@ -58,11 +56,9 @@ class ProfileScreen extends StatelessWidget {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
+                      child: ClipOval(
+                        child: Image.asset(image),
                       ),
-                      child: Image.asset(image),
                     ),
                     top: 120,
                   ),

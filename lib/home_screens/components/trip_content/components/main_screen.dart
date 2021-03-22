@@ -46,18 +46,19 @@ class MainContent extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_sharp,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    )
-                  ],
+                Container(
+                  margin: const EdgeInsets.only(top: 24),
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_sharp,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
                 ),
                 Spacer(),
                 Row(

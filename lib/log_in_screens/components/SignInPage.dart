@@ -87,7 +87,9 @@ class _SignInPage extends State<SignInPage> {
                     controller: passwordController,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.remove_red_eye_outlined),
+                        icon: _dontShowPassword
+                            ? Icon(Icons.visibility_off_outlined)
+                            : Icon(Icons.remove_red_eye_outlined),
                         onPressed: () {
                           setState(() {
                             _dontShowPassword = !_dontShowPassword;

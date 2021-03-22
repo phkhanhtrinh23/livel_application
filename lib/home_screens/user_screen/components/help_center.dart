@@ -19,7 +19,7 @@ class HelpCenterScreen extends StatelessWidget {
               children: [
                 Container(
                   width: _width,
-                  height: 160,
+                  height: 116,
                   decoration: BoxDecoration(
                     color: Color(0xFF5197E1),
                     borderRadius: BorderRadius.only(
@@ -63,7 +63,7 @@ class HelpCenterScreen extends StatelessWidget {
                     ),
                     child: Text(''),
                   ),
-                  top: 120,
+                  top: 80,
                 ),
               ],
             ),

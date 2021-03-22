@@ -17,10 +17,11 @@ class UserScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
+              margin: const EdgeInsets.only(bottom: 32),
               width: _width,
-              height: 148,
+              height: 116,
               alignment: Alignment.bottomCenter,
-              padding: const EdgeInsets.only(top: 24, bottom: 16),
+              padding: const EdgeInsets.only(bottom: 32),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
@@ -37,21 +38,21 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(
-                top: 8.0,
-                bottom: 16,
-              ),
-              width: 100,
-              height: 100,
-              child: ClipOval(
-                child: Image.asset(
-                  'images/unknown.jpg',
-                  width: 100,
-                  height: 100,
-                ),
-              ),
-            ),
+            // Container(
+            //   margin: const EdgeInsets.only(
+            //     top: 16,
+            //     bottom: 16,
+            //   ),
+            //   width: 100,
+            //   height: 100,
+            //   child: ClipOval(
+            //     child: Image.asset(
+            //       'images/unknown.jpg',
+            //       width: 100,
+            //       height: 100,
+            //     ),
+            //   ),
+            // ),
             ProfileMenu(
               text: "My Profile",
               icon: Icon(Icons.person_outline),

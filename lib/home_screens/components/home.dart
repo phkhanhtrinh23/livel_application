@@ -62,7 +62,7 @@ class MainHome extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(8.0),
                 height: 54,
-                width: 300,
+                width: 360,
                 decoration: BoxDecoration(
                   color: Color(0xFF5197E1),
                   borderRadius: BorderRadius.circular(16),
@@ -118,7 +118,7 @@ class MainHome extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
               child: Text(
-                'Countries',
+                'Cities',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,

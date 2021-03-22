@@ -17,9 +17,9 @@ class ExploreScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 24, bottom: 16),
+              padding: const EdgeInsets.only(bottom: 32),
               width: _width,
-              height: 148,
+              height: 116,
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(

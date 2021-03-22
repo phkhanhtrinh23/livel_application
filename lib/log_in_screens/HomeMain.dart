@@ -20,7 +20,9 @@ class HomeMain extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: AuthenticationWrapper(),
+        home: Scaffold(
+          body: AuthenticationWrapper(),
+        ),
       ),
     );
   }

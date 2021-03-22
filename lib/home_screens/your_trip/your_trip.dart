@@ -11,8 +11,8 @@ class YourTrip extends StatelessWidget {
           children: [
             Container(
               width: _width,
-              height: 148,
-              padding: const EdgeInsets.only(top: 24, bottom: 16),
+              height: 116,
+              padding: const EdgeInsets.only(bottom: 32),
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(

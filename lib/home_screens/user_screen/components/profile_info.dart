@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   Container(
                     width: _width,
-                    height: 160,
+                    height: 116,
                     alignment: Alignment.topLeft,
                     decoration: BoxDecoration(
                       color: Color(0xFF5197E1),
@@ -60,14 +60,14 @@ class ProfileScreen extends StatelessWidget {
                         child: Image.asset(image),
                       ),
                     ),
-                    top: 120,
+                    top: 80,
                   ),
                 ],
               ),
             ),
             Container(
               margin: const EdgeInsets.only(
-                left: 16,
+                left: 32,
                 right: 32,
               ),
               child: Column(
@@ -175,7 +175,9 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.all(14),
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

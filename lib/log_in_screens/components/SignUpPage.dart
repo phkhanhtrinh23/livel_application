@@ -18,6 +18,7 @@ class _SignUpPage extends State<SignUpPage> {
   final TextEditingController nameController = TextEditingController();
 
   bool _dontShowPassword = true;
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +107,9 @@ class _SignUpPage extends State<SignUpPage> {
                     controller: passwordController,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.remove_red_eye_outlined),
+                        icon: _dontShowPassword
+                            ? Icon(Icons.visibility_off_outlined)
+                            : Icon(Icons.remove_red_eye_outlined),
                         onPressed: () {
                           setState(() {
                             _dontShowPassword = !_dontShowPassword;
@@ -154,6 +157,7 @@ class _SignUpPage extends State<SignUpPage> {
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => HomeMain()));
+                                  // Navigator.of(context).pop();
                                 },
                               ),
                             ],

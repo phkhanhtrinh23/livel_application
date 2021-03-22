@@ -44,7 +44,7 @@ class YourTripScreen extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              margin: const EdgeInsets.only(right: 32, left: 8),
+              margin: const EdgeInsets.only(right: 16, left: 8),
               child: Image.asset(
                 image,
                 width: 111,

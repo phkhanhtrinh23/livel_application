@@ -55,7 +55,7 @@ class _TouristPage extends State<TouristPage> {
                       icon: Icon(Icons.arrow_back),
                       color: Colors.white,
                       onPressed: () => Navigator.of(context).pop(),
-                    )
+                    ),
                   ],
                 ),
                 Spacer(),
@@ -100,18 +100,6 @@ class _TouristPage extends State<TouristPage> {
                   ),
                 ),
               ),
-              // ListTile(
-              //   title: Text(ClientRole.Broadcaster.toString()),
-              //   leading: Radio(
-              //     value: ClientRole.Broadcaster,
-              //     groupValue: _role,
-              //     onChanged: (ClientRole value) {
-              //       setState(() {
-              //         _role = value;
-              //       });
-              //     },
-              //   ),
-              // ),
               ListTile(
                 title: Text(ClientRole.Audience.toString()),
                 leading: Radio(

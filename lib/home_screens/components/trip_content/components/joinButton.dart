@@ -29,6 +29,7 @@ class JoinRegister extends StatelessWidget{
           List<dynamic> arr=snapdata.get('TripList');
           if(snapshot.connectionState==ConnectionState.done)
           {
+            if(arr != null)
             if(arr.contains(id))
               return Container(
                 margin: const EdgeInsets.only(

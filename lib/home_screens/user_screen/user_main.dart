@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:livel_application/video_call/GuideScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
 import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
@@ -104,7 +105,7 @@ class UserScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TourguidePage(),
+                    builder: (context) => GuideScreen(),
                   ),
                 ),
               },

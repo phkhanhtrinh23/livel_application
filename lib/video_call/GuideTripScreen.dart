@@ -1,13 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/home_screens/components/trip_content/components/main_screen.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
-Future<DocumentSnapshot> getTrip(String id) async {
-  return await FirebaseFirestore.instance.collection(('Trips')).doc(id).get();
-}
-
-class YourTripScreen extends StatelessWidget {
-  const YourTripScreen({Key key, this.id});
+class GuideTripScreen extends StatelessWidget {
+  const GuideTripScreen({Key key, this.id});
 
   final String id;
 

@@ -8,8 +8,8 @@ Future<DocumentSnapshot> getTrip(String id) async {
   return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
 }
 
-class MainContent extends StatelessWidget {
-  const MainContent({Key key, this.id}) : super(key: key);
+class GuideMainContent extends StatelessWidget {
+  const GuideMainContent({Key key, this.id}) : super(key: key);
 
   final String id;
   @override
@@ -166,7 +166,6 @@ class MainContent extends StatelessWidget {
                     ),
                   ),
                 ),
-                TourGuide(id: snapshot.data.get("Guide's ID")),
                 Container(
                   padding: const EdgeInsets.only(
                     right: 23,

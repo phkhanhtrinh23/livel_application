@@ -153,29 +153,20 @@ class MainHome extends StatelessWidget {
           child: Row(
             children: <Widget>[
               TripElement(
-                image: 'images/usa.png',
-                name: 'USA',
-                number: 10,
+                image: 'images/uk.png',
+                name: 'Viet Nam',
               ),
               TripElement(
-                image: 'images/uk.png',
-                name: 'Vietnam',
-                number: 10,
+                image: 'images/usa.png',
+                name: 'Canada',
               ),
               TripElement(
                 image: 'images/swhere.png',
                 name: 'Japan',
-                number: 10,
               ),
               TripElement(
                 image: 'images/uk.png',
                 name: 'UK',
-                number: 10,
-              ),
-              TripElement(
-                image: 'images/usa.png',
-                name: 'USA',
-                number: 10,
               ),
             ],
           ),

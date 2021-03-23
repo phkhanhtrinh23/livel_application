@@ -25,7 +25,6 @@ class allTrip extends StatelessWidget{
                 return ListView.builder(
                   itemCount: snapshot.data.size,
                   itemBuilder: (BuildContext context, int index){
-                    print(snapshot.data.docs[index].id);
                     return PlaceScreen(
                       image:snapshot.data.docs[index].get('Image'),
                       cost: snapshot.data.docs[index].get('Cost'),

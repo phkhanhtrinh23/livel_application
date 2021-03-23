@@ -1,16 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_screen/trip_screen.dart';
+
+Future<QuerySnapshot> getNum(String name) async{
+  return await FirebaseFirestore.instance.collection('Trips').where('Country', isEqualTo: name).get();
+}
 
 class TripElement extends StatelessWidget {
   const TripElement({
     Key key,
     this.name,
-    this.number,
     this.image,
   }) : super(key: key);
 
   final String name, image;
-  final int number;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,7 @@ class TripElement extends StatelessWidget {
               ),
               color: Color(0xFF5197E1),
             ),
-            width: 88,
+            width: 100,
             height: 45,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -67,14 +71,22 @@ class TripElement extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                Text(
-                  '$number places',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white,
-                  ),
-                ),
+                FutureBuilder(
+                  future: getNum(name),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
+                    if(snapshot.connectionState== ConnectionState.done){
+                      return Text(
+                        snapshot.data.size.toString()+' places',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
+                        ),
+                      );
+                    }
+                    return Text("Loading");
+                  },
+                )
               ],
             ),
           ),

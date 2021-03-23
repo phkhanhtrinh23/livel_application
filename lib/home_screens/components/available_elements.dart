@@ -70,7 +70,7 @@ class AvailableElement extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        "\$" + "$snapshot.data.get('Cost')",
+                        "\$" + snapshot.data.get('Cost').toString(),
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -119,7 +119,7 @@ class AvailableElement extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          'March 3 2021',
+                          snapshot.data.get('Date').toString(),
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,

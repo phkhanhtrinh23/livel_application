@@ -37,7 +37,6 @@ class PlaceScreen extends StatelessWidget {
       child: FlatButton(
         padding: const EdgeInsets.all(0),
         onPressed: () {
-          print(id);
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => TripContent(

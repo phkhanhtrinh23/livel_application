@@ -85,7 +85,9 @@ class _SignUpPage extends State<SignUpPage> {
                     controller: passwordController,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.remove_red_eye_outlined),
+                        icon: _dontShowPassword
+                            ? Icon(Icons.visibility_off_outlined)
+                            : Icon(Icons.remove_red_eye_outlined),
                         onPressed: () {
                           setState(() {
                             _dontShowPassword = !_dontShowPassword;
@@ -114,14 +116,13 @@ class _SignUpPage extends State<SignUpPage> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: FlatButton(
-                  onPressed: () async{
+                  onPressed: () async {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => PersonalInfo(
-                              emailController.text.trim(), passwordController.text.trim()
-                          )
-                      ),
+                              emailController.text.trim(),
+                              passwordController.text.trim())),
                     );
                   },
                   child: Text(

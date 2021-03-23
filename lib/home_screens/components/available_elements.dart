@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
-Future<DocumentSnapshot> getInfo(String id) async{
+Future<DocumentSnapshot> getInfo(String id) async {
   return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
 }
 
@@ -18,8 +18,8 @@ class AvailableElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: getInfo(id),
-      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
+      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return Container(
             margin: const EdgeInsets.only(
               left: 8.0,
@@ -36,7 +36,7 @@ class AvailableElement extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => TripContent(
-                      id:id,
+                      id: id,
                     ),
                   ),
                 );
@@ -49,7 +49,8 @@ class AvailableElement extends StatelessWidget {
                     height: 155,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(snapshot.data.get('Image').toString()),
+                        image:
+                            AssetImage(snapshot.data.get('Image').toString()),
                         fit: BoxFit.fill,
                       ),
                       borderRadius: BorderRadius.only(
@@ -69,7 +70,7 @@ class AvailableElement extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        "\$"+snapshot.data.get('Cost').toString(),
+                        "\$" + "$snapshot.data.get('Cost')",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -133,7 +134,7 @@ class AvailableElement extends StatelessWidget {
           );
         }
         return CircularProgressIndicator();
-    },
+      },
     );
   }
 }

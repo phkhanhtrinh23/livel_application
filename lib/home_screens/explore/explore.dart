@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
 import 'package:livel_application/home_screens/explore/allTrip.dart';
 
-
-
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({
     Key key,
@@ -75,11 +73,7 @@ class ExploreScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: 1000,
-              child: allTrip()
-            ),
-
+            Container(height: 1000, child: allTrip()),
           ],
         ),
       ),

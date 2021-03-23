@@ -2,15 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
-Future<DocumentSnapshot> getTrip(String id) async{
+Future<DocumentSnapshot> getTrip(String id) async {
   return await FirebaseFirestore.instance.collection(('Trips')).doc(id).get();
 }
 
 class YourTripScreen extends StatelessWidget {
-  const YourTripScreen({
-    Key key,
-    this.id
-  });
+  const YourTripScreen({Key key, this.id});
 
   final String id;
 
@@ -18,8 +15,8 @@ class YourTripScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: getTrip(this.id),
-      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
+      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return Container(
             margin: const EdgeInsets.only(
               left: 10,
@@ -36,24 +33,20 @@ class YourTripScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => TripContent(
-                      id:this.id
-                    ),
+                    builder: (context) => TripContent(id: this.id),
                   ),
                 );
               },
               child: Row(
                 children: [
-
-              Container(
-                margin: const EdgeInsets.only(right: 32, left: 8),
-                child: Image.asset(
-                  snapshot.data.get('Image'),
-                  width: 111,
-                  height: 119,
-                ),
-              ),
-                  Spacer(),
+                  Container(
+                    margin: const EdgeInsets.only(right: 32, left: 8),
+                    child: Image.asset(
+                      snapshot.data.get('Image'),
+                      width: 111,
+                      height: 119,
+                    ),
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +89,7 @@ class YourTripScreen extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        "\$"+snapshot.data.get('Cost').toString(),
+                        "\$" + snapshot.data.get('Cost').toString(),
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

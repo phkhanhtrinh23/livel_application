@@ -6,6 +6,7 @@ import 'package:livel_application/home_screens/user_screen/components/guidelines
 import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/home_screens/user_screen/components/profile_info.dart';
 import 'package:livel_application/log_in_screens/components/authentication_service.dart';
+import 'package:livel_application/video_call/tourguide.dart';
 
 class UserScreen extends StatelessWidget {
   @override
@@ -94,6 +95,18 @@ class UserScreen extends StatelessWidget {
               icon: Icon(Icons.logout),
               press: () {
                 context.read<AuthenticationService>().signOut();
+              },
+            ),
+            ProfileMenu(
+              text: "Log In As A Tour Guide",
+              icon: Icon(Icons.tour),
+              press: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TourguidePage(),
+                  ),
+                ),
               },
             ),
           ],

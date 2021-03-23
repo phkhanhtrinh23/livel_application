@@ -90,6 +90,24 @@ flutter:
     - images/events_1.png
     - images/events_2.png
     - images/events_3.png
+    - images/art_museum.png
+    - images/banahill.png
+    - images/bk.png
+    - images/buddha.png
+    - images/cathedral.png
+    - images/field.png
+    - images/house.png
+    - images/markett.png
+    - images/mausoleum.png
+    - images/museumm.png
+    - images/park.png
+    - images/pivot.png
+    - images/sea.png
+    - images/stadium.png
+    - images/swordlake.png
+    - images/toronto.png
+    - images/unknown.jpg
+    - images/ussh.png
   
   # To add assets to your application, add an assets section, like this:
   # assets:

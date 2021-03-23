@@ -14,7 +14,8 @@ class PlaceScreen extends StatelessWidget {
   });
 
   final String image, date, place, country, id;
-  final String cost, time;
+  final String time;
+  final int cost;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class PlaceScreen extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  '\$'+cost,
+                  '\$$cost',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

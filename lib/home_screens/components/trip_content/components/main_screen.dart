@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/joinButton.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/tourguide.dart';
 
-Future<DocumentSnapshot> getTrip(String id) async{
+Future<DocumentSnapshot> getTrip(String id) async {
   return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
 }
 
 class MainContent extends StatelessWidget {
-  const MainContent({
-    Key key,
-    this.id
-  }) : super(key: key);
+  const MainContent({Key key, this.id}) : super(key: key);
 
   final String id;
   @override
@@ -21,8 +18,8 @@ class MainContent extends StatelessWidget {
 
     return FutureBuilder(
       future: getTrip(id),
-      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
+      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
           //print(FirebaseAuth.instance.currentUser.uid);
           print(id);
           return SingleChildScrollView(
@@ -85,7 +82,7 @@ class MainContent extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Text(
-                              snapshot.data.get('Cost'),
+                              snapshot.data.get('Cost').toString(),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -125,7 +122,7 @@ class MainContent extends StatelessWidget {
                       Text(snapshot.data.get('Duration').toString()),
                       Spacer(),
                       Icon(Icons.face),
-                      Text(snapshot.data.get('Rating').toString()+'/5'),
+                      Text(snapshot.data.get('Rating').toString() + '/5'),
                       Spacer(),
                       Icon(Icons.calendar_today_sharp),
                       Column(
@@ -191,7 +188,7 @@ class MainContent extends StatelessWidget {
           );
         }
         return CircularProgressIndicator();
-    },
+      },
     );
   }
 }

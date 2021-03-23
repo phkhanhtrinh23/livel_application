@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:livel_application/log_in_screens/HomeMain.dart';
 import 'package:livel_application/splash_screens/second_screen.dart';
+import 'package:provider/provider.dart';
 // import 'package:livel_application/log_in_screens/components/authentication_service.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -19,13 +21,13 @@ class _FirstScreen extends State<FirstScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 5),
+      Duration(seconds: 3),
       () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => SecondScreen(),
+          builder: (context) => HomeMain(),
         ),
-      ),
+      )
     );
   }
 
@@ -41,7 +43,7 @@ class _FirstScreen extends State<FirstScreen> {
               'LIVEL',
               style: GoogleFonts.permanentMarker(
                 color: Colors.white,
-                fontSize: 60,
+                fontSize: 90,
               ),
             ),
             Image.asset('images/logo.png'),

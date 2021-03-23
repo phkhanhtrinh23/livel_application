@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
 import 'package:livel_application/log_in_screens/components/SignInPage.dart';
+import 'package:livel_application/log_in_screens/components/personalInfo.dart';
+import 'package:livel_application/splash_screens/second_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:livel_application/log_in_screens/components/authentication_service.dart';
 
@@ -18,11 +20,8 @@ class HomeMain extends StatelessWidget {
               context.read<AuthenticationService>().authStateChanges,
         )
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: AuthenticationWrapper(),
-        ),
+      child: Scaffold(
+        body: AuthenticationWrapper(),
       ),
     );
   }
@@ -33,10 +32,9 @@ class AuthenticationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
 
-    //check if user has logged in
     if (firebaseUser != null) {
       return HomeScreen();
     }
-    return SignInPage();
+    return SecondScreen();
   }
 }

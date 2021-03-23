@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/log_in_screens/HomeMain.dart';
-
+import 'package:livel_application/log_in_screens/components/personalInfo.dart';
 import 'authentication_service.dart';
 import 'package:provider/provider.dart';
 
@@ -15,10 +15,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPage extends State<SignUpPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
 
   bool _dontShowPassword = true;
-  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -63,26 +61,6 @@ class _SignUpPage extends State<SignUpPage> {
                   width: 343,
                   height: 53,
                   child: TextFormField(
-                    controller: nameController,
-                    decoration: InputDecoration(
-                      labelText: "Name",
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                        borderSide: BorderSide(),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 16.0,
-                ),
-                child: Container(
-                  width: 343,
-                  height: 53,
-                  child: TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
                       labelText: "Email",
@@ -107,9 +85,7 @@ class _SignUpPage extends State<SignUpPage> {
                     controller: passwordController,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: _dontShowPassword
-                            ? Icon(Icons.visibility_off_outlined)
-                            : Icon(Icons.remove_red_eye_outlined),
+                        icon: Icon(Icons.remove_red_eye_outlined),
                         onPressed: () {
                           setState(() {
                             _dontShowPassword = !_dontShowPassword;
@@ -138,41 +114,15 @@ class _SignUpPage extends State<SignUpPage> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: FlatButton(
-                  onPressed: () {
-                    try {
-                      context.read<AuthenticationService>().signUp(
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim(),
-                          );
-                      return showDialog<void>(
-                        context: context,
-                        barrierDismissible: false, // user must tap button!
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text(
-                                'You have successfully created an account!'),
-                            actions: <Widget>[
-                              FlatButton(
-                                child: Text('Okay'),
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => HomeMain()));
-                                  // Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    } on FirebaseAuthException catch (e) {
-                      if (e.code == 'weak-password') {
-                        print('The password provided is too weak.');
-                      } else if (e.code == 'email-already-in-use') {
-                        print('The account already exists for that email.');
-                      }
-                    } catch (e) {
-                      print(e);
-                    }
+                  onPressed: () async{
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PersonalInfo(
+                              emailController.text.trim(), passwordController.text.trim()
+                          )
+                      ),
+                    );
                   },
                   child: Text(
                     "Sign Up",

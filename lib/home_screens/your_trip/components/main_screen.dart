@@ -1,109 +1,116 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
+
+Future<DocumentSnapshot> getTrip(String id) async{
+  return await FirebaseFirestore.instance.collection(('Trips')).doc(id).get();
+}
 
 class YourTripScreen extends StatelessWidget {
   const YourTripScreen({
     Key key,
-    this.image,
-    this.cost,
-    this.date,
-    this.place,
-    this.time,
+    this.id
   });
 
-  final String image, date, place;
-  final int time, cost;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(
-        left: 10,
-        right: 10,
-        bottom: 16,
-      ),
-      height: 135,
-      decoration: BoxDecoration(
-        color: Color(0xFFDBEEFD),
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: FlatButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => TripContent(
-                cost: cost,
-                place: place,
-                image: image,
-                date: date,
-                time: time,
+    return FutureBuilder(
+      future: getTrip(this.id),
+      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
+        if(snapshot.connectionState == ConnectionState.done){
+          return Container(
+            margin: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+              bottom: 16,
+            ),
+            width: 355,
+            height: 135,
+            decoration: BoxDecoration(
+              color: Color(0xFFDBEEFD),
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => TripContent(
+                      id:this.id
+                    ),
+                  ),
+                );
+              },
+              child: Row(
+                children: [
+
+              Container(
+                margin: const EdgeInsets.only(right: 32, left: 8),
+                child: Image.asset(
+                  snapshot.data.get('Image'),
+                  width: 111,
+                  height: 119,
+                ),
+              ),
+                  Spacer(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        snapshot.data.get('Name'),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_today_outlined,
+                            color: Colors.blueAccent,
+                            size: 15,
+                          ),
+                          Text(
+                            'March 3 2021',
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on_outlined,
+                            color: Colors.blueAccent,
+                            size: 15,
+                          ),
+                          Text(
+                            snapshot.data.get('Place').toString(),
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "\$"+snapshot.data.get('Cost').toString(),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
               ),
             ),
           );
-        },
-        child: Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.only(right: 16, left: 8),
-              child: Image.asset(
-                image,
-                width: 111,
-                height: 119,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  '$time am',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_today_outlined,
-                      color: Colors.blueAccent,
-                      size: 15,
-                    ),
-                    Text(
-                      '$date',
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_on_outlined,
-                      color: Colors.blueAccent,
-                      size: 15,
-                    ),
-                    Text(
-                      '$place',
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-                Text(
-                  '\$$cost',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
+        }
+        return CircularProgressIndicator();
+      },
     );
   }
 }

@@ -17,11 +17,10 @@ class UserScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.only(bottom: 32),
               width: _width,
-              height: 116,
+              height: 148,
               alignment: Alignment.bottomCenter,
-              padding: const EdgeInsets.only(bottom: 32),
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
@@ -38,21 +37,16 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Container(
-            //   margin: const EdgeInsets.only(
-            //     top: 16,
-            //     bottom: 16,
-            //   ),
-            //   width: 100,
-            //   height: 100,
-            //   child: ClipOval(
-            //     child: Image.asset(
-            //       'images/unknown.jpg',
-            //       width: 100,
-            //       height: 100,
-            //     ),
-            //   ),
-            // ),
+            Container(
+              margin: const EdgeInsets.only(
+                top: 8.0,
+              ),
+              width: 200,
+              height: 100,
+              child: Center(
+                child: Image.asset('images/khoa.png'),
+              ),
+            ),
             ProfileMenu(
               text: "My Profile",
               icon: Icon(Icons.person_outline),
@@ -61,7 +55,7 @@ class UserScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => ProfileScreen(
-                      image: 'images/unknown.jpg',
+                      image: 'images/khoa.png',
                       name: 'Tran Dang Khoa',
                       career: 'UI/UX Designer',
                       birthday: 'June 06, 2001',

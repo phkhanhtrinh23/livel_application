@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
+import 'package:livel_application/home_screens/explore/allTrip.dart';
+
+
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({
@@ -17,9 +21,9 @@ class ExploreScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(bottom: 32),
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
               width: _width,
-              height: 116,
+              height: 148,
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -71,41 +75,11 @@ class ExploreScreen extends StatelessWidget {
                 ],
               ),
             ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
+            Container(
+              height: 1000,
+              child: allTrip()
             ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
+
           ],
         ),
       ),

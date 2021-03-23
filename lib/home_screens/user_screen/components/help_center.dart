@@ -7,6 +7,22 @@ class HelpCenterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Color(0xFF5197E1),
+        centerTitle: true,
+        title: Text(
+          'Help Center',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Container(
@@ -19,37 +35,12 @@ class HelpCenterScreen extends StatelessWidget {
               children: [
                 Container(
                   width: _width,
-                  height: 116,
+                  height: 160,
                   decoration: BoxDecoration(
                     color: Color(0xFF5197E1),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8),
-                    ),
-                  ),
-                  child: Container(
-                    width: _width,
-                    height: 160,
-                    alignment: Alignment.topLeft,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF5197E1),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(16),
-                        bottomRight: Radius.circular(16),
-                      ),
-                    ),
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 24),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.arrow_back_sharp,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
                     ),
                   ),
                 ),
@@ -63,7 +54,7 @@ class HelpCenterScreen extends StatelessWidget {
                     ),
                     child: Text(''),
                   ),
-                  top: 80,
+                  top: 120,
                 ),
               ],
             ),

@@ -10,10 +10,11 @@ class PlaceScreen extends StatelessWidget {
     this.date,
     this.place,
     this.country,
+    this.id,
   });
 
-  final String image, date, place, country;
-  final int cost, time;
+  final String image, date, place, country, id;
+  final String cost, time;
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +36,11 @@ class PlaceScreen extends StatelessWidget {
       child: FlatButton(
         padding: const EdgeInsets.all(0),
         onPressed: () {
+          print(id);
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => TripContent(
-                cost: cost,
-                country: country,
-                place: place,
-                date: date,
-                time: time,
-                image: image,
+                id: this.id,
               ),
             ),
           );
@@ -65,7 +62,7 @@ class PlaceScreen extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  '\$$cost',
+                  '\$'+cost,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -81,21 +78,21 @@ class PlaceScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '$time:00',
+                      time,
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      '$date',
+                      date,
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      '$place',
+                      place,
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,

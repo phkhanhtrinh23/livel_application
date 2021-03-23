@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
+
+import 'components/listScreen.dart';
+
 
 class TripScreen extends StatelessWidget {
   const TripScreen({
@@ -17,44 +21,42 @@ class TripScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 24, bottom: 16),
-              width: _width,
-              height: 148,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
+                padding: const EdgeInsets.only(top: 24, bottom: 16),
+                width: _width,
+                height: 148,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  ),
+                  color: Color(0xFF5197E1),
                 ),
-                color: Color(0xFF5197E1),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Spacer(),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        onPressed: () => Navigator.of(context).pop(),
-                      )
-                    ],
-                  ),
-                  Spacer(),
-                  Text(
-                    'Explore',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Spacer(),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          onPressed: () => Navigator.of(context).pop(),
+                        )
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ),
+                    Spacer(),
+                    Text(
+                      'Explore',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
+                      ),
+                    ),
+                  ],
+                )),
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(
@@ -71,41 +73,10 @@ class TripScreen extends StatelessWidget {
                 ),
               ),
             ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
-            PlaceScreen(
-              image: 'images/market.png',
-              cost: 9,
-              time: 18,
-              date: 'March 16, 2021',
-              place: 'Title',
-            ),
+            Container(
+              height: 525,
+              child: ListScreen(name: name)
+            )
           ],
         ),
       ),

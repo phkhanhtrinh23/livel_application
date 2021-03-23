@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/log_in_screens/HomeMain.dart';
+import 'package:livel_application/log_in_screens/components/SignInPage.dart';
 
 class SecondScreen extends StatelessWidget {
   @override
@@ -66,7 +67,7 @@ class SecondScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HomeMain(),
+                      builder: (context) => SignInPage(),
                     ),
                   );
                 },

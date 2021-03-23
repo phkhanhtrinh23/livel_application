@@ -1,9 +1,87 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/available_elements.dart';
 import 'package:livel_application/home_screens/components/countries_elements.dart';
-import 'package:livel_application/home_screens/components/events/events.dart';
+import 'package:livel_application/home_screens/components/upcoming.dart';
 
-class MainHome extends StatelessWidget {
+Future<DocumentSnapshot> getName() async{
+  return await FirebaseFirestore.instance.collection('User').doc(FirebaseAuth.instance.currentUser.uid).get();
+}
+
+class EventElements extends StatelessWidget {
+  const EventElements({
+    Key key,
+    this.image,
+  }) : super(key: key);
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 329,
+      height: 185,
+      margin: const EdgeInsets.only(
+        top: 8,
+        bottom: 40,
+      ),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Color(0xFFFFEADE),
+        borderRadius: BorderRadius.circular(16),
+        image: DecorationImage(
+          image: AssetImage(image),
+          fit: BoxFit.fill,
+        ),
+      ),
+    );
+  }
+}
+
+class MainHome extends StatefulWidget {
+  MainHome({Key key}) : super(key: key);
+
+  @override
+  _MainHome createState() => _MainHome();
+}
+
+class _MainHome extends State<MainHome> with TickerProviderStateMixin {
+  List<EventElements> _events = [
+    EventElements(
+      image: 'images/events_1.png',
+    ),
+    EventElements(
+      image: 'images/events_2.png',
+    ),
+    EventElements(
+      image: 'images/events_3.png',
+    ),
+  ];
+  int _index = 0;
+  Timer _timer;
+  Duration _duration = Duration(seconds: 3);
+
+  @override
+  void initState() {
+    _timer = Timer.periodic(_duration, (Timer timer) {
+      setState(() {
+        _index = _index == _events.length - 1 ? 0 : _index + 1;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    _timer = null;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var date = DateTime.now();
@@ -40,20 +118,29 @@ class MainHome extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 8,
-                  bottom: 8,
-                ),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Hello Khoa Tran,',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              FutureBuilder(
+                future: getName(),
+                builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
+                  if(snapshot.connectionState == ConnectionState.done){
+                    return Container(
+                      margin: const EdgeInsets.only(
+                        top: 8,
+                        bottom: 8,
+                      ),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Hello '+ snapshot.data.get('Name'),
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    );
+                  }
+                  return CircularProgressIndicator();
+                },
+
               ),
               Container(
                 alignment: Alignment.center,
@@ -62,7 +149,7 @@ class MainHome extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(8.0),
                 height: 54,
-                width: 360,
+                width: 300,
                 decoration: BoxDecoration(
                   color: Color(0xFF5197E1),
                   borderRadius: BorderRadius.circular(16),
@@ -106,19 +193,19 @@ class MainHome extends StatelessWidget {
             ),
           ),
         ),
-        EventElements(
-          images: [
-            'images/events_1.png',
-            'images/events_2.png',
-            'images/events_3.png',
-          ],
+        AnimatedSwitcher(
+          duration: Duration(seconds: 3),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return FadeTransition(child: child, opacity: animation);
+          },
+          child: _events[_index],
         ),
         Row(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
               child: Text(
-                'Cities',
+                'Countries',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -138,7 +225,7 @@ class MainHome extends StatelessWidget {
               ),
               TripElement(
                 image: 'images/uk.png',
-                name: 'UK',
+                name: 'Vietnam',
                 number: 10,
               ),
               TripElement(
@@ -176,58 +263,11 @@ class MainHome extends StatelessWidget {
             ),
           ],
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: <Widget>[
-              AvailableElement(
-                image: 'images/museum.png',
-                place: 'National Museum',
-                cost: 9,
-                country: 'Hanoi',
-                date: 'Mar 07, 2021',
-                duration: 45,
-                time: 8,
-              ),
-              AvailableElement(
-                image: 'images/museum.png',
-                place: 'National Museum',
-                cost: 9,
-                country: 'Hanoi',
-                date: 'Mar 07, 2021',
-                duration: 45,
-                time: 8,
-              ),
-              AvailableElement(
-                image: 'images/museum.png',
-                place: 'National Museum',
-                cost: 9,
-                country: 'Hanoi',
-                date: 'Mar 07, 2021',
-                duration: 45,
-                time: 8,
-              ),
-              AvailableElement(
-                image: 'images/museum.png',
-                place: 'National Museum',
-                cost: 9,
-                country: 'Hanoi',
-                date: 'Mar 07, 2021',
-                duration: 45,
-                time: 8,
-              ),
-              AvailableElement(
-                image: 'images/museum.png',
-                place: 'National Museum',
-                cost: 9,
-                country: 'Hanoi',
-                date: 'Mar 07, 2021',
-                duration: 45,
-                time: 8,
-              ),
-            ],
-          ),
-        ),
+        Container(
+          height: 237,
+            width: 200,
+            child:UpcomingScreen()
+        )
       ],
     );
   }

@@ -54,7 +54,7 @@ class TripElement extends StatelessWidget {
               ),
               color: Color(0xFF5197E1),
             ),
-            width: 77,
+            width: 88,
             height: 45,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

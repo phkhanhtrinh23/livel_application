@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:livel_application/database/addTrip.dart';
 import 'package:livel_application/video_call/GuideScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
@@ -96,6 +97,13 @@ class UserScreen extends StatelessWidget {
               icon: Icon(Icons.logout),
               press: () {
                 context.read<AuthenticationService>().signOut();
+              },
+            ),
+            ProfileMenu(
+              text: "Add Trip",
+              icon: Icon(Icons.logout),
+              press: () {
+                addTrip();
               },
             ),
             ProfileMenu(

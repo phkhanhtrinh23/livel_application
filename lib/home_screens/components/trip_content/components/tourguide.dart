@@ -55,7 +55,7 @@ class TourGuide extends StatelessWidget{
                           Column(
                             children: [
                               Image.asset(
-                                snapdata.get('Image').toString(),
+                                'images/khoa.png',
                                 width: 100,
                                 height: 100,
                               ),

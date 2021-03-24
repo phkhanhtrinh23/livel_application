@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/src/widgets/editable_text.dart';
 
-Future<void> addTrip(TextEditingController name) async {
+Future<void> addTrip() async {
   // Call the user's CollectionReference to add a new user
   return FirebaseFirestore.instance.collection('Trips').add({
+    'Code': "",
     'Country': 'Vietnam',
     'Description':
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/your_trip/components/main_screen.dart';
 
+import 'GuideTripScreen.dart';
+
 Future< QuerySnapshot > getGuideTrip() async{
   return await FirebaseFirestore.instance.collection('Trips').where("Guide's ID", isEqualTo: FirebaseAuth.instance.currentUser.uid).get();
 }
@@ -50,7 +52,7 @@ class GuideScreen extends StatelessWidget {
                       child: ListView.builder(
                           itemCount: snapshot.data.size,
                           itemBuilder: (BuildContext context, int index){
-                            return YourTripScreen(
+                            return GuideTripScreen(
                               id: snapshot.data.docs[index].id,
                             );
                           }

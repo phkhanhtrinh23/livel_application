@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/joinButton.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/tourguide.dart';
 
+import 'GuideJoinButton.dart';
+
 Future<DocumentSnapshot> getTrip(String id) async {
   return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
 }
@@ -80,7 +82,7 @@ class GuideMainContent extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Text(
-                              snapshot.data.get('Cost').toString(),
+                              "\$"+snapshot.data.get('Cost').toString(),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -167,19 +169,9 @@ class GuideMainContent extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(
-                    right: 23,
-                    left: 23,
-                    bottom: 200,
-                  ),
-                  child: Text(
-                    snapshot.data.get('Note').toString(),
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
+                  height: 50,
                 ),
-                JoinRegister(id: snapshot.data.id)
+                GuideJoinRegister(id: snapshot.data.id)
               ],
             ),
           );

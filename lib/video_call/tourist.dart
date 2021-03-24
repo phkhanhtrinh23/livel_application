@@ -131,7 +131,7 @@ class _TouristPage extends State<TouristPage> {
                 minWidth: 213,
                 height: 51,
                 onPressed: () {
-                  onJoin();
+                  onJoin(_channelController.text.trim());
                 },
                 child: Text('Join'),
                 color: Colors.orange[800],
@@ -144,13 +144,13 @@ class _TouristPage extends State<TouristPage> {
     );
   }
 
-  Future<String> getRtcToken() async {
+  Future<String> getRtcToken(String channel) async {
     if (FirebaseAuth.instance.currentUser != null) {
       HttpsCallable callable =
           FirebaseFunctions.instance.httpsCallable('generateRtcToken');
 
       var rtcToken = await callable(
-          {"channelName": _channelController.text, "duration": 300});
+          {"channelName": channel, "duration": 3600});
 
       return rtcToken.data;
     } else {
@@ -159,14 +159,14 @@ class _TouristPage extends State<TouristPage> {
     }
   }
 
-  Future<void> onJoin() async {
+  Future<void> onJoin(String channel) async {
     // update input validation
     setState(() {
-      _channelController.text.isEmpty
+      channel.isEmpty
           ? _validateError = true
           : _validateError = false;
     });
-    if (_channelController.text.isNotEmpty) {
+    if (channel.isNotEmpty) {
       // await for camera and mic permissions before pushing video page
       await _handleCameraAndMic(Permission.camera);
       await _handleCameraAndMic(Permission.microphone);
@@ -174,7 +174,7 @@ class _TouristPage extends State<TouristPage> {
       //await for RTC token to be created
       String rtcToken;
       try {
-        rtcToken = await getRtcToken();
+        rtcToken = await getRtcToken(channel);
       } catch (error) {
         showDialog(
             context: context,
@@ -199,7 +199,7 @@ class _TouristPage extends State<TouristPage> {
         context,
         MaterialPageRoute(
           builder: (context) => CallPage(
-            channelName: _channelController.text,
+            channelName: channel,
             role: _role,
             rtcToken: rtcToken,
           ),

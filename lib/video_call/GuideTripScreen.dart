@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/main_screen.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
+import 'GuideTripContent/GuideTripContent.dart';
+
 class GuideTripScreen extends StatelessWidget {
   const GuideTripScreen({Key key, this.id});
 
@@ -30,7 +32,7 @@ class GuideTripScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => TripContent(id: this.id),
+                    builder: (context) => GuideTripContent(id: this.id),
                   ),
                 );
               },

@@ -79,6 +79,8 @@ class YourTripScreen extends StatelessWidget {
                           ),
                           Text(
                             snapshot.data.get('Place').toString(),
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: false,
                             style: TextStyle(
                               fontSize: 14,
                             ),

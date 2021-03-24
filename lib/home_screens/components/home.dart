@@ -25,7 +25,7 @@ class MainHome extends StatelessWidget {
             right: 8,
           ),
           width: 348,
-          height: 184,
+          height: 144,
           decoration: BoxDecoration(
             color: Color(0xFF5197E1),
             borderRadius: BorderRadius.circular(16),
@@ -53,7 +53,7 @@ class MainHome extends StatelessWidget {
                       ),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Hello ' + snapshot.data.get('Name'),
+                        'Hello ' + snapshot.data.get('Name') + ',',
                         style: TextStyle(
                           fontSize: 25,
                           color: Colors.white,

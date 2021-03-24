@@ -40,7 +40,7 @@ class _EventElements extends State<EventElements>
         return FadeTransition(child: child, opacity: animation);
       },
       child: Container(
-        width: 360,
+        width: 300,
         height: 185,
         margin: const EdgeInsets.only(
           top: 8,

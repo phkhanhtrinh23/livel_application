@@ -12,7 +12,6 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPage extends State<SignInPage> {
-  
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _dontShowPassword = true;
@@ -141,7 +140,7 @@ class _SignInPage extends State<SignInPage> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: Colors.black),
                     ),
                     child: TextButton(
                       onPressed: () {
@@ -150,7 +149,10 @@ class _SignInPage extends State<SignInPage> {
                           MaterialPageRoute(builder: (context) => SignUpPage()),
                         );
                       },
-                      child: Text("Sign up"),
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(color: Colors.grey[600]),
+                      ),
                     ),
                   ),
                 ],

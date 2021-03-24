@@ -16,7 +16,6 @@ class YourTrip extends StatelessWidget {
       body: FutureBuilder(
         future: getTripList(uid),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
-
           if(snapshot.hasData){
             List<dynamic> arr=snapshot.data.get('TripList');
             return SingleChildScrollView(

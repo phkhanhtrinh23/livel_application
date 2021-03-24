@@ -1,14 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
-
-Future<DocumentSnapshot> getTrip(String id) async {
-  return await FirebaseFirestore.instance.collection(('Trips')).doc(id).get();
-}
 
 class YourTripScreen extends StatelessWidget {
   const YourTripScreen({Key key, this.id});
-
   final String id;
 
   @override
@@ -17,6 +13,7 @@ class YourTripScreen extends StatelessWidget {
       future: getTrip(this.id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+          print(id);
           return Container(
             margin: const EdgeInsets.only(
               left: 10,

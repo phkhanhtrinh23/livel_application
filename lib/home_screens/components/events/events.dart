@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class EventElements extends StatefulWidget {
   const EventElements({Key key, this.images}) : super(key: key);
-
   final List<String> images;
 
   @override

@@ -1,20 +1,9 @@
-import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/components/available_elements.dart';
+import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/countries_elements.dart';
 import 'package:livel_application/home_screens/components/events/events.dart';
 import 'package:livel_application/home_screens/components/upcoming.dart';
-
-Future<DocumentSnapshot> getName() async {
-  return await FirebaseFirestore.instance
-      .collection('User')
-      .doc(FirebaseAuth.instance.currentUser.uid)
-      .get();
-}
 
 class MainHome extends StatelessWidget {
   @override
@@ -76,40 +65,6 @@ class MainHome extends StatelessWidget {
                   return CircularProgressIndicator();
                 },
               ),
-              // Container(
-              //   alignment: Alignment.center,
-              //   margin: EdgeInsets.only(
-              //     top: 32,
-              //   ),
-              //   padding: EdgeInsets.all(8.0),
-              //   height: 54,
-              //   width: 360,
-              //   decoration: BoxDecoration(
-              //     color: Color(0xFF5197E1),
-              //     borderRadius: BorderRadius.circular(16),
-              //     border: Border.all(
-              //       color: Colors.white,
-              //     ),
-              //   ),
-              //   child: Row(
-              //     children: <Widget>[
-              //       Icon(Icons.search, color: Colors.white),
-              //       Expanded(
-              //         child: TextFormField(
-              //           onChanged: (value) {},
-              //           decoration: InputDecoration(
-              //             fillColor: Colors.white,
-              //             hintText: 'Search',
-              //             hintStyle: TextStyle(color: Colors.white),
-              //             enabledBorder: InputBorder.none,
-              //             focusedBorder: InputBorder.none,
-              //           ),
-              //         ),
-              //       ),
-              //       Image.asset('images/logo.png'),
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ),

@@ -1,9 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
-
 import 'components/listScreen.dart';
-
 
 class TripScreen extends StatelessWidget {
   const TripScreen({

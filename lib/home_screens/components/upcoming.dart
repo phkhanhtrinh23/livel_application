@@ -1,14 +1,9 @@
-import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/database/queryFunction.dart';
 
 import 'available_elements.dart';
-
-Future<QuerySnapshot> getTripInfo() async{
-  return await FirebaseFirestore.instance.collection('Trips').get();
-}
 
 class UpcomingScreen extends StatelessWidget {
   UpcomingScreen({
@@ -29,8 +24,7 @@ class UpcomingScreen extends StatelessWidget {
                 return AvailableElement(
                   id: snapshot.data.docs[index].id,
                 );
-              }
-          );
+              });
         }
         return CircularProgressIndicator();
       },

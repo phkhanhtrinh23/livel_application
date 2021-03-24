@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:livel_application/database/addTrip.dart';
-import 'package:livel_application/video_call/GuideScreen.dart';
+import 'package:livel_application/tour_guide/guide_main_screen.dart';
+import 'package:livel_application/tour_guide/guide_screen/guide_trips.dart';
 import 'package:provider/provider.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
 import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/home_screens/user_screen/components/profile_info.dart';
-import 'package:livel_application/log_in_screens/components/authentication_service.dart';
-import 'package:livel_application/video_call/tourguide.dart';
+import 'package:livel_application/log_in_screens/components/authentication.dart';
 
 class UserScreen extends StatelessWidget {
   @override
@@ -100,20 +100,13 @@ class UserScreen extends StatelessWidget {
               },
             ),
             ProfileMenu(
-              text: "Add Trip",
-              icon: Icon(Icons.logout),
-              press: () {
-                addTrip();
-              },
-            ),
-            ProfileMenu(
               text: "Log In As A Tour Guide",
               icon: Icon(Icons.tour),
               press: () => {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => GuideScreen(),
+                    builder: (context) => GuideMainScreen(),
                   ),
                 ),
               },

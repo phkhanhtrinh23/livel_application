@@ -1,9 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/log_in_screens/HomeMain.dart';
-import 'package:livel_application/log_in_screens/components/personalInfo.dart';
-import 'authentication_service.dart';
-import 'package:provider/provider.dart';
+import 'package:livel_application/log_in_screens/components/set_profile.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key key}) : super(key: key);
@@ -122,7 +118,9 @@ class _SignUpPage extends State<SignUpPage> {
                       MaterialPageRoute(
                           builder: (context) => PersonalInfo(
                               emailController.text.trim(),
-                              passwordController.text.trim())),
+                              passwordController.text.trim()
+                          )
+                      ),
                     );
                   },
                   child: Text(

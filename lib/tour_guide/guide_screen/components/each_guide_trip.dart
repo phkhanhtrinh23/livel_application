@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/main_screen.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
-import 'GuideTripContent/GuideTripContent.dart';
+import '../guide_trip_content_main.dart';
 
 class GuideTripScreen extends StatelessWidget {
   const GuideTripScreen({Key key, this.id});

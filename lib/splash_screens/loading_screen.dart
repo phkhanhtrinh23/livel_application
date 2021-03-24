@@ -1,11 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:livel_application/log_in_screens/HomeMain.dart';
-import 'package:livel_application/splash_screens/second_screen.dart';
-import 'package:provider/provider.dart';
-// import 'package:livel_application/log_in_screens/components/authentication_service.dart';
+import 'package:livel_application/log_in_screens/state_home.dart';
 
 class FirstScreen extends StatefulWidget {
   FirstScreen({Key key}) : super(key: key);

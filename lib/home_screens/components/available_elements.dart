@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
-
-Future<DocumentSnapshot> getInfo(String id) async {
-  return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
-}
 
 class AvailableElement extends StatelessWidget {
   const AvailableElement({
@@ -17,7 +14,7 @@ class AvailableElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getInfo(id),
+      future: getTrip(id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Container(
@@ -29,8 +26,8 @@ class AvailableElement extends StatelessWidget {
               left: 8.0,
               bottom: 16.0,
             ),
-            child: FlatButton(
-              padding: const EdgeInsets.all(0),
+            child: TextButton(
+              //padding: const EdgeInsets.all(0),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -46,7 +43,7 @@ class AvailableElement extends StatelessWidget {
                   Container(
                     alignment: Alignment.topLeft,
                     width: 249,
-                    height: 155,
+                    height: 140,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image:
@@ -93,7 +90,7 @@ class AvailableElement extends StatelessWidget {
                       border: Border.all(color: Colors.grey),
                     ),
                     width: 249,
-                    height: 66,
+                    height: 62,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -127,7 +124,7 @@ class AvailableElement extends StatelessWidget {
                         )
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

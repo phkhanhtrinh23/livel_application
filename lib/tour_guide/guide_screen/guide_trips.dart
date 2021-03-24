@@ -1,13 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/your_trip/components/main_screen.dart';
-
-import 'GuideTripScreen.dart';
-
-Future< QuerySnapshot > getGuideTrip() async{
-  return await FirebaseFirestore.instance.collection('Trips').where("Guide's ID", isEqualTo: FirebaseAuth.instance.currentUser.uid).get();
-}
+import 'package:livel_application/database/queryFunction.dart';
+import 'components/each_guide_trip.dart';
 
 class GuideScreen extends StatelessWidget {
   @override
@@ -18,7 +13,6 @@ class GuideScreen extends StatelessWidget {
         body: FutureBuilder(
           future: getGuideTrip(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
-
             if(snapshot.hasData){
               return SingleChildScrollView(
                 child: Column(

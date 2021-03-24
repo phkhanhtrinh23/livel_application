@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/log_in_screens/HomeMain.dart';
-import 'package:livel_application/log_in_screens/components/SignInPage.dart';
+import 'package:livel_application/log_in_screens/components/sign_in.dart';
 
 class SecondScreen extends StatelessWidget {
   @override

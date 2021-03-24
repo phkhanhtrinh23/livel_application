@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
-import 'package:livel_application/log_in_screens/components/SignInPage.dart';
-import 'package:livel_application/log_in_screens/components/personalInfo.dart';
-import 'package:livel_application/splash_screens/second_screen.dart';
+import 'package:livel_application/log_in_screens/components/sign_in.dart';
+import 'package:livel_application/log_in_screens/components/set_profile.dart';
+import 'package:livel_application/splash_screens/splash_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:livel_application/log_in_screens/components/authentication_service.dart';
+import 'package:livel_application/log_in_screens/components/authentication.dart';
 
 class HomeMain extends StatelessWidget {
   @override

@@ -1,14 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/components/trip_content/components/joinButton.dart';
-import 'package:livel_application/home_screens/components/trip_content/components/tourguide.dart';
-
-import 'GuideJoinButton.dart';
-
-Future<DocumentSnapshot> getTrip(String id) async {
-  return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
-}
+import 'package:livel_application/database/queryFunction.dart';
+import 'guide_join_button.dart';
 
 class GuideMainContent extends StatelessWidget {
   const GuideMainContent({Key key, this.id}) : super(key: key);
@@ -128,7 +121,7 @@ class GuideMainContent extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(snapshot.data.get('Time')),
+                          Text(snapshot.data.get('Time').toString()),
                           Text('March 3 2021'),
                         ],
                       ),

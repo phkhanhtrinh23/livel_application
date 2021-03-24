@@ -1,17 +1,10 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/video_call/tourist.dart';
-
+import 'package:livel_application/database/queryFunction.dart';
+import 'package:livel_application/video_call/audience.dart';
 import '../trip_main.dart';
-
-
-Future<DocumentSnapshot> getJoin(String id) async{
-  return await FirebaseFirestore.instance.collection("User").doc(id).get();
-}
 
 class JoinRegister extends StatelessWidget{
   final String id;

@@ -7,7 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
-import 'call.dart';
+import 'call_page.dart';
 
 class TourguidePage extends StatefulWidget {
   final String id,channel;

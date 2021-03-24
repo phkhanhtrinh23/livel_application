@@ -60,18 +60,6 @@ class _HomeScreen extends State<HomeScreen> {
         // clipBehavior: Clip.antiAliasWithSaveLayer,
         // shape: CircularNotchedRectangle(),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Color(0xFF5197E1),
-      //   onPressed: () {
-      //     Navigator.push(context,
-      //         MaterialPageRoute(builder: (BuildContext context) => YourTrip()));
-      //   },
-      //   child: Icon(
-      //     Icons.list_rounded,
-      //   ),
-      //   elevation: 4.0,
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

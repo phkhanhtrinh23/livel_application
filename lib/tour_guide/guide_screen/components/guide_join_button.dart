@@ -1,19 +1,10 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/video_call/tourguide.dart';
-import 'package:livel_application/video_call/tourist.dart';
-
-import '../GuideTripContent.dart';
-
-
-
-Future<DocumentSnapshot> getCode(String id) async{
-  return await FirebaseFirestore.instance.collection("Trips").doc(id).get();
-}
+import 'package:livel_application/database/queryFunction.dart';
+import 'package:livel_application/video_call/broadcaster.dart';
+import '../guide_trip_content_main.dart';
 
 class GuideJoinRegister extends StatelessWidget{
   final String id;
@@ -25,7 +16,7 @@ class GuideJoinRegister extends StatelessWidget{
   Widget build(BuildContext context) {
     String uid=FirebaseAuth.instance.currentUser.uid;
     return FutureBuilder(
-        future: getCode(id),
+        future: getTrip(id),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
           if(snapshot.connectionState==ConnectionState.done)
           {

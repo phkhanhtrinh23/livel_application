@@ -1,11 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/HomeScreen.dart';
-import 'package:livel_application/log_in_screens/HomeMain.dart';
-import 'signInWithGoogle.dart';
-import 'package:provider/provider.dart';
-import 'SignUpPage.dart';
-import 'authentication_service.dart';
+import 'package:livel_application/log_in_screens/state_home.dart';
+import 'sign_up.dart';
+import 'authentication.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key key}) : super(key: key);
@@ -15,15 +12,14 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPage extends State<SignInPage> {
+  
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   bool _dontShowPassword = true;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
@@ -40,7 +36,7 @@ class _SignInPage extends State<SignInPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              FlatButton(
+              TextButton(
                 child: Image.asset('images/googlebutton.png'),
                 onPressed: () {
                   signInWithGoogle().then(
@@ -122,7 +118,7 @@ class _SignInPage extends State<SignInPage> {
                       color: Color(0xFFEE6C4D),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: FlatButton(
+                    child: TextButton(
                       onPressed: () async {
                         await FirebaseAuth.instance.signInWithEmailAndPassword(
                             email: emailController.text.trim(),
@@ -147,7 +143,7 @@ class _SignInPage extends State<SignInPage> {
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(color: Colors.grey),
                     ),
-                    child: FlatButton(
+                    child: TextButton(
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -163,6 +159,6 @@ class _SignInPage extends State<SignInPage> {
           ),
         ),
       ),
-    ));
+    );
   }
 }

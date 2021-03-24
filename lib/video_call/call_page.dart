@@ -1,11 +1,10 @@
 import 'dart:async';
-
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
 
-import 'settings.dart';
+const APP_ID = "e74c68e55cb44482a99fb501f89d29d8";
 
 class CallPage extends StatefulWidget {
   /// non-modifiable channel name of the page

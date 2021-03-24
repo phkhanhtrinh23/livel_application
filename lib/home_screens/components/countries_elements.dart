@@ -1,11 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_screen/trip_screen.dart';
-
-Future<QuerySnapshot> getNum(String name) async{
-  return await FirebaseFirestore.instance.collection('Trips').where('Country', isEqualTo: name).get();
-}
 
 class TripElement extends StatelessWidget {
   const TripElement({
@@ -72,7 +68,7 @@ class TripElement extends StatelessWidget {
                   ),
                 ),
                 FutureBuilder(
-                  future: getNum(name),
+                  future: getCountry(name),
                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
                     if(snapshot.connectionState== ConnectionState.done){
                       return Text(

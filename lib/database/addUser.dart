@@ -8,7 +8,7 @@ Future<void> addUser(
     String phone,
     ) async {
   // Call the user's CollectionReference to add a new user
-  await FirebaseFirestore.instance.collection('User').doc(FirebaseAuth.instance.currentUser.uid).set({
+  await FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser.uid).set({
     'Age': age,
     'Country':country,
     "Exp": 0,

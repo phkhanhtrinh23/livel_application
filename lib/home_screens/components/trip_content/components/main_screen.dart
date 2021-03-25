@@ -124,7 +124,7 @@ class MainContent extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(snapshot.data.get('Time')),
+                          Text(snapshot.data.get('Time').toString()),
                           Text('March 3 2021'),
                         ],
                       ),

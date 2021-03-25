@@ -4,22 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
 
-class ListScreen extends StatelessWidget{
+class ListScreen extends StatelessWidget {
   final String name;
-  ListScreen({
-    Key key,
-    this.name
-  }) : super(key:key);
+  ListScreen({Key key, this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: getCountry(name),
-      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return ListView.builder(
+            shrinkWrap: true,
             itemCount: snapshot.data.size,
-            itemBuilder: (BuildContext context, int index){
+            itemBuilder: (BuildContext context, int index) {
               return PlaceScreen(
                 image: snapshot.data.docs[index].get('Image'),
                 country: snapshot.data.docs[index].get('Country'),
@@ -36,5 +34,4 @@ class ListScreen extends StatelessWidget{
       },
     );
   }
-
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/listScreen.dart';
+import 'components/list_screen.dart';
 
 class TripScreen extends StatelessWidget {
   const TripScreen({
@@ -17,48 +17,49 @@ class TripScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-                padding: const EdgeInsets.only(top: 24, bottom: 16),
-                width: _width,
-                height: 148,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
-                  ),
-                  color: Color(0xFF5197E1),
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
+              width: _width,
+              height: 148,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Spacer(),
-                    Row(
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                          ),
-                          onPressed: () => Navigator.of(context).pop(),
-                        )
-                      ],
+                color: Color(0xFF5197E1),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        onPressed: () => Navigator.of(context).pop(),
+                      )
+                    ],
+                  ),
+                  Spacer(),
+                  Text(
+                    'Explore',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
                     ),
-                    Spacer(),
-                    Text(
-                      'Explore',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32,
-                      ),
-                    ),
-                  ],
-                )),
+                  ),
+                ],
+              ),
+            ),
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(
                 top: 35,
-                bottom: 23,
-                left: 21,
+                left: 24,
+                right: 24,
               ),
               child: Text(
                 'Welcome to $name',
@@ -69,10 +70,7 @@ class TripScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              height: 525,
-              child: ListScreen(name: name)
-            )
+            Container(height: 600, child: ListScreen(name: name)),
           ],
         ),
       ),

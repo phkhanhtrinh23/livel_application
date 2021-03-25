@@ -35,16 +35,17 @@ class _EventElements extends State<EventElements>
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: Duration(seconds: 1),
+      duration: Duration(milliseconds: 500),
       transitionBuilder: (Widget child, Animation<double> animation) {
-        return FadeTransition(child: child, opacity: animation);
+        return ScaleTransition(child: child, scale: animation);
       },
       child: Container(
-        width: 300,
-        height: 185,
+        height: 192,
         margin: const EdgeInsets.only(
           top: 8,
           bottom: 40,
+          right: 16,
+          left: 16,
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(

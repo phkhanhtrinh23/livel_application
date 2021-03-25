@@ -87,7 +87,6 @@ class AvailableElement extends StatelessWidget {
                         bottomLeft: Radius.circular(8.0),
                         bottomRight: Radius.circular(8.0),
                       ),
-                      border: Border.all(color: Colors.grey),
                     ),
                     width: 249,
                     height: 62,
@@ -103,6 +102,7 @@ class AvailableElement extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
+                                color: Colors.black,
                               ),
                             ),
                             Text(
@@ -110,6 +110,7 @@ class AvailableElement extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
                             )
                           ],
@@ -120,6 +121,7 @@ class AvailableElement extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,
+                            color: Colors.black,
                           ),
                         )
                       ],

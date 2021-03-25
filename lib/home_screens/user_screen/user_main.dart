@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:livel_application/database/addTrip.dart';
 import 'package:livel_application/tour_guide/guide_main_screen.dart';
-import 'package:livel_application/tour_guide/guide_screen/guide_trips.dart';
 import 'package:provider/provider.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
 import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
@@ -47,7 +45,9 @@ class UserScreen extends StatelessWidget {
               width: 200,
               height: 100,
               child: Center(
-                child: Image.asset('images/khoa.png'),
+                child: ClipOval(
+                  child: Image.asset('images/unknown.jpg'),
+                ),
               ),
             ),
             ProfileMenu(
@@ -58,11 +58,11 @@ class UserScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => ProfileScreen(
-                      image: 'images/khoa.png',
-                      name: 'Tran Dang Khoa',
-                      career: 'UI/UX Designer',
-                      birthday: 'June 06, 2001',
-                      gender: 'Male',
+                      image: 'images/unknown.jpg',
+                      name: 'Unknown',
+                      career: 'Unknown',
+                      birthday: 'Unknown',
+                      gender: 'Unknown',
                     ),
                   ),
                 ),
@@ -101,7 +101,7 @@ class UserScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "Log In As A Tour Guide",
-              icon: Icon(Icons.tour),
+              icon: Icon(Icons.tour_outlined),
               press: () => {
                 Navigator.push(
                   context,

@@ -19,6 +19,7 @@ class PersonalInfo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Please provide your info"),
+        backgroundColor: Color(0xFF5197E1),
       ),
       body: Form(
         key: _form,

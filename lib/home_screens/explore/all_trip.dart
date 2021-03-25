@@ -6,32 +6,32 @@ import 'package:livel_application/home_screens/components/trip_screen/components
 Future<QuerySnapshot> getAvailable() async {
   return await FirebaseFirestore.instance.collection('Trips').get();
 }
-class allTrip extends StatelessWidget{
-  const allTrip({
+
+class AllTrip extends StatelessWidget {
+  const AllTrip({
     Key key,
-  }): super(key:key);
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: getAvailable(),
-      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return FutureBuilder(
             future: getAvailable(),
-            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
-              if(snapshot.connectionState == ConnectionState.done){
-
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
                 return ListView.builder(
+                  shrinkWrap: true,
                   itemCount: snapshot.data.size,
-                  itemBuilder: (BuildContext context, int index){
+                  itemBuilder: (BuildContext context, int index) {
                     return PlaceScreen(
-                      image:snapshot.data.docs[index].get('Image'),
-                      cost: snapshot.data.docs[index].get('Cost'),
-                      time: snapshot.data.docs[index].get('Time').toString(),
-                      date: 'March 16, 2021',
-                      place: snapshot.data.docs[index].get('Name'),
-                      id:snapshot.data.docs[index].id
-                    );
+                        image: snapshot.data.docs[index].get('Image'),
+                        cost: snapshot.data.docs[index].get('Cost'),
+                        time: snapshot.data.docs[index].get('Time').toString(),
+                        date: 'March 16, 2021',
+                        place: snapshot.data.docs[index].get('Name'),
+                        id: snapshot.data.docs[index].id);
                   },
                 );
               }
@@ -43,5 +43,4 @@ class allTrip extends StatelessWidget{
       },
     );
   }
-
 }

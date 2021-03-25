@@ -12,13 +12,11 @@ class GuideMainScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
+          children: [
             Container(
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
               width: _width,
               height: 148,
-              alignment: Alignment.bottomCenter,
-              padding: const EdgeInsets.only(top: 24, bottom: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
@@ -26,13 +24,31 @@ class GuideMainScreen extends StatelessWidget {
                 ),
                 color: Color(0xFF5197E1),
               ),
-              child: Text(
-                "It's guide time",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        onPressed: () => Navigator.of(context).pop(),
+                      )
+                    ],
+                  ),
+                  Spacer(),
+                  Text(
+                    'Tour Guide',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                    ),
+                  ),
+                ],
               ),
             ),
             ProfileMenu(
@@ -48,7 +64,7 @@ class GuideMainScreen extends StatelessWidget {
               },
             ),
             ProfileMenu(
-              text: "Add Trip",
+              text: "Add a trip",
               icon: Icon(Icons.logout),
               press: () {
                 Navigator.push(

@@ -15,18 +15,20 @@ class YourTripScreen extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           print(id);
           return Container(
+            padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(
               left: 10,
               right: 10,
               bottom: 16,
             ),
             width: 355,
-            height: 135,
+            height: 160,
             decoration: BoxDecoration(
               color: Color(0xFFDBEEFD),
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: FlatButton(
+              padding: const EdgeInsets.all(0),
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -48,18 +50,22 @@ class YourTripScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        snapshot.data.get('Name'),
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      Flexible(
+                        child: Text(
+                          snapshot.data.get('Name'),
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          softWrap: false,
                         ),
                       ),
                       Row(
                         children: [
                           Icon(
                             Icons.calendar_today_outlined,
-                            color: Colors.blueAccent,
+                            color: Color(0xFF5197E1),
                             size: 15,
                           ),
                           Text(
@@ -74,7 +80,7 @@ class YourTripScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.location_on_outlined,
-                            color: Colors.blueAccent,
+                            color: Color(0xFF5197E1),
                             size: 15,
                           ),
                           Text(
@@ -90,7 +96,7 @@ class YourTripScreen extends StatelessWidget {
                       Text(
                         "\$" + snapshot.data.get('Cost').toString(),
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

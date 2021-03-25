@@ -10,14 +10,14 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'call_page.dart';
 
 class TourguidePage extends StatefulWidget {
-  final String id,channel;
+  final String id, channel;
   TourguidePage(this.id, this.channel);
   @override
   _TourguidePage createState() => _TourguidePage(this.id, channel);
 }
 
 class _TourguidePage extends State<TourguidePage> {
-  final String id,channel;
+  final String id, channel;
   _TourguidePage(this.id, this.channel);
 
   /// create a channelController to retrieve text value
@@ -38,7 +38,7 @@ class _TourguidePage extends State<TourguidePage> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    if(channel.isNotEmpty){
+    if (channel.isNotEmpty) {
       onJoin(channel);
     }
     return Scaffold(
@@ -54,7 +54,7 @@ class _TourguidePage extends State<TourguidePage> {
                 bottomLeft: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
-              color: Colors.blue,
+              color: Colors.blue[400],
             ),
             child: Column(
               children: [
@@ -146,8 +146,7 @@ class _TourguidePage extends State<TourguidePage> {
       HttpsCallable callable =
           FirebaseFunctions.instance.httpsCallable('generateRtcToken');
 
-      var rtcToken = await callable(
-          {"channelName": channel, "duration": 300});
+      var rtcToken = await callable({"channelName": channel, "duration": 300});
 
       return rtcToken.data;
     } else {
@@ -159,9 +158,7 @@ class _TourguidePage extends State<TourguidePage> {
   Future<void> onJoin(String channel) async {
     // update input validation
     setState(() {
-      channel.isEmpty
-          ? _validateError = true
-          : _validateError = false;
+      channel.isEmpty ? _validateError = true : _validateError = false;
     });
     if (channel.isNotEmpty) {
       // await for camera and mic permissions before pushing video page

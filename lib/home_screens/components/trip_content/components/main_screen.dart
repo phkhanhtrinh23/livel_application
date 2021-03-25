@@ -44,13 +44,12 @@ class MainContent extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(top: 32, left: 16),
+                        margin: const EdgeInsets.only(top: 32),
                         alignment: Alignment.centerLeft,
                         child: IconButton(
                           icon: Icon(
                             Icons.arrow_back_sharp,
                             color: Colors.white,
-                            size: 40,
                           ),
                           onPressed: () {
                             Navigator.of(context).pop();

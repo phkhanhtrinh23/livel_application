@@ -59,7 +59,7 @@ class _CallPageState extends State<CallPage> {
     }
 
     await _initAgoraRtcEngine();
-   // _addAgoraEventHandlers();
+    // _addAgoraEventHandlers();
     // ignore: deprecated_member_use
     await _engine.enableWebSdkInteroperability(true);
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
@@ -77,6 +77,7 @@ class _CallPageState extends State<CallPage> {
   }
 
   /// Add agora event handlers
+  // ignore: unused_element
   void _addAgoraEventHandlers() {
     _engine.setEventHandler(RtcEngineEventHandler(error: (code) {
       setState(() {

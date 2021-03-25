@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/explore/allTrip.dart';
+import 'package:livel_application/home_screens/explore/all_trip.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({
@@ -71,7 +71,7 @@ class ExploreScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(height: 1000, child: allTrip()),
+            Container(height: 520, child: AllTrip()),
           ],
         ),
       ),

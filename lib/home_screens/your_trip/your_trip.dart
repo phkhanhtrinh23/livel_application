@@ -8,58 +8,54 @@ class YourTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    String uid=FirebaseAuth.instance.currentUser.uid;
+    String uid = FirebaseAuth.instance.currentUser.uid;
     return Scaffold(
-      body: FutureBuilder(
-        future: getJoin(uid),
-        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
-          if(snapshot.hasData){
-            List<dynamic> arr=snapshot.data.get('TripList');
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    width: _width,
-                    height: 148,
-                    padding: const EdgeInsets.only(top: 24, bottom: 16),
-                    alignment: Alignment.bottomCenter,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(16),
-                        bottomRight: Radius.circular(16),
-                      ),
-                      color: Color(0xFF5197E1),
+        body: FutureBuilder(
+      future: getJoin(uid),
+      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasData) {
+          List<dynamic> arr = snapshot.data.get('TripList');
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: _width,
+                  height: 148,
+                  padding: const EdgeInsets.only(top: 24, bottom: 16),
+                  margin: const EdgeInsets.only(bottom: 16),
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
                     ),
-                    child: Text(
-                      'Your Trips',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32,
-                      ),
+                    color: Color(0xFF5197E1),
+                  ),
+                  child: Text(
+                    'Your Trips',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                  ),
-                  Container(
-                    height: 580,
-                    child: ListView.builder(
-                        itemCount: arr.length,
-                        itemBuilder: (BuildContext context, int index){
-                          return YourTripScreen(
-                            id: arr[index],
-                          );
-                        }
-                    ),
-                  )
-                ],
-              ),
-            );
-          }
-          return CircularProgressIndicator();
-        },
-      )
-    );
+                ),
+                Container(
+                  height: 620,
+                  child: ListView.builder(
+                      itemCount: arr.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return YourTripScreen(
+                          id: arr[index],
+                        );
+                      }),
+                )
+              ],
+            ),
+          );
+        }
+        return CircularProgressIndicator();
+      },
+    ));
   }
 }

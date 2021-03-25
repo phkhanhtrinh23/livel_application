@@ -58,11 +58,9 @@ class ProfileScreen extends StatelessWidget {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
+                      child: ClipOval(
+                        child: Image.asset(image),
                       ),
-                      child: Image.asset(image),
                     ),
                     top: 120,
                   ),
@@ -70,8 +68,9 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             Container(
+              alignment: Alignment.center,
               margin: const EdgeInsets.only(
-                left: 16,
+                left: 32,
                 right: 32,
               ),
               child: Column(
@@ -140,83 +139,86 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: const EdgeInsets.only(
-                              bottom: 8,
-                            ),
-                            child: Text(
-                              'Your birthday',
-                              style: TextStyle(
-                                fontSize: 14,
+                  Container(
+                    width: 320,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              margin: const EdgeInsets.only(
+                                bottom: 8,
+                              ),
+                              child: Text(
+                                'Your birthday',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            alignment: Alignment.centerLeft,
-                            width: 148,
-                            height: 32,
-                            margin: const EdgeInsets.only(
-                              bottom: 16,
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF5197E1)),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              birthday,
-                              style: TextStyle(
-                                fontSize: 16,
+                            Container(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              alignment: Alignment.centerLeft,
+                              width: 148,
+                              height: 32,
+                              margin: const EdgeInsets.only(
+                                bottom: 16,
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xFF5197E1)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                birthday,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: const EdgeInsets.only(
-                              bottom: 8,
-                            ),
-                            child: Text(
-                              'Gender',
-                              style: TextStyle(
-                                fontSize: 14,
+                          ],
+                        ),
+                        Spacer(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              margin: const EdgeInsets.only(
+                                bottom: 8,
+                              ),
+                              child: Text(
+                                'Gender',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            alignment: Alignment.centerLeft,
-                            width: 148,
-                            height: 32,
-                            margin: const EdgeInsets.only(
-                              bottom: 16,
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF5197E1)),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              gender,
-                              style: TextStyle(
-                                fontSize: 16,
+                            Container(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              alignment: Alignment.centerLeft,
+                              width: 148,
+                              height: 32,
+                              margin: const EdgeInsets.only(
+                                bottom: 16,
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xFF5197E1)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                gender,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

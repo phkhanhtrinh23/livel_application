@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/your_trip/components/main_screen.dart';
-
-Future< DocumentSnapshot > getTripList(String id) async{
-  return await FirebaseFirestore.instance.collection('User').doc(id).get();
-}
 
 class YourTrip extends StatelessWidget {
   @override
@@ -14,7 +11,7 @@ class YourTrip extends StatelessWidget {
     String uid=FirebaseAuth.instance.currentUser.uid;
     return Scaffold(
       body: FutureBuilder(
-        future: getTripList(uid),
+        future: getJoin(uid),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
           if(snapshot.hasData){
             List<dynamic> arr=snapshot.data.get('TripList');

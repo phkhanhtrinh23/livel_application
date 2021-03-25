@@ -1,12 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/joinButton.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/tourguide.dart';
-
-Future<DocumentSnapshot> getTrip(String id) async {
-  return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
-}
 
 class MainContent extends StatelessWidget {
   const MainContent({Key key, this.id}) : super(key: key);
@@ -20,6 +16,7 @@ class MainContent extends StatelessWidget {
       future: getTrip(id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+          print(snapshot.data.id);
           return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

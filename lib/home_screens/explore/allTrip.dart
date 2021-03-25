@@ -27,7 +27,7 @@ class allTrip extends StatelessWidget{
                     return PlaceScreen(
                       image:snapshot.data.docs[index].get('Image'),
                       cost: snapshot.data.docs[index].get('Cost'),
-                      time: snapshot.data.docs[index].get('Time'),
+                      time: snapshot.data.docs[index].get('Time').toString(),
                       date: 'March 16, 2021',
                       place: snapshot.data.docs[index].get('Name'),
                       id:snapshot.data.docs[index].id

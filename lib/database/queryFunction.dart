@@ -11,17 +11,14 @@ Future<DocumentSnapshot> getName() async {
       .doc(FirebaseAuth.instance.currentUser.uid)
       .get();
 }
-
 Future< QuerySnapshot > getGuideTrip() async{
   return await FirebaseFirestore.instance.collection('Trips')
       .where("Guide's ID", isEqualTo: FirebaseAuth.instance.currentUser.uid)
       .get();
 }
-
 Future<QuerySnapshot> getCountry(String name) async {
   return await FirebaseFirestore.instance.collection('Trips').where('Country', isEqualTo: name).get();
 }
-
 Future<DocumentSnapshot> getJoin(String id) async{
   return await FirebaseFirestore.instance.collection("Users").doc(id).get();
 }

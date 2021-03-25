@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-Future<DocumentSnapshot> getGuide(String id) async{
-  return await FirebaseFirestore.instance.collection("User").doc(id).get();
-}
+import 'package:livel_application/database/queryFunction.dart';
 
 class TourGuide extends StatelessWidget{
   final String id;
@@ -15,7 +12,7 @@ class TourGuide extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
         return FutureBuilder(
-            future: getGuide(this.id),
+            future: getJoin(this.id),
             builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
               DocumentSnapshot snapdata=snapshot.data;
               if(snapshot.connectionState == ConnectionState.done){

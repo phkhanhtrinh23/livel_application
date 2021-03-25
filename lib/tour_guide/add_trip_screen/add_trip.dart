@@ -243,7 +243,7 @@ class AddTrip extends StatelessWidget {
                           .add({
                         'Name': name.text.trim(),
                         'Place': place.text,
-                        'Cost': cost.text,
+                        'Cost': int.parse(cost.text),
                         'Country': country.text.trim(),
                         'Duration': duration.text,
                         'Description': description.text,

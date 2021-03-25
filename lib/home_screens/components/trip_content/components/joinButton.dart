@@ -68,7 +68,7 @@ class JoinRegister extends StatelessWidget{
                     ),
                   ),
                   onPressed: () {
-                    FirebaseFirestore.instance.collection('User').doc(uid).update({"TripList": FieldValue.arrayUnion([id])});
+                    FirebaseFirestore.instance.collection('Users').doc(uid).update({"TripList": FieldValue.arrayUnion([id])});
                     Navigator.push(
                       context,
                       MaterialPageRoute(

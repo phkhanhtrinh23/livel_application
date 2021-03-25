@@ -62,7 +62,7 @@ class PlaceScreen extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  '\$$cost',
+                  "\$"+cost.toString(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

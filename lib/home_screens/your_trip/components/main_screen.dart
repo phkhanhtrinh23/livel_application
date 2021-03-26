@@ -40,7 +40,7 @@ class YourTripScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(right: 32, left: 8),
                     child: Image.asset(
-                      'images/3.png',
+                      'images/trip_image.png',
                       width: 150,
                       height: 120,
                     ),
@@ -57,17 +57,23 @@ class YourTripScreen extends StatelessWidget {
                           color: Color(0xFF4EAFC1),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                      ),
                       Row(
                         children: [
                           Icon(
                             Icons.calendar_today_outlined,
                             color: Color(0xFF4EAFC1),
-                            size: 14,
+                            size: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
                             snapshot.data.get('Date'),
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 18,
                             ),
                           ),
                         ],
@@ -77,17 +83,21 @@ class YourTripScreen extends StatelessWidget {
                           Icon(
                             Icons.location_on_outlined,
                             color: Color(0xFF4EAFC1),
-                            size: 14,
+                            size: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
                             snapshot.data.get('Place').toString(),
-                            overflow: TextOverflow.ellipsis,
-                            softWrap: false,
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 18,
                             ),
                           ),
                         ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
                       ),
                       Text(
                         "\$" + snapshot.data.get('Cost').toString(),
@@ -102,7 +112,11 @@ class YourTripScreen extends StatelessWidget {
                         width: 160,
                         child: Text(
                           'Let\'s go',
-                          style: TextStyle(color: Color(0xFFEE6C4D)),
+                          style: TextStyle(
+                            color: Color(0xFF4EAFC1),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

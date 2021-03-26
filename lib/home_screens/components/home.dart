@@ -36,8 +36,9 @@ class MainHome extends StatelessWidget {
                   child: Text(
                     'Today: $day/$month/$year',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 20,
                       color: Color(0xFFFFBE9A),
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -56,7 +57,7 @@ class MainHome extends StatelessWidget {
                               snapshot.data.get('Name') +
                               ',\nchoose your trip today!',
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 30,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),

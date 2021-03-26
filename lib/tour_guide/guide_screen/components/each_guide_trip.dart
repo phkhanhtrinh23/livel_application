@@ -37,13 +37,21 @@ class GuideTripScreen extends StatelessWidget {
               },
               child: Row(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 32, left: 8),
-                    child: Image.asset(
-                      snapshot.data.get('Image'),
-                      width: 111,
-                      height: 119,
-                    ),
+                  FutureBuilder(
+                    future: getImage(snapshot.data.get('Image')),
+                      builder: (context,snapshot){
+                        if(snapshot.connectionState == ConnectionState.done){
+                          return Container(
+                            margin: const EdgeInsets.only(right: 32, left: 8),
+                            child: //Image.asset(
+                               snapshot.data,
+                               width: 111,
+                               height: 119,
+                            // ),
+                          );
+                        }
+                        return CircularProgressIndicator();
+                      }
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

@@ -16,62 +16,69 @@ class MainContent extends StatelessWidget {
       future: getTrip(id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          print(snapshot.data.id);
           return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: _width,
-                  height: 335,
-                  padding: const EdgeInsets.only(
-                    left: 18.0,
-                    top: 32,
-                    bottom: 8.0,
-                    right: 18.0,
-                  ),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(snapshot.data.get('Image')),
-                      fit: BoxFit.fill,
-                    ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 32),
-                        alignment: Alignment.centerLeft,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.arrow_back_sharp,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
+                FutureBuilder(
+                  future: getNetWorkImage(snapshot.data.get('Image')),
+                  builder: (context, snapshot_image){
+                    if(snapshot_image.connectionState == ConnectionState.done){
+                      return Container(
+                        width: _width,
+                        height: 335,
+                        padding: const EdgeInsets.only(
+                          left: 18.0,
+                          top: 32,
+                          bottom: 8.0,
+                          right: 18.0,
                         ),
-                      ),
-                      Spacer(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            snapshot.data.get('Country').toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: snapshot_image.data,
+                            fit: BoxFit.fill,
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(16),
+                            bottomRight: Radius.circular(16),
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 32),
+                              alignment: Alignment.centerLeft,
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.arrow_back_sharp,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),
+                            Spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  snapshot.data.get('Country').toString(),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                    return CircularProgressIndicator();
+                  },
                 ),
                 Container(
                   alignment: Alignment.bottomLeft,

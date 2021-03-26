@@ -19,73 +19,81 @@ class GuideMainContent extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: _width,
-                  height: 335,
-                  padding: const EdgeInsets.only(
-                    left: 18.0,
-                    top: 8.0,
-                    bottom: 8.0,
-                    right: 18.0,
-                  ),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(snapshot.data.get('Image')),
-                      fit: BoxFit.fill,
-                    ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              Icons.arrow_back_sharp,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Row(
-                        children: [
-                          Text(
-                            snapshot.data.get('Country').toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                            ),
+                FutureBuilder(
+                  future: getNetWorkImage(snapshot.data.get('Image')),
+                  builder: (context, snapshot_image){
+                    if(snapshot_image.connectionState == ConnectionState.done){
+                      return Container(
+                        width: _width,
+                        height: 335,
+                        padding: const EdgeInsets.only(
+                          left: 18.0,
+                          top: 8.0,
+                          bottom: 8.0,
+                          right: 18.0,
+                        ),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: snapshot_image.data,
+                            fit: BoxFit.fill,
                           ),
-                          Spacer(),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 52,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFEE6C4D),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Text(
-                              "\$"+snapshot.data.get('Cost').toString(),
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(16),
+                            bottomRight: Radius.circular(16),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Row(
+                              children: [
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.arrow_back_sharp,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            ),
+                            Spacer(),
+                            Row(
+                              children: [
+                                Text(
+                                  snapshot.data.get('Country').toString(),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: 52,
+                                  height: 32,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEE6C4D),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Text(
+                                    "\$"+snapshot.data.get('Cost').toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                    return CircularProgressIndicator();
+                  },
                 ),
                 Container(
                   alignment: Alignment.bottomLeft,

@@ -40,21 +40,28 @@ class AvailableElement extends StatelessWidget {
               },
               child: Column(
                 children: <Widget>[
-                  Container(
-                    alignment: Alignment.topLeft,
-                    width: 249,
-                    height: 140,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image:
-                            AssetImage(snapshot.data.get('Image').toString()),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16),
-                      ),
-                    ),
+                  FutureBuilder(
+                    future: getNetWorkImage(snapshot.data.get('Image')),
+                    builder: (context, snapshot){
+                      if(snapshot.connectionState == ConnectionState.done){
+                        return Container(
+                          alignment: Alignment.topLeft,
+                          width: 249,
+                          height: 140,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: snapshot.data,
+                              fit: BoxFit.fill,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              topRight: Radius.circular(16),
+                            ),
+                          ),
+                        );
+                      }
+                      return CircularProgressIndicator();
+                    },
                   ),
                   Container(
                     padding: const EdgeInsets.only(

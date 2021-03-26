@@ -13,7 +13,6 @@ class YourTripScreen extends StatelessWidget {
       future: getTrip(this.id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          print(id);
           return Container(
             padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(

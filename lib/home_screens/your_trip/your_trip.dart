@@ -29,7 +29,7 @@ class YourTrip extends StatelessWidget {
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
                     ),
-                    color: Color(0xFF5197E1),
+                    color: Color(0xFF4EAFC1),
                   ),
                   child: Text(
                     'Your Trips',

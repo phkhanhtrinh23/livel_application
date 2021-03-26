@@ -27,7 +27,7 @@ class UserScreen extends StatelessWidget {
                   bottomLeft: Radius.circular(16),
                   bottomRight: Radius.circular(16),
                 ),
-                color: Color(0xFF5197E1),
+                color: Color(0xFF4EAFC1),
               ),
               child: Text(
                 'Your Account',
@@ -52,7 +52,7 @@ class UserScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "My Profile",
-              icon: Icon(Icons.person_outline),
+              icon: Icon(Icons.person_outline, color: Color(0xFF477983)),
               press: () => {
                 Navigator.push(
                   context,
@@ -70,7 +70,7 @@ class UserScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "Help Center",
-              icon: Icon(Icons.help_center_outlined),
+              icon: Icon(Icons.help_center_outlined, color: Color(0xFF477983)),
               press: () => {
                 Navigator.push(
                   context,
@@ -82,7 +82,8 @@ class UserScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "Guidelines",
-              icon: Icon(Icons.bookmark_border_outlined),
+              icon: Icon(Icons.bookmark_border_outlined,
+                  color: Color(0xFF477983)),
               press: () => {
                 Navigator.push(
                   context,
@@ -94,14 +95,14 @@ class UserScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "Log Out",
-              icon: Icon(Icons.logout),
+              icon: Icon(Icons.logout, color: Color(0xFF477983)),
               press: () {
                 context.read<AuthenticationService>().signOut();
               },
             ),
             ProfileMenu(
               text: "Log In As A Tour Guide",
-              icon: Icon(Icons.tour_outlined),
+              icon: Icon(Icons.tour_outlined, color: Color(0xFF477983)),
               press: () => {
                 Navigator.push(
                   context,
@@ -132,21 +133,32 @@ class ProfileMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: FlatButton(
-        padding: EdgeInsets.all(20),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-          side: BorderSide(color: Color(0xFF5197E1)),
+    return Container(
+      width: 330,
+      height: 68,
+      margin: const EdgeInsets.only(top: 16, bottom: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Color(0xFF477983),
         ),
+      ),
+      child: FlatButton(
+        padding: EdgeInsets.all(0),
         color: Colors.white,
         onPressed: press,
         child: Row(
           children: [
             icon,
             Container(
-              child: Text(text),
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: Color(0xFF477983),
+                  fontSize: 20,
+                ),
+              ),
               margin: const EdgeInsets.only(left: 5.0),
             ),
             Spacer(),

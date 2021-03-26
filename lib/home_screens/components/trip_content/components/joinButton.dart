@@ -37,9 +37,9 @@ class JoinRegister extends StatelessWidget {
                         side: BorderSide(color: Colors.black),
                       ),
                       child: Text(
-                        'GO BACK',
+                        'HOME SCREEN',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.grey,
                         ),
                       ),
                       onPressed: () {

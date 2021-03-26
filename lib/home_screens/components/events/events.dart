@@ -49,7 +49,7 @@ class _EventElements extends State<EventElements>
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xFFFFEADE),
+          color: Color(0xFF4EAFC1),
           borderRadius: BorderRadius.circular(16),
           image: DecorationImage(
             image: AssetImage(widget.images[_index]),

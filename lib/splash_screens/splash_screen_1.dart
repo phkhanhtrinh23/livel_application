@@ -1,42 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/log_in_screens/components/sign_in.dart';
+import 'package:livel_application/splash_screens/splash_screen_2.dart';
 
 class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFFF0FBFF),
+        color: Color(0xFFFDFFFF),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(
-              'images/saly2.png',
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'LET\'S TRAVEL\nwith LIVEL',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Colors.black,
+            Container(
+                margin: const EdgeInsets.only(
+                  top: 170,
+                  left: 20,
+                  right: 20,
+                  bottom: 182,
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'A whole new experience for home-based tourists',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'images/saly.png',
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Provide interactive traveling experiences to any places with an ideal price.',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.grey,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                )),
             Container(
               margin: const EdgeInsets.only(
                 top: 24,
@@ -49,7 +49,7 @@ class SecondScreen extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: Color(0xFF5197E1),
+                color: Color(0xFF4EAFC1),
               ),
               child: FlatButton(
                 minWidth: 335,
@@ -66,7 +66,7 @@ class SecondScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SignInPage(),
+                      builder: (context) => ThirdScreen(),
                     ),
                   );
                 },

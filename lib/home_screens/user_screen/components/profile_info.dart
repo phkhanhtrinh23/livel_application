@@ -23,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Color(0xFF5197E1),
+        backgroundColor: Color(0xFF4EAFC1),
         centerTitle: true,
         title: Text(
           'My Account',
@@ -47,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                     width: _width,
                     height: 160,
                     decoration: BoxDecoration(
-                      color: Color(0xFF5197E1),
+                      color: Color(0xFF4EAFC1),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(8),
                         bottomRight: Radius.circular(8),
@@ -98,8 +98,8 @@ class ProfileScreen extends StatelessWidget {
                       bottom: 32,
                     ),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF5197E1)),
-                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Color(0xFF4EAFC1)),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     child: Text(
                       name,
@@ -129,8 +129,8 @@ class ProfileScreen extends StatelessWidget {
                       bottom: 32,
                     ),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF5197E1)),
-                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Color(0xFF4EAFC1)),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     child: Text(
                       career,
@@ -168,8 +168,8 @@ class ProfileScreen extends StatelessWidget {
                                 bottom: 16,
                               ),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Color(0xFF5197E1)),
-                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Color(0xFF4EAFC1)),
+                                borderRadius: BorderRadius.circular(16),
                               ),
                               child: Text(
                                 birthday,
@@ -205,8 +205,8 @@ class ProfileScreen extends StatelessWidget {
                                 bottom: 16,
                               ),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Color(0xFF5197E1)),
-                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Color(0xFF4EAFC1)),
+                                borderRadius: BorderRadius.circular(16),
                               ),
                               child: Text(
                                 gender,

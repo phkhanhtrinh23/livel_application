@@ -23,18 +23,7 @@ class _SignUpPage extends State<SignUpPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  )
-                ],
+                padding: const EdgeInsets.only(bottom: 128),
               ),
               Image.asset(
                 'images/coolkid.png',
@@ -101,6 +90,11 @@ class _SignUpPage extends State<SignUpPage> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 48,
+                ),
+              ),
               Container(
                 width: 343,
                 height: 56,
@@ -118,9 +112,7 @@ class _SignUpPage extends State<SignUpPage> {
                       MaterialPageRoute(
                           builder: (context) => PersonalInfo(
                               emailController.text.trim(),
-                              passwordController.text.trim()
-                          )
-                      ),
+                              passwordController.text.trim())),
                     );
                   },
                   child: Text(

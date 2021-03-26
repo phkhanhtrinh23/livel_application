@@ -24,18 +24,31 @@ class TourGuide extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.map_outlined),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
                       Text(
                         'Tour Guide',
                         style: TextStyle(
                           fontSize: 26,
-                          color: Color(0xFFEE6C4D),
+                          color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 2,
+                            )
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
                 Container(
+                  alignment: Alignment.center,
                   margin: const EdgeInsets.only(
                     bottom: 23,
                     right: 43,
@@ -45,25 +58,26 @@ class TourGuide extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Spacer(),
-                      Column(
-                        children: [
-                          ClipOval(
-                            child: Image.asset(
-                              'images/unknown.jpg',
-                              width: 100,
-                              height: 100,
+                      Container(
+                        margin: const EdgeInsets.only(right: 64),
+                        child: Column(
+                          children: [
+                            ClipOval(
+                              child: Image.asset(
+                                'images/unknown.jpg',
+                                width: 100,
+                                height: 100,
+                              ),
                             ),
-                          ),
-                          Text(
-                            snapdata.get('Name'),
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
+                            Text(
+                              snapdata.get('Name'),
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -87,7 +101,6 @@ class TourGuide extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Spacer(),
                     ],
                   ),
                 ),
@@ -101,12 +114,24 @@ class TourGuide extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.map_outlined),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
                       Text(
                         'Note',
                         style: TextStyle(
                           fontSize: 26,
-                          color: Color(0xFFEE6C4D),
+                          color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 2,
+                            )
+                          ],
                         ),
                       ),
                     ],

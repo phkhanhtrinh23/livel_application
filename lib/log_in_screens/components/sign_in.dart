@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/log_in_screens/state_home.dart';
-import 'sign_up.dart';
 import 'authentication.dart';
 
 class SignInPage extends StatefulWidget {
@@ -25,9 +24,9 @@ class _SignInPage extends State<SignInPage> {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.only(bottom: 100),
               ),
-              Image.asset('images/travel.png'),
+              Image.asset('images/newimage.png'),
               Text(
                 'Log in',
                 style: TextStyle(
@@ -107,55 +106,28 @@ class _SignInPage extends State<SignInPage> {
               Padding(
                 padding: EdgeInsets.only(bottom: 48.0),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    width: 343,
-                    height: 56,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFEE6C4D),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: TextButton(
-                      onPressed: () async {
-                        await FirebaseAuth.instance.signInWithEmailAndPassword(
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim());
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeMain()),
-                        );
-                      },
-                      child: Text(
-                        "Log in",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+              Container(
+                width: 343,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: Color(0xFFEE6C4D),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: TextButton(
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim());
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeMain()),
+                    );
+                  },
+                  child: Text(
+                    "Log in",
+                    style: TextStyle(color: Colors.white),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 8),
-                    width: 343,
-                    height: 56,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpPage()),
-                        );
-                      },
-                      child: Text(
-                        "Sign up",
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ],
           ),

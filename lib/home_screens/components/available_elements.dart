@@ -55,25 +55,6 @@ class AvailableElement extends StatelessWidget {
                         topRight: Radius.circular(16),
                       ),
                     ),
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: 52,
-                      height: 32,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF5197E1),
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(16.0),
-                          topLeft: Radius.circular(16.0),
-                        ),
-                      ),
-                      child: Text(
-                        "\$" + snapshot.data.get('Cost').toString(),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
                   ),
                   Container(
                     padding: const EdgeInsets.only(

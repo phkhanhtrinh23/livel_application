@@ -72,6 +72,7 @@ flutter:
     - images/1.png
     - images/2.png
     - images/3.png
+    - images/4.png
     - images/place.png
     - images/boat_1.png
     - images/khoa.png
@@ -108,6 +109,11 @@ flutter:
     - images/toronto.png
     - images/unknown.jpg
     - images/ussh.png
+    - images/saly_22.png
+    - images/citi.png
+    - images/lake.png
+    - images/boat.png
+    
   
   # To add assets to your application, add an assets section, like this:
   # assets:

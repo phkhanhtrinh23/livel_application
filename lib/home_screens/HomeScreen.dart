@@ -28,8 +28,8 @@ class _HomeScreen extends State<HomeScreen> {
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           iconSize: 25,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -41,24 +41,22 @@ class _HomeScreen extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.list),
-              label: 'List',
+              label: 'Your Trips',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'User',
             ),
           ],
-          backgroundColor: Colors.grey[350],
+          backgroundColor: Color(0xFF4EAFC1),
           currentIndex: _selectedIndex,
-          selectedItemColor: Color(0xFF5197E1),
+          selectedItemColor: Colors.white,
           onTap: (value) {
             setState(() {
               _selectedIndex = value;
             });
           },
         ),
-        // clipBehavior: Clip.antiAliasWithSaveLayer,
-        // shape: CircularNotchedRectangle(),
       ),
     );
   }

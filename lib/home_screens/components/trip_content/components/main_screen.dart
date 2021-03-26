@@ -26,7 +26,7 @@ class MainContent extends StatelessWidget {
                   height: 335,
                   padding: const EdgeInsets.only(
                     left: 18.0,
-                    top: 8.0,
+                    top: 32,
                     bottom: 8.0,
                     right: 18.0,
                   ),
@@ -58,6 +58,7 @@ class MainContent extends StatelessWidget {
                       ),
                       Spacer(),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             snapshot.data.get('Country').toString(),
@@ -65,23 +66,6 @@ class MainContent extends StatelessWidget {
                               color: Colors.white,
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Spacer(),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 52,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFEE6C4D),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Text(
-                              snapshot.data.get('Cost').toString(),
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
                             ),
                           ),
                         ],
@@ -92,7 +76,7 @@ class MainContent extends StatelessWidget {
                 Container(
                   alignment: Alignment.bottomLeft,
                   padding: const EdgeInsets.only(
-                    top: 30.0,
+                    top: 8,
                     left: 18.0,
                     bottom: 42.0,
                   ),
@@ -100,9 +84,9 @@ class MainContent extends StatelessWidget {
                     snapshot.data.get('Name'),
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      fontSize: 26,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF5197E1),
+                      color: Color(0xFFEE6C4D),
                     ),
                   ),
                 ),
@@ -140,12 +124,24 @@ class MainContent extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.map_outlined),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
                       Text(
                         'Information',
                         style: TextStyle(
                           fontSize: 26,
-                          color: Color(0xFFEE6C4D),
+                          color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 2,
+                            )
+                          ],
                         ),
                       ),
                     ],
@@ -168,16 +164,56 @@ class MainContent extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     right: 23,
                     left: 23,
-                    bottom: 200,
+                    bottom: 42,
                   ),
                   child: Text(
-                    snapshot.data.get('Note').toString(),
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
+                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. '),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 16),
+                  padding: const EdgeInsets.only(right: 16, left: 16),
+                  child: Divider(
+                    color: Colors.grey,
+                    thickness: 2,
                   ),
                 ),
-                JoinRegister(id: snapshot.data.id)
+                Container(
+                  margin: const EdgeInsets.only(
+                    right: 16,
+                    left: 16,
+                    bottom: 150,
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Trip Fee',
+                        style:
+                            TextStyle(color: Color(0xFF4EAFC1), fontSize: 24),
+                      ),
+                      Spacer(),
+                      Container(
+                        alignment: Alignment.center,
+                        width: 106,
+                        height: 46,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: Color(0xFF4EAFC1),
+                          ),
+                        ),
+                        child: Text(
+                          '\$' + snapshot.data.get('Cost').toString(),
+                          style: TextStyle(
+                            color: Color(0xFFEAB25E),
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                JoinRegister(id: snapshot.data.id),
               ],
             ),
           );

@@ -24,7 +24,6 @@ class YourTripScreen extends StatelessWidget {
             width: 355,
             height: 160,
             decoration: BoxDecoration(
-              color: Color(0xFFDBEEFD),
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: FlatButton(
@@ -41,32 +40,29 @@ class YourTripScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(right: 32, left: 8),
                     child: Image.asset(
-                      snapshot.data.get('Image'),
-                      width: 111,
-                      height: 119,
+                      'images/3.png',
+                      width: 150,
+                      height: 120,
                     ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Flexible(
-                        child: Text(
-                          snapshot.data.get('Name'),
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          softWrap: false,
+                      Text(
+                        snapshot.data.get('Time'),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF4EAFC1),
                         ),
                       ),
                       Row(
                         children: [
                           Icon(
                             Icons.calendar_today_outlined,
-                            color: Color(0xFF5197E1),
-                            size: 15,
+                            color: Color(0xFF4EAFC1),
+                            size: 14,
                           ),
                           Text(
                             snapshot.data.get('Date'),
@@ -80,8 +76,8 @@ class YourTripScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.location_on_outlined,
-                            color: Color(0xFF5197E1),
-                            size: 15,
+                            color: Color(0xFF4EAFC1),
+                            size: 14,
                           ),
                           Text(
                             snapshot.data.get('Place').toString(),
@@ -96,12 +92,21 @@ class YourTripScreen extends StatelessWidget {
                       Text(
                         "\$" + snapshot.data.get('Cost').toString(),
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        width: 160,
+                        child: Text(
+                          'Let\'s go',
+                          style: TextStyle(color: Color(0xFFEE6C4D)),
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

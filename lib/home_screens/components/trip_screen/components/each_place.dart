@@ -47,62 +47,41 @@ class PlaceScreen extends StatelessWidget {
         },
         child: Container(
           alignment: Alignment.centerLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                alignment: Alignment.center,
-                width: 52,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: Color(0xFF5197E1),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16.0),
-                    bottomRight: Radius.circular(16.0),
-                  ),
-                ),
-                child: Text(
-                  "\$"+cost.toString(),
+          child: Container(
+            padding: const EdgeInsets.only(
+              left: 16,
+              bottom: 16,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  time,
                   style: TextStyle(
+                    fontSize: 18,
                     color: Colors.white,
-                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
-              ),
-              Spacer(),
-              Container(
-                padding: const EdgeInsets.only(
-                  left: 14,
+                Text(
+                  date,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      time,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      date,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      place,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                Text(
+                  place,
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

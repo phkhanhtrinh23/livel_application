@@ -24,7 +24,7 @@ class TripElement extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Color(0xFF5197E1),
+        color: Color(0xFF4EAFC1),
       ),
       child: FlatButton(
         padding: const EdgeInsets.all(0),
@@ -37,8 +37,8 @@ class TripElement extends StatelessWidget {
         ),
         child: Container(
           alignment: Alignment.topLeft,
-          width: 164,
-          height: 230,
+          width: 173,
+          height: 240,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(image),
@@ -52,7 +52,7 @@ class TripElement extends StatelessWidget {
                 bottomRight: Radius.circular(16),
                 topLeft: Radius.circular(16),
               ),
-              color: Color(0xFF5197E1),
+              color: Color(0xFF4EAFC1),
             ),
             width: 100,
             height: 45,
@@ -69,10 +69,10 @@ class TripElement extends StatelessWidget {
                 ),
                 FutureBuilder(
                   future: getCountry(name),
-                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
-                    if(snapshot.connectionState== ConnectionState.done){
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
                       return Text(
-                        snapshot.data.size.toString()+' places',
+                        snapshot.data.size.toString() + ' places',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.normal,

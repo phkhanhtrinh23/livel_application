@@ -14,7 +14,7 @@ class GuidelinesScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Color(0xFF5197E1),
+        backgroundColor: Color(0xFF4EAFC1),
         centerTitle: true,
         title: Text(
           'Guidelines',
@@ -37,7 +37,7 @@ class GuidelinesScreen extends StatelessWidget {
                   width: _width,
                   height: 160,
                   decoration: BoxDecoration(
-                    color: Color(0xFF5197E1),
+                    color: Color(0xFF4EAFC1),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8),

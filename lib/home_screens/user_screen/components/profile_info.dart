@@ -85,14 +85,14 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       'Your name',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 20,
                       ),
                     ),
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
                     width: 320,
-                    height: 32,
+                    height: 45,
                     padding: const EdgeInsets.only(left: 8.0),
                     margin: const EdgeInsets.only(
                       bottom: 32,
@@ -116,14 +116,14 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       'Your Career',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 20,
                       ),
                     ),
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
                     width: 320,
-                    height: 32,
+                    height: 45,
                     padding: const EdgeInsets.only(left: 8.0),
                     margin: const EdgeInsets.only(
                       bottom: 32,
@@ -155,7 +155,7 @@ class ProfileScreen extends StatelessWidget {
                               child: Text(
                                 'Your birthday',
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
@@ -163,7 +163,7 @@ class ProfileScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 8.0),
                               alignment: Alignment.centerLeft,
                               width: 148,
-                              height: 32,
+                              height: 45,
                               margin: const EdgeInsets.only(
                                 bottom: 16,
                               ),
@@ -192,7 +192,7 @@ class ProfileScreen extends StatelessWidget {
                               child: Text(
                                 'Gender',
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
@@ -200,7 +200,7 @@ class ProfileScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 8.0),
                               alignment: Alignment.centerLeft,
                               width: 148,
-                              height: 32,
+                              height: 45,
                               margin: const EdgeInsets.only(
                                 bottom: 16,
                               ),

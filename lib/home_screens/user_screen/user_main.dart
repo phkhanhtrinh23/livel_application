@@ -13,107 +13,105 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              width: _width,
-              height: 148,
-              alignment: Alignment.bottomCenter,
-              padding: const EdgeInsets.only(top: 24, bottom: 16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
-                ),
-                color: Color(0xFF4EAFC1),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: _width,
+            height: 148,
+            alignment: Alignment.bottomCenter,
+            padding: const EdgeInsets.only(top: 24, bottom: 16),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
               ),
-              child: Text(
-                'Your Account',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
-                ),
+              color: Color(0xFF4EAFC1),
+            ),
+            child: Text(
+              'Your Account',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 32,
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(
-                top: 8.0,
+          ),
+          Container(
+            margin: const EdgeInsets.only(
+              top: 8.0,
+            ),
+            width: 200,
+            height: 100,
+            child: Center(
+              child: ClipOval(
+                child: Image.asset('images/unknown.jpg'),
               ),
-              width: 200,
-              height: 100,
-              child: Center(
-                child: ClipOval(
-                  child: Image.asset('images/unknown.jpg'),
+            ),
+          ),
+          ProfileMenu(
+            text: "My Profile",
+            icon: Icon(Icons.person_outline, color: Color(0xFF477983)),
+            press: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ProfileScreen(
+                    image: 'images/unknown.jpg',
+                    name: 'Unknown',
+                    career: 'Unknown',
+                    birthday: 'Unknown',
+                    gender: 'Unknown',
+                  ),
                 ),
               ),
-            ),
-            ProfileMenu(
-              text: "My Profile",
-              icon: Icon(Icons.person_outline, color: Color(0xFF477983)),
-              press: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => ProfileScreen(
-                      image: 'images/unknown.jpg',
-                      name: 'Unknown',
-                      career: 'Unknown',
-                      birthday: 'Unknown',
-                      gender: 'Unknown',
-                    ),
-                  ),
+            },
+          ),
+          ProfileMenu(
+            text: "Help Center",
+            icon: Icon(Icons.help_center_outlined, color: Color(0xFF477983)),
+            press: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => HelpCenterScreen(),
                 ),
-              },
-            ),
-            ProfileMenu(
-              text: "Help Center",
-              icon: Icon(Icons.help_center_outlined, color: Color(0xFF477983)),
-              press: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => HelpCenterScreen(),
-                  ),
+              ),
+            },
+          ),
+          ProfileMenu(
+            text: "Guidelines",
+            icon:
+                Icon(Icons.bookmark_border_outlined, color: Color(0xFF477983)),
+            press: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => GuidelinesScreen(),
                 ),
-              },
-            ),
-            ProfileMenu(
-              text: "Guidelines",
-              icon: Icon(Icons.bookmark_border_outlined,
-                  color: Color(0xFF477983)),
-              press: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => GuidelinesScreen(),
-                  ),
+              ),
+            },
+          ),
+          ProfileMenu(
+            text: "Log Out",
+            icon: Icon(Icons.logout, color: Color(0xFF477983)),
+            press: () {
+              context.read<AuthenticationService>().signOut();
+            },
+          ),
+          ProfileMenu(
+            text: "Log In As A Tour Guide",
+            icon: Icon(Icons.tour_outlined, color: Color(0xFF477983)),
+            press: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GuideMainScreen(),
                 ),
-              },
-            ),
-            ProfileMenu(
-              text: "Log Out",
-              icon: Icon(Icons.logout, color: Color(0xFF477983)),
-              press: () {
-                context.read<AuthenticationService>().signOut();
-              },
-            ),
-            ProfileMenu(
-              text: "Log In As A Tour Guide",
-              icon: Icon(Icons.tour_outlined, color: Color(0xFF477983)),
-              press: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GuideMainScreen(),
-                  ),
-                ),
-              },
-            ),
-          ],
-        ),
+              ),
+            },
+          ),
+        ],
       ),
     );
   }
@@ -142,6 +140,7 @@ class ProfileMenu extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: Color(0xFF477983),
+          width: 2,
         ),
       ),
       child: FlatButton(

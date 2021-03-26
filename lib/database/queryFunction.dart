@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<QuerySnapshot> getTripInfo() async{
+Future<QuerySnapshot> getTripInfo() async {
   return await FirebaseFirestore.instance.collection('Trips').get();
 }
 
@@ -11,15 +11,22 @@ Future<DocumentSnapshot> getName() async {
       .doc(FirebaseAuth.instance.currentUser.uid)
       .get();
 }
-Future< QuerySnapshot > getGuideTrip() async{
-  return await FirebaseFirestore.instance.collection('Trips')
+
+Future<QuerySnapshot> getGuideTrip() async {
+  return await FirebaseFirestore.instance
+      .collection('Trips')
       .where("Guide's ID", isEqualTo: FirebaseAuth.instance.currentUser.uid)
       .get();
 }
+
 Future<QuerySnapshot> getCountry(String name) async {
-  return await FirebaseFirestore.instance.collection('Trips').where('Country', isEqualTo: name).get();
+  return await FirebaseFirestore.instance
+      .collection('Trips')
+      .where('Country', isEqualTo: name)
+      .get();
 }
-Future<DocumentSnapshot> getJoin(String id) async{
+
+Future<DocumentSnapshot> getJoin(String id) async {
   return await FirebaseFirestore.instance.collection("Users").doc(id).get();
 }
 

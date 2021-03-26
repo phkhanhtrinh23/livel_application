@@ -69,10 +69,10 @@ flutter:
     - images/ha_long.jpg
     - images/museum.png
     - images/line.png
-    - images/1.png
-    - images/2.png
-    - images/3.png
-    - images/4.png
+    - images/picture_1.png
+    - images/picture_2.png
+    - images/picture_3.png
+    - images/trip_image.png
     - images/place.png
     - images/boat_1.png
     - images/khoa.png

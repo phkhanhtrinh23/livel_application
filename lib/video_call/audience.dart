@@ -43,7 +43,7 @@ class _TouristPage extends State<TouristPage> {
                 bottomLeft: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
-              color: Colors.blue,
+              color: Colors.teal[300],
             ),
             child: Column(
               children: [
@@ -92,7 +92,7 @@ class _TouristPage extends State<TouristPage> {
                     border: UnderlineInputBorder(
                       borderSide: BorderSide(width: 1),
                     ),
-                    hintText: 'Your channel name',
+                    hintText: 'Enter your channel',
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
                   ),

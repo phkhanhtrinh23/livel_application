@@ -54,7 +54,7 @@ class _TourguidePage extends State<TourguidePage> {
                 bottomLeft: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
-              color: Colors.blue[400],
+              color: Colors.teal[300],
             ),
             child: Column(
               children: [

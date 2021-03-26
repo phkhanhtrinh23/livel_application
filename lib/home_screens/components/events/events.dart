@@ -1,19 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-class EventElements extends StatefulWidget {
-  const EventElements({Key key, this.images}) : super(key: key);
+class Events extends StatefulWidget {
+  const Events({Key key, this.images}) : super(key: key);
   final List<String> images;
 
   @override
-  _EventElements createState() => _EventElements();
+  _Events createState() => _Events();
 }
 
-class _EventElements extends State<EventElements>
-    with TickerProviderStateMixin {
+class _Events extends State<Events> with TickerProviderStateMixin {
   int _index = 0;
   Timer _timer;
-  Duration _duration = Duration(seconds: 1);
+  Duration _duration = Duration(seconds: 3);
 
   @override
   void initState() {
@@ -35,27 +34,40 @@ class _EventElements extends State<EventElements>
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: Duration(milliseconds: 500),
-      transitionBuilder: (Widget child, Animation<double> animation) {
-        return ScaleTransition(child: child, scale: animation);
-      },
-      child: Container(
-        height: 192,
-        margin: const EdgeInsets.only(
-          top: 8,
-          bottom: 40,
-          right: 16,
-          left: 16,
-        ),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Color(0xFF4EAFC1),
-          borderRadius: BorderRadius.circular(16),
-          image: DecorationImage(
-            image: AssetImage(widget.images[_index]),
-            fit: BoxFit.fill,
-          ),
-        ),
+        duration: _duration,
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return ScaleTransition(child: child, scale: animation);
+        },
+        child: EventElements(
+          image: widget.images[_index],
+        ));
+  }
+}
+
+class EventElements extends StatelessWidget {
+  const EventElements({Key key, this.image}) : super(key: key);
+
+  final String image;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(0),
+      width: 400,
+      height: 192,
+      margin: const EdgeInsets.only(
+        top: 8,
+        bottom: 40,
+        right: 16,
+        left: 16,
+      ),
+      decoration: BoxDecoration(
+        color: Color(0xFF4EAFC1),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: FlatButton(
+        padding: const EdgeInsets.all(0),
+        onPressed: () {},
+        child: Image.asset(image),
       ),
     );
   }

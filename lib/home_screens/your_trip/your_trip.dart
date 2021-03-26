@@ -8,6 +8,7 @@ class YourTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     String uid = FirebaseAuth.instance.currentUser.uid;
     return Scaffold(
         body: FutureBuilder(
@@ -41,14 +42,15 @@ class YourTrip extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 620,
+                  height: _height - 225,
                   child: ListView.builder(
-                      itemCount: arr.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return YourTripScreen(
-                          id: arr[index],
-                        );
-                      }),
+                    itemCount: arr.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return YourTripScreen(
+                        id: arr[index],
+                      );
+                    },
+                  ),
                 )
               ],
             ),

@@ -24,7 +24,7 @@ class MainHome extends StatelessWidget {
               bottom: 32,
             ),
             width: _width,
-            height: 200,
+            height: 220,
             decoration: BoxDecoration(
               color: Color(0xFF4EAFC1),
             ),
@@ -56,7 +56,7 @@ class MainHome extends StatelessWidget {
                               snapshot.data.get('Name') +
                               ',\nchoose your trip today!',
                           style: TextStyle(
-                            fontSize: 22,
+                            fontSize: 24,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -77,29 +77,29 @@ class MainHome extends StatelessWidget {
               ),
               color: Colors.white,
             ),
-            height: _height - 200 - 58,
+            height: _height - 220 - 58,
             child: ListView(
               shrinkWrap: true,
               children: [
                 Container(
                   margin: const EdgeInsets.only(
                     left: 14,
-                    top: 40,
+                    top: 24,
                   ),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Events',
+                    'Upcoming Events',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                EventElements(
+                Events(
                   images: [
-                    'images/events_1.png',
-                    'images/events_2.png',
-                    'images/events_3.png',
+                    'images/picture_1.png',
+                    'images/picture_2.png',
+                    'images/picture_3.png',
                   ],
                 ), //!!Animated Widget
                 Row(
@@ -110,7 +110,7 @@ class MainHome extends StatelessWidget {
                         bottom: 8.0,
                       ),
                       child: Text(
-                        'Cities',
+                        'Explore Cities',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -150,7 +150,7 @@ class MainHome extends StatelessWidget {
                         bottom: 8.0,
                       ),
                       child: Text(
-                        'Recommended trips',
+                        'Recommended Trips',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,

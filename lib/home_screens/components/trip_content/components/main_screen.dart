@@ -187,8 +187,11 @@ class MainContent extends StatelessWidget {
                     children: [
                       Text(
                         'Trip Fee',
-                        style:
-                            TextStyle(color: Color(0xFF4EAFC1), fontSize: 24),
+                        style: TextStyle(
+                          color: Color(0xFF4EAFC1),
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Spacer(),
                       Container(

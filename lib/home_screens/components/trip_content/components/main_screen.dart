@@ -85,6 +85,7 @@ class MainContent extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     top: 8,
                     left: 18.0,
+                    right: 18.0,
                     bottom: 42.0,
                   ),
                   child: Text(

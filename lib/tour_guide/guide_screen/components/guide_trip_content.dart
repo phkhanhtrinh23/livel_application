@@ -21,8 +21,8 @@ class GuideMainContent extends StatelessWidget {
               children: [
                 FutureBuilder(
                   future: getNetWorkImage(snapshot.data.get('Image')),
-                  builder: (context, snapshot_image){
-                    if(snapshot_image.connectionState == ConnectionState.done){
+                  builder: (context, snapshotImage) {
+                    if (snapshotImage.connectionState == ConnectionState.done) {
                       return Container(
                         width: _width,
                         height: 335,
@@ -34,7 +34,7 @@ class GuideMainContent extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: snapshot_image.data,
+                            image: snapshotImage.data,
                             fit: BoxFit.fill,
                           ),
                           borderRadius: BorderRadius.only(
@@ -79,7 +79,7 @@ class GuideMainContent extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Text(
-                                    "\$"+snapshot.data.get('Cost').toString(),
+                                    "\$" + snapshot.data.get('Cost').toString(),
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,

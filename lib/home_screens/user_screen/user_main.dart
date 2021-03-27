@@ -1,4 +1,3 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -49,7 +48,7 @@ class UserScreen extends StatelessWidget {
               child: ClipOval(
                 child: Image.asset('images/unknown.jpg'),
               ),
-          ),
+            ),
           ),
           Container(
             height: _height - 260 - 58,

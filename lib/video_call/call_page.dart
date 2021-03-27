@@ -70,6 +70,7 @@ class _CallPageState extends State<CallPage> {
 
   /// Create agora sdk instance and initialize
   Future<void> _initAgoraRtcEngine() async {
+    // ignore: deprecated_member_use
     _engine = await RtcEngine.create(APP_ID);
     await _engine.enableVideo();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);

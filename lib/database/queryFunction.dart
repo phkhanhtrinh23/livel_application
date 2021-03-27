@@ -24,6 +24,16 @@ Future<QuerySnapshot> getCountry(String name) async {
       .where('Country', isEqualTo: name)
       .get();
 }
+Future<QuerySnapshot> getSearch(String search, String field) async {
+  if(search=='') return await FirebaseFirestore.instance
+      .collection('Trips')
+      .where(field, isGreaterThanOrEqualTo: search)
+      .get();
+  return await FirebaseFirestore.instance
+      .collection('Trips')
+      .where(field, isEqualTo: search)
+      .get();
+}
 Future<DocumentSnapshot> getJoin(String id) async {
   return await FirebaseFirestore.instance.collection("Users").doc(id).get();
 }

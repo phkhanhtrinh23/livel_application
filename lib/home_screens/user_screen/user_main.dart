@@ -1,4 +1,3 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,6 +7,8 @@ import 'package:livel_application/home_screens/user_screen/components/guidelines
 import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/home_screens/user_screen/components/profile_info.dart';
 import 'package:livel_application/log_in_screens/components/authentication.dart';
+
+import '../../main.dart';
 
 class UserScreen extends StatelessWidget {
   @override
@@ -123,7 +124,7 @@ class UserScreen extends StatelessWidget {
                     ),
                   },
                 ),
-              ],
+                             ],
             ),
           ),
         ],

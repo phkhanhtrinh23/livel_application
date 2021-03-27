@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
 import 'package:livel_application/video_call/audience.dart';
+import 'package:stripe_payment/stripe_payment.dart';
 import '../trip_main.dart';
 
 class JoinRegister extends StatelessWidget {
@@ -93,19 +94,40 @@ class JoinRegister extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    FirebaseFirestore.instance
-                        .collection('Users')
-                        .doc(uid)
-                        .update({
-                      "TripList": FieldValue.arrayUnion([id])
-                    });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            TripContent(id: this.id),
+                      StripePayment.paymentRequestWithNativePay(
+                      androidPayOptions: AndroidPayPaymentRequest(
+                        totalPrice: "0",
+                        currencyCode: "USD",
                       ),
-                    );
+                      applePayOptions: ApplePayPaymentOptions(
+                        countryCode: 'DE',
+                        currencyCode: 'EUR',
+                        items: [
+                          ApplePayItem(
+                            label: 'Test',
+                            amount: '13',
+                          )
+                        ],
+                      ),
+                    ).then((token) {
+                        StripePayment.completeNativePayRequest().then((_) {
+                          FirebaseFirestore.instance
+                              .collection('Users')
+                              .doc(uid)
+                              .update({
+                            "TripList": FieldValue.arrayUnion([id])
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  TripContent(id: this.id),
+                            ),
+                          );
+                        });
+
+                    });
+
                   }));
         });
   }

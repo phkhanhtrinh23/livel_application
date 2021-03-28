@@ -44,10 +44,10 @@ dependencies:
   stripe_payment: ^1.0.7
   progress_dialog: ^1.2.2
   flutter_credit_card: ^2.0.0
-  rave_flutter: ^0.0.9-alpha+2
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:

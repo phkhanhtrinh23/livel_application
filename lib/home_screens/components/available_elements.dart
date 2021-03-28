@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
@@ -105,7 +106,7 @@ class AvailableElement extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          snapshot.data.get('Date').toString(),
+                            DateFormat.yMMMd().format((snapshot.data.get('Date')).toDate()),
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,

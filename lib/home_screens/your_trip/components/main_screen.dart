@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
@@ -49,7 +50,7 @@ class YourTripScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        snapshot.data.get('Time'),
+                        DateFormat.jm().format((snapshot.data.get('Date')).toDate()),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -70,7 +71,7 @@ class YourTripScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
-                            snapshot.data.get('Date'),
+                            DateFormat.yMMMd().format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
                               fontSize: 18,
                             ),

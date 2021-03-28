@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
 
@@ -14,7 +16,8 @@ class PlaceScreen extends StatelessWidget {
     this.id,
   });
 
-  final String image, date, place, country, id;
+  final String image, place, country, id;
+  final Timestamp date;
   final String time;
   final int cost;
 
@@ -70,7 +73,7 @@ class PlaceScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          date,
+                          DateFormat.yMMMd().format(date.toDate()),
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,

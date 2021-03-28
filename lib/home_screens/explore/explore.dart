@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/explore/all_trip.dart';
+import 'dart:math';
+class ExploreScreen extends StatefulWidget{
+  ExploreScreen({Key key}):super(key: key);
+  @override
+  ExploreScreenState createState() => new ExploreScreenState(searchString: '', field: 'Name');
+}
 
-class ExploreScreen extends StatelessWidget {
-  const ExploreScreen({
-    Key key,
-    this.name,
+class ExploreScreenState extends State<ExploreScreen> {
+  ExploreScreenState({
+    this.searchString,
+    this.field
   });
-
-  final String name;
-
+  final String searchString, field;
+  String dropdown = 'Name';
+  String lSearch='';
+  String lField='Name';
   @override
   Widget build(BuildContext context) {
+    TextEditingController search = new TextEditingController();
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Column(
+        body: SingleChildScrollView(
+      child: Column(
         children: [
           Container(
             padding: const EdgeInsets.only(top: 24, bottom: 16),
@@ -55,10 +64,34 @@ class ExploreScreen extends StatelessWidget {
             ),
             child: Row(
               children: <Widget>[
-                Icon(Icons.search),
+                Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+                DropdownButton<String>(
+                  value: dropdown,
+                  icon: const Icon(Icons.arrow_drop_down_circle_outlined, color: Colors.cyan,),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.cyan),
+                  underline: Container(
+                    height: 0,
+                    color: Colors.white,
+                  ),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdown = newValue;
+                    });
+                  },
+                  items: <String>['Name', 'Place', 'Country']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                 Expanded(
                   child: TextFormField(
-                    onChanged: (value) {},
+                    controller: search,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
                       hintText: 'Search',
@@ -68,12 +101,26 @@ class ExploreScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        lField=dropdown;
+                        lSearch=search.text;
+                      });
+                    },
+                    style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
+                    child: Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(pi),
+                      child: Icon(Icons.search),
+                    )
+                ),
               ],
             ),
           ),
-          Container(height: _height - 295, child: AllTrip()),
+          Container(height: _height - 295, child: AllTrip(searchString: lSearch, field: lField)),
         ],
       ),
-    );
+    ));
   }
 }

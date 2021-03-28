@@ -11,160 +11,169 @@ class MainHome extends StatelessWidget {
     var date = DateTime.now();
     var day = date.day, month = date.month, year = date.year;
     double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
+    // double _height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xFF4EAFC1),
-      body: Column(
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.only(
-              top: 16,
-              left: 16,
-              right: 16,
-              bottom: 32,
-            ),
-            width: _width,
-            height: 220,
-            decoration: BoxDecoration(
-              color: Color(0xFF4EAFC1),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.bottomCenter,
+              overflow: Overflow.visible,
               children: [
                 Container(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Today: $day/$month/$year',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFFFFBE9A),
-                      fontWeight: FontWeight.bold,
-                    ),
+                  padding: const EdgeInsets.only(
+                    top: 16,
+                    left: 16,
+                    right: 16,
+                    bottom: 32,
                   ),
-                ),
-                FutureBuilder(
-                  future: getName(),
-                  builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return Container(
-                        margin: const EdgeInsets.only(
-                          top: 32,
-                          bottom: 8,
-                        ),
-                        alignment: Alignment.centerLeft,
+                  width: _width,
+                  height: 220,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF4EAFC1),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        alignment: Alignment.centerRight,
                         child: Text(
-                          'Hello ' +
-                              snapshot.data.get('Name') +
-                              ',\nchoose your trip today!',
+                          'Today: $day/$month/$year',
                           style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
+                            fontSize: 20,
+                            color: Color(0xFFFFBE9A),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      );
-                    }
-                    return CircularProgressIndicator();
-                  },
+                      ),
+                      FutureBuilder(
+                        future: getName(),
+                        builder: (context,
+                            AsyncSnapshot<DocumentSnapshot> snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return Container(
+                              margin: const EdgeInsets.only(
+                                top: 32,
+                                bottom: 8,
+                              ),
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Hello ' +
+                                    snapshot.data.get('Name') +
+                                    ',\nchoose your trip today!',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            );
+                          }
+                          return CircularProgressIndicator();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  child: Container(
+                    width: _width,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16),
+                      ),
+                    ),
+                  ),
+                  top: 200,
                 ),
               ],
             ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
+            Container(
+              margin: const EdgeInsets.only(
+                left: 14,
+                top: 24,
               ),
-              color: Colors.white,
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Upcoming Events',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            height: _height - 220 - 58,
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 14,
-                    top: 24,
+            Events(
+              images: [
+                'images/picture_1.png',
+                'images/picture_2.png',
+                'images/picture_3.png',
+              ],
+            ), //!!Animated Widget
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16.0,
+                    bottom: 8.0,
                   ),
-                  alignment: Alignment.centerLeft,
                   child: Text(
-                    'Upcoming Events',
+                    'Explore Cities',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                Events(
-                  images: [
-                    'images/picture_1.png',
-                    'images/picture_2.png',
-                    'images/picture_3.png',
-                  ],
-                ), //!!Animated Widget
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 16.0,
-                        bottom: 8.0,
-                      ),
-                      child: Text(
-                        'Explore Cities',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: <Widget>[
-                      TripElement(
-                        image: 'images/uk.png',
-                        name: 'Viet Nam',
-                      ),
-                      TripElement(
-                        image: 'images/usa.png',
-                        name: 'Canada',
-                      ),
-                      TripElement(
-                        image: 'images/swhere.png',
-                        name: 'Japan',
-                      ),
-                      TripElement(
-                        image: 'images/uk.png',
-                        name: 'UK',
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 16.0,
-                        bottom: 8.0,
-                      ),
-                      child: Text(
-                        'Recommended Trips',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(height: 237, width: 200, child: UpcomingScreen())
               ],
             ),
-          )
-        ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: <Widget>[
+                  TripElement(
+                    image: 'images/uk.png',
+                    name: 'Viet Nam',
+                  ),
+                  TripElement(
+                    image: 'images/usa.png',
+                    name: 'Canada',
+                  ),
+                  TripElement(
+                    image: 'images/swhere.png',
+                    name: 'Japan',
+                  ),
+                  TripElement(
+                    image: 'images/uk.png',
+                    name: 'UK',
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16.0,
+                    bottom: 8.0,
+                  ),
+                  child: Text(
+                    'Recommended Trips',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(height: 237, width: _width, child: UpcomingScreen())
+          ],
+        ),
       ),
     );
   }

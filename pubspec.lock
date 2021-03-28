@@ -286,6 +286,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_credit_card:
+    dependency: "direct main"
+    description:
+      name: flutter_credit_card
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   flutter_signin_button:
     dependency: "direct main"
     description:
@@ -367,7 +374,7 @@ packages:
     source: hosted
     version: "3.1.4"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       url: "https://pub.dartlang.org"
@@ -527,6 +534,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.13"
+  progress_dialog:
+    dependency: "direct main"
+    description:
+      name: progress_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.4"
   provider:
     dependency: "direct main"
     description:
@@ -553,6 +567,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smooth_star_rating:
+    dependency: "direct main"
+    description:
+      name: smooth_star_rating
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   source_gen:
     dependency: transitive
     description:
@@ -588,6 +609,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0-nullsafety.1"
+  stripe_payment:
+    dependency: "direct main"
+    description:
+      name: stripe_payment
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.11"
   term_glyph:
     dependency: transitive
     description:

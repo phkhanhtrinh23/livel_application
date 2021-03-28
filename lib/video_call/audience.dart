@@ -1,17 +1,24 @@
 import 'dart:async';
+
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+
 import 'call_page.dart';
 
 class TouristPage extends StatefulWidget {
+  final String channel;
+  TouristPage(this.channel);
   @override
-  _TouristPage createState() => _TouristPage();
+  _TouristPage createState() => _TouristPage(this.channel);
 }
 
 class _TouristPage extends State<TouristPage> {
+  final String channel;
+  _TouristPage(this.channel);
+
   /// create a channelController to retrieve text value
   final _channelController = TextEditingController();
 
@@ -30,112 +37,20 @@ class _TouristPage extends State<TouristPage> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
+    if (channel.isNotEmpty) {
+      onJoin(channel);
+    }
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            width: _width,
-            height: 148,
-            alignment: Alignment.bottomCenter,
-            padding: const EdgeInsets.only(top: 24, bottom: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-              ),
-              color: Colors.teal[300],
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
-                      onPressed: () => Navigator.of(context).pop(),
-                    )
-                  ],
-                ),
-                Spacer(),
-                Text(
-                  'Livel',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Column(
-            children: [
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(
-                  top: 32,
-                ),
-                padding: EdgeInsets.all(8.0),
-                height: 54,
-                width: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: Colors.black,
-                  ),
-                ),
-                child: TextField(
-                  controller: _channelController,
-                  decoration: InputDecoration(
-                    errorText:
-                        _validateError ? 'Channel name is mandatory' : null,
-                    border: UnderlineInputBorder(
-                      borderSide: BorderSide(width: 1),
-                    ),
-                    hintText: 'Enter your channel',
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(ClientRole.Audience.toString()),
-                leading: Radio(
-                  value: ClientRole.Audience,
-                  groupValue: _role,
-                  onChanged: (ClientRole value) {
-                    setState(() {
-                      _role = value;
-                    });
-                  },
-                ),
-              ),
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                minWidth: 213,
-                height: 51,
-                onPressed: () {
-                  onJoin(_channelController.text.trim());
-                },
-                child: Text('Join'),
-                color: Colors.orange[800],
-                textColor: Colors.white,
-              ),
-            ],
-          ),
-        ],
-      ),
+      body: CircularProgressIndicator(),
     );
   }
 
   Future<String> getRtcToken(String channel) async {
     if (FirebaseAuth.instance.currentUser != null) {
       HttpsCallable callable =
-          FirebaseFunctions.instance.httpsCallable('generateRtcToken');
+      FirebaseFunctions.instance.httpsCallable('generateRtcToken');
 
-      var rtcToken = await callable({"channelName": channel, "duration": 3600});
+      var rtcToken = await callable({"channelName": channel, "duration": 300});
 
       return rtcToken.data;
     } else {
@@ -162,17 +77,17 @@ class _TouristPage extends State<TouristPage> {
         showDialog(
             context: context,
             builder: (_) => new AlertDialog(
-                  title: new Text("Error"),
-                  content: new Text(error.toString()),
-                  actions: <Widget>[
-                    TextButton(
-                      child: Text('OK'),
-                      onPressed: () {
-                        Navigator.of(context, rootNavigator: true).pop();
-                      },
-                    )
-                  ],
-                ));
+              title: new Text("Error"),
+              content: new Text(error.toString()),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                )
+              ],
+            ));
 
         return;
       }

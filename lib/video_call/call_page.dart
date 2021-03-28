@@ -3,6 +3,7 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 const APP_ID = "e74c68e55cb44482a99fb501f89d29d8";
 
@@ -59,7 +60,7 @@ class _CallPageState extends State<CallPage> {
     }
 
     await _initAgoraRtcEngine();
-    // _addAgoraEventHandlers();
+     _addAgoraEventHandlers();
     // ignore: deprecated_member_use
     await _engine.enableWebSdkInteroperability(true);
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
@@ -70,7 +71,6 @@ class _CallPageState extends State<CallPage> {
 
   /// Create agora sdk instance and initialize
   Future<void> _initAgoraRtcEngine() async {
-    // ignore: deprecated_member_use
     _engine = await RtcEngine.create(APP_ID);
     await _engine.enableVideo();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
@@ -258,12 +258,8 @@ class _CallPageState extends State<CallPage> {
                           vertical: 2,
                           horizontal: 5,
                         ),
-                        decoration: BoxDecoration(
-                          color: Colors.yellowAccent,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
                         child: Text(
-                          _infoStrings[index],
+                          "",//_infoStrings[index],
                           style: TextStyle(color: Colors.blueGrey),
                         ),
                       ),
@@ -279,6 +275,21 @@ class _CallPageState extends State<CallPage> {
   }
 
   void _onCallEnd(BuildContext context) {
+    if(widget.role==ClientRole.Broadcaster){
+      SmoothStarRating(
+          allowHalfRating: false,
+          onRated: (v) {
+            print(v);
+          },
+          starCount: 5,
+          rating: 0.0,
+          size: 40.0,
+          isReadOnly:true,
+          color: Colors.green,
+          borderColor: Colors.green,
+          spacing:0.0
+      );
+    }
     Navigator.pop(context);
   }
 
@@ -296,10 +307,6 @@ class _CallPageState extends State<CallPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Video Call'),
-        backgroundColor: Colors.blue,
-      ),
       body: Center(
         child: Stack(
           children: <Widget>[

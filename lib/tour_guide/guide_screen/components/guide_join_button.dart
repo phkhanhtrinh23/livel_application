@@ -46,7 +46,7 @@ class GuideJoinRegister extends StatelessWidget{
                     },
                   ),
                 );
-            else return TourguidePage(snapshot.data.id, snapshot.data.get('Code'));
+            //return TourguidePage(snapshot.data.id, snapshot.data.get('Code'));
           }
           return Container(
               margin: const EdgeInsets.only(
@@ -60,18 +60,15 @@ class GuideJoinRegister extends StatelessWidget{
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Text(
-                    'REGISTER',
+                    'Travel',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
                   onPressed: () {
-                    FirebaseFirestore.instance.collection('User').doc(uid).update({"TripList": FieldValue.arrayUnion([id])});
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => GuideTripContent(id:this.id),
-                      ),
+                      MaterialPageRoute(builder: (context) => TourguidePage(snapshot.data.id, snapshot.data.get('Code').toString())),
                     );
                   }
               )

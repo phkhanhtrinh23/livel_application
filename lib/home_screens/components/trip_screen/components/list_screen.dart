@@ -23,7 +23,7 @@ class ListScreen extends StatelessWidget {
                 country: snapshot.data.docs[index].get('Country'),
                 cost: snapshot.data.docs[index].get('Cost'),
                 time: snapshot.data.docs[index].get('Time'),
-                date: 'March 3 2021',
+                date: snapshot.data.docs[index].get('Date'),
                 place: snapshot.data.docs[index].get('Place'),
                 id: snapshot.data.docs[index].id,
               );

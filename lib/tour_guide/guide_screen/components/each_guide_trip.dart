@@ -1,12 +1,15 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 
 import '../guide_trip_content_main.dart';
 
 class GuideTripScreen extends StatelessWidget {
   const GuideTripScreen({Key key, this.id});
-
   final String id;
 
   @override
@@ -16,18 +19,19 @@ class GuideTripScreen extends StatelessWidget {
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Container(
+            padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(
               left: 10,
               right: 10,
               bottom: 16,
             ),
             width: 355,
-            height: 135,
+            height: 160,
             decoration: BoxDecoration(
-              color: Color(0xFFDBEEFD),
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: FlatButton(
+              padding: const EdgeInsets.all(0),
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -37,44 +41,43 @@ class GuideTripScreen extends StatelessWidget {
               },
               child: Row(
                 children: [
-                  FutureBuilder(
-                    future: getImage(snapshot.data.get('Image')),
-                      builder: (context,snapshot){
-                        if(snapshot.connectionState == ConnectionState.done){
-                          return Container(
-                            margin: const EdgeInsets.only(right: 32, left: 8),
-                            child: //Image.asset(
-                               snapshot.data,
-                               width: 111,
-                               height: 119,
-                            // ),
-                          );
-                        }
-                        return CircularProgressIndicator();
-                      }
+                  Container(
+                    margin: const EdgeInsets.only(right: 32, left: 8),
+                    child: Image.asset(
+                      'images/trip_image.png',
+                      width: 150,
+                      height: 120,
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        snapshot.data.get('Name'),
+                        DateFormat.jm().format((snapshot.data.get('Date')).toDate()),
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: Color(0xFF4EAFC1),
                         ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
                       ),
                       Row(
                         children: [
                           Icon(
                             Icons.calendar_today_outlined,
-                            color: Colors.blueAccent,
-                            size: 15,
+                            color: Color(0xFF4EAFC1),
+                            size: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
-                            snapshot.data.get('Date'),
+                            DateFormat.yMMMd().format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 18,
                             ),
                           ),
                         ],
@@ -83,26 +86,45 @@ class GuideTripScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.location_on_outlined,
-                            color: Colors.blueAccent,
-                            size: 15,
+                            color: Color(0xFF4EAFC1),
+                            size: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
                             snapshot.data.get('Place').toString(),
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 18,
                             ),
                           ),
                         ],
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                      ),
                       Text(
                         "\$" + snapshot.data.get('Cost').toString(),
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        width: 160,
+                        child: Text(
+                          'Let\'s go',
+                          style: TextStyle(
+                            color: Color(0xFF4EAFC1),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

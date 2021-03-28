@@ -13,9 +13,6 @@ class StripeState extends State<Stripe> {
   Token _paymentToken;
   PaymentMethod _paymentMethod;
   String _error;
-
-  //this client secret is typically created by a backend system
-  //check https://stripe.com/docs/payments/payment-intents#passing-to-client
   final String _paymentIntentClientSecret = null;
 
   PaymentIntentResult _paymentIntent;
@@ -74,23 +71,6 @@ class StripeState extends State<Stripe> {
           controller: _controller,
           padding: const EdgeInsets.all(20),
           children: <Widget>[
-            TextButton(
-              child: Text("Create Source"),
-              onPressed: () {
-                StripePayment.createSourceWithParams(SourceParams(
-                  type: 'ideal',
-                  amount: 0,
-                  currency: 'usd',
-                  returnURL: 'example://stripe-redirect',
-                )).then((source) {
-                  _scaffoldKey.currentState.showSnackBar(
-                      SnackBar(content: Text('Received ${source.sourceId}')));
-                  setState(() {
-                    _source = source;
-                  });
-                }).catchError(setError);
-              },
-            ),
             Divider(),
             TextButton(
               child: Text("Native payment"),

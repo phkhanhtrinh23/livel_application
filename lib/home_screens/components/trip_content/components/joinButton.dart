@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
+import 'package:livel_application/home_screens/components/trip_content/components/payment.dart';
 import 'package:livel_application/video_call/audience.dart';
 
 import '../trip_main.dart';
@@ -99,20 +100,26 @@ class JoinRegister extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    //Stripe();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            Stripe(),
+                      ),
+                    );
                     FirebaseFirestore.instance
                         .collection('Users')
                         .doc(uid)
                         .update({
                       "TripList": FieldValue.arrayUnion([id])
                     });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            TripContent(id: this.id),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (BuildContext context) =>
+                    //         TripContent(id: this.id),
+                    //   ),
+                    // );
                   }));
         });
   }

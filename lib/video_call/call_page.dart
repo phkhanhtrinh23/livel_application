@@ -3,6 +3,7 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 const APP_ID = "e74c68e55cb44482a99fb501f89d29d8";
 
@@ -278,6 +279,21 @@ class _CallPageState extends State<CallPage> {
   }
 
   void _onCallEnd(BuildContext context) {
+    if(widget.role==ClientRole.Broadcaster){
+      SmoothStarRating(
+          allowHalfRating: false,
+          onRated: (v) {
+            print(v);
+          },
+          starCount: 5,
+          rating: 0.0,
+          size: 40.0,
+          isReadOnly:true,
+          color: Colors.green,
+          borderColor: Colors.green,
+          spacing:0.0
+      );
+    }
     Navigator.pop(context);
   }
 

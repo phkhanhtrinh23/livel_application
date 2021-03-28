@@ -60,7 +60,7 @@ class _CallPageState extends State<CallPage> {
     }
 
     await _initAgoraRtcEngine();
-    // _addAgoraEventHandlers();
+     _addAgoraEventHandlers();
     // ignore: deprecated_member_use
     await _engine.enableWebSdkInteroperability(true);
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
@@ -258,12 +258,8 @@ class _CallPageState extends State<CallPage> {
                           vertical: 2,
                           horizontal: 5,
                         ),
-                        decoration: BoxDecoration(
-                          color: Colors.yellowAccent,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
                         child: Text(
-                          _infoStrings[index],
+                          "",//_infoStrings[index],
                           style: TextStyle(color: Colors.blueGrey),
                         ),
                       ),
@@ -311,10 +307,6 @@ class _CallPageState extends State<CallPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Video Call'),
-        backgroundColor: Colors.blue,
-      ),
       body: Center(
         child: Stack(
           children: <Widget>[

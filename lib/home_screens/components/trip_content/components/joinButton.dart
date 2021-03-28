@@ -10,9 +10,9 @@ import 'package:livel_application/video_call/audience.dart';
 import '../trip_main.dart';
 
 class JoinRegister extends StatelessWidget {
-  final String id;
+  final String id, code;
 
-  const JoinRegister({Key key, this.id}) : super(key: key);
+  const JoinRegister({Key key, this.id, this.code}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +20,9 @@ class JoinRegister extends StatelessWidget {
     return FutureBuilder(
         future: getJoin(uid),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          DocumentSnapshot snapdata = snapshot.data;
-          List<dynamic> arr = snapdata.get('TripList');
           if (snapshot.connectionState == ConnectionState.done) {
+            DocumentSnapshot snapdata = snapshot.data;
+            List<dynamic> arr = snapdata.get('TripList');
             if (arr.isNotEmpty) {
               if (arr.contains(id))
                 return Container(
@@ -70,11 +70,15 @@ class JoinRegister extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TouristPage()),
-                          );
+                          if(code.isNotEmpty){
+                            print(code);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TouristPage(code)),
+                            );
+                          }
+                          else print( Text("You can only join 15 minutes before the trip start."));
                         },
                       ),
                     ],
@@ -100,26 +104,26 @@ class JoinRegister extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            Stripe(),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (BuildContext context) =>
+                    //         Stripe(),
+                    //   ),
+                    // );
                     FirebaseFirestore.instance
                         .collection('Users')
                         .doc(uid)
                         .update({
                       "TripList": FieldValue.arrayUnion([id])
                     });
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (BuildContext context) =>
-                    //         TripContent(id: this.id),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            TripContent(id: this.id),
+                      ),
+                    );
                   }));
         });
   }

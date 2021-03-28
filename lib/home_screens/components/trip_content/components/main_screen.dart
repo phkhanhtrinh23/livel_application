@@ -223,7 +223,7 @@ class MainContent extends StatelessWidget {
                     ],
                   ),
                 ),
-                JoinRegister(id: snapshot.data.id),
+                JoinRegister(id: snapshot.data.id, code: snapshot.data.get('Code')),
               ],
             ),
           );

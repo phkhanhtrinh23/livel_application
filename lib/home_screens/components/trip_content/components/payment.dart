@@ -1,15 +1,25 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart' as fb;
 import 'package:flutter/material.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 import 'dart:io';
 
+import '../trip_main.dart';
+
 class Stripe extends StatefulWidget {
+  final String id, uid;
+  const Stripe(this.id, this.uid);
   @override
-  StripeState createState() => new StripeState();
+  StripeState createState() => new StripeState(id, uid);
 }
 
 class StripeState extends State<Stripe> {
+  final String id,uid;
+  StripeState(
+      this.id,
+      this.uid
+      );
   Token _paymentToken;
   PaymentMethod _paymentMethod;
   String _error;
@@ -106,6 +116,22 @@ class StripeState extends State<Stripe> {
                 }).catchError(setError);
               },
             ),
+            TextButton(onPressed: (){
+              fb.FirebaseFirestore.instance
+                  .collection('Users')
+                  .doc(uid)
+                  .update({
+                "TripList": fb.FieldValue.arrayUnion([id])
+              });
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      TripContent(id: this.id),
+                ),
+              );
+            },
+            child: Text('Join for free'),)
           ],
         ),
       ),

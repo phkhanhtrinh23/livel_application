@@ -9,10 +9,18 @@ import 'package:livel_application/video_call/audience.dart';
 
 import '../trip_main.dart';
 
-class JoinRegister extends StatelessWidget {
+class JoinRegister extends StatefulWidget{
+  final String id, code;
+  const JoinRegister({Key key, this.id, this.code}) : super(key: key);
+
+  @override
+  JoinRegisterState createState() => new JoinRegisterState(this.id, this.code);
+}
+
+class JoinRegisterState extends State<JoinRegister> {
   final String id, code;
 
-  const JoinRegister({Key key, this.id, this.code}) : super(key: key);
+  JoinRegisterState(this.id, this.code);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +29,9 @@ class JoinRegister extends StatelessWidget {
         future: getJoin(uid),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            DocumentSnapshot snapdata = snapshot.data;
-            List<dynamic> arr = snapdata.get('TripList');
+            List<dynamic> arr = snapshot.data.get('TripList');
             if (arr.isNotEmpty) {
-              if (arr.contains(id))
+              if (arr.contains(id)){
                 return Container(
                   margin: const EdgeInsets.only(
                     bottom: 20,
@@ -84,47 +91,50 @@ class JoinRegister extends StatelessWidget {
                     ],
                   ),
                 );
+              }
+
             }
-          }
-          return Container(
-              margin: const EdgeInsets.only(
-                bottom: 20,
-              ),
-              child: FlatButton(
-                  minWidth: 213,
-                  height: 51,
-                  color: Color(0xFFEE6C4D),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Text(
-                    'REGISTER',
-                    style: TextStyle(
-                      color: Colors.white,
+            return Container(
+                margin: const EdgeInsets.only(
+                  bottom: 20,
+                ),
+                child: FlatButton(
+                    minWidth: 213,
+                    height: 51,
+                    color: Color(0xFFEE6C4D),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
-                  ),
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (BuildContext context) =>
-                    //         Stripe(),
-                    //   ),
-                    // );
-                    FirebaseFirestore.instance
-                        .collection('Users')
-                        .doc(uid)
-                        .update({
-                      "TripList": FieldValue.arrayUnion([id])
-                    });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            TripContent(id: this.id),
+                    child: Text(
+                      'REGISTER',
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
-                    );
-                  }));
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              Stripe(id,uid),
+                        ),
+                      );
+                      // FirebaseFirestore.instance
+                      //     .collection('Users')
+                      //     .doc(uid)
+                      //     .update({
+                      //   "TripList": FieldValue.arrayUnion([id])
+                      // });
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (BuildContext context) =>
+                      //         TripContent(id: this.id),
+                      //   ),
+                      // );
+                    }));
+          }
+          return CircularProgressIndicator();
         });
   }
 }

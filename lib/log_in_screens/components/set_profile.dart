@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../state_home.dart';
 
 class PersonalInfo extends StatelessWidget {
@@ -12,7 +13,7 @@ class PersonalInfo extends StatelessWidget {
   final TextEditingController country = new TextEditingController();
   final TextEditingController phone = new TextEditingController();
 
-  final _form = const Key('__PERSONAL__'); //GlobalKey<FormState>();
+  final _form = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +84,10 @@ class PersonalInfo extends StatelessWidget {
                       if (value.isEmpty) {
                         return "This field is empty";
                       }
+                      final isDigitsOnly = int.tryParse(value);
+                      return isDigitsOnly == null
+                          ? 'Input needs to be digits only'
+                          : null;
                       return null;
                     },
                   ),
@@ -141,6 +146,10 @@ class PersonalInfo extends StatelessWidget {
                       if (value.isEmpty) {
                         return "This field is empty";
                       }
+                      final isDigitsOnly = int.tryParse(value);
+                      return isDigitsOnly == null
+                          ? 'Input needs to be digits only'
+                          : null;
                       return null;
                     },
                   ),
@@ -151,7 +160,7 @@ class PersonalInfo extends StatelessWidget {
                 child: FlatButton(
                   padding: const EdgeInsets.all(0),
                   onPressed: () async {
-                    //if (_form.currentState.validate()) {
+                    if (_form.currentState.validate()) {
                     await FirebaseAuth.instance.createUserWithEmailAndPassword(
                       email: email.trim(),
                       password: password.trim(),
@@ -175,8 +184,8 @@ class PersonalInfo extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => HomeMain()),
                     );
-                    //}
-                    //return "Please check again";
+                    }
+                    return "Please check again";
                   },
                   child: Container(
                     width: 343,

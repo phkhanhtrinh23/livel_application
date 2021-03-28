@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:livel_application/home_screens/HomeScreen.dart';
+import 'package:livel_application/log_in_screens/state_home.dart';
+import 'package:livel_application/splash_screens/splash_screen_1.dart';
 import 'package:livel_application/tour_guide/guide_main_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
@@ -106,13 +110,6 @@ class UserScreen extends StatelessWidget {
                   },
                 ),
                 ProfileMenu(
-                  text: "Log Out",
-                  icon: Icon(Icons.logout, color: Color(0xFF477983)),
-                  press: () {
-                    context.read<AuthenticationService>().signOut();
-                  },
-                ),
-                ProfileMenu(
                   text: "Log In As A Tour Guide",
                   icon: Icon(Icons.tour_outlined, color: Color(0xFF477983)),
                   press: () => {
@@ -122,6 +119,20 @@ class UserScreen extends StatelessWidget {
                         builder: (context) => GuideMainScreen(),
                       ),
                     ),
+                  },
+                ),
+                ProfileMenu(
+                  text: "Log Out",
+                  icon: Icon(Icons.logout, color: Color(0xFF477983)),
+                  press: () async{
+                    await FirebaseAuth.instance.signOut();
+                    //print(FirebaseAuth.instance.currentUser.uid);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeMain(),
+                      ),
+                    );
                   },
                 ),
                              ],

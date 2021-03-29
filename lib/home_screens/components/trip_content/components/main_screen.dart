@@ -165,7 +165,8 @@ class MainContent extends StatelessWidget {
                     left: 23,
                   ),
                   child: Text(
-                    snapshot.data.get('Description').toString(),
+                    snapshot.data.get('Description').toString() +
+                        'year(s) experience',
                     style: TextStyle(
                       fontSize: 16,
                     ),

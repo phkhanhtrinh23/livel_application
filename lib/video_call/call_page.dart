@@ -279,6 +279,8 @@ class _CallPageState extends State<CallPage> {
     if (widget.role == ClientRole.Audience) {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => RatingScreen()));
+    } else if (widget.role == ClientRole.Broadcaster) {
+      Navigator.of(context).pop();
     }
   }
 

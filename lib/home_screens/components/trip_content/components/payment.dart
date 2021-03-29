@@ -60,11 +60,7 @@ class StripeState extends State<Stripe> {
       body: Column(
         children: <Widget>[
           Container(
-<<<<<<< HEAD
             margin: const EdgeInsets.only(bottom: 180),
-=======
-            margin: const EdgeInsets.only(bottom: 160),
->>>>>>> 241896e2bd37a8dc6beac28207c7c524a517fc9b
             padding: const EdgeInsets.only(top: 32, bottom: 16),
             width: _width,
             height: 148,
@@ -79,10 +75,6 @@ class StripeState extends State<Stripe> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
-<<<<<<< HEAD
-=======
-                  mainAxisAlignment: MainAxisAlignment.end,
->>>>>>> 241896e2bd37a8dc6beac28207c7c524a517fc9b
                   children: [
                     IconButton(
                       icon: Icon(
@@ -90,26 +82,13 @@ class StripeState extends State<Stripe> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-<<<<<<< HEAD
                         Navigator.of(context).pop();
-=======
-                        setState(() {
-                          _source = null;
-                          _paymentIntent = null;
-                          _paymentMethod = null;
-                          _paymentToken = null;
-                        });
->>>>>>> 241896e2bd37a8dc6beac28207c7c524a517fc9b
                       },
                     ),
                   ],
                 ),
                 Text(
-<<<<<<< HEAD
                   'Payment',
-=======
-                  'Explore',
->>>>>>> 241896e2bd37a8dc6beac28207c7c524a517fc9b
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -119,7 +98,6 @@ class StripeState extends State<Stripe> {
               ],
             ),
           ),
-<<<<<<< HEAD
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -218,104 +196,6 @@ class StripeState extends State<Stripe> {
                 ),
               ],
             ),
-=======
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 330,
-                height: 68,
-                margin: const EdgeInsets.only(top: 16, bottom: 16),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: Color(0xFF477983),
-                    width: 2,
-                  ),
-                ),
-                child: TextButton(
-                  child: Text(
-                    "Native payment",
-                    style: TextStyle(
-                      color: Color(0xFF4EAFC1),
-                      fontSize: 24,
-                    ),
-                  ),
-                  onPressed: () {
-                    StripePayment.paymentRequestWithNativePay(
-                      androidPayOptions: AndroidPayPaymentRequest(
-                        totalPrice: "0",
-                        currencyCode: "USD",
-                      ),
-                      applePayOptions: ApplePayPaymentOptions(
-                        countryCode: 'US',
-                        currencyCode: 'USD',
-                        items: [
-                          ApplePayItem(
-                            label: 'Test',
-                            amount: '0',
-                          )
-                        ],
-                      ),
-                    ).then((token) {
-                      setState(() {
-                        _scaffoldKey.currentState.showSnackBar(SnackBar(
-                            content: Text('Received ${token.tokenId}')));
-                        _paymentToken = token;
-                      });
-                      StripePayment.completeNativePayRequest().then((_) {
-                        _scaffoldKey.currentState.showSnackBar(
-                            SnackBar(content: Text('Completed successfully')));
-                      }).catchError(setError);
-                    }).catchError(setError);
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 32),
-              ),
-              Container(
-                width: 330,
-                height: 68,
-                margin: const EdgeInsets.only(top: 16, bottom: 16),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: Color(0xFF477983),
-                    width: 2,
-                  ),
-                ),
-                child: TextButton(
-                  child: Text(
-                    'Join for free',
-                    style: TextStyle(
-                      color: Color(0xFF4EAFC1),
-                      fontSize: 24,
-                    ),
-                  ),
-                  onPressed: () {
-                    fb.FirebaseFirestore.instance
-                        .collection('Users')
-                        .doc(uid)
-                        .update({
-                      "TripList": fb.FieldValue.arrayUnion([id])
-                    });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            TripContent(id: this.id),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
->>>>>>> 241896e2bd37a8dc6beac28207c7c524a517fc9b
           ),
         ],
       ),

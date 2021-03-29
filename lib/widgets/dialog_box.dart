@@ -18,17 +18,17 @@ class BlurryDialog extends StatelessWidget {
     return BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
         child: AlertDialog(
-          title: new Text(
+          title: Text(
             title,
             style: textStyle,
           ),
-          content: new Text(
+          content: Text(
             content,
             style: textStyle,
           ),
           actions: <Widget>[
-            new TextButton(
-              child: new Text(buttonText),
+            TextButton(
+              child: Text(buttonText),
               onPressed: () {
                 continueCallBack();
               },

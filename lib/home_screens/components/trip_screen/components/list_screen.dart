@@ -26,7 +26,6 @@ class ListScreen extends StatelessWidget {
                 date: snapshot.data.docs[index].get('Date'),
                 place: snapshot.data.docs[index].get('Place'),
                 id: snapshot.data.docs[index].id,
-                checkHomeScreen: true,
               );
             },
           );

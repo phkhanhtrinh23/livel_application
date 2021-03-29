@@ -116,7 +116,7 @@ class GuideTripScreen extends StatelessWidget {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

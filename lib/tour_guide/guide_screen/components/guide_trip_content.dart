@@ -81,8 +81,9 @@ class GuideMainContent extends StatelessWidget {
                 Container(
                   alignment: Alignment.bottomLeft,
                   padding: const EdgeInsets.only(
-                    top: 30.0,
-                    left: 18.0,
+                    top: 8,
+                    left: 16,
+                    right: 16,
                     bottom: 42.0,
                   ),
                   child: Text(
@@ -217,7 +218,7 @@ class GuideMainContent extends StatelessWidget {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

@@ -14,6 +14,7 @@ class GuideMainScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              margin: const EdgeInsets.only(bottom: 180),
               padding: const EdgeInsets.only(top: 24, bottom: 16),
               width: _width,
               height: 148,

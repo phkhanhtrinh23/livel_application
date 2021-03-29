@@ -25,13 +25,12 @@ class AllTrip extends StatelessWidget {
                   date: snapshot.data.docs[index].get('Date'),
                   place: snapshot.data.docs[index].get('Name'),
                   id: snapshot.data.docs[index].id,
-                  checkHomeScreen: false,
                 );
               },
             );
           return Text("There is no trips for your search");
         }
-        return Container();//CircularProgressIndicator();
+        return Container(); //CircularProgressIndicator();
       },
     );
   }

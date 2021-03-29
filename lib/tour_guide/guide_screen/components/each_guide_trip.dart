@@ -1,5 +1,3 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +19,6 @@ class GuideTripScreen extends StatelessWidget {
           return Container(
             padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(
-              left: 10,
-              right: 10,
               bottom: 16,
             ),
             width: 355,
@@ -42,7 +38,7 @@ class GuideTripScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(right: 32, left: 8),
+                    margin: const EdgeInsets.only(right: 32),
                     child: Image.asset(
                       'images/trip_image.png',
                       width: 150,
@@ -54,7 +50,8 @@ class GuideTripScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        DateFormat.jm().format((snapshot.data.get('Date')).toDate()),
+                        DateFormat.jm()
+                            .format((snapshot.data.get('Date')).toDate()),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -75,7 +72,8 @@ class GuideTripScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
-                            DateFormat.yMMMd().format((snapshot.data.get('Date')).toDate()),
+                            DateFormat.yMMMd()
+                                .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
                               fontSize: 18,
                             ),

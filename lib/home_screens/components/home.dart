@@ -63,7 +63,7 @@ class MainHome extends StatelessWidget {
                                     snapshot.data.get('Name') +
                                     ',\nchoose your trip today!',
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 26,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),

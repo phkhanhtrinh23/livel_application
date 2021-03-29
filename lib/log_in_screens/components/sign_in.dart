@@ -24,7 +24,7 @@ class _SignInPage extends State<SignInPage> {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(bottom: 100),
+                padding: const EdgeInsets.only(bottom: 80),
               ),
               Image.asset('images/newimage.png'),
               Text(

@@ -23,7 +23,7 @@ class _SignUpPage extends State<SignUpPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 128),
+                padding: const EdgeInsets.only(bottom: 80),
               ),
               Image.asset(
                 'images/coolkid.png',

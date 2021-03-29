@@ -28,7 +28,7 @@ class TourGuide extends StatelessWidget {
                       Text(
                         'Tour Guide',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 28,
                           color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
                         ),
@@ -51,15 +51,15 @@ class TourGuide extends StatelessWidget {
                   alignment: Alignment.center,
                   margin: const EdgeInsets.only(
                     bottom: 23,
-                    right: 43,
-                    left: 43,
+                    right: 24,
+                    left: 24,
                     top: 34,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(right: 64),
+                        margin: const EdgeInsets.only(right: 32),
                         child: Column(
                           children: [
                             ClipOval(
@@ -69,10 +69,14 @@ class TourGuide extends StatelessWidget {
                                 height: 100,
                               ),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                            ),
                             Text(
                               snapdata.get('Name'),
                               style: TextStyle(
                                 fontWeight: FontWeight.normal,
+                                fontSize: 18,
                               ),
                             ),
                           ],
@@ -83,20 +87,47 @@ class TourGuide extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.phone),
-                              Text(snapdata.get('Phone').toString()),
+                              Icon(
+                                Icons.mail_outline,
+                                size: 30,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                              ),
+                              Text(
+                                snapdata.get('Mail').toString(),
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ],
                           ),
                           Row(
                             children: [
-                              Icon(Icons.check),
-                              Text(snapdata.get('Exp').toString()),
+                              Icon(
+                                Icons.check,
+                                size: 30,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                              ),
+                              Text(
+                                snapdata.get('Exp').toString(),
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ],
                           ),
                           Row(
                             children: [
-                              Icon(Icons.calendar_today_sharp),
-                              Text(snapdata.get('Age').toString()),
+                              Icon(
+                                Icons.calendar_today_outlined,
+                                size: 30,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                              ),
+                              Text(
+                                snapdata.get('Age').toString(),
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ],
                           ),
                         ],
@@ -118,7 +149,7 @@ class TourGuide extends StatelessWidget {
                       Text(
                         'Note',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 28,
                           color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
                         ),

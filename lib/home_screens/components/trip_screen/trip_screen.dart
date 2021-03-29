@@ -17,7 +17,7 @@ class TripScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 24, bottom: 16),
+            padding: const EdgeInsets.only(top: 32, bottom: 16),
             width: _width,
             height: 148,
             decoration: BoxDecoration(
@@ -30,7 +30,6 @@ class TripScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Spacer(),
                 Row(
                   children: [
                     IconButton(
@@ -42,7 +41,6 @@ class TripScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                Spacer(),
                 Text(
                   'Explore',
                   style: TextStyle(

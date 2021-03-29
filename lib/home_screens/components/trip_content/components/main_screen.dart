@@ -5,9 +5,10 @@ import 'package:livel_application/home_screens/components/trip_content/component
 import 'package:livel_application/home_screens/components/trip_content/components/tourguide.dart';
 
 class MainContent extends StatelessWidget {
-  const MainContent({Key key, this.id}) : super(key: key);
+  const MainContent({Key key, this.id, this.checkHomeScreen}) : super(key: key);
 
   final String id;
+  final bool checkHomeScreen;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -46,20 +47,6 @@ class MainContent extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 32),
-                              alignment: Alignment.centerLeft,
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.arrow_back_sharp,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ),
-                            Spacer(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -67,7 +54,7 @@ class MainContent extends StatelessWidget {
                                   snapshot.data.get('Country').toString(),
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 26,
+                                    fontSize: 28,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -91,7 +78,7 @@ class MainContent extends StatelessWidget {
                     snapshot.data.get('Name'),
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 32,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFFEE6C4D),
                     ),
@@ -104,18 +91,39 @@ class MainContent extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.timer),
-                      Text(snapshot.data.get('Duration').toString()),
+                      Icon(
+                        Icons.timer,
+                        size: 30,
+                      ),
+                      Text(
+                        snapshot.data.get('Duration').toString(),
+                        style: TextStyle(fontSize: 18),
+                      ),
                       Spacer(),
-                      Icon(Icons.face),
-                      Text(snapshot.data.get('Rating').toString() + '/5'),
+                      Icon(
+                        Icons.star_border_outlined,
+                        size: 30,
+                      ),
+                      Text(
+                        snapshot.data.get('Rating').toString() + '/5',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       Spacer(),
-                      Icon(Icons.calendar_today_sharp),
+                      Icon(
+                        Icons.calendar_today_sharp,
+                        size: 30,
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(snapshot.data.get('Time').toString()),
-                          Text('March 3 2021'),
+                          Text(
+                            snapshot.data.get('Time').toString(),
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(
+                            'March 3 2021',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ],
                       ),
                     ],
@@ -135,7 +143,7 @@ class MainContent extends StatelessWidget {
                       Text(
                         'Information',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 28,
                           color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
                         ),
@@ -162,7 +170,7 @@ class MainContent extends StatelessWidget {
                   child: Text(
                     snapshot.data.get('Description').toString(),
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -174,7 +182,9 @@ class MainContent extends StatelessWidget {
                     bottom: 42,
                   ),
                   child: Text(
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. '),
+                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+                    style: TextStyle(fontSize: 18),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 16),
@@ -196,7 +206,7 @@ class MainContent extends StatelessWidget {
                         'Trip Fee',
                         style: TextStyle(
                           color: Color(0xFF4EAFC1),
-                          fontSize: 24,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -215,7 +225,7 @@ class MainContent extends StatelessWidget {
                           '\$' + snapshot.data.get('Cost').toString(),
                           style: TextStyle(
                             color: Color(0xFFEAB25E),
-                            fontSize: 24,
+                            fontSize: 26,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -224,7 +234,10 @@ class MainContent extends StatelessWidget {
                   ),
                 ),
                 JoinRegister(
-                    id: snapshot.data.id, code: snapshot.data.get('Code')),
+                  id: snapshot.data.id,
+                  code: snapshot.data.get('Code'),
+                  checkHomeScreen: this.checkHomeScreen,
+                ),
               ],
             ),
           );

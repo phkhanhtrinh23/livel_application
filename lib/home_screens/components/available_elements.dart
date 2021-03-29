@@ -35,6 +35,7 @@ class AvailableElement extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (BuildContext context) => TripContent(
                       id: id,
+                      checkHomeScreen: true,
                     ),
                   ),
                 );
@@ -43,8 +44,8 @@ class AvailableElement extends StatelessWidget {
                 children: <Widget>[
                   FutureBuilder(
                     future: getNetWorkImage(snapshot.data.get('Image')),
-                    builder: (context, snapshot){
-                      if(snapshot.connectionState == ConnectionState.done){
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
                         return Container(
                           alignment: Alignment.topLeft,
                           width: 249,
@@ -106,7 +107,8 @@ class AvailableElement extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                            DateFormat.yMMMd().format((snapshot.data.get('Date')).toDate()),
+                          DateFormat.yMMMd()
+                              .format((snapshot.data.get('Date')).toDate()),
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,

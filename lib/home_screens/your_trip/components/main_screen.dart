@@ -3,9 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' as fb;
 
-class YourTripScreen extends StatelessWidget {
+class YourTripScreen extends StatefulWidget {
   const YourTripScreen({Key key, this.id});
+  final String id;
+
+  @override
+  _YourTripScreen createState() => _YourTripScreen(id: id);
+}
+
+class _YourTripScreen extends State<YourTripScreen> {
+  _YourTripScreen({this.id});
   final String id;
 
   @override
@@ -14,6 +23,7 @@ class YourTripScreen extends StatelessWidget {
       future: getTrip(this.id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+          List<dynamic> arr = snapshot.data.get('TripList');
           return Container(
             padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(
@@ -31,7 +41,10 @@ class YourTripScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => TripContent(id: this.id),
+                    builder: (context) => TripContent(
+                      id: this.id,
+                      checkHomeScreen: false,
+                    ),
                   ),
                 );
               },
@@ -50,7 +63,8 @@ class YourTripScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        DateFormat.jm().format((snapshot.data.get('Date')).toDate()),
+                        DateFormat.jm()
+                            .format((snapshot.data.get('Date')).toDate()),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -71,7 +85,8 @@ class YourTripScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
-                            DateFormat.yMMMd().format((snapshot.data.get('Date')).toDate()),
+                            DateFormat.yMMMd()
+                                .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
                               fontSize: 18,
                             ),
@@ -107,18 +122,41 @@ class YourTripScreen extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        width: 160,
-                        child: Text(
-                          'Let\'s go',
-                          style: TextStyle(
-                            color: Color(0xFF4EAFC1),
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                      Row(
+                        children: [
+                          TextButton(
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                color: Color(0xFFEE6C4D),
+                                fontSize: 20,
+                              ),
+                            ),
+                            onPressed: () {
+                              arr.contains(id)
+                                  ? fb.FirebaseFirestore.instance
+                                      .collection('Users')
+                                      .doc(id)
+                                      .update({
+                                      "TripList":
+                                          fb.FieldValue.arrayRemove([id])
+                                    })
+                                  : null;
+                            },
                           ),
-                        ),
-                      ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 32),
+                          ),
+                          Text(
+                            'Let\'s go',
+                            style: TextStyle(
+                              color: Color(0xFF4EAFC1),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ],

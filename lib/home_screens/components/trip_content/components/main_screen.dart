@@ -117,7 +117,7 @@ class MainContent extends StatelessWidget {
                         children: [
                           Text(
                             DateFormat.jm()
-                                .format((snapshot.data.get('Time')).toDate()),
+                                .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(fontSize: 16),
                           ),
                           Text(

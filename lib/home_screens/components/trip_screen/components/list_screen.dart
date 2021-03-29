@@ -31,7 +31,7 @@ class ListScreen extends StatelessWidget {
             },
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

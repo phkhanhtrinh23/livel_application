@@ -153,7 +153,7 @@ class JoinRegisterState extends State<JoinRegister> {
               ),
             );
           }
-          return CircularProgressIndicator();
+          return Container();
         });
   }
 }

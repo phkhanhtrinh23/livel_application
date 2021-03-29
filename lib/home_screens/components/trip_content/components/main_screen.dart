@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/joinButton.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/tourguide.dart';
@@ -115,11 +116,13 @@ class MainContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            snapshot.data.get('Time').toString(),
+                            DateFormat.jm()
+                                .format((snapshot.data.get('Time')).toDate()),
                             style: TextStyle(fontSize: 16),
                           ),
                           Text(
-                            'March 3 2021',
+                            DateFormat.yMMMd()
+                                .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(fontSize: 16),
                           ),
                         ],

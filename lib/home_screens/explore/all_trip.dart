@@ -31,7 +31,7 @@ class AllTrip extends StatelessWidget {
             );
           return Text("There is no trips for your search");
         }
-        return CircularProgressIndicator();
+        return Container();//CircularProgressIndicator();
       },
     );
   }

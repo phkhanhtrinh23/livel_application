@@ -26,7 +26,7 @@ class UpcomingScreen extends StatelessWidget {
                 );
               });
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

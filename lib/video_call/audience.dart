@@ -40,7 +40,7 @@ class _TouristPage extends State<TouristPage> {
     if (channel.isNotEmpty) {
       onJoin(channel);
     }
-    return CircularProgressIndicator();
+    return Container();
   }
 
   Future<String> getRtcToken(String channel) async {

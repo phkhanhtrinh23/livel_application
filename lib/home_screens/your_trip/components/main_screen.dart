@@ -127,7 +127,7 @@ class _YourTripScreen extends State<YourTripScreen> {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

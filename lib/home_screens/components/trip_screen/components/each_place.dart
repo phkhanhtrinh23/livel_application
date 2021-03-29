@@ -98,7 +98,7 @@ class PlaceScreen extends StatelessWidget {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

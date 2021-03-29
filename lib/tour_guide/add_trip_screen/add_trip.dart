@@ -26,9 +26,12 @@ class AddTrip extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 24, bottom: 16),
+              margin: const EdgeInsets.only(
+                bottom: 80,
+              ),
+              padding: const EdgeInsets.only(top: 32, bottom: 16),
               width: _width,
-              height: 148,
+              height: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
@@ -63,12 +66,9 @@ class AddTrip extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: 85,
-            ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16.0,
+              padding: EdgeInsets.only(
+                top: 16.0,
               ),
               child: Container(
                 width: 343,
@@ -268,7 +268,10 @@ class AddTrip extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18),
+              padding: EdgeInsets.only(
+                top: 80,
+                bottom: 40,
+              ),
               child: FlatButton(
                 padding: const EdgeInsets.all(0),
                 onPressed: () async {

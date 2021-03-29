@@ -175,7 +175,8 @@ class PersonalInfo extends StatelessWidget {
                         'Phone': phone.text.trim(),
                         'Rating': 0,
                         'TripList': [],
-                        'TourGuide': 'No'
+                        'TourGuide': 'No',
+                        'Mail': email,
                       });
                       await FirebaseAuth.instance.currentUser
                           .updateProfile(displayName: name.text.trim());

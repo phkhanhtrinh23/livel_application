@@ -23,7 +23,6 @@ class _YourTripScreen extends State<YourTripScreen> {
       future: getTrip(this.id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          List<dynamic> arr = snapshot.data.get('TripList');
           return Container(
             padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(

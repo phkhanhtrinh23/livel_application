@@ -77,16 +77,24 @@ class JoinRegisterState extends State<JoinRegister> {
                           ),
                         ),
                         onPressed: () {
-                          if (code.isNotEmpty) {
-                            print(code);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TouristPage(code)),
+                          try {
+                            if (code.isNotEmpty) {
+                              print(code);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TouristPage(code)),
+                              );
+                            } else
+                              throw ("You can only join 15 minutes early.");
+                          } catch (err) {
+                            return Scaffold(
+                              body: Text(
+                                err,
+                                style: TextStyle(color: Color(0xFF4EAFC1)),
+                              ),
                             );
-                          } else
-                            print(Text(
-                                "You can only join 15 minutes before the trip start."));
+                          }
                         },
                       ),
                     ],
@@ -97,28 +105,53 @@ class JoinRegisterState extends State<JoinRegister> {
             return Container(
               margin: const EdgeInsets.only(
                 bottom: 20,
+                left: 8,
+                right: 8,
               ),
-              child: FlatButton(
-                minWidth: 200,
-                height: 51,
-                color: Color(0xFF4EAFC1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Text(
-                  'REGISTER',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => Stripe(id, uid),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FlatButton(
+                    minWidth: 150,
+                    height: 51,
+                    color: Color(0xFFE5E5E5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
-                  );
-                },
+                    child: Text(
+                      'GO BACK',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  Padding(padding: const EdgeInsets.only(right: 16)),
+                  FlatButton(
+                    minWidth: 150,
+                    height: 51,
+                    color: Color(0xFF4EAFC1),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Text(
+                      'REGISTER',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => Stripe(id, uid),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             );
           }

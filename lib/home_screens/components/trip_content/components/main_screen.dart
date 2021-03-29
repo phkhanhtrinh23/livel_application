@@ -93,36 +93,33 @@ class MainContent extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.timer,
-                        size: 30,
                       ),
                       Text(
                         snapshot.data.get('Duration').toString(),
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 16),
                       ),
                       Spacer(),
                       Icon(
                         Icons.star_border_outlined,
-                        size: 30,
                       ),
                       Text(
                         snapshot.data.get('Rating').toString() + '/5',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 16),
                       ),
                       Spacer(),
                       Icon(
-                        Icons.calendar_today_sharp,
-                        size: 30,
+                        Icons.calendar_today_outlined,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             snapshot.data.get('Time').toString(),
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 16),
                           ),
                           Text(
                             'March 3 2021',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 16),
                           ),
                         ],
                       ),

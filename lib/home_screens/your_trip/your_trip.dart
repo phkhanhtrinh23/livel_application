@@ -51,7 +51,7 @@ class YourTrip extends StatelessWidget {
                       );
                     },
                   ),
-                )
+                ),
               ],
             ),
           );

@@ -11,7 +11,6 @@ class MainHome extends StatelessWidget {
     var date = DateTime.now();
     var day = date.day, month = date.month, year = date.year;
     double _width = MediaQuery.of(context).size.width;
-    // double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

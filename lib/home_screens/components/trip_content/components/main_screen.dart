@@ -71,14 +71,15 @@ class MainContent extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   padding: const EdgeInsets.only(
                     top: 8,
-                    left: 18.0,
+                    left: 16,
+                    right: 16,
                     bottom: 42.0,
                   ),
                   child: Text(
                     snapshot.data.get('Name'),
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      fontSize: 32,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFFEE6C4D),
                     ),
@@ -165,8 +166,7 @@ class MainContent extends StatelessWidget {
                     left: 23,
                   ),
                   child: Text(
-                    snapshot.data.get('Description').toString() +
-                        'year(s) experience',
+                    snapshot.data.get('Description').toString(),
                     style: TextStyle(
                       fontSize: 16,
                     ),

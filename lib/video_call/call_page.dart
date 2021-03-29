@@ -60,7 +60,7 @@ class _CallPageState extends State<CallPage> {
     }
 
     await _initAgoraRtcEngine();
-     _addAgoraEventHandlers();
+    _addAgoraEventHandlers();
     // ignore: deprecated_member_use
     await _engine.enableWebSdkInteroperability(true);
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
@@ -71,6 +71,7 @@ class _CallPageState extends State<CallPage> {
 
   /// Create agora sdk instance and initialize
   Future<void> _initAgoraRtcEngine() async {
+    // ignore: deprecated_member_use
     _engine = await RtcEngine.create(APP_ID);
     await _engine.enableVideo();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
@@ -259,7 +260,7 @@ class _CallPageState extends State<CallPage> {
                           horizontal: 5,
                         ),
                         child: Text(
-                          "",//_infoStrings[index],
+                          "", //_infoStrings[index],
                           style: TextStyle(color: Colors.blueGrey),
                         ),
                       ),
@@ -275,7 +276,7 @@ class _CallPageState extends State<CallPage> {
   }
 
   void _onCallEnd(BuildContext context) {
-    if(widget.role==ClientRole.Broadcaster){
+    if (widget.role == ClientRole.Broadcaster) {
       SmoothStarRating(
           allowHalfRating: false,
           onRated: (v) {
@@ -284,11 +285,10 @@ class _CallPageState extends State<CallPage> {
           starCount: 5,
           rating: 0.0,
           size: 40.0,
-          isReadOnly:true,
+          isReadOnly: true,
           color: Colors.green,
           borderColor: Colors.green,
-          spacing:0.0
-      );
+          spacing: 0.0);
     }
     Navigator.pop(context);
   }

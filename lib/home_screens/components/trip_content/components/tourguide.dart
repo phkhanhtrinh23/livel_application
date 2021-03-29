@@ -110,7 +110,8 @@ class TourGuide extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                snapdata.get('Exp').toString(),
+                                snapdata.get('Exp').toString() +
+                                    ' year(s) experience',
                                 style: TextStyle(fontSize: 16),
                               ),
                             ],

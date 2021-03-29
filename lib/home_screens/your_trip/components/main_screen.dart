@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
-import 'package:cloud_firestore/cloud_firestore.dart' as fb;
 
 class YourTripScreen extends StatefulWidget {
   const YourTripScreen({Key key, this.id});
@@ -119,18 +118,6 @@ class _YourTripScreen extends State<YourTripScreen> {
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        width: 150,
-                        child: Text(
-                          'Let\'s go',
-                          style: TextStyle(
-                            color: Color(0xFF4EAFC1),
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
                         ),
                       ),
                     ],

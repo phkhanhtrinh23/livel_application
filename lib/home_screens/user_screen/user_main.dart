@@ -2,17 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:livel_application/home_screens/HomeScreen.dart';
 import 'package:livel_application/log_in_screens/state_home.dart';
-import 'package:livel_application/splash_screens/splash_screen_1.dart';
 import 'package:livel_application/tour_guide/guide_main_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';
 import 'package:livel_application/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/home_screens/user_screen/components/profile_info.dart';
-import 'package:livel_application/log_in_screens/components/authentication.dart';
-
-import '../../main.dart';
 
 class UserScreen extends StatelessWidget {
   @override

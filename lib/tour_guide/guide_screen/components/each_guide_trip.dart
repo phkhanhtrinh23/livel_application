@@ -109,18 +109,6 @@ class GuideTripScreen extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        width: 160,
-                        child: Text(
-                          'Let\'s go',
-                          style: TextStyle(
-                            color: Color(0xFF4EAFC1),
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ],

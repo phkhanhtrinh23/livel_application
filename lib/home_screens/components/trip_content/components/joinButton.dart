@@ -7,8 +7,6 @@ import 'package:livel_application/home_screens/HomeScreen.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/payment.dart';
 import 'package:livel_application/video_call/audience.dart';
 
-import '../trip_main.dart';
-
 class JoinRegister extends StatefulWidget {
   final String id, code;
   const JoinRegister({Key key, this.id, this.code}) : super(key: key);

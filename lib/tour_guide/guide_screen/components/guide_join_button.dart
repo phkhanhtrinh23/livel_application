@@ -4,13 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/video_call/broadcaster.dart';
-import '../guide_trip_content_main.dart';
 
 class GuideJoinRegister extends StatelessWidget {
   final String id;
   const GuideJoinRegister({Key key, this.id}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     String uid = FirebaseAuth.instance.currentUser.uid;
     return FutureBuilder(
         future: getTrip(id),

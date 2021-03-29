@@ -38,7 +38,7 @@ class YourTripScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(right: 32, left: 8),
+                    margin: const EdgeInsets.only(right: 16),
                     child: Image.asset(
                       'images/trip_image.png',
                       width: 150,
@@ -50,7 +50,8 @@ class YourTripScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        DateFormat.jm().format((snapshot.data.get('Date')).toDate()),
+                        DateFormat.jm()
+                            .format((snapshot.data.get('Date')).toDate()),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -71,7 +72,8 @@ class YourTripScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 8),
                           ),
                           Text(
-                            DateFormat.yMMMd().format((snapshot.data.get('Date')).toDate()),
+                            DateFormat.yMMMd()
+                                .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
                               fontSize: 18,
                             ),
@@ -109,7 +111,7 @@ class YourTripScreen extends StatelessWidget {
                       ),
                       Container(
                         alignment: Alignment.centerRight,
-                        width: 160,
+                        width: 150,
                         child: Text(
                           'Let\'s go',
                           style: TextStyle(

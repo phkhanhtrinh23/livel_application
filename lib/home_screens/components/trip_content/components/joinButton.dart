@@ -9,7 +9,7 @@ import 'package:livel_application/video_call/audience.dart';
 
 import '../trip_main.dart';
 
-class JoinRegister extends StatefulWidget{
+class JoinRegister extends StatefulWidget {
   final String id, code;
   const JoinRegister({Key key, this.id, this.code}) : super(key: key);
 
@@ -31,27 +31,27 @@ class JoinRegisterState extends State<JoinRegister> {
           if (snapshot.connectionState == ConnectionState.done) {
             List<dynamic> arr = snapshot.data.get('TripList');
             if (arr.isNotEmpty) {
-              if (arr.contains(id)){
+              if (arr.contains(id)) {
                 return Container(
                   margin: const EdgeInsets.only(
                     bottom: 20,
-                    left: 16,
-                    right: 16,
+                    left: 8,
+                    right: 8,
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FlatButton(
-                        minWidth: 180,
+                        minWidth: 150,
                         height: 51,
-                        color: Colors.white,
+                        color: Color(0xFFE5E5E5),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(color: Colors.black),
                         ),
                         child: Text(
-                          'HOME SCREEN',
+                          'GO BACK',
                           style: TextStyle(
-                            color: Colors.grey,
+                            color: Colors.black,
                           ),
                         ),
                         onPressed: () {
@@ -62,11 +62,11 @@ class JoinRegisterState extends State<JoinRegister> {
                           );
                         },
                       ),
-                      Spacer(),
+                      Padding(padding: const EdgeInsets.only(right: 16)),
                       FlatButton(
-                        minWidth: 180,
+                        minWidth: 150,
                         height: 51,
-                        color: Color(0xFFEE6C4D),
+                        color: Color(0xFF4EAFC1),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -77,62 +77,50 @@ class JoinRegisterState extends State<JoinRegister> {
                           ),
                         ),
                         onPressed: () {
-                          if(code.isNotEmpty){
+                          if (code.isNotEmpty) {
                             print(code);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => TouristPage(code)),
                             );
-                          }
-                          else print( Text("You can only join 15 minutes before the trip start."));
+                          } else
+                            print(Text(
+                                "You can only join 15 minutes before the trip start."));
                         },
                       ),
                     ],
                   ),
                 );
               }
-
             }
             return Container(
-                margin: const EdgeInsets.only(
-                  bottom: 20,
+              margin: const EdgeInsets.only(
+                bottom: 20,
+              ),
+              child: FlatButton(
+                minWidth: 200,
+                height: 51,
+                color: Color(0xFF4EAFC1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
-                child: FlatButton(
-                    minWidth: 213,
-                    height: 51,
-                    color: Color(0xFFEE6C4D),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                child: Text(
+                  'REGISTER',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Stripe(id, uid),
                     ),
-                    child: Text(
-                      'REGISTER',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              Stripe(id,uid),
-                        ),
-                      );
-                      // FirebaseFirestore.instance
-                      //     .collection('Users')
-                      //     .doc(uid)
-                      //     .update({
-                      //   "TripList": FieldValue.arrayUnion([id])
-                      // });
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (BuildContext context) =>
-                      //         TripContent(id: this.id),
-                      //   ),
-                      // );
-                    }));
+                  );
+                },
+              ),
+            );
           }
           return CircularProgressIndicator();
         });

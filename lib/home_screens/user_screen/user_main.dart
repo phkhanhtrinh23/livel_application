@@ -54,7 +54,7 @@ class UserScreen extends StatelessWidget {
               child: ClipOval(
                 child: Image.asset('images/unknown.jpg'),
               ),
-          ),
+            ),
           ),
           Container(
             height: _height - 260 - 58,
@@ -124,7 +124,7 @@ class UserScreen extends StatelessWidget {
                 ProfileMenu(
                   text: "Log Out",
                   icon: Icon(Icons.logout, color: Color(0xFF477983)),
-                  press: () async{
+                  press: () async {
                     await FirebaseAuth.instance.signOut();
                     //print(FirebaseAuth.instance.currentUser.uid);
                     Navigator.push(
@@ -135,7 +135,7 @@ class UserScreen extends StatelessWidget {
                     );
                   },
                 ),
-                             ],
+              ],
             ),
           ),
         ],
@@ -172,7 +172,6 @@ class ProfileMenu extends StatelessWidget {
       ),
       child: FlatButton(
         padding: EdgeInsets.all(0),
-        color: Colors.white,
         onPressed: press,
         child: Row(
           children: [

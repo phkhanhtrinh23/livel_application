@@ -53,7 +53,10 @@ class GuideMainScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "Guidelines",
-              icon: Icon(Icons.bookmark_border_outlined),
+              icon: Icon(
+                Icons.bookmark_border_outlined,
+                color: Color(0xFF477983),
+              ),
               press: () => {
                 Navigator.push(
                   context,
@@ -65,7 +68,10 @@ class GuideMainScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "Add a trip",
-              icon: Icon(Icons.logout),
+              icon: Icon(
+                Icons.add_circle_outline,
+                color: Color(0xFF477983),
+              ),
               press: () {
                 Navigator.push(
                   context,

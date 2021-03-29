@@ -146,7 +146,7 @@ class MainContent extends StatelessWidget {
                           children: <Widget>[
                             Divider(
                               color: Colors.grey,
-                              thickness: 2,
+                              thickness: 1,
                             )
                           ],
                         ),
@@ -162,7 +162,7 @@ class MainContent extends StatelessWidget {
                   child: Text(
                     snapshot.data.get('Description').toString(),
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -174,7 +174,9 @@ class MainContent extends StatelessWidget {
                     bottom: 42,
                   ),
                   child: Text(
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. '),
+                    snapshot.data.get('Note'),
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 16),

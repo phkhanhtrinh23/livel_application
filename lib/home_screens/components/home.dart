@@ -122,7 +122,7 @@ class MainHome extends StatelessWidget {
                     bottom: 8.0,
                   ),
                   child: Text(
-                    'Explore Cities',
+                    'Explore Countries',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,

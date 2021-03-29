@@ -15,11 +15,8 @@ class Stripe extends StatefulWidget {
 }
 
 class StripeState extends State<Stripe> {
-  final String id,uid;
-  StripeState(
-      this.id,
-      this.uid
-      );
+  final String id, uid;
+  StripeState(this.id, this.uid);
   Token _paymentToken;
   PaymentMethod _paymentMethod;
   String _error;
@@ -27,8 +24,6 @@ class StripeState extends State<Stripe> {
 
   PaymentIntentResult _paymentIntent;
   Source _source;
-
-  ScrollController _controller = ScrollController();
 
   final CreditCard testCard = CreditCard(
     number: '4000002760003184',
@@ -43,7 +38,8 @@ class StripeState extends State<Stripe> {
     super.initState();
 
     StripePayment.setOptions(StripeOptions(
-        publishableKey: "pk_test_51IZTswGPnwrBENOaTocWU9VHZ2HIu7ZF1MnMl4menHiHuaXjSs9Jwq2By6XhSElNE6jRqeA1lUEfeLm8PEHr40LI00kBKUqpYe",
+        publishableKey:
+            "pk_test_51IZTswGPnwrBENOaTocWU9VHZ2HIu7ZF1MnMl4menHiHuaXjSs9Jwq2By6XhSElNE6jRqeA1lUEfeLm8PEHr40LI00kBKUqpYe",
         merchantId: "Test",
         androidPayMode: 'test'));
   }
@@ -58,82 +54,150 @@ class StripeState extends State<Stripe> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
-        key: _scaffoldKey,
-        appBar: new AppBar(
-          title: new Text('Payment'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.clear),
-              onPressed: () {
-                setState(() {
-                  _source = null;
-                  _paymentIntent = null;
-                  _paymentMethod = null;
-                  _paymentToken = null;
-                });
-              },
-            )
-          ],
-        ),
-        body: ListView(
-          controller: _controller,
-          padding: const EdgeInsets.all(20),
-          children: <Widget>[
-            Divider(),
-            TextButton(
-              child: Text("Native payment"),
-              onPressed: () {
-                if (Platform.isIOS) {
-                  _controller.jumpTo(450);
-                }
-                StripePayment.paymentRequestWithNativePay(
-                  androidPayOptions: AndroidPayPaymentRequest(
-                    totalPrice: "0",
-                    currencyCode: "USD",
-                  ),
-                  applePayOptions: ApplePayPaymentOptions(
-                    countryCode: 'US',
-                    currencyCode: 'USD',
-                    items: [
-                      ApplePayItem(
-                        label: 'Test',
-                        amount: '0',
-                      )
-                    ],
-                  ),
-                ).then((token) {
-                  setState(() {
-                    _scaffoldKey.currentState.showSnackBar(
-                        SnackBar(content: Text('Received ${token.tokenId}')));
-                    _paymentToken = token;
-                  });
-                  StripePayment.completeNativePayRequest().then((_) {
-                    _scaffoldKey.currentState.showSnackBar(
-                        SnackBar(content: Text('Completed successfully')));
-                  }).catchError(setError);
-                }).catchError(setError);
-              },
+    double _width = MediaQuery.of(context).size.width;
+    return Scaffold(
+      key: _scaffoldKey,
+      body: Column(
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(bottom: 180),
+            padding: const EdgeInsets.only(top: 32, bottom: 16),
+            width: _width,
+            height: 148,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
+              ),
+              color: Color(0xFF4EAFC1),
             ),
-            TextButton(onPressed: (){
-              fb.FirebaseFirestore.instance
-                  .collection('Users')
-                  .doc(uid)
-                  .update({
-                "TripList": fb.FieldValue.arrayUnion([id])
-              });
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      TripContent(id: this.id),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.clear,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
                 ),
-              );
-            },
-            child: Text('Join for free'),)
-          ],
-        ),
+                Text(
+                  'Payment',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 330,
+                  height: 68,
+                  margin: const EdgeInsets.only(top: 16, bottom: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: Color(0xFF477983),
+                      width: 2,
+                    ),
+                  ),
+                  child: TextButton(
+                    child: Text(
+                      "Credit Card",
+                      style: TextStyle(
+                        color: Color(0xFF4EAFC1),
+                        fontSize: 24,
+                      ),
+                    ),
+                    onPressed: () {
+                      StripePayment.paymentRequestWithNativePay(
+                        androidPayOptions: AndroidPayPaymentRequest(
+                          totalPrice: "0",
+                          currencyCode: "USD",
+                        ),
+                        applePayOptions: ApplePayPaymentOptions(
+                          countryCode: 'US',
+                          currencyCode: 'USD',
+                          items: [
+                            ApplePayItem(
+                              label: 'Test',
+                              amount: '0',
+                            )
+                          ],
+                        ),
+                      ).then((token) {
+                        setState(() {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                              content: Text('Received ${token.tokenId}')));
+                          _paymentToken = token;
+                        });
+                        StripePayment.completeNativePayRequest().then((_) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                              content: Text('Completed successfully')));
+                        }).catchError(setError);
+                      }).catchError(setError);
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                ),
+                Container(
+                  width: 330,
+                  height: 68,
+                  margin: const EdgeInsets.only(top: 16, bottom: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: Color(0xFF477983),
+                      width: 2,
+                    ),
+                  ),
+                  child: TextButton(
+                    child: Text(
+                      'Free',
+                      style: TextStyle(
+                        color: Color(0xFF4EAFC1),
+                        fontSize: 24,
+                      ),
+                    ),
+                    onPressed: () {
+                      fb.FirebaseFirestore.instance
+                          .collection('Users')
+                          .doc(uid)
+                          .update({
+                        "TripList": fb.FieldValue.arrayUnion([id])
+                      });
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              TripContent(id: this.id),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -13,66 +13,69 @@ class GuideJoinRegister extends StatelessWidget {
     // ignore: unused_local_variable
     String uid = FirebaseAuth.instance.currentUser.uid;
     return FutureBuilder(
-        future: getTrip(id),
-        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.data.get('Code').toString().isEmpty)
-              return Container(
-                margin: const EdgeInsets.only(
-                  bottom: 20,
-                ),
-                child: FlatButton(
-                  minWidth: 213,
-                  height: 51,
-                  color: Color(0xFF4EAFC1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Text(
-                    'Create video call',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              TourguidePage(snapshot.data.id, "")),
-                    );
-                  },
-                ),
-              );
-            //return TourguidePage(snapshot.data.id, snapshot.data.get('Code'));
-          }
-          return Container(
+      future: getTrip(id),
+      builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.data.get('Code').toString().isEmpty)
+            return Container(
               margin: const EdgeInsets.only(
                 bottom: 20,
               ),
               child: FlatButton(
-                  minWidth: 213,
-                  height: 51,
-                  color: Color(0xFF4EAFC1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                minWidth: 213,
+                height: 51,
+                color: Color(0xFF4EAFC1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Text(
+                  'Create video call',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
                   ),
-                  child: Text(
-                    'Travel',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TourguidePage(snapshot.data.id,
-                              snapshot.data.get('Code').toString())),
-                    );
-                  }));
-        });
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            TourguidePage(snapshot.data.id, "")),
+                  );
+                },
+              ),
+            );
+          //return TourguidePage(snapshot.data.id, snapshot.data.get('Code'));
+        }
+        return Container(
+          margin: const EdgeInsets.only(
+            bottom: 20,
+          ),
+          child: FlatButton(
+            minWidth: 213,
+            height: 51,
+            color: Color(0xFF4EAFC1),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Text(
+              'Travel',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TourguidePage(snapshot.data.id,
+                        snapshot.data.get('Code').toString())),
+              );
+            },
+          ),
+        );
+      },
+    );
   }
 }

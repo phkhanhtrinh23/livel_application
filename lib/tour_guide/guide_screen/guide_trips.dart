@@ -8,6 +8,7 @@ class GuideScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     // String uid = FirebaseAuth.instance.currentUser.uid;
     return Scaffold(
         body: FutureBuilder(
@@ -59,7 +60,7 @@ class GuideScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                 ),
                 Container(
-                  height: 580,
+                  height: _height - 148 - 50,
                   child: ListView.builder(
                       itemCount: snapshot.data.size,
                       itemBuilder: (BuildContext context, int index) {
@@ -72,7 +73,7 @@ class GuideScreen extends StatelessWidget {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     ));
   }

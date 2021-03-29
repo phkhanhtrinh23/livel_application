@@ -14,14 +14,12 @@ class PlaceScreen extends StatelessWidget {
     this.place,
     this.country,
     this.id,
-    this.checkHomeScreen,
   });
 
   final String image, place, country, id;
   final Timestamp date;
   final String time;
   final int cost;
-  final bool checkHomeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +49,6 @@ class PlaceScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => TripContent(
                       id: this.id,
-                      checkHomeScreen: this.checkHomeScreen,
                     ),
                   ),
                 );

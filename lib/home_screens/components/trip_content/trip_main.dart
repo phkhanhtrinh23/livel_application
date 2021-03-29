@@ -5,18 +5,15 @@ class TripContent extends StatelessWidget {
   const TripContent({
     Key key,
     this.id,
-    this.checkHomeScreen,
   }) : super(key: key);
 
   final String id;
-  final bool checkHomeScreen;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: MainContent(
         id: this.id,
-        checkHomeScreen: this.checkHomeScreen,
       ),
     );
   }

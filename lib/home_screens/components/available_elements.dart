@@ -35,7 +35,6 @@ class AvailableElement extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (BuildContext context) => TripContent(
                       id: id,
-                      checkHomeScreen: true,
                     ),
                   ),
                 );
@@ -123,7 +122,7 @@ class AvailableElement extends StatelessWidget {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

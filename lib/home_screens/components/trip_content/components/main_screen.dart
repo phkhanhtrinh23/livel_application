@@ -132,8 +132,8 @@ class MainContent extends StatelessWidget {
                 ),
                 Container(
                   padding: const EdgeInsets.only(
-                    right: 23,
-                    left: 23,
+                    right: 16,
+                    left: 16,
                     top: 42,
                     bottom: 23,
                   ),
@@ -242,7 +242,7 @@ class MainContent extends StatelessWidget {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return Container();
       },
     );
   }

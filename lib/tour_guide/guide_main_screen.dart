@@ -52,7 +52,7 @@ class GuideMainScreen extends StatelessWidget {
               ),
             ),
             ProfileMenu(
-              text: "Guidelines",
+              text: "Your Trips",
               icon: Icon(
                 Icons.bookmark_border_outlined,
                 color: Color(0xFF477983),

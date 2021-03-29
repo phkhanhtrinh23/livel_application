@@ -45,7 +45,7 @@ class GuideScreen extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'Guidelines',
+                        'Your Trips',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:livel_application/home_screens/HomeScreen.dart';
+import 'package:livel_application/log_in_screens/state_home.dart';
 
 class FirstScreen extends StatefulWidget {
   FirstScreen({Key key}) : super(key: key);
@@ -21,7 +21,7 @@ class _FirstScreen extends State<FirstScreen> {
         () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HomeScreen(),
+                builder: (context) => HomeMain(),
               ),
             ));
   }

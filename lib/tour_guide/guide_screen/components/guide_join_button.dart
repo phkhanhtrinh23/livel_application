@@ -6,46 +6,45 @@ import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/video_call/broadcaster.dart';
 import '../guide_trip_content_main.dart';
 
-class GuideJoinRegister extends StatelessWidget{
+class GuideJoinRegister extends StatelessWidget {
   final String id;
-  const GuideJoinRegister({
-    Key key,
-    this.id
-  }): super(key: key);
+  const GuideJoinRegister({Key key, this.id}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    String uid=FirebaseAuth.instance.currentUser.uid;
+    String uid = FirebaseAuth.instance.currentUser.uid;
     return FutureBuilder(
         future: getTrip(id),
-        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
-          if(snapshot.connectionState==ConnectionState.done)
-          {
-            if(snapshot.data.get('Code').toString().isEmpty)
-                return Container(
-                  margin: const EdgeInsets.only(
-                    bottom: 20,
+        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data.get('Code').toString().isEmpty)
+              return Container(
+                margin: const EdgeInsets.only(
+                  bottom: 20,
+                ),
+                child: FlatButton(
+                  minWidth: 213,
+                  height: 51,
+                  color: Color(0xFF4EAFC1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: FlatButton(
-                    minWidth: 213,
-                    height: 51,
-                    color: Colors.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                  child: Text(
+                    'Create video call',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
                     ),
-                    child: Text(
-                      'Create video call',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TourguidePage(snapshot.data.id,"")),
-                      );
-                    },
                   ),
-                );
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              TourguidePage(snapshot.data.id, "")),
+                    );
+                  },
+                ),
+              );
             //return TourguidePage(snapshot.data.id, snapshot.data.get('Code'));
           }
           return Container(
@@ -55,7 +54,7 @@ class GuideJoinRegister extends StatelessWidget{
               child: FlatButton(
                   minWidth: 213,
                   height: 51,
-                  color: Colors.orange,
+                  color: Color(0xFF4EAFC1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -63,19 +62,17 @@ class GuideJoinRegister extends StatelessWidget{
                     'Travel',
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TourguidePage(snapshot.data.id, snapshot.data.get('Code').toString())),
+                      MaterialPageRoute(
+                          builder: (context) => TourguidePage(snapshot.data.id,
+                              snapshot.data.get('Code').toString())),
                     );
-                  }
-              )
-          );
-
-        }
-    );
+                  }));
+        });
   }
-
 }

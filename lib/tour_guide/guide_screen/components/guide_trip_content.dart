@@ -28,7 +28,7 @@ class GuideMainContent extends StatelessWidget {
                         height: 335,
                         padding: const EdgeInsets.only(
                           left: 18.0,
-                          top: 8.0,
+                          top: 32,
                           bottom: 8.0,
                           right: 18.0,
                         ),
@@ -69,23 +69,6 @@ class GuideMainContent extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Spacer(),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 52,
-                                  height: 32,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFEE6C4D),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Text(
-                                    "\$" + snapshot.data.get('Cost').toString(),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ],
@@ -108,7 +91,7 @@ class GuideMainContent extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF5197E1),
+                      color: Color(0xFFEE6C4D),
                     ),
                   ),
                 ),
@@ -138,20 +121,32 @@ class GuideMainContent extends StatelessWidget {
                 ),
                 Container(
                   padding: const EdgeInsets.only(
-                    right: 23,
-                    left: 23,
+                    right: 16,
+                    left: 16,
                     top: 42,
                     bottom: 23,
                   ),
                   child: Row(
                     children: [
                       Icon(Icons.map_outlined),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
                       Text(
                         'Information',
                         style: TextStyle(
                           fontSize: 26,
-                          color: Color(0xFFEE6C4D),
+                          color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 8)),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Divider(
+                              color: Colors.grey,
+                              thickness: 1,
+                            )
+                          ],
                         ),
                       ),
                     ],
@@ -161,6 +156,7 @@ class GuideMainContent extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     right: 23,
                     left: 23,
+                    bottom: 28,
                   ),
                   child: Text(
                     snapshot.data.get('Description').toString(),
@@ -170,7 +166,51 @@ class GuideMainContent extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 50,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  padding: const EdgeInsets.only(right: 16, left: 16),
+                  child: Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    right: 16,
+                    left: 16,
+                    bottom: 150,
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Trip Fee',
+                        style: TextStyle(
+                          color: Color(0xFF4EAFC1),
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                        alignment: Alignment.center,
+                        width: 106,
+                        height: 46,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: Color(0xFF4EAFC1),
+                          ),
+                        ),
+                        child: Text(
+                          '\$' + snapshot.data.get('Cost').toString(),
+                          style: TextStyle(
+                            color: Color(0xFFEAB25E),
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 GuideJoinRegister(id: snapshot.data.id)
               ],

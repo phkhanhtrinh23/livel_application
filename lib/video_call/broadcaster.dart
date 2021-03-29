@@ -41,7 +41,7 @@ class _TourguidePage extends State<TourguidePage> {
     if (channel.isNotEmpty) {
       onJoin(channel);
     }
-    else return Scaffold(
+    return Scaffold(
       body: Column(
         children: <Widget>[
           Container(

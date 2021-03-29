@@ -4,16 +4,19 @@ import 'package:livel_application/home_screens/components/trip_content/component
 class TripContent extends StatelessWidget {
   const TripContent({
     Key key,
-    this.id
+    this.id,
+    this.checkHomeScreen,
   }) : super(key: key);
 
   final String id;
+  final bool checkHomeScreen;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: MainContent(
-        id:this.id
+        id: this.id,
+        checkHomeScreen: this.checkHomeScreen,
       ),
     );
   }

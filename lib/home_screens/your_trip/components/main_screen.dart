@@ -3,9 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' as fb;
 
-class YourTripScreen extends StatelessWidget {
+class YourTripScreen extends StatefulWidget {
   const YourTripScreen({Key key, this.id});
+  final String id;
+
+  @override
+  _YourTripScreen createState() => _YourTripScreen(id: id);
+}
+
+class _YourTripScreen extends State<YourTripScreen> {
+  _YourTripScreen({this.id});
   final String id;
 
   @override
@@ -14,6 +23,7 @@ class YourTripScreen extends StatelessWidget {
       future: getTrip(this.id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+          List<dynamic> arr = snapshot.data.get('TripList');
           return Container(
             padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(
@@ -31,7 +41,10 @@ class YourTripScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => TripContent(id: this.id),
+                    builder: (context) => TripContent(
+                      id: this.id,
+                      checkHomeScreen: false,
+                    ),
                   ),
                 );
               },

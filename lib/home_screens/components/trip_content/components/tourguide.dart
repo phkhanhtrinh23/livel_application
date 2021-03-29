@@ -28,7 +28,7 @@ class TourGuide extends StatelessWidget {
                       Text(
                         'Tour Guide',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 28,
                           color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
                         ),
@@ -148,7 +148,7 @@ class TourGuide extends StatelessWidget {
                       Text(
                         'Reviews',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 28,
                           color: Color(0xFF4EAFC1),
                           fontWeight: FontWeight.normal,
                         ),

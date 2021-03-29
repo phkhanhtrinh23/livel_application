@@ -188,7 +188,7 @@ class MainContent extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 16, left: 16),
                   child: Divider(
                     color: Colors.grey,
-                    thickness: 2,
+                    thickness: 1,
                   ),
                 ),
                 Container(

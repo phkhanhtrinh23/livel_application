@@ -41,7 +41,7 @@ class MainHome extends StatelessWidget {
                           'Today: $day/$month/$year',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Color(0xFFFFBE9A),
+                            color: Color(0xFFEAB25D),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

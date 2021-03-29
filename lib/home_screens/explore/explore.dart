@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/explore/all_trip.dart';
 import 'dart:math';
-class ExploreScreen extends StatefulWidget{
-  ExploreScreen({Key key}):super(key: key);
+
+class ExploreScreen extends StatefulWidget {
+  ExploreScreen({Key key}) : super(key: key);
   @override
-  ExploreScreenState createState() => new ExploreScreenState(searchString: '', field: 'Name');
+  ExploreScreenState createState() =>
+      new ExploreScreenState(searchString: '', field: 'Name');
 }
 
 class ExploreScreenState extends State<ExploreScreen> {
-  ExploreScreenState({
-    this.searchString,
-    this.field
-  });
+  ExploreScreenState({this.searchString, this.field});
   final String searchString, field;
   String dropdown = 'Name';
-  String lSearch='';
-  String lField='Name';
+  String lSearch = '';
+  String lField = 'Name';
   @override
   Widget build(BuildContext context) {
     TextEditingController search = new TextEditingController();
@@ -67,7 +66,10 @@ class ExploreScreenState extends State<ExploreScreen> {
                 Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                 DropdownButton<String>(
                   value: dropdown,
-                  icon: const Icon(Icons.arrow_drop_down_circle_outlined, color: Colors.cyan,),
+                  icon: const Icon(
+                    Icons.arrow_drop_down_circle_outlined,
+                    color: Colors.cyan,
+                  ),
                   iconSize: 24,
                   elevation: 16,
                   style: const TextStyle(color: Colors.cyan),
@@ -104,8 +106,8 @@ class ExploreScreenState extends State<ExploreScreen> {
                 TextButton(
                     onPressed: () {
                       setState(() {
-                        lField=dropdown;
-                        lSearch=search.text;
+                        lField = dropdown;
+                        lSearch = search.text;
                       });
                     },
                     style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
@@ -113,12 +115,13 @@ class ExploreScreenState extends State<ExploreScreen> {
                       alignment: Alignment.center,
                       transform: Matrix4.rotationY(pi),
                       child: Icon(Icons.search),
-                    )
-                ),
+                    )),
               ],
             ),
           ),
-          Container(height: _height - 295, child: AllTrip(searchString: lSearch, field: lField)),
+          Container(
+              height: _height - 295,
+              child: AllTrip(searchString: lSearch, field: lField)),
         ],
       ),
     ));

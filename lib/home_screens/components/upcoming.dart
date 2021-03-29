@@ -13,7 +13,7 @@ class UpcomingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getTripInfo(),
+      future: getTripRec(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView.builder(

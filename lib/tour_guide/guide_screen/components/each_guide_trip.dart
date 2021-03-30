@@ -30,19 +30,19 @@ class GuideTripScreen extends StatelessWidget {
             child: FlatButton(
               padding: const EdgeInsets.all(0),
               onPressed: () {
-                if (snapshot.data.get('Code').toString().isEmpty){
+                if (snapshot.data.get('Code').toString().isEmpty) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
                             TourguidePage(snapshot.data.id, "")),
                   );
-                }
-                else Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                    builder: (context) => TourguidePage(snapshot.data.id,
-                    snapshot.data.get('Code').toString())));
+                } else
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TourguidePage(snapshot.data.id,
+                              snapshot.data.get('Code').toString())));
               },
               child: Row(
                 children: [

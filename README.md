@@ -4,38 +4,7 @@
   <a href="https://github.com/phkhanhtrinh23/livel_application">
     <img src="images/logo.png" alt="Logo" width="150" height="150">
   </a>
-
-  <h3 align="center">LIVEL</h3>
 </p>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -45,7 +14,9 @@
 <img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=500 height=1000>
 </p>
 
-Our project is called Livel. This is an application on *live traveling* which helps people travel online and broadcast the journey on the Internet.
+### Introduction
+
+Our project is called **Livel**. This is an application on *live traveling* which helps people travel online and broadcast the journey on the Internet.
 
 Our team aims to create a mobile application which helps the global tourism industry cope with negative economic impacts of the COVID-19 pandemic.
 

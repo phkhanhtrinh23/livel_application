@@ -1,15 +1,11 @@
-<!-- PROJECT LOGO -->
-<br />
 <p align="center">
   <a href="https://github.com/phkhanhtrinh23/livel_application">
     <img src="images/logo.png" alt="Logo" width="150" height="150">
-    <h1 align="center"> LIVEL </h1>
+    <h1 align="center", style="color:#FF4EAFC1"> LIVEL </h1>
   </a>
 </p>
 
 
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 <p align="center">
@@ -22,9 +18,9 @@
 
 Our project is called **Livel**. This is an application on *live traveling* which helps people travel online and broadcast the journey on the Internet.
 
-Our team aims to create a mobile application which helps the global tourism industry cope with negative economic impacts of the COVID-19 pandemic.
+Our team aims to create a mobile application which helps the global tourism industry cope with negative economic impacts of the COVID-19 pandemic. This is one of the **17 Sustainable Development Goals** of the **United Nations General Assembly**.
 
-Moreover, this application is the solution we have come up with to address one of the **17 sustainable development goals** which were set in 2015 by the **United Nations General Assembly** and are intended to be achieved by the year 2030.
+Moreover, this application is the solution we have come up with to participate in **Solution Challenge 2021** Contest from **Google Developer Student Clubs**.
 
 We want to address **Goal 8** - more specifically, **Target 8.9**.
 

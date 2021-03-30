@@ -2,17 +2,21 @@
 <br />
 <p align="center">
   <a href="https://github.com/phkhanhtrinh23/livel_application">
+    <h1> LIVEL </h1>
     <img src="images/logo.png" alt="Logo" width="150" height="150">
   </a>
 </p>
+
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 <p align="center">
-<img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=500 height=1000>
+<img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=800 height=1600>
 </p>
+
+
 
 ### Introduction
 
@@ -22,6 +26,13 @@ Our team aims to create a mobile application which helps the global tourism indu
 
 Moreover, this application is the solution we have come up with to address one of the **17 sustainable development goals** which were set in 2015 by the **United Nations General Assembly** and are intended to be achieved by the year 2030.
 
+We want to address **Goal 8** - more specifically, **Target 8.9**.
+
+- *Goal 8*: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.
+- *Target 8.9*: By 2030, devise and implement policies to promote sustainable tourism that creates jobs and promotes local culture and products.
+
+
+
 ### Team Members
 
 Our team consists of 4 members, who are:
@@ -30,14 +41,14 @@ Our team consists of 4 members, who are:
 
 - Tran Dang Khoa - UI/UX Designer
 
-- Pham Nhut Huy - Back-end Developer & Leader
+- Pham Nhut Huy - Back-end Developer
 
 - Pham Khanh Trinh - Front-end Developer
 
 ### Built With
 
 Our application is built with these frameworks and tools:
-* [Flutter: 1.22.6](https://flutter.dev/)
+* [Flutter: 1.22.6](https://flutter.dev/docs/development/tools/sdk/releases)
 * [Dart: 2.10.5](https://dart.dev/)
 * [Firebase](https://firebase.google.com/)
 
@@ -60,6 +71,8 @@ Besides, if you have no prior knowledge on **Firebase**, you can refer to this s
 
 - [Reference: Learn Firebase fundamentals](https://firebase.google.com/docs/guides?authuser=0)
 
+
+
 ### Prerequisites
 
 At first, you need to check whether your Flutter version is 1.22.6 or not. Then, you should check whether your Dart version is 2.10.5 or not.
@@ -70,9 +83,11 @@ At first, you need to check whether your Flutter version is 1.22.6 or not. Then,
 
 After all, you should check whether you have connected an external device or an emulator.
 * flutter
-```sh
-flutter doctor
-```
+  ```sh
+  flutter doctor
+  ```
+
+
 
 ## Installation and Run
 
@@ -84,6 +99,7 @@ flutter doctor
    ```sh
    flutter run
    ```
+
 
 
 <!-- CONTRIBUTING -->

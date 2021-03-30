@@ -89,7 +89,7 @@ After all, you should check whether you have connected an external device or an 
    git clone https://github.com/phkhanhtrinh23/livel_application.git
    ```
    
-2. Start an emulator at Android Studio. You should install **Google Pixel 4 XL**
+2. Start an emulator at Android Studio. **Google Pixel 4 XL** is highly recommended
 
 3. Run the programm
    ```sh

@@ -41,7 +41,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![product-screenshot](https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png =500x500)
+<img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=500 height=500>
 
 Our project is called Livel. This is an application on *live traveling* which helps people travel online and broadcast the journey on the Internet.
 

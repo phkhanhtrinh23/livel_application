@@ -46,7 +46,7 @@ Our application is built with these frameworks and tools:
 
 ## Getting Started
 
-To get started, you may have prior knowledge on **Flutter** and **Dart Programming Language** at first. A few resources to get you started if this is your first Flutter project:
+To get started, you should have prior knowledge on **Flutter** and **Dart Programming Language** at first. A few resources to get you started if this is your first Flutter project:
 
 - [Reference: Dart documentation](https://dart.dev/guides)
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)

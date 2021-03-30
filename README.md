@@ -100,7 +100,7 @@ After all, you should check whether you have connected an external device or an 
 
 ## Contribution
 
-Contributions are what make GitHub such an amazing place to be learn, inspire, and create. Any contributions you make are *greatly appreciated*.
+Contributions are what make GitHub such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 1. Fork the project
 2. Create your Contribute branch: `git checkout -b contribute/Contribute`

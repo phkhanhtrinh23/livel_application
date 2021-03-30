@@ -1,10 +1,23 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:livel_application/tour_guide/guide_main_screen.dart';
+import 'package:path/path.dart';
 
-class AddTrip extends StatelessWidget {
-  AddTrip();
+class AddTrip extends StatefulWidget{
+  @override
+  AddTripState createState()=> new AddTripState();
+}
+
+class AddTripState extends State<AddTrip> {
+  AddTripState();
   final TextEditingController place = new TextEditingController();
   final TextEditingController city = new TextEditingController();
   final TextEditingController country = new TextEditingController();
@@ -14,7 +27,37 @@ class AddTrip extends StatelessWidget {
   final TextEditingController time = new TextEditingController();
   final TextEditingController cost = new TextEditingController();
   final _form = GlobalKey<FormState>();
+  File _image;
+  final picker = ImagePicker();
 
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+  Future<TimeOfDay> _selectTime(BuildContext context) {
+    final now = DateTime.now();
+
+    return showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
+    );
+  }
+
+  Future<DateTime> _selectDateTime(BuildContext context) => showDatePicker(
+    context: context,
+    initialDate: DateTime.now().add(Duration(seconds: 1)),
+    firstDate: DateTime.now(),
+    lastDate: DateTime(2100),
+  );
+  DateTime selectedDate = DateTime.now();
+  DateTime _dateTime;
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -199,10 +242,7 @@ class AddTrip extends StatelessWidget {
                     if (value.isEmpty) {
                       return "This field is empty";
                     }
-                    final isDigitsOnly = int.tryParse(value);
-                    return isDigitsOnly == null
-                        ? 'Input needs to be digits only'
-                        : null;
+                    return null;
                   },
                 ),
               ),
@@ -229,43 +269,108 @@ class AddTrip extends StatelessWidget {
                     if (value.isEmpty) {
                       return "This field is empty";
                     }
-                    final isDigitsOnly = int.tryParse(value);
-                    return isDigitsOnly == null
-                        ? 'Input needs to be digits only'
-                        : null;
+                    return null;
                   },
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 16.0,
-              ),
-              child: Container(
-                width: 343,
-                height: 53,
-                child: TextFormField(
-                  autofocus: true,
-                  controller: cost,
-                  decoration: InputDecoration(
-                    labelText: "Cost (In \$)",
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                      borderSide: BorderSide(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 16.0,
+                  ),
+                  child: Container(
+                    width: 170,
+                    height: 53,
+                    child: TextFormField(
+                      autofocus: true,
+                      controller: cost,
+                      decoration: InputDecoration(
+                        labelText: "Cost (In\$)",
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          borderSide: BorderSide(),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "This field is empty";
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return "This field is empty";
-                    }
-                    final isDigitsOnly = int.tryParse(value);
-                    return isDigitsOnly == null
-                        ? 'Input needs to be digits only'
-                        : null;
-                  },
                 ),
-              ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 16.0,
+                  ),
+                  child: Container(
+                    width: 180,
+                    height: 53,
+                    child: FlatButton(
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 180,
+                            height: 53,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Color(0xFF4EAFC1),
+                            ),
+                            child: Text(
+                              'Departure time',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                      onPressed: () async {
+                        final selectedDate = await _selectDateTime(context);
+                        if (selectedDate == null) return;
+
+                        final selectedTime = await _selectTime(context);
+                        if (selectedTime == null) return;
+
+                        setState(() {
+                          this.selectedDate = DateTime(
+                            selectedDate.year,
+                            selectedDate.month,
+                            selectedDate.day,
+                            selectedTime.hour,
+                            selectedTime.minute,
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.only(top:16),
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: getImage,
+                    child: Icon(Icons.photo, size: 50,),
+                  ),
+                  _image == null
+                      ? Text('No image selected.')
+                      : Container(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Image.file(_image),
+                    height: 300,
+                    width: 200,
+                  )
+                ],
+              )
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -277,7 +382,6 @@ class AddTrip extends StatelessWidget {
                 onPressed: () async {
                   if (_form.currentState.validate()) {
                     String uid = FirebaseAuth.instance.currentUser.uid;
-                    print(uid);
                     await FirebaseFirestore.instance.collection('Trips').add({
                       'Place': place.text.trim(),
                       'City': city.text,
@@ -288,26 +392,39 @@ class AddTrip extends StatelessWidget {
                       'Note': note.text,
                       'Time': 9,
                       'Code': "",
-                      'Date': "March 30 2021",
+                      'Date': this.selectedDate,
                       "Guide's ID": uid,
                       "Rating": 4.8,
-                    });
+                      "Image": basename(_image.path),
+                    }
+                    );
+                    await FirebaseStorage.instance.ref().child(basename(_image.path)).putFile(_image);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GuideMainScreen()
+                        )
+                    );
                   }
                   return "Please check again";
                 },
-                child: Container(
-                  width: 343,
-                  height: 56,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: Color(0xFFEE6C4D),
-                  ),
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 343,
+                      height: 56,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Color(0xFF4EAFC1),
+                      ),
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                )
               ),
             ),
           ],
@@ -315,4 +432,5 @@ class AddTrip extends StatelessWidget {
       ),
     ));
   }
+
 }

@@ -46,6 +46,9 @@ dependencies:
   flutter_credit_card: ^0.1.4
   intl: ^0.16.1
   rating_bar: ^0.2.0
+  image_picker: ^0.6.7+22
+  datetime_picker_formfield: ^1.0.0
+  path: ^1.8.0
   
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

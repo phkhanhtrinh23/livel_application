@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/database/queryFunction.dart';
-import 'guide_join_button.dart';
 
 class GuideMainContent extends StatelessWidget {
   const GuideMainContent({Key key, this.id}) : super(key: key);
@@ -213,7 +212,7 @@ class GuideMainContent extends StatelessWidget {
                     ],
                   ),
                 ),
-                GuideJoinRegister(id: snapshot.data.id)
+                //GuideJoinRegister(id: snapshot.data.id)
               ],
             ),
           );

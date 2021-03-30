@@ -136,7 +136,7 @@ class MainHome extends StatelessWidget {
                 children: <Widget>[
                   TripElement(
                     image: 'images/uk.png',
-                    name: 'Viet Nam',
+                    name: 'Vietnam',
                   ),
                   TripElement(
                     image: 'images/usa.png',

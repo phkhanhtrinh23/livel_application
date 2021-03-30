@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/phkhanhtrinh23/livel_application">
     <img src="images/logo.png" alt="Logo" width="150" height="150">
-    <h1> LIVEL </h1>
+    <h1 align="center"> LIVEL </h1>
   </a>
 </p>
 

@@ -85,7 +85,7 @@ class _YourTripScreen extends State<YourTripScreen> {
                             DateFormat.yMMMd()
                                 .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                             ),
                           ),
                         ],
@@ -103,7 +103,7 @@ class _YourTripScreen extends State<YourTripScreen> {
                           Text(
                             snapshot.data.get('Place').toString(),
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                             ),
                           ),
                         ],

@@ -13,21 +13,21 @@ class SecondScreen extends StatelessWidget {
           children: <Widget>[
             Container(
                 margin: const EdgeInsets.only(
-                  top: 170,
+                  top: 100,
                   left: 20,
                   right: 20,
-                  bottom: 182,
+                  bottom: 160,
                 ),
                 alignment: Alignment.center,
                 child: Column(
                   children: [
                     Image.asset(
-                      'images/saly.png',
+                      'images/saly_15.png',
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Provide interactive traveling experiences to any places with an ideal price.',
+                        'New opportunities for\ntour guides',
                         style: TextStyle(
                           fontSize: 24,
                           color: Colors.grey,
@@ -39,7 +39,7 @@ class SecondScreen extends StatelessWidget {
                 )),
             Container(
               margin: const EdgeInsets.only(
-                top: 24,
+                top: 16,
                 left: 32,
                 right: 32,
               ),
@@ -55,7 +55,7 @@ class SecondScreen extends StatelessWidget {
                 minWidth: 335,
                 height: 68,
                 child: Text(
-                  'LET\'S GO',
+                  'NEXT',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,

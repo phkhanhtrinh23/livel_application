@@ -36,7 +36,6 @@ class _TouristPage extends State<TouristPage> {
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
     if (channel.isNotEmpty) {
       onJoin(channel);
     }

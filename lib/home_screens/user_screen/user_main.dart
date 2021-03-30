@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/log_in_screens/state_home.dart';
 import 'package:livel_application/tour_guide/guide_main_screen.dart';
 import 'package:livel_application/home_screens/user_screen/components/guidelines.dart';

@@ -65,7 +65,7 @@ Besides, if you have no prior knowledge on **Firebase**, you can refer to this s
 
 ### Prerequisites
 
-At first, you need to check whether your Flutter version is 1.22.6 or not. Then, you should check whether your Dart version is 2.10.5 or not.
+At first, you need to check whether your Flutter version is **1.22.6**. Then, you should check whether your Dart version is **2.10.5**.
 * flutter
   ```sh
   flutter --version

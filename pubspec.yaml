@@ -47,6 +47,10 @@ dependencies:
   intl: ^0.16.1
   rating_bar: ^0.2.0
   image_picker: ^0.6.7+22
+<<<<<<< HEAD
+=======
+  datetime_picker_formfield: ^1.0.0
+>>>>>>> 62ff31892ce0095fd58092308f8f0a940ec1ad36
   path: ^1.7.0
   
   # The following adds the Cupertino Icons font to your application.

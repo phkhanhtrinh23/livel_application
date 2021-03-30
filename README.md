@@ -44,7 +44,6 @@ Our application is built with these frameworks and tools:
 
 
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
 To get started, you may have prior knowledge on **Flutter** and **Dart Programming Language** at first. A few resources to get you started if this is your first Flutter project:
@@ -82,10 +81,13 @@ After all, you should check whether you have connected an external device or an 
 ## Installation and Run
 
 1. Clone the repo
+
    ```sh
    git clone https://github.com/phkhanhtrinh23/livel_application.git
    ```
+   
 2. Start an emulator at Android Studio. You should install **Google Pixel 4 XL**
+
 3. Run the programm
    ```sh
    flutter run
@@ -93,20 +95,18 @@ After all, you should check whether you have connected an external device or an 
 
 
 
-<!-- CONTRIBUTING -->
 ## Contribution
 
 Contributions are what make GitHub such an amazing place to be learn, inspire, and create. Any contributions you make are *greatly appreciated*.
 
-1. Fork the Project
-2. Create your Contribute Branch: `git checkout -b contribute/Contribute`
-3. Commit your Changes: `git commit -m 'add your messages'`
-4. Push to the Branch: `git push origin contribute/Contribute`
-5. Open a Pull Request
+1. Fork the project
+2. Create your Contribute branch: `git checkout -b contribute/Contribute`
+3. Commit your changes: `git commit -m 'add your messages'`
+4. Push to the branch: `git push origin contribute/Contribute`
+5. Open a pull request
 
 
 
-<!-- CONTACT -->
 ## Contact
 
 Pham Khanh Trinh - phkhanhtrinh23@gmail.com

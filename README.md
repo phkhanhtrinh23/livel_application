@@ -24,7 +24,7 @@ We want to address **Goal 8** - more specifically, **Target 8.9**.
 
 ### Team Members
 
-Our team consists of 4 members, who are:
+Our team consists of 4 members and all of us are studying Computer Science at Ho Chi Minh City University Of Technology, Vietnam.
 
 - Nguyen Thanh Ngan - Project Manager
 
@@ -37,6 +37,7 @@ Our team consists of 4 members, who are:
 ### Built With
 
 Our application is built with these frameworks and tools:
+* Emulator: Google Pixel 4 XL API 30 1440 x 3040: 560dpi
 * [Flutter: 1.22.6](https://flutter.dev/docs/development/tools/sdk/releases)
 * [Dart: 2.10.5](https://dart.dev/)
 * [Firebase](https://firebase.google.com/)
@@ -84,7 +85,8 @@ After all, you should check whether you have connected an external device or an 
    ```sh
    git clone https://github.com/phkhanhtrinh23/livel_application.git
    ```
-2. Run the programm
+2. Start an emulator at Android Studio. You should install **Google Pixel 4 XL**
+3. Run the programm
    ```sh
    flutter run
    ```
@@ -115,4 +117,4 @@ Nguyen Thanh Ngan - thanhngan190706@gmail.com
 
 Tran Dang Khoa - retdkhoa@gmail.com
 
-Project Link: [https://github.com/phkhanhtrinh23/livel_application.git](https://github.com/phkhanhtrinh23/livel_application.git
+Project Link: https://github.com/phkhanhtrinh23/livel_application.git

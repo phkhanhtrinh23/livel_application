@@ -13,7 +13,7 @@
 ## About The Project
 
 <p align="center">
-<img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=200 height=800>
+<img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=400 height=800>
 </p>
 
 

@@ -2,8 +2,8 @@
 <br />
 <p align="center">
   <a href="https://github.com/phkhanhtrinh23/livel_application">
-    <h1> LIVEL </h1>
     <img src="images/logo.png" alt="Logo" width="150" height="150">
+    <h1> LIVEL </h1>
   </a>
 </p>
 
@@ -13,7 +13,7 @@
 ## About The Project
 
 <p align="center">
-<img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=800 height=1600>
+<img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=200 height=800>
 </p>
 
 

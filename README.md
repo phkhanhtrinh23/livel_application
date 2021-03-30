@@ -100,7 +100,7 @@ Contributions are what make GitHub such an amazing place to be learn, inspire, a
 
 1. Fork the Project
 2. Create your Contribute Branch: `git checkout -b contribute/Contribute`
-3. Commit your Changes: `git commit -m 'Add <something'`
+3. Commit your Changes: `git commit -m 'add your messages'`
 4. Push to the Branch: `git push origin contribute/Contribute`
 5. Open a Pull Request
 

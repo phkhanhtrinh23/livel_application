@@ -13,7 +13,7 @@ Our project is called **Livel**. This is an application on *live traveling* whic
 
 Our team aims to create a mobile application which helps the global tourism industry cope with negative economic impacts of the COVID-19 pandemic. This is one of the **17 Sustainable Development Goals** of the **United Nations General Assembly**.
 
-Moreover, this application is the solution we have come up with to participate in **Solution Challenge 2021** Contest from **Google Developer Student Clubs**.
+Moreover, this application is the solution we have come up with to participate in **Solution Challenge 2021** contest from **Google Developer Student Clubs**.
 
 We want to address **Goal 8** - more specifically, **Target 8.9**.
 

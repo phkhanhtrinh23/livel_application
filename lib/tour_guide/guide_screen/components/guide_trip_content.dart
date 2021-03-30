@@ -87,7 +87,7 @@ class GuideMainContent extends StatelessWidget {
                     bottom: 42.0,
                   ),
                   child: Text(
-                    snapshot.data.get('Name'),
+                    snapshot.data.get('Place'),
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: 26,

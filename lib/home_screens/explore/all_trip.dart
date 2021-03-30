@@ -23,7 +23,7 @@ class AllTrip extends StatelessWidget {
                   cost: snapshot.data.docs[index].get('Cost'),
                   time: snapshot.data.docs[index].get('Time').toString(),
                   date: snapshot.data.docs[index].get('Date'),
-                  place: snapshot.data.docs[index].get('Name'),
+                  place: snapshot.data.docs[index].get('Place'),
                   id: snapshot.data.docs[index].id,
                 );
               },

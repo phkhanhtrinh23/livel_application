@@ -8,8 +8,8 @@ Future<void> addTrip() async {
     'Description':
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     'Duration': "20 min",
-    'Name': 'Empire State',
-    'Place': 'New York',
+    'Place': 'Empire State',
+    'City': 'New York',
     'Rating': 4.6,
     "guide's name": 'Trinh Pham',
     "Date": "March 20 2021",

@@ -59,9 +59,11 @@ class _TouristPage extends State<TouristPage> {
 
   Future<void> onJoin(String channel) async {
     // update input validation
-    setState(() {
-      channel.isEmpty ? _validateError = true : _validateError = false;
-    });
+    setState(
+      () {
+        channel.isEmpty ? _validateError = true : _validateError = false;
+      },
+    );
     if (channel.isNotEmpty) {
       // await for camera and mic permissions before pushing video page
       await _handleCameraAndMic(Permission.camera);

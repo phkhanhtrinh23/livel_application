@@ -6,15 +6,15 @@ class ExploreScreen extends StatefulWidget {
   ExploreScreen({Key key}) : super(key: key);
   @override
   ExploreScreenState createState() =>
-      new ExploreScreenState(searchString: '', field: 'Name');
+      new ExploreScreenState(searchString: '', field: 'Place');
 }
 
 class ExploreScreenState extends State<ExploreScreen> {
   ExploreScreenState({this.searchString, this.field});
   final String searchString, field;
-  String dropdown = 'Name';
+  String dropdown = 'Place';
   String lSearch = '';
-  String lField = 'Name';
+  String lField = 'Place';
   @override
   Widget build(BuildContext context) {
     TextEditingController search = new TextEditingController();
@@ -68,27 +68,32 @@ class ExploreScreenState extends State<ExploreScreen> {
                   value: dropdown,
                   icon: const Icon(
                     Icons.arrow_drop_down_circle_outlined,
-                    color: Colors.cyan,
+                    color: Color(0xFF4EAFC1),
                   ),
                   iconSize: 24,
                   elevation: 16,
-                  style: const TextStyle(color: Colors.cyan),
+                  style: const TextStyle(
+                      color: Color(0xFF4EAFC1), fontWeight: FontWeight.bold),
                   underline: Container(
                     height: 0,
                     color: Colors.white,
                   ),
                   onChanged: (String newValue) {
-                    setState(() {
-                      dropdown = newValue;
-                    });
-                  },
-                  items: <String>['Name', 'Place', 'Country']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
+                    setState(
+                      () {
+                        dropdown = newValue;
+                      },
                     );
-                  }).toList(),
+                  },
+                  items: <String>['Place', 'City', 'Country']
+                      .map<DropdownMenuItem<String>>(
+                    (String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    },
+                  ).toList(),
                 ),
                 Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                 Expanded(
@@ -105,10 +110,12 @@ class ExploreScreenState extends State<ExploreScreen> {
                 ),
                 TextButton(
                     onPressed: () {
-                      setState(() {
-                        lField = dropdown;
-                        lSearch = search.text;
-                      });
+                      setState(
+                        () {
+                          lField = dropdown;
+                          lSearch = search.text;
+                        },
+                      );
                     },
                     style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
                     child: Transform(

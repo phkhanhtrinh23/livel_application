@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class AddTrip extends StatelessWidget {
   AddTrip();
-  final TextEditingController name = new TextEditingController();
   final TextEditingController place = new TextEditingController();
+  final TextEditingController city = new TextEditingController();
   final TextEditingController country = new TextEditingController();
   final TextEditingController duration = new TextEditingController();
   final TextEditingController description = new TextEditingController();
@@ -75,9 +75,9 @@ class AddTrip extends StatelessWidget {
                 height: 53,
                 child: TextFormField(
                   autofocus: true,
-                  controller: name,
+                  controller: place,
                   decoration: InputDecoration(
-                    labelText: "Name",
+                    labelText: "Place",
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.0),
@@ -102,9 +102,9 @@ class AddTrip extends StatelessWidget {
                 height: 53,
                 child: TextFormField(
                   autofocus: true,
-                  controller: place,
+                  controller: city,
                   decoration: InputDecoration(
-                    labelText: "Place",
+                    labelText: "City",
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.0),
@@ -279,8 +279,8 @@ class AddTrip extends StatelessWidget {
                     String uid = FirebaseAuth.instance.currentUser.uid;
                     print(uid);
                     await FirebaseFirestore.instance.collection('Trips').add({
-                      'Name': name.text.trim(),
-                      'Place': place.text,
+                      'Place': place.text.trim(),
+                      'City': city.text,
                       'Cost': int.parse(cost.text),
                       'Country': country.text.trim(),
                       'Duration': duration.text,

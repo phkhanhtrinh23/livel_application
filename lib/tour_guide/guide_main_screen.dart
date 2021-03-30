@@ -68,7 +68,7 @@ class GuideMainScreen extends StatelessWidget {
               },
             ),
             ProfileMenu(
-              text: "Add a trip",
+              text: "Add A Trip",
               icon: Icon(
                 Icons.add_circle_outline,
                 color: Color(0xFF477983),

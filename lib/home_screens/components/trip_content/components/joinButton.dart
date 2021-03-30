@@ -74,22 +74,34 @@ class JoinRegisterState extends State<JoinRegister> {
                         ),
                       ),
                       onPressed: () {
-                        try {
-                          if (code.isNotEmpty) {
-                            print(code);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TouristPage(code)),
-                            );
-                          } else
-                            throw ("You can only join 15 minutes early.");
-                        } catch (err) {
-                          return Scaffold(
-                            body: Text(
-                              err,
-                              style: TextStyle(color: Color(0xFF4EAFC1)),
-                            ),
+                        if (code.isNotEmpty) {
+                          print(code);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TouristPage(code)),
+                          );
+                        } else {
+                          return showDialog<void>(
+                            context: context,
+                            barrierDismissible: false, // user must tap button!
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Announcement'),
+                                content: SingleChildScrollView(
+                                  child: Text(
+                                      'You can only join the video call 15 minutes early'),
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text('Confirm'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
                           );
                         }
                       },

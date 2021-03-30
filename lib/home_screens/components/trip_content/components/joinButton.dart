@@ -74,7 +74,6 @@ class JoinRegisterState extends State<JoinRegister> {
                         ),
                       ),
                       onPressed: () {
-<<<<<<< HEAD
                         if (code.isNotEmpty) {
                           print(code);
                           Navigator.push(
@@ -103,24 +102,6 @@ class JoinRegisterState extends State<JoinRegister> {
                                 ],
                               );
                             },
-=======
-                        try {
-                          if (code.isNotEmpty) {
-                            print(code);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TouristPage(code)),
-                            );
-                          } else
-                            throw ("You can only join 15 minutes early.");
-                        } catch (err) {
-                          return Scaffold(
-                            body: Text(
-                              err,
-                              style: TextStyle(color: Color(0xFF4EAFC1)),
-                            ),
->>>>>>> 8fd45017c88d4832f25f865deb7c0054fde3d9b8
                           );
                         }
                       },

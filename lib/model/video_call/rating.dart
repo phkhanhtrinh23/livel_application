@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/home_screens/HomeScreen.dart';
+import 'package:livel_application/view/home_screens/HomeScreen.dart';
 import 'package:rating_bar/rating_bar.dart';
 
 class RatingScreen extends StatefulWidget {
@@ -45,6 +45,7 @@ class _RatingScreen extends State<RatingScreen> {
               ),
             ),
             onPressed: () {
+              Navigator.of(context).pop();
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => HomeScreen(),

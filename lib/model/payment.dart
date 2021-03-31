@@ -2,10 +2,9 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart' as fb;
 import 'package:flutter/material.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/trip_main.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 import 'dart:io';
-
-import '../home_screens/components/trip_content/trip_main.dart';
 
 class Stripe extends StatefulWidget {
   final String id, uid;

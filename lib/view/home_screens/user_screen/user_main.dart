@@ -116,8 +116,6 @@ class UserScreen extends StatelessWidget {
                     icon: Icon(Icons.logout, color: Color(0xFF477983)),
                     press: () async {
                       await FirebaseAuth.instance.signOut();
-                      signOutGoogle();
-                      //print(FirebaseAuth.instance.currentUser.uid);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

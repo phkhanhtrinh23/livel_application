@@ -38,6 +38,7 @@ Our team consists of 4 members and all of us are studying Computer Science at Ho
 
 Our application is built with these frameworks and tools:
 * **Emulator: Google Pixel 4 XL API 30 1440 x 3040: 560dpi**
+* **Operating System: Android 11.0 (Google APIs)**
 * [Flutter: 1.22.6](https://flutter.dev/docs/development/tools/sdk/releases)
 * [Dart: 2.10.5](https://dart.dev/)
 * [Firebase](https://firebase.google.com/)

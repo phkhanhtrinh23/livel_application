@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/countries_elements.dart';
 import 'package:livel_application/home_screens/components/events/events.dart';
 import 'package:livel_application/home_screens/components/upcoming.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
 
 class MainHome extends StatelessWidget {
   @override
@@ -148,7 +148,7 @@ class MainHome extends StatelessWidget {
                   ),
                   TripElement(
                     image: 'images/uk.png',
-                    name: 'UK',
+                    name: 'England',
                   ),
                 ],
               ),

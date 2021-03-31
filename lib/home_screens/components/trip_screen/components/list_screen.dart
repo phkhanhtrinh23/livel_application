@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
 
 class ListScreen extends StatelessWidget {
   final String name;
@@ -22,7 +22,6 @@ class ListScreen extends StatelessWidget {
                 image: snapshot.data.docs[index].get('Image'),
                 country: snapshot.data.docs[index].get('Country'),
                 cost: snapshot.data.docs[index].get('Cost'),
-                time: snapshot.data.docs[index].get('Time'),
                 date: snapshot.data.docs[index].get('Date'),
                 place: snapshot.data.docs[index].get('Place'),
                 id: snapshot.data.docs[index].id,

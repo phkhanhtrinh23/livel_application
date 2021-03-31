@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/database/queryFunction.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/database/storage.dart';
 
 class GuideMainContent extends StatelessWidget {
   const GuideMainContent({Key key, this.id}) : super(key: key);

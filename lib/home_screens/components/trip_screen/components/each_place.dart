@@ -1,15 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_content/trip_main.dart';
+import 'package:livel_application/model/database/storage.dart';
 
 class PlaceScreen extends StatelessWidget {
   const PlaceScreen({
     Key key,
     this.image,
     this.cost,
-    this.time,
     this.date,
     this.place,
     this.country,
@@ -18,7 +17,6 @@ class PlaceScreen extends StatelessWidget {
 
   final String image, place, country, id;
   final Timestamp date;
-  final String time;
   final int cost;
 
   @override
@@ -65,7 +63,7 @@ class PlaceScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        time,
+                        DateFormat.jm().format(date.toDate()),
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

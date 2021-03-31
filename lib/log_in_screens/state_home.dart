@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
 import 'package:livel_application/splash_screens/splash_screen_1.dart';
 import 'package:provider/provider.dart';
-import 'package:livel_application/log_in_screens/components/authentication.dart';
+import 'package:livel_application/model/authentication.dart';
 
 class HomeMain extends StatelessWidget {
   @override

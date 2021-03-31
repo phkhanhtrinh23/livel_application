@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/log_in_screens/state_home.dart';
-import 'authentication.dart';
+import '../../model/authentication.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key key}) : super(key: key);
@@ -39,7 +39,7 @@ class _SignInPage extends State<SignInPage> {
                 onPressed: () {
                   signInWithGoogle().then(
                     (result) {
-                      if (result != null) {
+                      if (result.isNotEmpty) {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {

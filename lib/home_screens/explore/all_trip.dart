@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/components/trip_screen/components/each_place.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
 
 class AllTrip extends StatelessWidget {
   final String searchString, field;
@@ -21,7 +21,6 @@ class AllTrip extends StatelessWidget {
                 return PlaceScreen(
                   image: snapshot.data.docs[index].get('Image'),
                   cost: snapshot.data.docs[index].get('Cost'),
-                  time: snapshot.data.docs[index].get('Time').toString(),
                   date: snapshot.data.docs[index].get('Date'),
                   place: snapshot.data.docs[index].get('Place'),
                   id: snapshot.data.docs[index].id,

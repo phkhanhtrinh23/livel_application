@@ -1,11 +1,10 @@
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:livel_application/model/database/addTrip.dart';
+import 'package:livel_application/model/database/storage.dart';
 import 'package:livel_application/tour_guide/guide_main_screen.dart';
 import 'package:path/path.dart';
 
@@ -326,27 +325,21 @@ class AddTripState extends State<AddTrip> {
                     onPressed: () async {
                       if (_form.currentState.validate()) {
                         String uid = FirebaseAuth.instance.currentUser.uid;
-                        await FirebaseFirestore.instance
-                            .collection('Trips')
-                            .add({
-                          'Place': place.text.trim(),
-                          'City': city.text,
-                          'Cost': int.parse(cost.text),
-                          'Country': country.text.trim(),
-                          'Duration': duration.text,
-                          'Description': description.text,
-                          'Note': note.text,
-                          'Time': 9,
-                          'Code': "",
-                          'Date': this.selectedDate,
-                          "Guide's ID": uid,
-                          "Rating": 4.8,
-                          "Image": basename(_image.path),
-                        });
-                        await FirebaseStorage.instance
-                            .ref()
-                            .child(basename(_image.path))
-                            .putFile(_image);
+                        addTrip(
+                          place.text.trim(),
+                          city.text,
+                          country.text.trim(),
+                          description.text,
+                          note.text,
+                          uid,
+                          basename(_image.path),
+                          int.parse(cost.text),
+                          duration.text,
+                          4.8,
+                           9,
+                          this.selectedDate,
+                        );
+                        addImage(_image);
                         Navigator.push(
                             context,
                             MaterialPageRoute(

@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/database/queryFunction.dart';
 import 'package:livel_application/home_screens/HomeScreen.dart';
-import 'package:livel_application/home_screens/components/trip_content/components/payment.dart';
-import 'package:livel_application/video_call/audience.dart';
+import 'package:livel_application/model/payment.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/video_call/audience.dart';
 
 class JoinRegister extends StatefulWidget {
   final String id, code;
@@ -90,7 +90,7 @@ class JoinRegisterState extends State<JoinRegister> {
                                 title: Text('Announcement'),
                                 content: SingleChildScrollView(
                                   child: Text(
-                                      'You can only join the video call 15 minutes early'),
+                                      'You can only join the video call 10 minutes early'),
                                 ),
                                 actions: <Widget>[
                                   TextButton(

@@ -19,10 +19,7 @@ class _TouristPage extends State<TouristPage> {
   final String channel;
   _TouristPage(this.channel);
 
-  /// create a channelController to retrieve text value
   final _channelController = TextEditingController();
-
-  /// if channel textField is validated to have error
   bool _validateError = false;
 
   ClientRole _role = ClientRole.Audience;
@@ -51,7 +48,6 @@ class _TouristPage extends State<TouristPage> {
 
       return rtcToken.data;
     } else {
-      //user is not logged in
       throw new Exception("You are not logged in");
     }
   }
@@ -90,8 +86,6 @@ class _TouristPage extends State<TouristPage> {
 
         return;
       }
-
-      // push video page with given channel name
       await Navigator.push(
         context,
         MaterialPageRoute(

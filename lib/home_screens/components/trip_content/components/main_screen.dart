@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:livel_application/database/queryFunction.dart';
-import 'package:livel_application/home_screens/components/trip_content/components/joinButton.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/joinButton.dart';
 import 'package:livel_application/home_screens/components/trip_content/components/tourguide.dart';
+import 'package:livel_application/model/database/storage.dart';
 
 class MainContent extends StatelessWidget {
   const MainContent({Key key, this.id, this.checkHomeScreen}) : super(key: key);

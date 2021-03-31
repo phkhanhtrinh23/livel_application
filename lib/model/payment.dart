@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 import 'dart:io';
 
-import '../trip_main.dart';
+import '../home_screens/components/trip_content/trip_main.dart';
 
 class Stripe extends StatefulWidget {
   final String id, uid;
@@ -18,13 +18,7 @@ class StripeState extends State<Stripe> {
   final String id, uid;
   StripeState(this.id, this.uid);
   Token _paymentToken;
-  PaymentMethod _paymentMethod;
   String _error;
-  final String _paymentIntentClientSecret = null;
-
-  PaymentIntentResult _paymentIntent;
-  Source _source;
-
   final CreditCard testCard = CreditCard(
     number: '4000002760003184',
     expMonth: 12,

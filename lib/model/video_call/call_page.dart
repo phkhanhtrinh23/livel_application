@@ -3,21 +3,14 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
-import 'package:livel_application/video_call/rating.dart';
+import 'package:livel_application/model/video_call/rating.dart';
 
 const APP_ID = "e74c68e55cb44482a99fb501f89d29d8";
 
 class CallPage extends StatefulWidget {
-  /// non-modifiable channel name of the page
   final String channelName;
-
-  /// non-modifiable client role of the page
   final ClientRole role;
-
-  /// non-modifiable RTC token to access a channel
   final String rtcToken;
-
-  /// Creates a call page with given channel name.
   const CallPage({Key key, this.channelName, this.role, this.rtcToken})
       : super(key: key);
 
@@ -69,7 +62,6 @@ class _CallPageState extends State<CallPage> {
     await _engine.joinChannel(widget.rtcToken, widget.channelName, null, 0);
   }
 
-  /// Create agora sdk instance and initialize
   Future<void> _initAgoraRtcEngine() async {
     // ignore: deprecated_member_use
     _engine = await RtcEngine.create(APP_ID);
@@ -78,7 +70,6 @@ class _CallPageState extends State<CallPage> {
     await _engine.setClientRole(widget.role);
   }
 
-  /// Add agora event handlers
   // ignore: unused_element
   void _addAgoraEventHandlers() {
     _engine.setEventHandler(RtcEngineEventHandler(error: (code) {

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 
 Future<QuerySnapshot> getTripInfo() async {
@@ -55,5 +54,3 @@ Future<DocumentSnapshot> getJoin(String id) async {
 Future<DocumentSnapshot> getTrip(String id) async {
   return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
 }
-
-

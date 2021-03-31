@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:livel_application/state_home.dart';
-import 'package:livel_application/model/authentication.dart';
 import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
 import 'package:livel_application/view/home_screens/user_screen/components/guidelines.dart';
 import 'package:livel_application/view/home_screens/user_screen/components/help_center.dart';

@@ -24,10 +24,13 @@ You can get the released version, or .apk files, of this application at https://
 
   ```sh
   build\app\outputs\flutter-apk\app-release.apk
+  ```
+or
+  ```sh
   build\app\outputs\flutter-apk\app.apk
   ```
   
-Last but not least, we have recorded a demo video content of our application at [YouTube](https://www.youtube.com/watch?v=HPg0J_JTHPM&ab_channel=KhoaTran)
+Last but not least, we have recorded a demo video content of our application on [YouTube](https://www.youtube.com/watch?v=HPg0J_JTHPM&ab_channel=KhoaTran)
 
 
 ### Team Members

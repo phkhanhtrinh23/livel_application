@@ -77,31 +77,18 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/bike_rider.png
-    - images/bulb.png
     - images/usa.png
     - images/uk.png
-    - images/ha_long.jpg
-    - images/line.png
     - images/picture_1.png
     - images/picture_2.png
     - images/picture_3.png
     - images/trip_image.png
-    - images/place.png
-    - images/khoa.png
-    - images/slider.png
     - images/saly.png
     - images/saly2.png
-    - images/travel.png
     - images/coolkid.png
-    - images/googlebutton.png
     - images/swhere.png
     - images/logo.png
     - images/newimage.png
-    - images/events_1.png
-    - images/events_2.png
-    - images/events_3.png
-    - images/toronto.png
     - images/saly_22.png
     - images/unknown.jpg
     - images/saly_15.png

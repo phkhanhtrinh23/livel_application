@@ -94,9 +94,9 @@ After all, you should check whether you have connected an external device or an 
 
 3. You should check whether you have get enough packages or not
 
-  ```sh
-  flutter pub get
-  ```
+    ```sh
+    flutter pub get
+    ```
 
 4. Run the program
 

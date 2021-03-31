@@ -238,6 +238,7 @@ class MainContent extends StatelessWidget {
                 JoinRegister(
                   id: snapshot.data.id,
                   code: snapshot.data.get('Code'),
+                  cost: snapshot.data.get('Cost').toString(),
                 ),
               ],
             ),

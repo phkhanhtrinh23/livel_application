@@ -8,17 +8,17 @@ import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/model/video_call/audience.dart';
 
 class JoinRegister extends StatefulWidget {
-  final String id, code;
-  const JoinRegister({Key key, this.id, this.code}) : super(key: key);
+  final String id, code, cost;
+  const JoinRegister({Key key, this.id, this.code, this.cost}) : super(key: key);
 
   @override
-  JoinRegisterState createState() => new JoinRegisterState(this.id, this.code);
+  JoinRegisterState createState() => new JoinRegisterState(this.id, this.code, this.cost);
 }
 
 class JoinRegisterState extends State<JoinRegister> {
-  final String id, code;
+  final String id, code, cost;
 
-  JoinRegisterState(this.id, this.code);
+  JoinRegisterState(this.id, this.code, this.cost);
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +155,7 @@ class JoinRegisterState extends State<JoinRegister> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => Stripe(id, uid),
+                        builder: (BuildContext context) => Stripe(id, uid, cost),
                       ),
                     );
                   },

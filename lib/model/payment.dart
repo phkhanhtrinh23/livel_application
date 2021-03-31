@@ -7,15 +7,15 @@ import 'package:stripe_payment/stripe_payment.dart';
 import 'dart:io';
 
 class Stripe extends StatefulWidget {
-  final String id, uid;
-  const Stripe(this.id, this.uid);
+  final String id, uid, cost;
+  const Stripe(this.id, this.uid, this.cost);
   @override
-  StripeState createState() => new StripeState(id, uid);
+  StripeState createState() => new StripeState(id, uid,cost);
 }
 
 class StripeState extends State<Stripe> {
-  final String id, uid;
-  StripeState(this.id, this.uid);
+  final String id, uid,cost;
+  StripeState(this.id, this.uid, this.cost);
   Token _paymentToken;
   String _error;
   final CreditCard testCard = CreditCard(
@@ -119,7 +119,7 @@ class StripeState extends State<Stripe> {
                     onPressed: () {
                       StripePayment.paymentRequestWithNativePay(
                         androidPayOptions: AndroidPayPaymentRequest(
-                          totalPrice: "0",
+                          totalPrice: this.cost,
                           currencyCode: "USD",
                         ),
                         applePayOptions: ApplePayPaymentOptions(
@@ -128,7 +128,7 @@ class StripeState extends State<Stripe> {
                           items: [
                             ApplePayItem(
                               label: 'Test',
-                              amount: '0',
+                              amount: this.cost,
                             )
                           ],
                         ),

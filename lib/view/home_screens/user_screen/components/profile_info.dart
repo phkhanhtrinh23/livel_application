@@ -33,6 +33,7 @@ class ProfileScreen extends StatelessWidget {
       body: FutureBuilder(
         future: getJoin(uid),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if(snapshot.connectionState == ConnectionState.done)
           return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
                           bottom: 8,
                         ),
                         child: Text(
-                          'Your name',
+                          'Name',
                           style: TextStyle(
                             fontSize: 20,
                           ),
@@ -116,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                           bottom: 8,
                         ),
                         child: Text(
-                          'Your country',
+                          'Country',
                           style: TextStyle(
                             fontSize: 20,
                           ),
@@ -155,7 +156,7 @@ class ProfileScreen extends StatelessWidget {
                                     bottom: 8,
                                   ),
                                   child: Text(
-                                    'Your age',
+                                    'Age',
                                     style: TextStyle(
                                       fontSize: 20,
                                     ),
@@ -193,7 +194,7 @@ class ProfileScreen extends StatelessWidget {
                                     bottom: 8,
                                   ),
                                   child: Text(
-                                    'Your phone',
+                                    'Phone number',
                                     style: TextStyle(
                                       fontSize: 20,
                                     ),
@@ -261,6 +262,7 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
           );
+          return Container();
         },
       ),
     );

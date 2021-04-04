@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 
 Future<QuerySnapshot> getTripInfo() async {
   return await FirebaseFirestore.instance.collection('Trips').get();

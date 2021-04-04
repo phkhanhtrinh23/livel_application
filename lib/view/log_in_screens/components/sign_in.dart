@@ -21,7 +21,7 @@ class _SignInPage extends State<SignInPage> {
       onWillPop: () async => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Are you sure you want to quit?'),
+          content: Text('Are you sure you want to quit?'),
           actions: <Widget>[
             RaisedButton(
               child: Text('Cancel'),

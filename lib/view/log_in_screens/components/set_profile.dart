@@ -158,25 +158,22 @@ class PersonalInfo extends StatelessWidget {
                   padding: const EdgeInsets.all(0),
                   onPressed: () async {
                     if (_form.currentState.validate()) {
-                      await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                        email: email.trim(),
-                        password: password.trim(),
-                      );
                       await FirebaseFirestore.instance
                           .collection('Users')
                           .doc(FirebaseAuth.instance.currentUser.uid)
-                          .set({
-                        'Age': age.text.trim(),
-                        'Country': country.text.trim(),
-                        "Exp": 0,
-                        'Name': name.text.trim(),
-                        'Phone': phone.text.trim(),
-                        'Rating': 0,
-                        'TripList': [],
-                        'TourGuide': 'No',
-                        'Mail': email,
-                      });
+                          .set(
+                        {
+                          'Age': age.text.trim(),
+                          'Country': country.text.trim(),
+                          "Exp": 0,
+                          'Name': name.text.trim(),
+                          'Phone': phone.text.trim(),
+                          'Rating': 0,
+                          'TripList': [],
+                          'TourGuide': 'No',
+                          'Mail': email,
+                        },
+                      );
                       await FirebaseAuth.instance.currentUser
                           .updateProfile(displayName: name.text.trim());
                       Navigator.push(
@@ -184,7 +181,7 @@ class PersonalInfo extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeMain()),
                       );
                     }
-                    return "Please check again";
+                    return "Please enter again.";
                   },
                   child: Container(
                     width: 343,

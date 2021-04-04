@@ -167,7 +167,7 @@ class ProfileScreen extends StatelessWidget {
                                   Container(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     alignment: Alignment.centerLeft,
-                                    width: 148,
+                                    width: 140,
                                     height: 45,
                                     margin: const EdgeInsets.only(
                                       bottom: 16,
@@ -206,7 +206,7 @@ class ProfileScreen extends StatelessWidget {
                                   Container(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     alignment: Alignment.centerLeft,
-                                    width: 148,
+                                    width: 140,
                                     height: 45,
                                     margin: const EdgeInsets.only(
                                       bottom: 16,

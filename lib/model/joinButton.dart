@@ -9,10 +9,12 @@ import 'package:livel_application/model/video_call/audience.dart';
 
 class JoinRegister extends StatefulWidget {
   final String id, code, cost;
-  const JoinRegister({Key key, this.id, this.code, this.cost}) : super(key: key);
+  const JoinRegister({Key key, this.id, this.code, this.cost})
+      : super(key: key);
 
   @override
-  JoinRegisterState createState() => new JoinRegisterState(this.id, this.code, this.cost);
+  JoinRegisterState createState() =>
+      new JoinRegisterState(this.id, this.code, this.cost);
 }
 
 class JoinRegisterState extends State<JoinRegister> {
@@ -88,13 +90,17 @@ class JoinRegisterState extends State<JoinRegister> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: Text('Announcement'),
-                                content: SingleChildScrollView(
-                                  child: Text(
-                                      'You can only join the video call 10 minutes early'),
+                                content: Text(
+                                  'You can only join the video call 10 minutes early',
                                 ),
                                 actions: <Widget>[
                                   TextButton(
-                                    child: Text('Confirm'),
+                                    child: Text(
+                                      'Confirm',
+                                      style: TextStyle(
+                                        color: Color(0xFFEE6C4D),
+                                      ),
+                                    ),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
@@ -155,7 +161,8 @@ class JoinRegisterState extends State<JoinRegister> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => Stripe(id, uid, cost),
+                        builder: (BuildContext context) =>
+                            Stripe(id, uid, cost),
                       ),
                     );
                   },

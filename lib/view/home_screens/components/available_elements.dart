@@ -62,7 +62,7 @@ class AvailableElement extends StatelessWidget {
                           ),
                         );
                       }
-                      return CircularProgressIndicator();
+                      return Container();
                     },
                   ),
                   Container(

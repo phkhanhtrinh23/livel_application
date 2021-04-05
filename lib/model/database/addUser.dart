@@ -12,14 +12,16 @@ Future<void> addUser(
   await FirebaseFirestore.instance
       .collection('Users')
       .doc(FirebaseAuth.instance.currentUser.uid)
-      .set({
-    'Age': age,
-    'Country': country,
-    "Exp": 0,
-    'Name': name,
-    'Phone': phone,
-    'Mail': mail,
-    'Rating': 0,
-    'TripList': []
-  });
+      .set(
+    {
+      'Age': age,
+      'Country': country,
+      "Exp": 0,
+      'Name': name,
+      'Phone': phone,
+      'Mail': mail,
+      'Rating': 0,
+      'TripList': []
+    },
+  );
 }

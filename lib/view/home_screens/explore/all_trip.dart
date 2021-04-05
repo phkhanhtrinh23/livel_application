@@ -29,7 +29,7 @@ class AllTrip extends StatelessWidget {
             );
           return Text("There is no trips for your search");
         }
-        return Container(); //CircularProgressIndicator();
+        return Container();
       },
     );
   }

@@ -6,7 +6,6 @@
 ## About The Project
 
 
-
 ### Introduction
 
 Our project is called **Livel**. This is an application on **live traveling** which helps people travel online and broadcast the journey on the Internet.

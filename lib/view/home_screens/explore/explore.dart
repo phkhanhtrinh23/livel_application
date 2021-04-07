@@ -1,24 +1,88 @@
-import 'package:flutter/material.dart';
-import 'package:livel_application/view/home_screens/explore/all_trip.dart';
+import 'dart:async';
 import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+
+import '../components/trip_screen/components/each_place.dart';
 
 class ExploreScreen extends StatefulWidget {
   ExploreScreen({Key key}) : super(key: key);
+
   @override
-  ExploreScreenState createState() =>
-      new ExploreScreenState(searchString: '', field: 'Place');
+  ExploreScreenState createState() => new ExploreScreenState();
 }
 
 class ExploreScreenState extends State<ExploreScreen> {
-  ExploreScreenState({this.searchString, this.field});
-  final String searchString, field;
+  ExploreScreenState();
+
+  TextEditingController search = new TextEditingController();
   String dropdown = 'Place';
   String lSearch = '';
   String lField = 'Place';
+  bool set=false;
+
+  @override
+  initState() {
+    super.initState();
+    search.addListener(_onSearchChanged);
+  }
+
+  @override
+  void dispose() {
+    search.removeListener(_onSearchChanged);
+    search.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    getCollection();
+  }
+
+  _onSearchChanged() {
+    getSearch();
+  }
+
+  List show = [];
+  QuerySnapshot res;
+
+  getSearch() async {
+    List tmp = [];
+    if (search.text.isEmpty) {
+      tmp = res.docs;
+    } else {
+      for (var doc in res.docs) {
+        if (doc.get(lField)
+            .toString()
+            .toLowerCase()
+            .trim()
+            .contains(search.text.toLowerCase().trim())) {
+          tmp.add(doc);
+        }
+      }
+    }
+    setState(() {
+      lSearch = search.text.toLowerCase();
+      show = tmp;
+    });
+  }
+
+  getCollection() async {
+    QuerySnapshot data = await FirebaseFirestore.instance
+        .collection('Trips')
+        .orderBy('Date')
+        .get();
+    setState(() {
+      res = data;
+      set=true;
+    });
+    getSearch();
+  }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController search = new TextEditingController();
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -83,6 +147,8 @@ class ExploreScreenState extends State<ExploreScreen> {
                       setState(
                         () {
                           dropdown = newValue;
+                          lField = dropdown;
+                          search.clear();
                         },
                       );
                     },
@@ -110,14 +176,6 @@ class ExploreScreenState extends State<ExploreScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {
-                      setState(
-                        () {
-                          lField = dropdown;
-                          lSearch = search.text;
-                        },
-                      );
-                    },
                     style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
                     child: Transform(
                       alignment: Alignment.center,
@@ -129,8 +187,24 @@ class ExploreScreenState extends State<ExploreScreen> {
               ),
             ),
             Container(
-                height: _height - 295,
-                child: AllTrip(searchString: lSearch, field: lField)),
+              height: _height - 295,
+              //child: AllTrip(searchString: lSearch, field: lField)),
+              child: show.length > 0
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: show.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return PlaceScreen(
+                          image: show[index].get('Image'),
+                          cost: show[index].get('Cost'),
+                          date: show[index].get('Date'),
+                          place: show[index].get('Place'),
+                          id: show[index].id,
+                        );
+                      },
+                    )
+                  : set?Text("There are no trips!"):Container(),
+            )
           ],
         ),
       ),

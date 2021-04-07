@@ -20,7 +20,7 @@ class ExploreScreenState extends State<ExploreScreen> {
   String dropdown = 'Place';
   String lSearch = '';
   String lField = 'Place';
-  bool set=false;
+  bool set = false;
 
   @override
   initState() {
@@ -54,7 +54,8 @@ class ExploreScreenState extends State<ExploreScreen> {
       tmp = res.docs;
     } else {
       for (var doc in res.docs) {
-        if (doc.get(lField)
+        if (doc
+            .get(lField)
             .toString()
             .toLowerCase()
             .trim()
@@ -76,7 +77,7 @@ class ExploreScreenState extends State<ExploreScreen> {
         .get();
     setState(() {
       res = data;
-      set=true;
+      set = true;
     });
     getSearch();
   }
@@ -182,6 +183,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                       transform: Matrix4.rotationY(pi),
                       child: Icon(Icons.search),
                     ),
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -203,7 +205,9 @@ class ExploreScreenState extends State<ExploreScreen> {
                         );
                       },
                     )
-                  : set?Text("There are no trips!"):Container(),
+                  : set
+                      ? Text("There are no trips!")
+                      : Container(),
             )
           ],
         ),

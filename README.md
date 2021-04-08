@@ -80,6 +80,7 @@ At first, you need to check whether your Flutter version is **1.22.6**. Then, yo
   ```
 
 After all, you should check whether you have connected an external device or an emulator.
+
 * flutter
 
   ```sh
@@ -95,16 +96,18 @@ After all, you should check whether you have connected an external device or an 
    ```sh
    git clone https://github.com/phkhanhtrinh23/livel_application.git
    ```
-   
-2. Start an emulator at Android Studio. **Google Pixel 4 XL** is highly recommended
+  
+2. Use Android Studio or Visual Studio Code to open the folder **livel_application**.
+ 
+3. Download and start an emulator at Android Studio (AVD Manager). **Google Pixel 4 XL** is highly recommended.
 
-3. You should check whether you have get enough packages or not
+4. You should check whether you have get enough packages or not:
 
     ```sh
     flutter pub get
     ```
 
-4. Run the program
+5. Run the program:
 
    ```sh
    flutter run

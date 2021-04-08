@@ -1,9 +1,6 @@
-import 'dart:async';
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import '../components/trip_screen/components/each_place.dart';
 
 class ExploreScreen extends StatefulWidget {

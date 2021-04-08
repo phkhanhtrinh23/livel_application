@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:livel_application/state_home.dart';
+import 'package:livel_application/view/log_in_screens/components/sign_in.dart';
 import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
 import 'package:livel_application/view/home_screens/user_screen/components/guidelines.dart';
 import 'package:livel_application/view/home_screens/user_screen/components/help_center.dart';
@@ -118,7 +118,7 @@ class UserScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeMain(),
+                          builder: (context) => SignInPage(),
                         ),
                       );
                     },

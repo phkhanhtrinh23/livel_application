@@ -101,7 +101,7 @@ After all, you should check whether you have connected an external device or an 
  
 3. Download and start an emulator at Android Studio (AVD Manager). **Google Pixel 4 XL** is highly recommended.
 
-4. You should check whether you have get enough packages or not:
+4. You should check whether you have gotten enough packages or not:
 
     ```sh
     flutter pub get

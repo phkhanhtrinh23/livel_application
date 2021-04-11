@@ -179,8 +179,10 @@ class StripeState extends State<Stripe> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              TripContent(id: this.id),
+                          builder: (BuildContext context) => TripContent(
+                            id: this.id,
+                            checkHomeScreen: true,
+                          ),
                         ),
                       );
                     },

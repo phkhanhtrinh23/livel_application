@@ -36,6 +36,7 @@ class AvailableElement extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (BuildContext context) => TripContent(
                       id: id,
+                      checkHomeScreen: false,
                     ),
                   ),
                 );

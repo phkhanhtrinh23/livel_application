@@ -41,6 +41,7 @@ class _YourTripScreen extends State<YourTripScreen> {
                   MaterialPageRoute(
                     builder: (context) => TripContent(
                       id: this.id,
+                      checkHomeScreen: false,
                     ),
                   ),
                 );

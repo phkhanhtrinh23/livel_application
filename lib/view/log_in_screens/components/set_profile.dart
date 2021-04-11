@@ -152,6 +152,7 @@ class PersonalInfo extends StatelessWidget {
                   ),
                 ),
               ),
+              Padding(padding: const EdgeInsets.only(bottom: 48.0)),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 18),
                 child: FlatButton(

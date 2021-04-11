@@ -187,7 +187,6 @@ class ExploreScreenState extends State<ExploreScreen> {
             ),
             Container(
               height: _height - 295,
-              //child: AllTrip(searchString: lSearch, field: lField)),
               child: show.length > 0
                   ? ListView.builder(
                       shrinkWrap: true,

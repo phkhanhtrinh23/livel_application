@@ -47,6 +47,7 @@ class PlaceScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => TripContent(
                       id: this.id,
+                      checkHomeScreen: false,
                     ),
                   ),
                 );

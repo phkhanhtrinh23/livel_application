@@ -70,7 +70,7 @@ class MainHome extends StatelessWidget {
                               ),
                             );
                           }
-                          return CircularProgressIndicator();
+                          return Container();
                         },
                       ),
                     ],

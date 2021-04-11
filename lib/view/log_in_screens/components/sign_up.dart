@@ -137,7 +137,7 @@ class _SignUpPage extends State<SignUpPage> {
                                 actions: <Widget>[
                                   RaisedButton(
                                     child: Text(
-                                      'Okay',
+                                      'Confirm',
                                       style: TextStyle(
                                         color: Color(0xFFEE6C4D),
                                       ),

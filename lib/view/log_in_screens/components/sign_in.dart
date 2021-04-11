@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:livel_application/state_home.dart';
+import 'package:livel_application/view/log_in_screens/components/sign_up.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key key}) : super(key: key);
@@ -119,18 +120,79 @@ class _SignInPage extends State<SignInPage> {
                   ),
                   child: TextButton(
                     onPressed: () async {
-                      await FirebaseAuth.instance.signInWithEmailAndPassword(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim());
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeMain()),
-                      );
+                      try {
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim());
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeMain()),
+                        );
+                      } on FirebaseAuthException catch (error) {
+                        if (error.code == 'wrong-password') {
+                          return showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              content: Text(
+                                'Your password is wrong. Please try again!',
+                              ),
+                              actions: <Widget>[
+                                RaisedButton(
+                                  child: Text(
+                                    'Confirm',
+                                    style: TextStyle(
+                                      color: Color(0xFFEE6C4D),
+                                    ),
+                                  ),
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(true),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else if (error.code == 'user-not-found') {
+                          return showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              content: Text(
+                                'You have not registered this account. Please register!',
+                              ),
+                              actions: <Widget>[
+                                RaisedButton(
+                                  child: Text(
+                                    'Confirm',
+                                    style: TextStyle(
+                                      color: Color(0xFFEE6C4D),
+                                    ),
+                                  ),
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(true),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      }
                     },
                     child: Text(
                       "Log in",
                       style: TextStyle(color: Colors.white),
                     ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 16.0),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                    );
+                  },
+                  child: Text(
+                    "Sign up",
+                    style: TextStyle(color: Colors.grey),
                   ),
                 ),
               ],

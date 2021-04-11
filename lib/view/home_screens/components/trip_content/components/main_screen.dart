@@ -239,6 +239,7 @@ class MainContent extends StatelessWidget {
                   id: snapshot.data.id,
                   code: snapshot.data.get('Code'),
                   cost: snapshot.data.get('Cost').toString(),
+                  checkHomeScreen: checkHomeScreen,
                 ),
               ],
             ),

@@ -9,8 +9,14 @@ import 'package:livel_application/model/video_call/audience.dart';
 
 class JoinRegister extends StatefulWidget {
   final String id, code, cost;
-  const JoinRegister({Key key, this.id, this.code, this.cost})
-      : super(key: key);
+  final bool checkHomeScreen;
+  const JoinRegister({
+    Key key,
+    this.id,
+    this.code,
+    this.cost,
+    this.checkHomeScreen,
+  }) : super(key: key);
 
   @override
   JoinRegisterState createState() =>
@@ -55,10 +61,13 @@ class JoinRegisterState extends State<JoinRegister> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
+                        widget.checkHomeScreen
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen()),
+                              )
+                            : Navigator.of(context).pop();
                       },
                     ),
                     Padding(padding: const EdgeInsets.only(right: 16)),

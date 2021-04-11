@@ -1,20 +1,17 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart' as fb;
 import 'package:flutter/material.dart';
 import 'package:livel_application/view/home_screens/components/trip_content/trip_main.dart';
 import 'package:stripe_payment/stripe_payment.dart';
-import 'dart:io';
 
 class Stripe extends StatefulWidget {
   final String id, uid, cost;
   const Stripe(this.id, this.uid, this.cost);
   @override
-  StripeState createState() => new StripeState(id, uid,cost);
+  StripeState createState() => new StripeState(id, uid, cost);
 }
 
 class StripeState extends State<Stripe> {
-  final String id, uid,cost;
+  final String id, uid, cost;
   StripeState(this.id, this.uid, this.cost);
   Token _paymentToken;
   String _error;
@@ -174,9 +171,11 @@ class StripeState extends State<Stripe> {
                       fb.FirebaseFirestore.instance
                           .collection('Users')
                           .doc(uid)
-                          .update({
-                        "TripList": fb.FieldValue.arrayUnion([id])
-                      });
+                          .update(
+                        {
+                          "TripList": fb.FieldValue.arrayUnion([id])
+                        },
+                      );
                       Navigator.push(
                         context,
                         MaterialPageRoute(

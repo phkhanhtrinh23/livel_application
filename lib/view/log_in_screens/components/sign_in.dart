@@ -26,7 +26,7 @@ class _SignInPage extends State<SignInPage> {
           actions: <Widget>[
             RaisedButton(
               child: Text('Cancel'),
-              onPressed: () => Navigator.of(context).pop(false),
+              onPressed: () => Navigator.of(context).pop(),
             ),
             RaisedButton(
               child: Text(

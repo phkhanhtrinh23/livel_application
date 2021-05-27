@@ -114,12 +114,41 @@ class UserScreen extends StatelessWidget {
                     text: "Log Out",
                     icon: Icon(Icons.logout, color: Color(0xFF477983)),
                     press: () async {
-                      await FirebaseAuth.instance.signOut();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignInPage(),
-                        ),
+                      return showDialog<void>(
+                        context: context,
+                        barrierDismissible: false, // user must tap button!
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: Text('Do you want to log out?'),
+                            actions: <Widget>[
+                              RaisedButton(
+                                child: Text(
+                                  'No',
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop(true);
+                                },
+                              ),
+                              RaisedButton(
+                                child: Text(
+                                  'Yes',
+                                  style: TextStyle(
+                                    color: Color(0xFFEE6C4D),
+                                  ),
+                                ),
+                                onPressed: () async {
+                                  await FirebaseAuth.instance.signOut();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SignInPage(),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   ),

@@ -31,7 +31,7 @@ class _HomeScreen extends State<HomeScreen> {
           actions: <Widget>[
             RaisedButton(
               child: Text('Cancel'),
-              onPressed: () => Navigator.of(context).pop(false),
+              onPressed: () => Navigator.of(context).pop(),
             ),
             RaisedButton(
               child: Text(

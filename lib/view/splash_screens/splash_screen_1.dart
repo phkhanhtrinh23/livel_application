@@ -11,11 +11,11 @@ class SecondScreen extends StatelessWidget {
         builder: (context) => AlertDialog(
           content: Text('Are you sure you want to quit?'),
           actions: <Widget>[
-            RaisedButton(
+            TextButton(
               child: Text('Cancel'),
               onPressed: () => Navigator.of(context).pop(),
             ),
-            RaisedButton(
+            TextButton(
               child: Text(
                 'Quit',
                 style: TextStyle(
@@ -74,25 +74,27 @@ class SecondScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   color: Color(0xFF4EAFC1),
                 ),
-                child: FlatButton(
-                  minWidth: 335,
+                child: Container(
+                  width: 335,
                   height: 68,
-                  child: Text(
-                    'NEXT',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ThirdScreen(),
+                  child: TextButton(
+                    child: Text(
+                      'NEXT',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
                       ),
-                    );
-                  },
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ThirdScreen(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

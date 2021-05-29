@@ -119,6 +119,10 @@ class _SignInPage extends State<SignInPage> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
+                    child: Text(
+                      "Log in",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     onPressed: () async {
                       try {
                         await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -137,7 +141,7 @@ class _SignInPage extends State<SignInPage> {
                                 'Your password is wrong. Please try again!',
                               ),
                               actions: <Widget>[
-                                RaisedButton(
+                                TextButton(
                                   child: Text(
                                     'Confirm',
                                     style: TextStyle(
@@ -158,7 +162,7 @@ class _SignInPage extends State<SignInPage> {
                                 'You have not registered this account. Please register!',
                               ),
                               actions: <Widget>[
-                                RaisedButton(
+                                TextButton(
                                   child: Text(
                                     'Confirm',
                                     style: TextStyle(
@@ -174,10 +178,6 @@ class _SignInPage extends State<SignInPage> {
                         }
                       }
                     },
-                    child: Text(
-                      "Log in",
-                      style: TextStyle(color: Colors.white),
-                    ),
                   ),
                 ),
                 Padding(

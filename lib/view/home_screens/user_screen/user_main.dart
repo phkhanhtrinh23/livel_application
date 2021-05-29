@@ -121,15 +121,18 @@ class UserScreen extends StatelessWidget {
                           return AlertDialog(
                             content: Text('Do you want to log out?'),
                             actions: <Widget>[
-                              RaisedButton(
+                              TextButton(
                                 child: Text(
                                   'No',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).pop(true);
                                 },
                               ),
-                              RaisedButton(
+                              TextButton(
                                 child: Text(
                                   'Yes',
                                   style: TextStyle(

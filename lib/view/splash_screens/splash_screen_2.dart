@@ -51,25 +51,27 @@ class ThirdScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 color: Color(0xFF4EAFC1),
               ),
-              child: FlatButton(
-                minWidth: 335,
+              child: Container(
+                width: 335,
                 height: 68,
-                child: Text(
-                  'LET\'S GO',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FourthScreen(),
+                child: TextButton(
+                  child: Text(
+                    'LET\'S GO',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
                     ),
-                  );
-                },
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FourthScreen(),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],

@@ -185,6 +185,7 @@ class StripeState extends State<Stripe> {
                           ),
                         ),
                       );
+
                     },
                   ),
                 ),

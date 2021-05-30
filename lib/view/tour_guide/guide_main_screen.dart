@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/view/home_screens/user_screen/components/profile.dart';
 import 'package:livel_application/view/home_screens/user_screen/user_main.dart';
 import 'package:livel_application/view/tour_guide/guide_screen/guide_trips.dart';
 

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/view/home_screens/components/countries_elements.dart';
-import 'package:livel_application/view/home_screens/components/events/events.dart';
-import 'package:livel_application/view/home_screens/components/upcoming.dart';
+import 'package:livel_application/view/home_screens/components/home_components/countries_elements.dart';
+import 'package:livel_application/model/events.dart';
+import 'package:livel_application/view/home_screens/components/home_components/upcoming.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
 class MainHome extends StatelessWidget {

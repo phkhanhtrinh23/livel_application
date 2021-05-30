@@ -6,7 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
-import 'call_page.dart';
+import '../../view/video_call/call_page.dart';
 
 class TouristPage extends StatefulWidget {
   final String channel;

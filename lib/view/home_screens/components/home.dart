@@ -18,7 +18,6 @@ class MainHome extends StatelessWidget {
           children: <Widget>[
             Stack(
               alignment: Alignment.bottomCenter,
-              overflow: Overflow.visible,
               children: [
                 Container(
                   padding: const EdgeInsets.only(

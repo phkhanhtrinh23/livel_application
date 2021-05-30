@@ -47,79 +47,84 @@ class JoinRegisterState extends State<JoinRegister> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    FlatButton(
-                      minWidth: 150,
+                    Container(
+                      width: 150,
                       height: 51,
                       color: Color(0xFFE5E5E5),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
-                      child: Text(
-                        'GO BACK',
-                        style: TextStyle(
-                          color: Colors.black,
+                      child: TextButton(
+                        child: Text(
+                          'GO BACK',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
                         ),
+                        onPressed: () {
+                          widget.checkHomeScreen
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()),
+                                )
+                              : Navigator.of(context).pop();
+                        },
                       ),
-                      onPressed: () {
-                        widget.checkHomeScreen
-                            ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomeScreen()),
-                              )
-                            : Navigator.of(context).pop();
-                      },
                     ),
                     Padding(padding: const EdgeInsets.only(right: 16)),
-                    FlatButton(
-                      minWidth: 150,
+                    Container(
+                      width: 150,
                       height: 51,
                       color: Color(0xFF4EAFC1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
-                      child: Text(
-                        'JOIN',
-                        style: TextStyle(
-                          color: Colors.white,
+                      child: TextButton(
+                        child: Text(
+                          'JOIN',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        if (code.isNotEmpty) {
-                          print(code);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TouristPage(code)),
-                          );
-                        } else {
-                          return showDialog<void>(
-                            context: context,
-                            barrierDismissible: false, // user must tap button!
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Announcement'),
-                                content: Text(
-                                  'You can only join the video call 10 minutes early',
-                                ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: Text(
-                                      'Confirm',
-                                      style: TextStyle(
-                                        color: Color(0xFFEE6C4D),
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
+                        onPressed: () {
+                          if (code.isNotEmpty) {
+                            print(code);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TouristPage(code)),
+                            );
+                          } else {
+                            return showDialog<void>(
+                              context: context,
+                              barrierDismissible:
+                                  false, // user must tap button!
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Announcement'),
+                                  content: Text(
+                                    'You can only join the video call 10 minutes early',
                                   ),
-                                ],
-                              );
-                            },
-                          );
-                        }
-                      },
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: Text(
+                                        'Confirm',
+                                        style: TextStyle(
+                                          color: Color(0xFFEE6C4D),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),

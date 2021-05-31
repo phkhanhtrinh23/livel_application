@@ -27,7 +27,7 @@ You can get the released version, or .apk files, of this application at [Google 
 
 After you have downloaded the .apk file, you should check whether this file is the original one or not by using [Checksum](https://www.howtogeek.com/363735/what-is-a-checksum-and-why-should-you-care/) to compare your checksums with ours. Our checksums file is located at [Google Drive](https://shorturl.at/msuxB).
 
-Last but not least, we have recorded a video content of our application on [YouTube](https://www.youtube.com/watch?v=HPg0J_JTHPM&ab_channel=KhoaTran)
+Last but not least, we have recorded a video content of our application on [YouTube](https://www.youtube.com/watch?v=b0c1RJR9F-4&t=1s)
 
 
 ### Team Members

@@ -127,8 +127,9 @@ class UserScreen extends StatelessWidget {
                                 child: Text(
                                   'No',
                                   style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal),
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).pop(true);

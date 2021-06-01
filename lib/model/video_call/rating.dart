@@ -34,9 +34,9 @@ class _RatingScreen extends State<RatingScreen> {
           Container(
             width: 160,
             height: 51,
-            color: Color(0xFF4EAFC1),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.0),
+              color: Color(0xFF4EAFC1),
             ),
             child: TextButton(
               child: Text(

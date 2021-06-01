@@ -30,7 +30,13 @@ class _HomeScreen extends State<HomeScreen> {
           content: Text('Are you sure you want to quit?'),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: Text(
+                'Cancel',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
               onPressed: () => Navigator.of(context).pop(),
             ),
             TextButton(

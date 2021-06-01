@@ -83,7 +83,7 @@ class GuideTripScreen extends StatelessWidget {
                             DateFormat.yMMMd()
                                 .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.black,
                               fontWeight: FontWeight.normal,
                             ),
@@ -103,7 +103,7 @@ class GuideTripScreen extends StatelessWidget {
                           Text(
                             snapshot.data.get('Place').toString(),
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.black,
                               fontWeight: FontWeight.normal,
                             ),

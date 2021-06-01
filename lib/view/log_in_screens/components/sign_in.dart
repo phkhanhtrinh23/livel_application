@@ -24,11 +24,11 @@ class _SignInPage extends State<SignInPage> {
         builder: (context) => AlertDialog(
           content: Text('Are you sure you want to quit?'),
           actions: <Widget>[
-            RaisedButton(
+            TextButton(
               child: Text('Cancel'),
               onPressed: () => Navigator.of(context).pop(),
             ),
-            RaisedButton(
+            TextButton(
               child: Text(
                 'Quit',
                 style: TextStyle(

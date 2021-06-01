@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,25 +27,27 @@ class ProfileMenu extends StatelessWidget {
           width: 2,
         ),
       ),
-      child: FlatButton(
+      child: Padding(
         padding: EdgeInsets.all(0),
-        onPressed: press,
-        child: Row(
-          children: [
-            icon,
-            Container(
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: Color(0xFF477983),
-                  fontSize: 20,
+        child: TextButton(
+          onPressed: press,
+          child: Row(
+            children: [
+              icon,
+              Container(
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: Color(0xFF477983),
+                    fontSize: 20,
+                  ),
                 ),
+                margin: const EdgeInsets.only(left: 5.0),
               ),
-              margin: const EdgeInsets.only(left: 5.0),
-            ),
-            Spacer(),
-            Icon(Icons.arrow_forward_ios),
-          ],
+              Spacer(),
+              Icon(Icons.arrow_forward_ios),
+            ],
+          ),
         ),
       ),
     );

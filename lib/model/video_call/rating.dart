@@ -31,27 +31,29 @@ class _RatingScreen extends State<RatingScreen> {
               bottom: 32,
             ),
           ),
-          FlatButton(
-            minWidth: 160,
+          Container(
+            width: 160,
             height: 51,
             color: Color(0xFF4EAFC1),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.0),
             ),
-            child: Text(
-              "Submit",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
+            child: TextButton(
+              child: Text(
+                "Submit",
+                style: TextStyle(
+                  color: Colors.white,
                 ),
-              );
-            },
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
-import 'available_elements.dart';
+import 'recommended_trips.dart';
 
-class UpcomingScreen extends StatelessWidget {
-  UpcomingScreen({
+class RecommendedScreen extends StatelessWidget {
+  RecommendedScreen({
     Key key,
   });
 
@@ -21,7 +21,7 @@ class UpcomingScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data.size,
               itemBuilder: (BuildContext context, int index) {
-                return AvailableElement(
+                return RecommendedElement(
                   id: snapshot.data.docs[index].id,
                 );
               });

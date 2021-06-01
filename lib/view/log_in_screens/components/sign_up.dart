@@ -110,7 +110,7 @@ class _SignUpPage extends State<SignUpPage> {
                     color: Color(0xFFEE6C4D),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: () async {
                       if (_form.currentState.validate()) {
                         try {
@@ -135,7 +135,7 @@ class _SignUpPage extends State<SignUpPage> {
                                   'Your email has already been registered. Please try again!',
                                 ),
                                 actions: <Widget>[
-                                  RaisedButton(
+                                  TextButton(
                                     child: Text(
                                       'Confirm',
                                       style: TextStyle(

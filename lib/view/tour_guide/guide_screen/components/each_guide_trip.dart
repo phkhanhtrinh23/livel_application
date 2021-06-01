@@ -18,6 +18,8 @@ class GuideTripScreen extends StatelessWidget {
           return Container(
             padding: const EdgeInsets.all(0),
             margin: const EdgeInsets.only(
+              left: 10,
+              right: 10,
               bottom: 16,
             ),
             width: 355,
@@ -25,8 +27,7 @@ class GuideTripScreen extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.0),
             ),
-            child: FlatButton(
-              padding: const EdgeInsets.all(0),
+            child: TextButton(
               onPressed: () {
                 if (snapshot.data.get('Code').toString().isEmpty) {
                   Navigator.push(
@@ -45,7 +46,7 @@ class GuideTripScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(right: 32),
+                    margin: const EdgeInsets.only(right: 16),
                     child: Image.asset(
                       'images/trip_image.png',
                       width: 150,
@@ -83,6 +84,8 @@ class GuideTripScreen extends StatelessWidget {
                                 .format((snapshot.data.get('Date')).toDate()),
                             style: TextStyle(
                               fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
                             ),
                           ),
                         ],
@@ -101,6 +104,8 @@ class GuideTripScreen extends StatelessWidget {
                             snapshot.data.get('Place').toString(),
                             style: TextStyle(
                               fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
                             ),
                           ),
                         ],

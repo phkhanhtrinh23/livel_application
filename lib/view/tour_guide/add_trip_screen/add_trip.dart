@@ -253,8 +253,7 @@ class AddTripState extends State<AddTrip> {
                 child: Container(
                   width: 180,
                   height: 53,
-                  child: FlatButton(
-                    padding: const EdgeInsets.all(0),
+                  child: TextButton(
                     child: Column(
                       children: [
                         Container(
@@ -320,8 +319,7 @@ class AddTripState extends State<AddTrip> {
                   top: 48,
                   bottom: 40,
                 ),
-                child: FlatButton(
-                    padding: const EdgeInsets.all(0),
+                child: TextButton(
                     onPressed: () async {
                       if (_form.currentState.validate()) {
                         String uid = FirebaseAuth.instance.currentUser.uid;
@@ -336,7 +334,7 @@ class AddTripState extends State<AddTrip> {
                           int.parse(cost.text),
                           duration.text,
                           4.8,
-                           9,
+                          9,
                           this.selectedDate,
                         );
                         addImage(_image);
@@ -355,7 +353,7 @@ class AddTripState extends State<AddTrip> {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            color: Color(0xFF4EAFC1),
+                            color: Color(0xFFEE6C4D),
                           ),
                           child: Text(
                             'Submit',

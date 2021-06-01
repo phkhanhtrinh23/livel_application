@@ -50,9 +50,9 @@ class JoinRegisterState extends State<JoinRegister> {
                     Container(
                       width: 150,
                       height: 51,
-                      color: Color(0xFFE5E5E5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0),
+                        color: Color(0xFFE5E5E5),
                       ),
                       child: TextButton(
                         child: Text(
@@ -76,9 +76,9 @@ class JoinRegisterState extends State<JoinRegister> {
                     Container(
                       width: 150,
                       height: 51,
-                      color: Color(0xFF4EAFC1),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0),
+                        color: Color(0xFF4EAFC1),
                       ),
                       child: TextButton(
                         child: Text(
@@ -140,46 +140,50 @@ class JoinRegisterState extends State<JoinRegister> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FlatButton(
-                  minWidth: 150,
+                Container(
+                  width: 150,
                   height: 51,
-                  color: Color(0xFFE5E5E5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    color: Color(0xFFE5E5E5),
                   ),
-                  child: Text(
-                    'GO BACK',
-                    style: TextStyle(
-                      color: Colors.black,
+                  child: TextButton(
+                    child: Text(
+                      'GO BACK',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
                     ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
                 ),
                 Padding(padding: const EdgeInsets.only(right: 16)),
-                FlatButton(
-                  minWidth: 150,
+                Container(
+                  width: 150,
                   height: 51,
-                  color: Color(0xFF4EAFC1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    color: Color(0xFF4EAFC1),
                   ),
-                  child: Text(
-                    'REGISTER',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            Stripe(id, uid, cost),
+                  child: TextButton(
+                    child: Text(
+                      'REGISTER',
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
-                    );
-                  },
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              Stripe(id, uid, cost),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),

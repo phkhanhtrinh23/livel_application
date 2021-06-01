@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:livel_application/view/log_in_screens/components/sign_in.dart';
 import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
-import 'package:livel_application/view/home_screens/user_screen/components/guidelines.dart';
-import 'package:livel_application/view/home_screens/user_screen/components/help_center.dart';
+// import 'package:livel_application/view/home_screens/user_screen/components/guidelines.dart';
+// import 'package:livel_application/view/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/view/home_screens/user_screen/components/profile_info.dart';
 
 import 'components/profile.dart';
@@ -74,32 +74,32 @@ class UserScreen extends StatelessWidget {
                       ),
                     },
                   ),
-                  ProfileMenu(
-                    text: "Help Center",
-                    icon: Icon(Icons.help_center_outlined,
-                        color: Color(0xFF477983)),
-                    press: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => HelpCenterScreen(),
-                        ),
-                      ),
-                    },
-                  ),
-                  ProfileMenu(
-                    text: "Guidelines",
-                    icon: Icon(Icons.bookmark_border_outlined,
-                        color: Color(0xFF477983)),
-                    press: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => GuidelinesScreen(),
-                        ),
-                      ),
-                    },
-                  ),
+                  // ProfileMenu(
+                  //   text: "Help Center",
+                  //   icon: Icon(Icons.help_center_outlined,
+                  //       color: Color(0xFF477983)),
+                  //   press: () => {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (BuildContext context) => HelpCenterScreen(),
+                  //       ),
+                  //     ),
+                  //   },
+                  // ),
+                  // ProfileMenu(
+                  //   text: "Guidelines",
+                  //   icon: Icon(Icons.bookmark_border_outlined,
+                  //       color: Color(0xFF477983)),
+                  //   press: () => {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (BuildContext context) => GuidelinesScreen(),
+                  //       ),
+                  //     ),
+                  //   },
+                  // ),
                   ProfileMenu(
                     text: "Log In As A Tour Guide",
                     icon: Icon(Icons.tour_outlined, color: Color(0xFF477983)),
@@ -166,4 +166,3 @@ class UserScreen extends StatelessWidget {
     );
   }
 }
-

@@ -15,6 +15,7 @@ class TripElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(0),
       width: 182,
       height: 248,
       margin: const EdgeInsets.only(
@@ -26,8 +27,7 @@ class TripElement extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: Color(0xFF4EAFC1),
       ),
-      child: FlatButton(
-        padding: const EdgeInsets.all(0),
+      child: TextButton(
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => TripScreen(
@@ -36,6 +36,7 @@ class TripElement extends StatelessWidget {
           ),
         ),
         child: Container(
+          padding: const EdgeInsets.all(0.0),
           alignment: Alignment.topLeft,
           width: 173,
           height: 240,

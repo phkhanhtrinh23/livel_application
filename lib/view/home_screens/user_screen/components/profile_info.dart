@@ -13,22 +13,6 @@ class ProfileScreen extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     String uid = FirebaseAuth.instance.currentUser.uid;
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: Color(0xFF4EAFC1),
-        centerTitle: true,
-        title: Text(
-          'My Account',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
       body: FutureBuilder(
         future: getJoin(uid),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -38,35 +22,52 @@ class ProfileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(
-                      bottom: 80,
+                    padding: const EdgeInsets.only(top: 24, bottom: 16),
+                    width: _width,
+                    height: 148,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                      color: Color(0xFF4EAFC1),
                     ),
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      overflow: Overflow.visible,
+                    child: Column(
                       children: [
-                        Container(
-                          width: _width,
-                          height: 160,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF4EAFC1),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                            ),
-                          ),
+                        Spacer(),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                              ),
+                              onPressed: () => Navigator.of(context).pop(),
+                            )
+                          ],
                         ),
-                        Positioned(
-                          child: Container(
-                            width: 100,
-                            height: 100,
-                            child: ClipOval(
-                              child: Image.asset('images/unknown.jpg'),
-                            ),
+                        Spacer(),
+                        Text(
+                          'My Profile',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32,
                           ),
-                          top: 120,
                         ),
                       ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 8.0,
+                    ),
+                    width: 200,
+                    height: 100,
+                    child: Center(
+                      child: ClipOval(
+                        child: Image.asset('images/unknown.jpg'),
+                      ),
                     ),
                   ),
                   Container(

@@ -31,7 +31,6 @@ class GuidelinesScreen extends StatelessWidget {
             ),
             child: Stack(
               alignment: Alignment.bottomCenter,
-              overflow: Overflow.visible,
               children: [
                 Container(
                   width: _width,

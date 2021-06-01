@@ -5,8 +5,8 @@ import 'package:livel_application/view/home_screens/components/trip_content/trip
 import 'package:livel_application/model/database/storage.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
-class AvailableElement extends StatelessWidget {
-  const AvailableElement({
+class RecommendedElement extends StatelessWidget {
+  const RecommendedElement({
     Key key,
     this.id,
   }) : super(key: key);

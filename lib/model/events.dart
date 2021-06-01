@@ -34,13 +34,14 @@ class _Events extends State<Events> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-        duration: _duration,
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return ScaleTransition(child: child, scale: animation);
-        },
-        child: EventElements(
-          image: widget.images[_index],
-        ));
+      duration: _duration,
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return ScaleTransition(child: child, scale: animation);
+      },
+      child: EventElements(
+        image: widget.images[_index],
+      ),
+    );
   }
 }
 
@@ -64,10 +65,12 @@ class EventElements extends StatelessWidget {
         color: Color(0xFF4EAFC1),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: FlatButton(
+      child: Padding(
+        child: TextButton(
+          onPressed: () {},
+          child: Image.asset(image),
+        ),
         padding: const EdgeInsets.all(0),
-        onPressed: () {},
-        child: Image.asset(image),
       ),
     );
   }

@@ -40,105 +40,112 @@ class _TourguidePage extends State<TourguidePage> {
     double _width = MediaQuery.of(context).size.width;
     if (channel.isNotEmpty) {
       onJoin(channel);
-    }
-    else return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            width: _width,
-            height: 148,
-            alignment: Alignment.bottomCenter,
-            padding: const EdgeInsets.only(top: 24, bottom: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-              ),
-              color: Colors.teal[300],
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
-                      onPressed: () => Navigator.of(context).pop(),
-                    )
-                  ],
+    } else
+      return Scaffold(
+        body: Column(
+          children: <Widget>[
+            Container(
+              width: _width,
+              height: 148,
+              alignment: Alignment.bottomCenter,
+              padding: const EdgeInsets.only(top: 24, bottom: 16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
                 ),
-                Spacer(),
-                Text(
-                  'Livel',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
+                color: Colors.teal[300],
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        onPressed: () => Navigator.of(context).pop(),
+                      )
+                    ],
+                  ),
+                  Spacer(),
+                  Text(
+                    'Livel',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(
+                    top: 32,
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  height: 54,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                  ),
+                  child: TextField(
+                    controller: _channelController,
+                    decoration: InputDecoration(
+                      errorText:
+                          _validateError ? 'Channel name is mandatory' : null,
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(width: 1),
+                      ),
+                      hintText: 'Your channel name',
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text(ClientRole.Broadcaster.toString()),
+                  leading: Radio(
+                    value: ClientRole.Broadcaster,
+                    groupValue: _role,
+                    onChanged: (ClientRole value) {
+                      setState(() {
+                        _role = value;
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  width: 213,
+                  height: 51,
+                  color: Colors.orange[800],
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(16.0)),
+                  child: TextButton(
+                    onPressed: () {
+                      onJoin(
+                        _channelController.text.trim(),
+                      );
+                    },
+                    child: Text(
+                      'Create',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-          ),
-          Column(
-            children: [
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(
-                  top: 32,
-                ),
-                padding: EdgeInsets.all(8.0),
-                height: 54,
-                width: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: Colors.black,
-                  ),
-                ),
-                child: TextField(
-                  controller: _channelController,
-                  decoration: InputDecoration(
-                    errorText:
-                        _validateError ? 'Channel name is mandatory' : null,
-                    border: UnderlineInputBorder(
-                      borderSide: BorderSide(width: 1),
-                    ),
-                    hintText: 'Your channel name',
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(ClientRole.Broadcaster.toString()),
-                leading: Radio(
-                  value: ClientRole.Broadcaster,
-                  groupValue: _role,
-                  onChanged: (ClientRole value) {
-                    setState(() {
-                      _role = value;
-                    });
-                  },
-                ),
-              ),
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                minWidth: 213,
-                height: 51,
-                onPressed: () {
-                  onJoin(_channelController.text.trim());
-                },
-                child: Text('Create'),
-                color: Colors.orange[800],
-                textColor: Colors.white,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
     return Container();
   }
 

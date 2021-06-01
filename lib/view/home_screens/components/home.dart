@@ -169,7 +169,7 @@ class MainHome extends StatelessWidget {
                 ),
               ],
             ),
-            Container(height: 237, width: _width, child: UpcomingScreen())
+            Container(height: 237, width: _width, child: RecommendedScreen())
           ],
         ),
       ),

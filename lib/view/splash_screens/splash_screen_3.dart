@@ -55,25 +55,27 @@ class FourthScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     color: Color(0xFF4EAFC1),
                   ),
-                  child: FlatButton(
-                    minWidth: 335,
+                  child: Container(
+                    width: 335,
                     height: 68,
-                    child: Text(
-                      'Log In',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignInPage(),
+                    child: TextButton(
+                      child: Text(
+                        'Log In',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
                         ),
-                      );
-                    },
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignInPage(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
                 Container(
@@ -90,25 +92,27 @@ class FourthScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     color: Color(0xFF4EAFC1),
                   ),
-                  child: FlatButton(
-                    minWidth: 335,
+                  child: Container(
+                    width: 335,
                     height: 68,
-                    child: Text(
-                      'Sign Up',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpPage(),
+                    child: TextButton(
+                      child: Text(
+                        'Sign Up',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
                         ),
-                      );
-                    },
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignUpPage(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],

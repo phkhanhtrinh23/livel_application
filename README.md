@@ -8,7 +8,7 @@
 
 ### Introduction
 
-Our project is called **Livel**. This is an application on **live travelling** which helps people travel online and broadcast the journey on the Internet.
+Our project is called **Livel**. This is an application on **live traveling** which helps people travel online and broadcast the journey on the Internet.
 
 Our team aims to create a mobile application which helps the global tourism industry cope with negative economic impacts of the COVID-19 pandemic.
 

@@ -19,7 +19,7 @@ We want to address **Goal 8** - more specifically, **Target 8.9** -  from the **
 - *Goal 8*: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.
 - *Target 8.9*: By 2030, devise and implement policies to promote sustainable tourism that creates jobs and promotes local culture and products.
 
-You can get the released version, or .apk files, of this application at [Google Drive](https://shorturl.at/msuxB) or you can follow the path:
+You can get the released version, or .apk files, of this application at [Google Drive](https://drive.google.com/drive/folders/1vTHi49cROESE3qXBQavpcfnnCKv4vlAr?usp=sharing) or you can follow the path:
 
   ```sh
   build\app\outputs\flutter-apk\app-release.apk

@@ -230,7 +230,7 @@ class AddTripState extends State<AddTrip> {
                     autofocus: true,
                     controller: cost,
                     decoration: InputDecoration(
-                      labelText: "Cost (In\$)",
+                      labelText: "Cost (In \$)",
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16.0),
@@ -253,23 +253,15 @@ class AddTripState extends State<AddTrip> {
                 child: Container(
                   width: 180,
                   height: 53,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: Color(0xFFEE6C4D)),
+                  ),
                   child: TextButton(
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 180,
-                          height: 53,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: Color(0xFFEE6C4D)),
-                          ),
-                          child: Text(
-                            'Departure time',
-                            style: TextStyle(color: Color(0xFFEE6C4D)),
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      'Departure time',
+                      style: TextStyle(color: Color(0xFFEE6C4D)),
                     ),
                     onPressed: () async {
                       final selectedDate = await _selectDateTime(context);

@@ -7,6 +7,7 @@ Future<void> addUser(
   String country,
   String mail,
   String phone,
+  String tourguide,
 ) async {
   // Call the user's CollectionReference to add a new user
   await FirebaseFirestore.instance
@@ -21,6 +22,7 @@ Future<void> addUser(
       'Phone': phone,
       'Mail': mail,
       'Rating': 0,
+      'TourGuide': tourguide,
       'TripList': []
     },
   );

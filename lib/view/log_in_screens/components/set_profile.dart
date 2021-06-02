@@ -4,13 +4,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../state_home.dart';
 
-class PersonalInfo extends StatelessWidget {
-  PersonalInfo(this.email, this.password);
+class PersonalInfo extends StatefulWidget {
   final String email, password;
+  PersonalInfo(this.email, this.password);
+
+  @override
+  _PersonalInfo createState() => _PersonalInfo(email, password);
+}
+
+class _PersonalInfo extends State<PersonalInfo> {
+  final String email, password;
+  _PersonalInfo(this.email, this.password);
+
   final TextEditingController name = new TextEditingController();
   final TextEditingController age = new TextEditingController();
   final TextEditingController country = new TextEditingController();
   final TextEditingController phone = new TextEditingController();
+  String tourguide;
+  bool checkYes = false;
 
   final _form = GlobalKey<FormState>();
 
@@ -152,12 +163,84 @@ class PersonalInfo extends StatelessWidget {
                   ),
                 ),
               ),
+              Container(
+                margin: EdgeInsets.only(top: 16),
+                padding: EdgeInsets.only(
+                  top: 16,
+                  left: 12,
+                  right: 16,
+                ),
+                width: 343,
+                height: 53,
+                child: Text(
+                  'Are you a tour guide?',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                  top: 16,
+                  left: 12,
+                  right: 16,
+                ),
+                width: 343,
+                height: 53,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      padding: const EdgeInsets.all(0.0),
+                      onPressed: () {
+                        setState(() {
+                          checkYes = !checkYes;
+                          tourguide = 'Yes';
+                        });
+                      },
+                      icon: checkYes == true
+                          ? Icon(Icons.radio_button_checked_sharp)
+                          : Icon(Icons.radio_button_off_sharp),
+                    ),
+                    Text(
+                      'Yes',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 48),
+                    ),
+                    IconButton(
+                      padding: const EdgeInsets.all(0.0),
+                      onPressed: () {
+                        setState(() {
+                          checkYes = !checkYes;
+                          tourguide = 'No';
+                        });
+                      },
+                      icon: checkYes == false
+                          ? Icon(Icons.radio_button_checked_sharp)
+                          : Icon(Icons.radio_button_off_sharp),
+                    ),
+                    Text(
+                      'No',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Padding(padding: const EdgeInsets.only(bottom: 48.0)),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 18),
                 child: TextButton(
                   onPressed: () async {
                     if (_form.currentState.validate()) {
+                      await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                        email: email,
+                        password: password,
+                      );
                       await FirebaseFirestore.instance
                           .collection('Users')
                           .doc(FirebaseAuth.instance.currentUser.uid)
@@ -170,7 +253,7 @@ class PersonalInfo extends StatelessWidget {
                           'Phone': phone.text.trim(),
                           'Rating': 0,
                           'TripList': [],
-                          'TourGuide': 'No',
+                          'TourGuide': tourguide,
                           'Mail': email,
                         },
                       );
@@ -193,7 +276,9 @@ class PersonalInfo extends StatelessWidget {
                     ),
                     child: Text(
                       'Submit',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

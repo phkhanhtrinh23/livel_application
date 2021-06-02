@@ -98,9 +98,11 @@ class _SignInPage extends State<SignInPage> {
                               ? Icon(Icons.visibility_off_outlined)
                               : Icon(Icons.remove_red_eye_outlined),
                           onPressed: () {
-                            setState(() {
-                              _dontShowPassword = !_dontShowPassword;
-                            });
+                            setState(
+                              () {
+                                _dontShowPassword = !_dontShowPassword;
+                              },
+                            );
                           },
                         ),
                         labelText: "Password",

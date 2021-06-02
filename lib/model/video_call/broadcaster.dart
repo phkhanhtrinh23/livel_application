@@ -124,9 +124,10 @@ class _TourguidePage extends State<TourguidePage> {
                 Container(
                   width: 213,
                   height: 51,
-                  color: Colors.orange[800],
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(16.0)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    color: Colors.orange[800],
+                  ),
                   child: TextButton(
                     onPressed: () {
                       onJoin(

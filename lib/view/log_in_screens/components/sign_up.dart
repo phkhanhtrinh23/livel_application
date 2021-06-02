@@ -114,11 +114,6 @@ class _SignUpPage extends State<SignUpPage> {
                     onPressed: () async {
                       if (_form.currentState.validate()) {
                         try {
-                          await FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim(),
-                          );
                           Navigator.push(
                             context,
                             MaterialPageRoute(

@@ -44,6 +44,7 @@ class ExploreScreenState extends State<ExploreScreen> {
 
   List show = [];
   QuerySnapshot res;
+  List<String> _kOption = []; // !!List of Places, Cities, and Countries
 
   getSearch() async {
     List tmp = [];
@@ -51,6 +52,7 @@ class ExploreScreenState extends State<ExploreScreen> {
       tmp = res.docs;
     } else {
       for (var doc in res.docs) {
+        _kOption.add(doc.get(lField).toString().toLowerCase().trim());
         if (doc
             .get(lField)
             .toString()
@@ -61,10 +63,12 @@ class ExploreScreenState extends State<ExploreScreen> {
         }
       }
     }
-    setState(() {
-      lSearch = search.text.toLowerCase();
-      show = tmp;
-    });
+    setState(
+      () {
+        lSearch = search.text.toLowerCase();
+        show = tmp;
+      },
+    );
   }
 
   getCollection() async {
@@ -72,10 +76,12 @@ class ExploreScreenState extends State<ExploreScreen> {
         .collection('Trips')
         .orderBy('Date')
         .get();
-    setState(() {
-      res = data;
-      set = true;
-    });
+    setState(
+      () {
+        res = data;
+        set = true;
+      },
+    );
     getSearch();
   }
 
@@ -162,17 +168,32 @@ class ExploreScreenState extends State<ExploreScreen> {
                   ),
                   Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                   Expanded(
-                    child: TextFormField(
-                      controller: search,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        hintText: 'Search',
-                        hintStyle: TextStyle(color: Colors.black),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                      ),
-                    ),
-                  ),
+                      // child: TextFormField(
+                      //   controller: search,
+                      //   decoration: InputDecoration(
+                      //     fillColor: Colors.white,
+                      //     hintText: 'Search',
+                      //     hintStyle: TextStyle(color: Colors.black),
+                      //     enabledBorder: InputBorder.none,
+                      //     focusedBorder: InputBorder.none,
+                      //   ),
+                      // ),
+                      child: Autocomplete<String>(
+                    optionsBuilder: (TextEditingValue textEditingValue) {
+                      if (textEditingValue.text == '') {
+                        return const Iterable<String>.empty();
+                      }
+                      return _kOption.where(
+                        (String option) {
+                          return option
+                              .contains(textEditingValue.text.toLowerCase());
+                        },
+                      );
+                    },
+                    onSelected: (String selection) {
+                      print('You just selected $selection');
+                    },
+                  )),
                   TextButton(
                     style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
                     child: Transform(

@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/view/home_screens/components/trip_content/joinButton.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/components/image_list.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/join_button.dart';
 import 'package:livel_application/view/home_screens/components/trip_content/components/tourguide.dart';
 import 'package:livel_application/model/database/storage.dart';
 
@@ -13,8 +14,8 @@ class MainContent extends StatelessWidget {
   final bool checkHomeScreen;
   @override
   Widget build(BuildContext context) {
+    final PageController controller = PageController(initialPage: 0);
     double _width = MediaQuery.of(context).size.width;
-
     return FutureBuilder(
       future: getTrip(id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -25,45 +26,42 @@ class MainContent extends StatelessWidget {
               children: [
                 FutureBuilder(
                   future: getNetWorkImage(snapshot.data.get('Image')),
-                  builder: (context, snapshotImage) {
+                  builder: (context, AsyncSnapshot<dynamic> snapshotImage) {
                     if (snapshotImage.connectionState == ConnectionState.done) {
-                      return Container(
-                        width: _width,
-                        height: 335,
-                        padding: const EdgeInsets.only(
-                          left: 18.0,
-                          top: 32,
-                          bottom: 8.0,
-                          right: 18.0,
-                        ),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: snapshotImage.data,
-                            fit: BoxFit.fill,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  snapshot.data.get('Country').toString(),
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                      return Stack(
+                        children: [
+                          Container(
+                            width: _width,
+                            height: 335,
+                            child: PageView(
+                              controller: controller,
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                ImageList(
+                                  image: snapshotImage.data,
+                                ),
+                                ImageList(
+                                  image: snapshotImage.data,
+                                ),
+                                ImageList(
+                                  image: snapshotImage.data,
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          Positioned(
+                            child: Text(
+                              snapshot.data.get('Country').toString(),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            left: 16.0,
+                            top: 335.0 - 48.0,
+                          )
+                        ],
                       );
                     }
                     return CircularProgressIndicator();

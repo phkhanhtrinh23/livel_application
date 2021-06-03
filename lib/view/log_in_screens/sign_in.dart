@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:livel_application/state_home.dart';
-import 'package:livel_application/view/log_in_screens/components/sign_up.dart';
+import 'package:livel_application/view/log_in_screens/sign_up.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key key}) : super(key: key);

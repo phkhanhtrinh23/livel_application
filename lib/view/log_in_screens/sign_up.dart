@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/view/log_in_screens/components/set_profile.dart';
+import 'package:livel_application/view/log_in_screens/set_profile.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key key}) : super(key: key);
@@ -60,6 +60,12 @@ class _SignUpPage extends State<SignUpPage> {
                           borderSide: BorderSide(),
                         ),
                       ),
+                      validator: (value) {
+                        if (!value.contains('@')) {
+                          return 'Your email is not valid. Please enter again!';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ),
@@ -91,6 +97,14 @@ class _SignUpPage extends State<SignUpPage> {
                           borderSide: BorderSide(),
                         ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter a password for your account.';
+                        } else if (value.length < 6) {
+                          return 'Please enter a password with at least 6 characters.';
+                        }
+                        return null;
+                      },
                       obscureText: _dontShowPassword,
                     ),
                   ),
@@ -114,6 +128,11 @@ class _SignUpPage extends State<SignUpPage> {
                     onPressed: () async {
                       if (_form.currentState.validate()) {
                         try {
+                          await FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          );
                           Navigator.push(
                             context,
                             MaterialPageRoute(

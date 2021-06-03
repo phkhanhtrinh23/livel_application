@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/view/log_in_screens/components/sign_in.dart';
-import 'package:livel_application/view/log_in_screens/components/sign_up.dart';
+import 'package:livel_application/view/log_in_screens/sign_in.dart';
+import 'package:livel_application/view/log_in_screens/sign_up.dart';
 
 class FourthScreen extends StatelessWidget {
   @override

@@ -22,6 +22,7 @@ class _PersonalInfo extends State<PersonalInfo> {
   final TextEditingController phone = new TextEditingController();
   String tourguide;
   bool checkYes = false;
+  bool checkNo = true;
 
   final _form = GlobalKey<FormState>();
 
@@ -192,7 +193,8 @@ class _PersonalInfo extends State<PersonalInfo> {
                       padding: const EdgeInsets.all(0.0),
                       onPressed: () {
                         setState(() {
-                          checkYes = !checkYes;
+                          checkYes = true;
+                          checkNo = false;
                           tourguide = 'Yes';
                         });
                       },
@@ -213,11 +215,12 @@ class _PersonalInfo extends State<PersonalInfo> {
                       padding: const EdgeInsets.all(0.0),
                       onPressed: () {
                         setState(() {
-                          checkYes = !checkYes;
+                          checkYes = false;
+                          checkNo = true;
                           tourguide = 'No';
                         });
                       },
-                      icon: checkYes == false
+                      icon: checkNo == true
                           ? Icon(Icons.radio_button_checked_sharp)
                           : Icon(Icons.radio_button_off_sharp),
                     ),
@@ -236,11 +239,6 @@ class _PersonalInfo extends State<PersonalInfo> {
                 child: TextButton(
                   onPressed: () async {
                     if (_form.currentState.validate()) {
-                      await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                        email: email,
-                        password: password,
-                      );
                       await FirebaseFirestore.instance
                           .collection('Users')
                           .doc(FirebaseAuth.instance.currentUser.uid)
@@ -257,8 +255,28 @@ class _PersonalInfo extends State<PersonalInfo> {
                           'Mail': email,
                         },
                       );
-                      await FirebaseAuth.instance.currentUser
-                          .updateProfile(displayName: name.text.trim());
+                      await FirebaseAuth.instance.currentUser.updateProfile(
+                        displayName: name.text.trim(),
+                      );
+                      await showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text(
+                            'You have successfully registered an account in Livel.',
+                          ),
+                          actions: [
+                            TextButton(
+                              child: Text(
+                                'Confirm',
+                                style: TextStyle(
+                                  color: Color(0xFFEE6C4D),
+                                ),
+                              ),
+                              onPressed: () => Navigator.of(context).pop(true),
+                            ),
+                          ],
+                        ),
+                      );
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => HomeMain()),

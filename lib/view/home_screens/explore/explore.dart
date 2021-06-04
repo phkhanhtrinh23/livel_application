@@ -25,7 +25,6 @@ class ExploreScreenState extends State<ExploreScreen> {
   @override
   initState() {
     super.initState();
-    getList();
     search.addListener(_onSearchChanged);
   }
 
@@ -56,8 +55,8 @@ class ExploreScreenState extends State<ExploreScreen> {
         .collection('Dictionary')
         .doc('trip-info')
         .get();
-    for (var dict in dictionary.get('Total')) {
-      temp.add(dict.toString().toLowerCase().trim());
+    for (var i = 0; i < 3; i++) {
+      temp.add(dictionary.get('Total')[i].toString().toLowerCase().trim());
     }
     setState(
       () {

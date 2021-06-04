@@ -46,13 +46,20 @@ class ExploreScreenState extends State<ExploreScreen> {
   QuerySnapshot res;
   List<String> _kOption = []; // !!List of Places, Cities, and Countries
 
+  getList() async {
+    DocumentSnapshot dictionary = await FirebaseFirestore.instance
+        .collection('Dictionary')
+        .doc('trip-info')
+        .get();
+    _kOption = dictionary.get('Total');
+  }
+
   getSearch() async {
     List tmp = [];
     if (search.text.isEmpty) {
       tmp = res.docs;
     } else {
       for (var doc in res.docs) {
-        _kOption.add(doc.get(lField).toString().toLowerCase().trim());
         if (doc
             .get(lField)
             .toString()
@@ -182,13 +189,14 @@ class ExploreScreenState extends State<ExploreScreen> {
                     optionsBuilder: (TextEditingValue textEditingValue) {
                       if (textEditingValue.text == '') {
                         return const Iterable<String>.empty();
+                      } else {
+                        return _kOption.where(
+                          (String option) {
+                            return option
+                                .contains(textEditingValue.text.toLowerCase());
+                          },
+                        );
                       }
-                      return _kOption.where(
-                        (String option) {
-                          return option
-                              .contains(textEditingValue.text.toLowerCase());
-                        },
-                      );
                     },
                     onSelected: (String selection) {
                       print('You just selected $selection');

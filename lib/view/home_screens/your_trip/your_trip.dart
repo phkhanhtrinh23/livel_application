@@ -9,6 +9,7 @@ class YourTrip extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+
     String uid = FirebaseAuth.instance.currentUser.uid;
     return Scaffold(
         body: FutureBuilder(

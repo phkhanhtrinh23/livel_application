@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:livel_application/model/database/addAll.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/view/log_in_screens/sign_in.dart';
 import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
@@ -79,6 +80,14 @@ class UserScreen extends StatelessWidget {
                                   ProfileScreen(),
                             ),
                           ),
+                        },
+                      ),
+                      ProfileMenu(
+                        text: "Help Center",
+                        icon: Icon(Icons.help_center_outlined,
+                            color: Color(0xFF477983)),
+                        press: () => {
+                          addUserList()
                         },
                       ),
                       // ProfileMenu(

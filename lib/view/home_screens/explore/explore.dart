@@ -218,6 +218,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                           cost: show[index].get('Cost'),
                           date: show[index].get('Date'),
                           place: show[index].get('Place'),
+                          list: show[index].get('UserList').length.toString(),
                           id: show[index].id,
                         );
                       },

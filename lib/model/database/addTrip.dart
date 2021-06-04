@@ -14,6 +14,37 @@ Future<void> addTrip(
   int time1,
   DateTime date,
 ) async {
+  DocumentSnapshot dictionary = await FirebaseFirestore.instance.collection('Dictionary').doc('trip-info').get();
+    if(!( dictionary.get('Total').contains(place1.trim().toLowerCase()) )){
+      FirebaseFirestore.instance
+          .collection('Dictionary')
+          .doc('trip-info')
+          .update(
+        {
+          "Total": FieldValue.arrayUnion([place1.trim().toLowerCase()])
+        },
+      );
+    }
+    if(!( dictionary.get('Total').contains(country1.trim().toLowerCase()) )){
+      FirebaseFirestore.instance
+          .collection('Dictionary')
+          .doc('trip-info')
+          .update(
+        {
+          "Total": FieldValue.arrayUnion([country1.trim().toLowerCase()])
+        },
+      );
+    }
+    if(!( dictionary.get('Total').contains(city1.trim().toLowerCase()) )){
+      FirebaseFirestore.instance
+          .collection('Dictionary')
+          .doc('trip-info')
+          .update(
+        {
+          "Total": FieldValue.arrayUnion([city1.trim().toLowerCase()])
+        },
+      );
+    }
   return await FirebaseFirestore.instance.collection('Trips').add({
     'Place': place1,
     'City': city1,

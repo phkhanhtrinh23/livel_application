@@ -13,9 +13,10 @@ class PlaceScreen extends StatelessWidget {
     this.place,
     this.country,
     this.id,
+    this.list
   });
 
-  final String image, place, country, id;
+  final String image, place, country, id,list;
   final Timestamp date;
   final int cost;
 
@@ -66,6 +67,14 @@ class PlaceScreen extends StatelessWidget {
                       children: [
                         Text(
                           DateFormat.jm().format(date.toDate()),
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        Text(
+                          list + " People registered",
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,

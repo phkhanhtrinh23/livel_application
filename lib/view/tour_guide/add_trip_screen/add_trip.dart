@@ -248,6 +248,33 @@ class AddTripState extends State<AddTrip> {
               ),
               Padding(
                 padding: EdgeInsets.only(
+                  top: 16.0,
+                ),
+                child: Container(
+                  width: 343,
+                  height: 53,
+                  child: TextFormField(
+                    autofocus: true,
+                    controller: description,
+                    decoration: InputDecoration(
+                      labelText: "Description",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        borderSide: BorderSide(),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "This field is empty";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
                   top: 48,
                 ),
                 child: Container(

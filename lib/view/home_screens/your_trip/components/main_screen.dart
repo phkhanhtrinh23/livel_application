@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:livel_application/model/database/remove_user_trip.dart';
 import 'package:livel_application/view/home_screens/components/trip_content/trip_main.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
@@ -45,6 +47,52 @@ class _YourTripScreen extends State<YourTripScreen> {
                         checkHomeScreen: false,
                       ),
                     ),
+                  );
+                },
+                onLongPress: (){
+                  showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Text(
+                            'Are you sure to remove this trip?'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text(
+                              'No',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop(true);
+                            },
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Yes',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            onPressed: () async{
+                              await FirebaseFirestore.instance
+                                  .collection('Users')
+                                  .doc(FirebaseAuth.instance.currentUser.uid)
+                                  .update(
+                                {
+                                  "TripList": FieldValue.arrayRemove([id])
+                                },
+                              );
+                                Navigator.of(context).pop(true);
+                            },
+                          ),
+                        ],
+                      );
+                    },
                   );
                 },
                 child: Row(

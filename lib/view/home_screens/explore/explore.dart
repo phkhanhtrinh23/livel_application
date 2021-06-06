@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../components/trip_screen/components/each_place.dart';
 import 'package:flutter/widgets.dart';
 
@@ -14,7 +15,7 @@ class ExploreScreen extends StatefulWidget {
 class ExploreScreenState extends State<ExploreScreen> {
   ExploreScreenState();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  String selectedCity;
   TextEditingController search = new TextEditingController();
   String dropdown = 'Place';
   String lSearch = '';
@@ -45,8 +46,8 @@ class ExploreScreenState extends State<ExploreScreen> {
     getSearch();
     getList();
   }
-
-  List show = [];
+  List<String> cities=['Khoa', 'Trinh'];
+  List show ;
   QuerySnapshot res;
 
   getList() async {
@@ -55,12 +56,13 @@ class ExploreScreenState extends State<ExploreScreen> {
         .collection('Dictionary')
         .doc('trip-info')
         .get();
-    for (var i = 0; i < 3; i++) {
-      temp.add(dictionary.get('Total')[i].toString().toLowerCase().trim());
+    for (var doc in dictionary.get('Total')) {
+      temp.add(doc);
     }
     setState(
       () {
-        _options = temp;
+        cities = temp;
+        lSearch = search.text.toLowerCase();
       },
     );
   }
@@ -83,7 +85,6 @@ class ExploreScreenState extends State<ExploreScreen> {
     }
     setState(
       () {
-        lSearch = search.text.toLowerCase();
         show = tmp;
       },
     );
@@ -189,6 +190,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                     ),
                     Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                     Expanded(
+                       child: buildCity()
                         // child: TextFormField(
                         //   controller: search,
                         //   decoration: InputDecoration(
@@ -199,34 +201,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                         //     focusedBorder: InputBorder.none,
                         //   ),
                         // ),
-                        child: Autocomplete<String>(
-                      fieldViewBuilder: (BuildContext context,
-                          TextEditingController textEditingController,
-                          FocusNode focusNode,
-                          VoidCallback onFieldSubmitted) {
-                        return TextFormField(
-                          controller: search,
-                          decoration: InputDecoration(
-                            hintText: 'Search',
-                          ),
-                          focusNode: focusNode,
-                        );
-                      },
-                      optionsBuilder: (TextEditingValue textEditingValue) {
-                        if (textEditingValue.text == '') {
-                          return const Iterable<String>.empty();
-                        }
-                        return _options.where(
-                          (String option) {
-                            return option
-                                .contains(textEditingValue.text.toLowerCase());
-                          },
-                        );
-                      },
-                      onSelected: (String selection) {
-                        print('You just selected $selection');
-                      },
-                    )),
+      ),
                     TextButton(
                       style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
                       child: Transform(
@@ -238,6 +213,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                         // if (!_formKey.currentState.validate()) {
                         //   return;
                         // }
+
                       },
                     ),
                   ],
@@ -270,4 +246,38 @@ class ExploreScreenState extends State<ExploreScreen> {
       ),
     );
   }
+  Widget buildCity() => TypeAheadFormField<String>(
+    textFieldConfiguration: TextFieldConfiguration(
+        controller: search,
+        decoration: InputDecoration(
+          fillColor: Colors.white,
+          hintText: 'Search',
+          hintStyle: TextStyle(color: Colors.black),
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+        ),
+    ),
+    //suggestionsCallback: ,
+    itemBuilder: (context, String suggestion) => ListTile(
+      title: Text(suggestion),
+    ),
+    suggestionsCallback: (query){
+      return getSuggestions(query);
+    },
+    onSuggestionSelected: (String suggestion) =>{
+      search.text = suggestion,
+    },
+
+    validator: (value) =>
+    value != null && value.isEmpty ? 'Please select a city' : null,
+    onSaved: (value) => selectedCity = value,
+  );
+  List<String> getSuggestions(String query) =>
+      List.of(cities).where((city) {
+        final cityLower = city.toLowerCase();
+        final queryLower = query.toLowerCase();
+
+        return cityLower.contains(queryLower);
+      }).toList();
 }
+

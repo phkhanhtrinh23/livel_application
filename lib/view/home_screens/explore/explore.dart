@@ -21,7 +21,6 @@ class ExploreScreenState extends State<ExploreScreen> {
   String lSearch = '';
   String lField = 'Place';
   bool set = false;
-  List<String> _options = []; // !!List of Places, Cities, and Countries
 
   @override
   initState() {
@@ -44,28 +43,29 @@ class ExploreScreenState extends State<ExploreScreen> {
 
   _onSearchChanged() {
     getSearch();
-    getList();
   }
-  List<String> cities=['Khoa', 'Trinh'];
-  List show ;
-  QuerySnapshot res;
 
-  getList() async {
-    List<String> temp = [];
-    DocumentSnapshot dictionary = await FirebaseFirestore.instance
-        .collection('Dictionary')
-        .doc('trip-info')
-        .get();
-    for (var doc in dictionary.get('Total')) {
-      temp.add(doc);
-    }
-    setState(
-      () {
-        cities = temp;
-        lSearch = search.text.toLowerCase();
-      },
-    );
-  }
+  List<String> cities = ['Khoa', 'Trinh'];
+  List show;
+  QuerySnapshot res;
+  // List<String> _options = []; // !!List of Places, Cities, and Countries
+
+  // getList() async {
+  //   List<String> temp = [];
+  //   DocumentSnapshot dictionary = await FirebaseFirestore.instance
+  //       .collection('Dictionary')
+  //       .doc('trip-info')
+  //       .get();
+  //   for (var doc in dictionary.get('Total')) {
+  //     temp.add(doc);
+  //   }
+  //   setState(
+  //     () {
+  //       cities = temp;
+  //       lSearch = search.text.toLowerCase();
+  //     },
+  //   );
+  // }
 
   getSearch() async {
     List tmp = [];
@@ -190,18 +190,8 @@ class ExploreScreenState extends State<ExploreScreen> {
                     ),
                     Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                     Expanded(
-                       child: buildCity()
-                        // child: TextFormField(
-                        //   controller: search,
-                        //   decoration: InputDecoration(
-                        //     fillColor: Colors.white,
-                        //     hintText: 'Search',
-                        //     hintStyle: TextStyle(color: Colors.black),
-                        //     enabledBorder: InputBorder.none,
-                        //     focusedBorder: InputBorder.none,
-                        //   ),
-                        // ),
-      ),
+                      child: buildCity(),
+                    ),
                     TextButton(
                       style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
                       child: Transform(
@@ -213,7 +203,6 @@ class ExploreScreenState extends State<ExploreScreen> {
                         // if (!_formKey.currentState.validate()) {
                         //   return;
                         // }
-
                       },
                     ),
                   ],
@@ -246,38 +235,37 @@ class ExploreScreenState extends State<ExploreScreen> {
       ),
     );
   }
+
   Widget buildCity() => TypeAheadFormField<String>(
-    textFieldConfiguration: TextFieldConfiguration(
-        controller: search,
-        decoration: InputDecoration(
-          fillColor: Colors.white,
-          hintText: 'Search',
-          hintStyle: TextStyle(color: Colors.black),
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
+        textFieldConfiguration: TextFieldConfiguration(
+          controller: search,
+          decoration: InputDecoration(
+            fillColor: Colors.white,
+            hintText: 'Search',
+            hintStyle: TextStyle(color: Colors.black),
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+          ),
         ),
-    ),
-    //suggestionsCallback: ,
-    itemBuilder: (context, String suggestion) => ListTile(
-      title: Text(suggestion),
-    ),
-    suggestionsCallback: (query){
-      return getSuggestions(query);
-    },
-    onSuggestionSelected: (String suggestion) =>{
-      search.text = suggestion,
-    },
+        itemBuilder: (context, String suggestion) => ListTile(
+          title: Text(suggestion),
+        ),
+        suggestionsCallback: (query) {
+          return getSuggestions(query);
+        },
+        onSuggestionSelected: (String suggestion) => {
+          search.text = suggestion,
+        },
+        validator: (value) =>
+            value != null && value.isEmpty ? 'Please select a city' : null,
+        onSaved: (value) => selectedCity = value,
+      );
+  List<String> getSuggestions(String query) => List.of(cities).where(
+        (city) {
+          final cityLower = city.toLowerCase();
+          final queryLower = query.toLowerCase();
 
-    validator: (value) =>
-    value != null && value.isEmpty ? 'Please select a city' : null,
-    onSaved: (value) => selectedCity = value,
-  );
-  List<String> getSuggestions(String query) =>
-      List.of(cities).where((city) {
-        final cityLower = city.toLowerCase();
-        final queryLower = query.toLowerCase();
-
-        return cityLower.contains(queryLower);
-      }).toList();
+          return cityLower.contains(queryLower);
+        },
+      ).toList();
 }
-

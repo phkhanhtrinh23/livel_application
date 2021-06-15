@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/model/database/addCode.dart';
+import 'package:livel_application/view/video_call/call_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
-import '../../view/video_call/call_page.dart';
 
 class TourguidePage extends StatefulWidget {
   final String id, channel;

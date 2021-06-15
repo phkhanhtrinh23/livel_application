@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/model/video_call/broadcaster.dart';
+import 'package:livel_application/model/livestreaming//broadcaster.dart';
 
 class GuideTripScreen extends StatelessWidget {
   const GuideTripScreen({Key key, this.id});

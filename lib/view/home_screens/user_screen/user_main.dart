@@ -87,7 +87,7 @@ class UserScreen extends StatelessWidget {
                         icon: Icon(Icons.help_center_outlined,
                             color: Color(0xFF477983)),
                         press: () => {
-                          addUserList()
+                          addThumnailAndImageList()
                         },
                       ),
                       // ProfileMenu(

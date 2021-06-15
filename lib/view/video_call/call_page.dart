@@ -3,7 +3,7 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
-import 'package:livel_application/model/video_call/rating.dart';
+import 'package:livel_application/model/livestreaming//rating.dart';
 
 const APP_ID = "e74c68e55cb44482a99fb501f89d29d8";
 
@@ -42,15 +42,6 @@ class _CallPageState extends State<CallPage> {
   }
 
   Future<void> initialize() async {
-    if (APP_ID.isEmpty) {
-      setState(() {
-        _infoStrings.add(
-          'APP_ID missing, please provide your APP_ID in settings.dart',
-        );
-        _infoStrings.add('Agora Engine is not starting');
-      });
-      return;
-    }
 
     await _initAgoraRtcEngine();
     _addAgoraEventHandlers();

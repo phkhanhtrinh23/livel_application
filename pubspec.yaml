@@ -24,36 +24,33 @@ dependencies:
   flutter:
     sdk: flutter
 
-  google_fonts: ^2.1.0
+  agora_rtc_engine: ^4.0.1
+  agora_rtm: 0.9.11
+  cloud_functions: ^1.1.0
+  cloud_firestore: "^2.2.0"
+  cupertino_icons: ^1.0.0
+  device_info: ^2.0.2
+  enum_to_string: ^2.0.1
   firebase_core: "1.2.0"
   firebase_auth: ^1.2.0
-  google_sign_in: "5.0.4"
+  firebase_storage: ^8.1.0
   flutter_signin_button: ^2.0.0
+  flutter_typeahead: ^3.1.3
+  flutter_credit_card: ^2.0.0
+  http: ^0.13.3
+  intl: ^0.17.0
+  image_picker: ^0.7.5+3
+  google_sign_in: "5.0.4"
+  google_fonts: ^2.1.0
+  mockito: ^5.0.9
   provider: ^5.0.0
   permission_handler: ^8.0.0+2
-  enum_to_string: ^2.0.1
   pedantic: ^1.11.0
-  mockito: ^5.0.9
-  agora_rtc_engine: ^4.0.1
-  cloud_functions: ^1.1.0
-  fluttertoast: ^8.0.7
-  cloud_firestore: "^2.2.0"
-  http: ^0.13.3
-  device_info: ^2.0.2
-  firebase_storage: ^8.1.0
   stripe_payment: ^1.1.1
   progress_dialog: ^1.2.2
-  flutter_credit_card: ^2.0.0
-  intl: ^0.17.0
   rating_bar: ^0.2.0
-  image_picker: ^0.7.5+3
   path: ^1.8.0
-  flutter_typeahead: ^3.1.3
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
-  
 
 dev_dependencies:
   flutter_test:

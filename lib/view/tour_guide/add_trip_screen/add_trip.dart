@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,16 +26,21 @@ class AddTripState extends State<AddTrip> {
   final TextEditingController time = new TextEditingController();
   final TextEditingController cost = new TextEditingController();
   final _form = GlobalKey<FormState>();
-
-  File _image;
+  DateTime selectedDate = DateTime.now();
+  List<File> _image  = [];
+  String _error = 'No Error Dectected';
+  File thumnail;
   final picker = ImagePicker();
-
+  firebase_storage.Reference ref;
+  bool uploading = false;
+  double val = 0;
+  CollectionReference imgRef;
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
       if (pickedFile != null) {
-        _image = File(pickedFile.path);
+        thumnail = File(pickedFile.path);
       } else {
         print('No image selected.');
       }
@@ -55,7 +62,12 @@ class AddTripState extends State<AddTrip> {
         firstDate: DateTime.now(),
         lastDate: DateTime(2100),
       );
-  DateTime selectedDate = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    imgRef = FirebaseFirestore.instance.collection('imageURLs');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -313,29 +325,84 @@ class AddTripState extends State<AddTrip> {
               Container(
                   padding: EdgeInsets.only(top: 32),
                   alignment: Alignment.center,
-                  child: Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(
                         onPressed: getImage,
-                        child: Icon(
-                          Icons.photo,
-                          size: 50,
+                        child: Container(
+                          width: 343,
+                          height: 56,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Color(0xFFEE6C4D),
+                          ),
+                          child: Text(
+                            'Add thumnail',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
-                      _image == null
+                      thumnail == null
                           ? Text('No image selected.')
                           : Container(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Image.file(_image),
-                              height: 300,
-                              width: 200,
-                            )
+                        padding: EdgeInsets.only(left: 20),
+                        child: Image.file(thumnail),
+                        height: 300,
+                        width: 200,
+                      )
                     ],
                   )),
+              Container(
+                  padding: EdgeInsets.only(top: 32),
+                  alignment: Alignment.center,
+                  height:600,
+                  width:600,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: TextButton(
+                            onPressed: () => chooseImage(),
+                            child: Container(
+                                  width: 343,
+                                  height: 56,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Color(0xFFEE6C4D),
+                                  ),
+                                  child: Text(
+                                    'Add new images',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                            )
+                      ),
+                      Container(
+                        height:400,
+                        width:500,
+                        padding: EdgeInsets.all(4),
+                        child: GridView.builder(
+                            itemCount: _image.length,
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3),
+                            itemBuilder: (context, index) {
+                              return  Container(
+                                margin: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: FileImage(_image[index]),
+                                        fit: BoxFit.cover)),
+                              );
+                            }),
+                      ),
+                    ],
+                  )
+              ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: 48,
                   bottom: 40,
                 ),
                 child: TextButton(
@@ -349,14 +416,18 @@ class AddTripState extends State<AddTrip> {
                           description.text,
                           note.text,
                           uid,
-                          basename(_image.path),
+                          basename(thumnail.path),
                           int.parse(cost.text),
                           duration.text,
                           4.8,
-                          9,
+                          this.selectedDate.hour,
                           this.selectedDate,
+                          process(),
                         );
-                        addImage(_image);
+                        addImage(thumnail);
+                        for(var i in _image){
+                          addImage(i);
+                        }
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -388,4 +459,52 @@ class AddTripState extends State<AddTrip> {
       ),
     );
   }
+  chooseImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      _image.add(File(pickedFile?.path));
+    });
+    if (pickedFile.path == null) retrieveLostData();
+  }
+
+  Future<void> retrieveLostData() async {
+    final LostData response = await picker.getLostData();
+    if (response.isEmpty) {
+      return;
+    }
+    if (response.file != null) {
+      setState(() {
+        _image.add(File(response.file.path));
+      });
+    } else {
+      print(response.file);
+    }
+  }
+  process(){
+    List<String> list = [];
+    for (var i in _image){
+      list.add(basename(i.path));
+    }
+    return list;
+  }
+
+  Future uploadFile() async {
+    int i = 1;
+
+    for (var img in _image) {
+      setState(() {
+        val = i / _image.length;
+      });
+      ref = firebase_storage.FirebaseStorage.instance
+          .ref()
+          .child(basename(img.path));
+      await ref.putFile(img).whenComplete(() async {
+        await ref.getDownloadURL().then((value) {
+          imgRef.add({'url': value});
+          i++;
+        });
+      });
+    }
+  }
+
 }

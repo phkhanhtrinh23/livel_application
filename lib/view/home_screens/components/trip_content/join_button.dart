@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:livel_application/view/home_screens/HomeScreen.dart';
 import 'package:livel_application/model/payment.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/model/video_call/audience.dart';
+import 'package:livel_application/model/livestreaming//audience.dart';
 
 class JoinRegister extends StatefulWidget {
   final String id, code, cost;

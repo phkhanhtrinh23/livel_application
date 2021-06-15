@@ -17,9 +17,9 @@ class ExploreScreenState extends State<ExploreScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String selectedCity;
   TextEditingController search = new TextEditingController();
-  String dropdown = 'Place';
+  String dropdown = 'All';
   String lSearch = '';
-  String lField = 'Place';
+  String lField = 'All';
   bool set = false;
 
   @override
@@ -42,46 +42,58 @@ class ExploreScreenState extends State<ExploreScreen> {
   }
 
   _onSearchChanged() {
-    getSearch();
+    getList();
   }
 
-  List<String> cities = ['Khoa', 'Trinh'];
-  List show;
+  List<String> cities = [];
+  List show=[];
   QuerySnapshot res;
   // List<String> _options = []; // !!List of Places, Cities, and Countries
 
-  // getList() async {
-  //   List<String> temp = [];
-  //   DocumentSnapshot dictionary = await FirebaseFirestore.instance
-  //       .collection('Dictionary')
-  //       .doc('trip-info')
-  //       .get();
-  //   for (var doc in dictionary.get('Total')) {
-  //     temp.add(doc);
-  //   }
-  //   setState(
-  //     () {
-  //       cities = temp;
-  //       lSearch = search.text.toLowerCase();
-  //     },
-  //   );
-  // }
+  getList() async {
+    List<String> temp = [];
+    DocumentSnapshot dictionary = await FirebaseFirestore.instance
+        .collection('Dictionary')
+        .doc('trip-info')
+        .get();
+    for (var doc in dictionary.get((lField=='All')?'Total':(lField+'List'))) {
+      temp.add(doc);
+    }
+    setState(
+      () {
+        cities = temp;
+        lSearch = search.text.toLowerCase();
+      },
+    );
+  }
 
   getSearch() async {
     List tmp = [];
     if (search.text.isEmpty) {
       tmp = res.docs;
     } else {
-      for (var doc in res.docs) {
-        if (doc
-            .get(lField)
-            .toString()
-            .toLowerCase()
-            .trim()
-            .contains(search.text.toLowerCase().trim())) {
-          tmp.add(doc);
+      if(lField=='All'){
+        for(var doc in res.docs){
+          if(doc.get('Place').toLowerCase().trim().contains(search.text.trim())||
+              doc.get('Country').toLowerCase().trim().contains(search.text.trim())||
+              doc.get('City').toLowerCase().trim().contains(search.text.trim())){
+            tmp.add(doc);
+          }
         }
       }
+      else{
+        for (var doc in res.docs) {
+          if (doc
+              .get(lField)
+              .toString()
+              .toLowerCase()
+              .trim()
+              .contains(search.text.toLowerCase().trim())) {
+            tmp.add(doc);
+          }
+        }
+      }
+
     }
     setState(
       () {
@@ -175,10 +187,11 @@ class ExploreScreenState extends State<ExploreScreen> {
                             dropdown = newValue;
                             lField = dropdown;
                             search.clear();
+                            getList();
                           },
                         );
                       },
-                      items: <String>['Place', 'City', 'Country']
+                      items: <String>['All','Place', 'City', 'Country']
                           .map<DropdownMenuItem<String>>(
                         (String value) {
                           return DropdownMenuItem<String>(
@@ -203,6 +216,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                         // if (!_formKey.currentState.validate()) {
                         //   return;
                         // }
+                        getSearch();
                       },
                     ),
                   ],
@@ -216,7 +230,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                         itemCount: show.length,
                         itemBuilder: (BuildContext context, int index) {
                           return PlaceScreen(
-                            image: show[index].get('Image'),
+                            image: show[index].get('Thumnail'),
                             cost: show[index].get('Cost'),
                             date: show[index].get('Date'),
                             place: show[index].get('Place'),

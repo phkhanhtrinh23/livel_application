@@ -11,40 +11,40 @@ Future<void> addDict() async {
       .get();
   for (var doc in trips.docs) {
     if (!(dictionary
-        .get('Total')
+        .get('PlaceList')
         .contains(doc.get('Place').toString().toLowerCase().trim()))) {
       FirebaseFirestore.instance
           .collection('Dictionary')
           .doc('trip-info')
           .update(
         {
-          "Total": FieldValue.arrayUnion(
+          "PlaceList": FieldValue.arrayUnion(
               [doc.get('Place').toString().toLowerCase().trim()])
         },
       );
     }
     if (!(dictionary
-        .get('Total')
+        .get('CountryList')
         .contains(doc.get('Country').toString().toLowerCase().trim()))) {
       FirebaseFirestore.instance
           .collection('Dictionary')
           .doc('trip-info')
           .update(
         {
-          "Total": FieldValue.arrayUnion(
+          "CountryList": FieldValue.arrayUnion(
               [doc.get('Country').toString().toLowerCase().trim()])
         },
       );
     }
     if (!(dictionary
-        .get('Total')
+        .get('CityList')
         .contains(doc.get('City').toString().toLowerCase().trim()))) {
       FirebaseFirestore.instance
           .collection('Dictionary')
           .doc('trip-info')
           .update(
         {
-          "Total": FieldValue.arrayUnion(
+          "CityList": FieldValue.arrayUnion(
               [doc.get('City').toString().toLowerCase().trim()])
         },
       );
@@ -60,5 +60,15 @@ Future<void> addUserList() async {
         .collection('Trips')
         .doc(doc.id)
         .update({"UserList": []});
+  }
+}
+Future<void> addThumnailAndImageList() async {
+  QuerySnapshot trips =
+  await FirebaseFirestore.instance.collection('Trips').get();
+  for (var doc in trips.docs) {
+    FirebaseFirestore.instance
+        .collection('Trips')
+        .doc(doc.id)
+        .update({"Image": []});
   }
 }

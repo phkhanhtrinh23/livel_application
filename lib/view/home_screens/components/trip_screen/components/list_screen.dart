@@ -19,7 +19,7 @@ class ListScreen extends StatelessWidget {
             itemCount: snapshot.data.size,
             itemBuilder: (BuildContext context, int index) {
               return PlaceScreen(
-                image: snapshot.data.docs[index].get('Image'),
+                image: snapshot.data.docs[index].get('Thumnail'),
                 country: snapshot.data.docs[index].get('Country'),
                 cost: snapshot.data.docs[index].get('Cost'),
                 date: snapshot.data.docs[index].get('Date'),

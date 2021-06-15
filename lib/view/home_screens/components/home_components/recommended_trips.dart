@@ -44,7 +44,7 @@ class RecommendedElement extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   FutureBuilder(
-                    future: getNetWorkImage(snapshot.data.get('Image')),
+                    future: getNetWorkImage(snapshot.data.get('Thumnail')),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.done) {
                         return Container(

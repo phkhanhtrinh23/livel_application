@@ -21,15 +21,19 @@ class RecommendedElement extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           return Container(
             margin: const EdgeInsets.only(
-              left: 8.0,
+              left: 16.0,
+              right: 12.0,
+              bottom: 28.0,
             ),
-            padding: const EdgeInsets.only(
-              right: 16.0,
-              left: 8.0,
-              bottom: 16.0,
+            padding: const EdgeInsets.all(2.0),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Color(0xFF289CB4),
+              ),
+              borderRadius: BorderRadius.circular(8.0),
             ),
-            child: TextButton(
-              //padding: const EdgeInsets.all(0),
+            child: FlatButton(
+              padding: const EdgeInsets.all(0),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -41,99 +45,103 @@ class RecommendedElement extends StatelessWidget {
                   ),
                 );
               },
-              child: Column(
-                children: <Widget>[
-                  FutureBuilder(
-                    future: getNetWorkImage(snapshot.data.get('Thumnail')),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        return Container(
-                          alignment: Alignment.topLeft,
-                          width: 249,
-                          height: 140,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: snapshot.data,
-                              fit: BoxFit.fill,
+              child: Container(
+                padding: const EdgeInsets.all(0.0),
+                child: Column(
+                  children: <Widget>[
+                    FutureBuilder(
+                      future: getNetWorkImage(snapshot.data.get('Thumbnail')),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          return Container(
+                            alignment: Alignment.topLeft,
+                            width: 246,
+                            height: 154,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: snapshot.data,
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(8),
+                                topRight: Radius.circular(8),
+                              ),
                             ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(16),
-                              topRight: Radius.circular(16),
-                            ),
-                          ),
-                        );
-                      }
-                      return Container();
-                    },
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(
-                      bottom: 16,
-                      left: 5,
-                      right: 6,
+                          );
+                        }
+                        return Container();
+                      },
                     ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(8.0),
-                        bottomRight: Radius.circular(8.0),
+                    Container(
+                      padding: const EdgeInsets.only(
+                        bottom: 4,
+                        left: 5,
+                        right: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(8.0),
+                          bottomRight: Radius.circular(8.0),
+                        ),
+                      ),
+                      width: 249,
+                      height: 62,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                snapshot.data.get('Place').toString(),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                snapshot.data.get('Country').toString(),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                          Spacer(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              // Text(
+                              //   snapshot.data.get('UserList').length.toString() +
+                              //       " people registered",
+                              //   style: TextStyle(
+                              //     fontSize: 15,
+                              //     fontWeight: FontWeight.normal,
+                              //     color: Colors.black,
+                              //   ),
+                              // ),
+                              Text(
+                                DateFormat.yMMMd().format(
+                                    (snapshot.data.get('Date')).toDate()),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    width: 249,
-                    height: 62,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              snapshot.data.get('Place').toString(),
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              snapshot.data.get('Country').toString(),
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                        Spacer(),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              snapshot.data.get('UserList').length.toString() + " people registered",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              DateFormat.yMMMd()
-                                  .format((snapshot.data.get('Date')).toDate()),
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

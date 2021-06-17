@@ -26,6 +26,16 @@ class _SignInPage extends State<SignInPage> {
           actions: <Widget>[
             TextButton(
               child: Text(
+                'Quit',
+                style: TextStyle(
+                  color: Color(0xFF289CB4),
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onPressed: () => SystemNavigator.pop(),
+            ),
+            TextButton(
+              child: Text(
                 'Cancel',
                 style: TextStyle(
                   color: Colors.black,
@@ -33,15 +43,6 @@ class _SignInPage extends State<SignInPage> {
                 ),
               ),
               onPressed: () => Navigator.of(context).pop(),
-            ),
-            TextButton(
-              child: Text(
-                'Quit',
-                style: TextStyle(
-                  color: Color(0xFFEE6C4D),
-                ),
-              ),
-              onPressed: () => SystemNavigator.pop(),
             ),
           ],
         ),
@@ -123,7 +124,7 @@ class _SignInPage extends State<SignInPage> {
                   width: 343,
                   height: 56,
                   decoration: BoxDecoration(
-                    color: Color(0xFFEE6C4D),
+                    color: Color(0xFF289CB4),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
@@ -153,7 +154,8 @@ class _SignInPage extends State<SignInPage> {
                                   child: Text(
                                     'Confirm',
                                     style: TextStyle(
-                                      color: Color(0xFFEE6C4D),
+                                      color: Color(0xFF289CB4),
+                                      fontWeight: FontWeight.normal,
                                     ),
                                   ),
                                   onPressed: () =>
@@ -174,7 +176,8 @@ class _SignInPage extends State<SignInPage> {
                                   child: Text(
                                     'Confirm',
                                     style: TextStyle(
-                                      color: Color(0xFFEE6C4D),
+                                      color: Color(0xFF289CB4),
+                                      fontWeight: FontWeight.normal,
                                     ),
                                   ),
                                   onPressed: () =>

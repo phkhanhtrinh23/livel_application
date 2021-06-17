@@ -17,14 +17,15 @@ class RecommendedScreen extends StatelessWidget {
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: snapshot.data.size,
-              itemBuilder: (BuildContext context, int index) {
-                return RecommendedElement(
-                  id: snapshot.data.docs[index].id,
-                );
-              });
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: snapshot.data.size,
+            itemBuilder: (BuildContext context, int index) {
+              return RecommendedElement(
+                id: snapshot.data.docs[index].id,
+              );
+            },
+          );
         }
         return Container();
       },

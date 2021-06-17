@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 import 'components/each_guide_trip.dart';
 
@@ -26,7 +27,7 @@ class GuideScreen extends StatelessWidget {
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
                     ),
-                    color: Color(0xFF4EAFC1),
+                    color: Color(0xFF289CB4),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,10 +47,10 @@ class GuideScreen extends StatelessWidget {
                       Spacer(),
                       Text(
                         'Your Trips',
-                        style: TextStyle(
+                        style: GoogleFonts.rubik(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
                           fontSize: 32,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],

@@ -17,15 +17,19 @@ class ProfileMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 330,
-      height: 68,
+      height: 72,
       margin: const EdgeInsets.only(top: 16, bottom: 16),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Color(0xFF477983),
-          width: 2,
-        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 16,
+            offset: const Offset(0, 8),
+          )
+        ],
       ),
       child: Padding(
         padding: EdgeInsets.all(0),
@@ -45,7 +49,10 @@ class ProfileMenu extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 5.0),
               ),
               Spacer(),
-              Icon(Icons.arrow_forward_ios),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Color(0xFF477983),
+              ),
             ],
           ),
         ),

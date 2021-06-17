@@ -26,6 +26,9 @@ class GuideTripScreen extends StatelessWidget {
             height: 160,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.0),
+              border: Border.all(
+                color: Color(0xFF289CB4),
+              ),
             ),
             child: TextButton(
               onPressed: () {

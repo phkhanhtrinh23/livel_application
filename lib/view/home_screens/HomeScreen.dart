@@ -31,6 +31,16 @@ class _HomeScreen extends State<HomeScreen> {
           actions: <Widget>[
             TextButton(
               child: Text(
+                'Quit',
+                style: TextStyle(
+                  color: Color(0xFF289CB4),
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onPressed: () => SystemNavigator.pop(),
+            ),
+            TextButton(
+              child: Text(
                 'Cancel',
                 style: TextStyle(
                   color: Colors.black,
@@ -38,15 +48,6 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
               ),
               onPressed: () => Navigator.of(context).pop(),
-            ),
-            TextButton(
-              child: Text(
-                'Quit',
-                style: TextStyle(
-                  color: Color(0xFFEE6C4D),
-                ),
-              ),
-              onPressed: () => SystemNavigator.pop(),
             ),
           ],
         ),
@@ -58,7 +59,7 @@ class _HomeScreen extends State<HomeScreen> {
             type: BottomNavigationBarType.fixed,
             iconSize: 25,
             showSelectedLabels: true,
-            showUnselectedLabels: true,
+            showUnselectedLabels: false,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
@@ -77,13 +78,15 @@ class _HomeScreen extends State<HomeScreen> {
                 label: 'User',
               ),
             ],
-            backgroundColor: Color(0xFF4EAFC1),
+            backgroundColor: Colors.white,
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.white,
+            selectedItemColor: Color(0xFF289CB4),
             onTap: (value) {
-              setState(() {
-                _selectedIndex = value;
-              });
+              setState(
+                () {
+                  _selectedIndex = value;
+                },
+              );
             },
           ),
         ),

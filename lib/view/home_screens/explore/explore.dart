@@ -1,9 +1,11 @@
-import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../components/trip_screen/components/each_place.dart';
 import 'package:flutter/widgets.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:avatar_glow/avatar_glow.dart';
 
 class ExploreScreen extends StatefulWidget {
   ExploreScreen({Key key}) : super(key: key);
@@ -22,9 +24,14 @@ class ExploreScreenState extends State<ExploreScreen> {
   String lField = 'All';
   bool set = false;
 
+  stt.SpeechToText _speech;
+  bool _isListening = false;
+  double _confidence = 1.0;
+
   @override
   initState() {
     super.initState();
+    _speech = stt.SpeechToText();
     search.addListener(_onSearchChanged);
   }
 
@@ -46,9 +53,8 @@ class ExploreScreenState extends State<ExploreScreen> {
   }
 
   List<String> cities = [];
-  List show=[];
+  List show = [];
   QuerySnapshot res;
-  // List<String> _options = []; // !!List of Places, Cities, and Countries
 
   getList() async {
     List<String> temp = [];
@@ -56,7 +62,8 @@ class ExploreScreenState extends State<ExploreScreen> {
         .collection('Dictionary')
         .doc('trip-info')
         .get();
-    for (var doc in dictionary.get((lField=='All')?'Total':(lField+'List'))) {
+    for (var doc
+        in dictionary.get((lField == 'All') ? 'Total' : (lField + 'List'))) {
       temp.add(doc);
     }
     setState(
@@ -72,16 +79,27 @@ class ExploreScreenState extends State<ExploreScreen> {
     if (search.text.isEmpty) {
       tmp = res.docs;
     } else {
-      if(lField=='All'){
-        for(var doc in res.docs){
-          if(doc.get('Place').toLowerCase().trim().contains(search.text.trim())||
-              doc.get('Country').toLowerCase().trim().contains(search.text.trim())||
-              doc.get('City').toLowerCase().trim().contains(search.text.trim())){
+      if (lField == 'All') {
+        for (var doc in res.docs) {
+          if (doc
+                  .get('Place')
+                  .toLowerCase()
+                  .trim()
+                  .contains(search.text.trim()) ||
+              doc
+                  .get('Country')
+                  .toLowerCase()
+                  .trim()
+                  .contains(search.text.trim()) ||
+              doc
+                  .get('City')
+                  .toLowerCase()
+                  .trim()
+                  .contains(search.text.trim())) {
             tmp.add(doc);
           }
         }
-      }
-      else{
+      } else {
         for (var doc in res.docs) {
           if (doc
               .get(lField)
@@ -93,7 +111,6 @@ class ExploreScreenState extends State<ExploreScreen> {
           }
         }
       }
-
     }
     setState(
       () {
@@ -116,6 +133,31 @@ class ExploreScreenState extends State<ExploreScreen> {
     getSearch();
   }
 
+  void _listen() async {
+    if (!_isListening) {
+      bool available = await _speech.initialize(
+        onStatus: (val) => print('onStatus: $val'),
+        onError: (val) => print('onError: $val'),
+      );
+      if (available) {
+        setState(() => _isListening = true);
+        _speech.listen(
+          onResult: (val) => setState(
+            () {
+              search.text = val.recognizedWords;
+              if (val.hasConfidenceRating && val.confidence > 0) {
+                _confidence = val.confidence;
+              }
+            },
+          ),
+        );
+      }
+    } else {
+      setState(() => _isListening = false);
+      _speech.stop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -136,14 +178,14 @@ class ExploreScreenState extends State<ExploreScreen> {
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
                   ),
-                  color: Color(0xFF4EAFC1),
+                  color: Color(0xFF289CB4),
                 ),
                 child: Text(
                   'Explore',
-                  style: TextStyle(
+                  style: GoogleFonts.rubik(
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
                     fontSize: 32,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -191,7 +233,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                           },
                         );
                       },
-                      items: <String>['All','Place', 'City', 'Country']
+                      items: <String>['All', 'Place', 'City', 'Country']
                           .map<DropdownMenuItem<String>>(
                         (String value) {
                           return DropdownMenuItem<String>(
@@ -205,19 +247,29 @@ class ExploreScreenState extends State<ExploreScreen> {
                     Expanded(
                       child: buildCity(),
                     ),
-                    TextButton(
-                      style: TextButton.styleFrom(primary: Color(0xFF4EAFC1)),
-                      child: Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.rotationY(pi),
-                        child: Icon(Icons.search),
+                    IconButton(
+                      icon: Icon(
+                        Icons.search,
+                        color: Color(0xFF289CB4),
                       ),
                       onPressed: () {
-                        // if (!_formKey.currentState.validate()) {
-                        //   return;
-                        // }
                         getSearch();
                       },
+                    ),
+                    AvatarGlow(
+                      animate: _isListening,
+                      glowColor: Theme.of(context).primaryColor,
+                      endRadius: 20.0,
+                      duration: const Duration(milliseconds: 2000),
+                      repeatPauseDuration: const Duration(milliseconds: 100),
+                      repeat: true,
+                      child: IconButton(
+                        onPressed: _listen,
+                        icon: Icon(
+                          _isListening ? Icons.mic : Icons.mic_none,
+                          color: Color(0xFF289CB4),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -230,7 +282,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                         itemCount: show.length,
                         itemBuilder: (BuildContext context, int index) {
                           return PlaceScreen(
-                            image: show[index].get('Thumnail'),
+                            image: show[index].get('Thumbnail'),
                             cost: show[index].get('Cost'),
                             date: show[index].get('Date'),
                             place: show[index].get('Place'),
@@ -240,7 +292,12 @@ class ExploreScreenState extends State<ExploreScreen> {
                         },
                       )
                     : set
-                        ? Text("There are no trips!")
+                        ? Text(
+                            "There are no trips!",
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          )
                         : Container(),
               )
             ],
@@ -274,6 +331,7 @@ class ExploreScreenState extends State<ExploreScreen> {
             value != null && value.isEmpty ? 'Please select a city' : null,
         onSaved: (value) => selectedCity = value,
       );
+
   List<String> getSuggestions(String query) => List.of(cities).where(
         (city) {
           final cityLower = city.toLowerCase();

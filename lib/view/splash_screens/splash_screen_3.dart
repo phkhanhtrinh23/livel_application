@@ -53,7 +53,7 @@ class FourthScreen extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color(0xFF4EAFC1),
+                    color: Color(0xFF289CB4),
                   ),
                   child: Container(
                     width: 335,
@@ -90,7 +90,7 @@ class FourthScreen extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color(0xFF4EAFC1),
+                    color: Color(0xFF289CB4),
                   ),
                   child: Container(
                     width: 335,

@@ -31,7 +31,7 @@ class _PersonalInfo extends State<PersonalInfo> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Please provide your info"),
-        backgroundColor: Color(0xFF4EAFC1),
+        backgroundColor: Color(0xFF289CB4),
       ),
       body: Form(
         key: _form,
@@ -269,7 +269,8 @@ class _PersonalInfo extends State<PersonalInfo> {
                               child: Text(
                                 'Confirm',
                                 style: TextStyle(
-                                  color: Color(0xFFEE6C4D),
+                                  color: Color(0xFF289CB4),
+                                  fontWeight: FontWeight.normal,
                                 ),
                               ),
                               onPressed: () => Navigator.of(context).pop(true),
@@ -290,7 +291,7 @@ class _PersonalInfo extends State<PersonalInfo> {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      color: Color(0xFFEE6C4D),
+                      color: Color(0xFF289CB4),
                     ),
                     child: Text(
                       'Submit',

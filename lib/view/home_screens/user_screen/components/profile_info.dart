@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16),
                       ),
-                      color: Color(0xFF4EAFC1),
+                      color: Color(0xFF289CB4),
                     ),
                     child: Column(
                       children: [
@@ -49,10 +50,10 @@ class ProfileScreen extends StatelessWidget {
                         Spacer(),
                         Text(
                           'My Profile',
-                          style: TextStyle(
+                          style: GoogleFonts.rubik(
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
                             fontSize: 32,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
@@ -61,6 +62,7 @@ class ProfileScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(
                       top: 8.0,
+                      bottom: 32.0,
                     ),
                     width: 200,
                     height: 100,
@@ -73,8 +75,8 @@ class ProfileScreen extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     margin: const EdgeInsets.only(
-                      left: 32,
-                      right: 32,
+                      left: 16,
+                      right: 16,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

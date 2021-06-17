@@ -11,19 +11,20 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreen extends State<FirstScreen> {
-  final _color1 = Color(0xFF4EAFC1);
+  final _color1 = Color(0xFF289CB4);
 
   @override
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 3),
-        () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomeMain(),
-              ),
-            ));
+      Duration(seconds: 3),
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomeMain(),
+        ),
+      ),
+    );
   }
 
   @override

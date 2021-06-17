@@ -85,9 +85,11 @@ class _SignUpPage extends State<SignUpPage> {
                               ? Icon(Icons.visibility_off_outlined)
                               : Icon(Icons.remove_red_eye_outlined),
                           onPressed: () {
-                            setState(() {
-                              _dontShowPassword = !_dontShowPassword;
-                            });
+                            setState(
+                              () {
+                                _dontShowPassword = !_dontShowPassword;
+                              },
+                            );
                           },
                         ),
                         labelText: "Password",
@@ -121,7 +123,7 @@ class _SignUpPage extends State<SignUpPage> {
                     bottom: 32,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFFEE6C4D),
+                    color: Color(0xFF289CB4),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
@@ -153,7 +155,8 @@ class _SignUpPage extends State<SignUpPage> {
                                     child: Text(
                                       'Confirm',
                                       style: TextStyle(
-                                        color: Color(0xFFEE6C4D),
+                                        color: Color(0xFF289CB4),
+                                        fontWeight: FontWeight.normal,
                                       ),
                                     ),
                                     onPressed: () =>

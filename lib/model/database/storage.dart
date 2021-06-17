@@ -10,29 +10,33 @@ Future<String> getURL(String image) async {
 
 Future<NetworkImage> getNetWorkImage(String name) async {
   NetworkImage image;
-  await getURL(name).then((value) => {
-    image = NetworkImage(
-      value.toString(),
-      //fit: BoxFit.fitWidth
-    )
-  });
+  await getURL(name).then(
+    (value) => {
+      image = NetworkImage(
+        value.toString(),
+        //fit: BoxFit.fitWidth
+      )
+    },
+  );
   return image;
 }
 
 Future<Widget> getImage(String name) async {
   Image image;
-  await getURL(name).then((value) => {
-    image = Image.network(
-      value.toString(),
-      //fit: BoxFit.fitWidth
-    )
-  });
+  await getURL(name).then(
+    (value) => {
+      image = Image.network(
+        value.toString(),
+        //fit: BoxFit.fitWidth
+      )
+    },
+  );
   return image;
 }
-Future<void> addImage(File _image) async{
+
+Future<void> addImage(File _image) async {
   return await FirebaseStorage.instance
       .ref()
       .child(basename(_image.path))
       .putFile(_image);
 }
-

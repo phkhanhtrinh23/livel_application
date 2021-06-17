@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:livel_application/model/database/addTrip.dart';
 import 'package:livel_application/model/database/storage.dart';
@@ -27,7 +28,7 @@ class AddTripState extends State<AddTrip> {
   final TextEditingController cost = new TextEditingController();
   final _form = GlobalKey<FormState>();
   DateTime selectedDate = DateTime.now();
-  List<File> _image  = [];
+  List<File> _image = [];
   String _error = 'No Error Dectected';
   File thumnail;
   final picker = ImagePicker();
@@ -91,7 +92,7 @@ class AddTripState extends State<AddTrip> {
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
                   ),
-                  color: Color(0xFF4EAFC1),
+                  color: Color(0xFF289CB4),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -111,10 +112,10 @@ class AddTripState extends State<AddTrip> {
                     Spacer(),
                     Text(
                       'Add a trip',
-                      style: TextStyle(
+                      style: GoogleFonts.rubik(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
                         fontSize: 32,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -295,12 +296,16 @@ class AddTripState extends State<AddTrip> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: Color(0xFFEE6C4D)),
+                    border: Border.all(
+                      color: Color(0xFF289CB4),
+                    ),
                   ),
                   child: TextButton(
                     child: Text(
                       'Departure time',
-                      style: TextStyle(color: Color(0xFFEE6C4D)),
+                      style: TextStyle(
+                        color: Color(0xFF289CB4),
+                      ),
                     ),
                     onPressed: () async {
                       final selectedDate = await _selectDateTime(context);
@@ -323,73 +328,81 @@ class AddTripState extends State<AddTrip> {
                 ),
               ),
               Container(
-                  padding: EdgeInsets.only(top: 32),
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: getImage,
-                        child: Container(
-                          width: 343,
-                          height: 56,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Color(0xFFEE6C4D),
-                          ),
-                          child: Text(
-                            'Add thumnail',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                padding: EdgeInsets.only(top: 32),
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 180,
+                      height: 53,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: Color(0xFF289CB4),
                         ),
                       ),
-                      thumnail == null
-                          ? Text('No image selected.')
-                          : Container(
-                        padding: EdgeInsets.only(left: 20),
-                        child: Image.file(thumnail),
-                        height: 300,
-                        width: 200,
-                      )
-                    ],
-                  )),
+                      child: TextButton(
+                        child: Text(
+                          'Add Thumbnail',
+                          style: TextStyle(
+                            color: Color(0xFF289CB4),
+                          ),
+                        ),
+                        onPressed: getImage,
+                      ),
+                    ),
+                    thumnail == null
+                        ? Text('No image selected.')
+                        : Container(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Image.file(thumnail),
+                            height: 300,
+                            width: 200,
+                          )
+                  ],
+                ),
+              ),
               Container(
                   padding: EdgeInsets.only(top: 32),
                   alignment: Alignment.center,
-                  height:600,
-                  width:600,
+                  height: 600,
+                  width: 600,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Center(
+                      Container(
+                        width: 180,
+                        height: 53,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: Color(0xFF289CB4),
+                          ),
+                        ),
                         child: TextButton(
-                            onPressed: () => chooseImage(),
-                            child: Container(
-                                  width: 343,
-                                  height: 56,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Color(0xFFEE6C4D),
-                                  ),
-                                  child: Text(
-                                    'Add new images',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                            )
+                          child: Text(
+                            'Add Image',
+                            style: TextStyle(
+                              color: Color(0xFF289CB4),
+                            ),
+                          ),
+                          onPressed: chooseImage,
+                        ),
                       ),
                       Container(
-                        height:400,
-                        width:500,
+                        height: 300,
+                        width: 500,
                         padding: EdgeInsets.all(4),
                         child: GridView.builder(
                             itemCount: _image.length,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3),
                             itemBuilder: (context, index) {
-                              return  Container(
+                              return Container(
                                 margin: EdgeInsets.all(3),
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -399,8 +412,7 @@ class AddTripState extends State<AddTrip> {
                             }),
                       ),
                     ],
-                  )
-              ),
+                  )),
               Padding(
                 padding: EdgeInsets.only(
                   bottom: 40,
@@ -425,7 +437,7 @@ class AddTripState extends State<AddTrip> {
                           process(),
                         );
                         addImage(thumnail);
-                        for(var i in _image){
+                        for (var i in _image) {
                           addImage(i);
                         }
                         Navigator.push(
@@ -443,7 +455,7 @@ class AddTripState extends State<AddTrip> {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            color: Color(0xFFEE6C4D),
+                            color: Color(0xFF289CB4),
                           ),
                           child: Text(
                             'Submit',
@@ -459,6 +471,7 @@ class AddTripState extends State<AddTrip> {
       ),
     );
   }
+
   chooseImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
@@ -480,9 +493,10 @@ class AddTripState extends State<AddTrip> {
       print(response.file);
     }
   }
-  process(){
+
+  process() {
     List<String> list = [];
-    for (var i in _image){
+    for (var i in _image) {
       list.add(basename(i.path));
     }
     return list;
@@ -506,5 +520,4 @@ class AddTripState extends State<AddTrip> {
       });
     }
   }
-
 }

@@ -25,7 +25,7 @@ class MainContent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FutureBuilder(
-                  future: getNetWorkImage(snapshot.data.get('Thumnail')),
+                  future: getNetWorkImage(snapshot.data.get('Thumbnail')),
                   builder: (context, AsyncSnapshot<dynamic> snapshotImage) {
                     if (snapshotImage.connectionState == ConnectionState.done) {
                       return Stack(

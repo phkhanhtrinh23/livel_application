@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'components/list_screen.dart';
 
 class TripScreen extends StatelessWidget {
@@ -64,9 +65,9 @@ class TripScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Welcome to $name',
-                    style: TextStyle(
+                    style: GoogleFonts.rubik(
                       fontSize: 24,
-                      color: Color(0xFFEE6C4D),
+                      color: Color(0xFF289CB4),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -75,9 +76,9 @@ class TripScreen extends StatelessWidget {
                   ),
                   Text(
                     'Find your ideal trip today!',
-                    style: TextStyle(
+                    style: GoogleFonts.rubik(
                       fontSize: 16,
-                      color: Colors.grey,
+                      color: Colors.black,
                       fontWeight: FontWeight.normal,
                     ),
                   ),

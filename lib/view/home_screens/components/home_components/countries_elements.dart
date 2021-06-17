@@ -16,8 +16,8 @@ class TripElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(0),
-      width: 182,
-      height: 248,
+      width: 183,
+      height: 221,
       margin: const EdgeInsets.only(
         left: 16,
         right: 4,
@@ -25,69 +25,67 @@ class TripElement extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Color(0xFF4EAFC1),
+        color: Color(0xFF289CB4),
       ),
-      child: Padding(
+      child: FlatButton(
         padding: const EdgeInsets.all(0.0),
-        child: TextButton(
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => TripScreen(
-                name: name,
-              ),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => TripScreen(
+              name: name,
             ),
           ),
-          child: Container(
-            padding: const EdgeInsets.all(0.0),
-            alignment: Alignment.topLeft,
-            width: 173,
-            height: 240,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(image),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.circular(16),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(0.0),
+          alignment: Alignment.topLeft,
+          width: 173,
+          height: 214,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(image),
+              fit: BoxFit.cover,
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(16),
-                  topLeft: Radius.circular(16),
-                ),
-                color: Color(0xFF4EAFC1),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(16),
+                topLeft: Radius.circular(16),
               ),
-              width: 100,
-              height: 45,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+              color: Color(0xFF4EAFC1),
+            ),
+            width: 100,
+            height: 45,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  name,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  FutureBuilder(
-                    future: getCountry(name),
-                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        return Text(
-                          snapshot.data.size.toString() + ' places',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                          ),
-                        );
-                      }
-                      return Text("Loading");
-                    },
-                  )
-                ],
-              ),
+                ),
+                FutureBuilder(
+                  future: getCountry(name),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Text(
+                        snapshot.data.size.toString() + ' places',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
+                        ),
+                      );
+                    }
+                    return Text("Loading");
+                  },
+                )
+              ],
             ),
           ),
         ),

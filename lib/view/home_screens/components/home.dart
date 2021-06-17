@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/view/home_screens/components/home_components/countries_elements.dart';
 import 'package:livel_application/model/events.dart';
 import 'package:livel_application/view/home_screens/components/home_components/upcoming.dart';
@@ -29,7 +30,7 @@ class MainHome extends StatelessWidget {
                   width: _width,
                   height: 220,
                   decoration: BoxDecoration(
-                    color: Color(0xFF4EAFC1),
+                    color: Color(0xFF289CB4),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -61,9 +62,9 @@ class MainHome extends StatelessWidget {
                                 'Hello ' +
                                     snapshot.data.get('Name') +
                                     ',\nchoose your trip today!',
-                                style: TextStyle(
-                                  fontSize: 26,
+                                style: GoogleFonts.rubik(
                                   color: Colors.white,
+                                  fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -169,7 +170,7 @@ class MainHome extends StatelessWidget {
                 ),
               ],
             ),
-            Container(height: 237, width: _width, child: RecommendedScreen())
+            Container(height: 250, width: _width, child: RecommendedScreen())
           ],
         ),
       ),

@@ -13,6 +13,16 @@ class SecondScreen extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               child: Text(
+                'Quit',
+                style: TextStyle(
+                  color: Color(0xFF289CB4),
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onPressed: () => SystemNavigator.pop(),
+            ),
+            TextButton(
+              child: Text(
                 'Cancel',
                 style: TextStyle(
                   color: Colors.black,
@@ -20,15 +30,6 @@ class SecondScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () => Navigator.of(context).pop(),
-            ),
-            TextButton(
-              child: Text(
-                'Quit',
-                style: TextStyle(
-                  color: Color(0xFFEE6C4D),
-                ),
-              ),
-              onPressed: () => SystemNavigator.pop(),
             ),
           ],
         ),
@@ -41,31 +42,32 @@ class SecondScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                  margin: const EdgeInsets.only(
-                    top: 100,
-                    left: 20,
-                    right: 20,
-                    bottom: 160,
-                  ),
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        'images/saly_15.png',
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'New opportunities for\ntour guides',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.grey,
-                          ),
-                          textAlign: TextAlign.center,
+                margin: const EdgeInsets.only(
+                  top: 100,
+                  left: 20,
+                  right: 20,
+                  bottom: 160,
+                ),
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'images/saly_15.png',
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'New opportunities for\ntour guides',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.grey,
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                    ],
-                  )),
+                    ),
+                  ],
+                ),
+              ),
               Container(
                 margin: const EdgeInsets.only(
                   top: 16,
@@ -78,7 +80,7 @@ class SecondScreen extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  color: Color(0xFF4EAFC1),
+                  color: Color(0xFF289CB4),
                 ),
                 child: Container(
                   width: 335,

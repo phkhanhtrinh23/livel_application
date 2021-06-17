@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/addAll.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/view/log_in_screens/sign_in.dart';
@@ -36,14 +37,14 @@ class UserScreen extends StatelessWidget {
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
                     ),
-                    color: Color(0xFF4EAFC1),
+                    color: Color(0xFF289CB4),
                   ),
                   child: Text(
                     'Your Account',
-                    style: TextStyle(
+                    style: GoogleFonts.rubik(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
                       fontSize: 32,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -86,9 +87,7 @@ class UserScreen extends StatelessWidget {
                         text: "Help Center",
                         icon: Icon(Icons.help_center_outlined,
                             color: Color(0xFF477983)),
-                        press: () => {
-                          addThumnailAndImageList()
-                        },
+                        press: () => {addThumnailAndImageList()},
                       ),
                       // ProfileMenu(
                       //   text: "Help Center",
@@ -141,7 +140,8 @@ class UserScreen extends StatelessWidget {
                                     child: Text(
                                       'Confirm',
                                       style: TextStyle(
-                                        color: Color(0xFFEE6C4D),
+                                        color: Color(0xFF289CB4),
+                                        fontWeight: FontWeight.normal,
                                       ),
                                     ),
                                     onPressed: () {
@@ -167,21 +167,10 @@ class UserScreen extends StatelessWidget {
                                 actions: <Widget>[
                                   TextButton(
                                     child: Text(
-                                      'No',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop(true);
-                                    },
-                                  ),
-                                  TextButton(
-                                    child: Text(
                                       'Yes',
                                       style: TextStyle(
-                                        color: Color(0xFFEE6C4D),
+                                        color: Color(0xFF289CB4),
+                                        fontWeight: FontWeight.normal,
                                       ),
                                     ),
                                     onPressed: () async {
@@ -192,6 +181,18 @@ class UserScreen extends StatelessWidget {
                                           builder: (context) => SignInPage(),
                                         ),
                                       );
+                                    },
+                                  ),
+                                  TextButton(
+                                    child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
                                     },
                                   ),
                                 ],

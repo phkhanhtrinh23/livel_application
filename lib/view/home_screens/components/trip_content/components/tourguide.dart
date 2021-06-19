@@ -28,7 +28,7 @@ class TourGuide extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           Divider(
-                            color: Color(0xFF289CB4),
+                            color: Color(0x55289CB4),
                             thickness: 2.0,
                           )
                         ],
@@ -152,7 +152,7 @@ class TourGuide extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           Divider(
-                            color: Color(0xFF289CB4),
+                            color: Color(0x55289CB4),
                             thickness: 2.0,
                           )
                         ],

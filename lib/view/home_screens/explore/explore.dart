@@ -7,6 +7,8 @@ import 'package:flutter/widgets.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:avatar_glow/avatar_glow.dart';
 
+import 'components/filter.dart';
+
 class ExploreScreen extends StatefulWidget {
   ExploreScreen({Key key}) : super(key: key);
 
@@ -178,8 +180,7 @@ class ExploreScreenState extends State<ExploreScreen> {
     }
   }
 
-  bool isChecked = false; // !! TAG VARIABLE
-  bool isChecked1 = false; // !! TAG VARIABLE
+  bool bePressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -321,8 +322,9 @@ class ExploreScreenState extends State<ExploreScreen> {
                     showDialog(
                       context: context,
                       barrierDismissible: true,
-                      builder: (BuildContext context) =>
-                          _buildPopupDialog(context),
+                      builder: (BuildContext context) {
+                        return PopUpDialog(); // !! This is where tag goes
+                      },
                     );
                   },
                 ),
@@ -357,63 +359,6 @@ class ExploreScreenState extends State<ExploreScreen> {
           ),
         ),
       ),
-    );
-  }
-
-// !! FILTER YOUR TRIP
-  Widget _buildPopupDialog(BuildContext context) {
-    return AlertDialog(
-      title: Text(
-        'Filter your trips',
-        style: GoogleFonts.rubik(
-          color: Color(0xFF289CB4),
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-        textAlign: TextAlign.center,
-      ),
-      content: Container(
-        width: 320,
-        child: StatefulBuilder(
-          builder: (context, _setState) => Column(
-            children: <Widget>[
-              CheckboxListTile(
-                value: isChecked,
-                onChanged: (newValue) {
-                  _setState(() => isChecked = newValue ? true : false);
-                },
-                title: Text('This is a tag.'),
-                secondary: Icon(Icons.tag_rounded),
-              ),
-              CheckboxListTile(
-                value:
-                    isChecked1, // !! Different value from the previous CheckboxListTile
-                // !!NOTICE: isChecked1 must be != isChecked
-                onChanged: (newValue) {
-                  _setState(() => isChecked1 = newValue ? true : false);
-                },
-                title: Text('This is a tag.'),
-                secondary: Icon(Icons.tag_rounded),
-              ),
-            ],
-          ),
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text(
-            'Submit',
-            style: TextStyle(
-              color: Color(0xFF289CB4),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
     );
   }
 

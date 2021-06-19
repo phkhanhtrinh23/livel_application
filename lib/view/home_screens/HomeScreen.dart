@@ -78,7 +78,7 @@ class _HomeScreen extends State<HomeScreen> {
                 label: 'User',
               ),
             ],
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.grey[300],
             currentIndex: _selectedIndex,
             selectedItemColor: Color(0xFF289CB4),
             onTap: (value) {

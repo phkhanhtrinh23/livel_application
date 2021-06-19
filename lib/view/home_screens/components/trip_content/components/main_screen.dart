@@ -329,7 +329,7 @@ class MainContent extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Divider(
-                              color: Color(0xFF289CB4),
+                              color: Color(0x55289CB4),
                               thickness: 2.0,
                             )
                           ],
@@ -494,7 +494,7 @@ class MainContent extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 16),
                   padding: const EdgeInsets.only(right: 16, left: 18),
                   child: Divider(
-                    color: Color(0xFF289CB4),
+                    color: Color(0x55289CB4),
                     thickness: 2.0,
                   ),
                 ),

@@ -4,8 +4,8 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../components/trip_screen/components/each_place.dart';
 import 'package:flutter/widgets.dart';
-import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:avatar_glow/avatar_glow.dart';
+//import 'package:speech_to_text/speech_to_text.dart' as stt;
+//import 'package:avatar_glow/avatar_glow.dart';
 
 class ExploreScreen extends StatefulWidget {
   ExploreScreen({Key key}) : super(key: key);
@@ -24,14 +24,14 @@ class ExploreScreenState extends State<ExploreScreen> {
   String lField = 'All';
   bool set = false;
 
-  stt.SpeechToText _speech;
+  //stt.SpeechToText _speech;
   bool _isListening = false;
   double _confidence = 1.0;
 
   @override
   initState() {
     super.initState();
-    _speech = stt.SpeechToText();
+    //_speech = stt.SpeechToText();
     search.addListener(_onSearchChanged);
   }
 
@@ -118,7 +118,26 @@ class ExploreScreenState extends State<ExploreScreen> {
       },
     );
   }
+  getTag(List<String> tagList) async{
+    List tmp = [];
+    for(var doc in res.docs){
+      for(var tag in tagList){
+        if(tag == tagList.last){
+          tmp.add(doc);
+        }
+        if(doc.get('TagList').contains(tag)){
+          continue;
+        }
+        break;
+      }
 
+    }
+    setState(
+          () {
+        show = tmp;
+      },
+    );
+  }
   getCollection() async {
     QuerySnapshot data = await FirebaseFirestore.instance
         .collection('Trips')
@@ -132,31 +151,31 @@ class ExploreScreenState extends State<ExploreScreen> {
     );
     getSearch();
   }
-
-  void _listen() async {
-    if (!_isListening) {
-      bool available = await _speech.initialize(
-        onStatus: (val) => print('onStatus: $val'),
-        onError: (val) => print('onError: $val'),
-      );
-      if (available) {
-        setState(() => _isListening = true);
-        _speech.listen(
-          onResult: (val) => setState(
-            () {
-              search.text = val.recognizedWords;
-              if (val.hasConfidenceRating && val.confidence > 0) {
-                _confidence = val.confidence;
-              }
-            },
-          ),
-        );
-      }
-    } else {
-      setState(() => _isListening = false);
-      _speech.stop();
-    }
-  }
+  //
+  // void _listen() async {
+  //   if (!_isListening) {
+  //     bool available = await _speech.initialize(
+  //       onStatus: (val) => print('onStatus: $val'),
+  //       onError: (val) => print('onError: $val'),
+  //     );
+  //     if (available) {
+  //       setState(() => _isListening = true);
+  //       _speech.listen(
+  //         onResult: (val) => setState(
+  //           () {
+  //             search.text = val.recognizedWords;
+  //             if (val.hasConfidenceRating && val.confidence > 0) {
+  //               _confidence = val.confidence;
+  //             }
+  //           },
+  //         ),
+  //       );
+  //     }
+  //   } else {
+  //     setState(() => _isListening = false);
+  //     _speech.stop();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -256,21 +275,21 @@ class ExploreScreenState extends State<ExploreScreen> {
                         getSearch();
                       },
                     ),
-                    AvatarGlow(
-                      animate: _isListening,
-                      glowColor: Theme.of(context).primaryColor,
-                      endRadius: 20.0,
-                      duration: const Duration(milliseconds: 2000),
-                      repeatPauseDuration: const Duration(milliseconds: 100),
-                      repeat: true,
-                      child: IconButton(
-                        onPressed: _listen,
-                        icon: Icon(
-                          _isListening ? Icons.mic : Icons.mic_none,
-                          color: Color(0xFF289CB4),
-                        ),
-                      ),
-                    ),
+                    // AvatarGlow(
+                    //   animate: _isListening,
+                    //   glowColor: Theme.of(context).primaryColor,
+                    //   endRadius: 20.0,
+                    //   duration: const Duration(milliseconds: 2000),
+                    //   repeatPauseDuration: const Duration(milliseconds: 100),
+                    //   repeat: true,
+                    //   child: IconButton(
+                    //     onPressed: _listen,
+                    //     icon: Icon(
+                    //       _isListening ? Icons.mic : Icons.mic_none,
+                    //       color: Color(0xFF289CB4),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

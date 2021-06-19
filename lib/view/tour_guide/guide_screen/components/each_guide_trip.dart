@@ -3,12 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/model/livestreaming//broadcaster.dart';
+import 'package:livel_application/model/livestreaming/broadcaster.dart';
+import 'package:livel_application/model/livestreaming/host.dart';
 
 class GuideTripScreen extends StatelessWidget {
-  const GuideTripScreen({Key key, this.id});
+  const GuideTripScreen({Key key, this.id, this.name});
   final String id;
-
+  final String name;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -30,104 +31,112 @@ class GuideTripScreen extends StatelessWidget {
                 color: Color(0xFF289CB4),
               ),
             ),
-            child: TextButton(
-              onPressed: () {
-                if (snapshot.data.get('Code').toString().isEmpty) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            TourguidePage(snapshot.data.id, "")),
+            child: FutureBuilder(
+              future: getName(),
+              builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snap){
+                if(snap.connectionState == ConnectionState.done){
+                  return TextButton(
+                      onPressed: () {
+                        if (snapshot.data.get('Code').toString().isEmpty) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    addCodePage(this.id, "")),
+                          );
+                        }
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BroadcastPage(channelName: snapshot.data.get('Code').toString(),
+                                  userName: snap.data.get('Name'), isBroadcaster: true,)));
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 16),
+                            child: Image.asset(
+                              'images/trip_image.png',
+                              width: 150,
+                              height: 120,
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                DateFormat.jm()
+                                    .format((snapshot.data.get('Date')).toDate()),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF4EAFC1),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8),
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.calendar_today_outlined,
+                                    color: Color(0xFF4EAFC1),
+                                    size: 20,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8),
+                                  ),
+                                  Text(
+                                    DateFormat.yMMMd()
+                                        .format((snapshot.data.get('Date')).toDate()),
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_outlined,
+                                    color: Color(0xFF4EAFC1),
+                                    size: 20,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8),
+                                  ),
+                                  Text(
+                                    snapshot.data.get('Place').toString(),
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8),
+                              ),
+                              Text(
+                                "\$" + snapshot.data.get('Cost').toString(),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                   );
-                } else
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TourguidePage(snapshot.data.id,
-                              snapshot.data.get('Code').toString())));
+                }
+                return Container();
               },
-              child: Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 16),
-                    child: Image.asset(
-                      'images/trip_image.png',
-                      width: 150,
-                      height: 120,
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        DateFormat.jm()
-                            .format((snapshot.data.get('Date')).toDate()),
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF4EAFC1),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_today_outlined,
-                            color: Color(0xFF4EAFC1),
-                            size: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                          ),
-                          Text(
-                            DateFormat.yMMMd()
-                                .format((snapshot.data.get('Date')).toDate()),
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            color: Color(0xFF4EAFC1),
-                            size: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                          ),
-                          Text(
-                            snapshot.data.get('Place').toString(),
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                      ),
-                      Text(
-                        "\$" + snapshot.data.get('Cost').toString(),
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
             ),
           );
         }

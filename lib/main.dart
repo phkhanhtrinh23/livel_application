@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-// import 'package:livel_application/model/livestreaming/host.dart';
 import 'package:livel_application/view/splash_screens/loading_screen.dart';
+
+import 'model/livestreaming/host.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

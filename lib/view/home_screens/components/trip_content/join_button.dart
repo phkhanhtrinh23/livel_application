@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:livel_application/model/livestreaming/host.dart';
 import 'package:livel_application/view/home_screens/HomeScreen.dart';
 import 'package:livel_application/model/payment.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/model/livestreaming//audience.dart';
+
 
 class JoinRegister extends StatefulWidget {
   final String id, code, cost;
@@ -87,13 +89,12 @@ class JoinRegisterState extends State<JoinRegister> {
                             color: Colors.white,
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async{
                           if (code.isNotEmpty) {
-                            print(code);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => TouristPage(code)),
+                                  builder: (context) => BroadcastPage(userName: snapshot.data.get('Name').toString(), channelName: code, isBroadcaster: false,)),
                             );
                           } else {
                             return showDialog<void>(

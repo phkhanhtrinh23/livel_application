@@ -1,46 +1,35 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/model/database/addCode.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/livestreaming/host.dart';
 import 'package:livel_application/view/video_call/call_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
 
-class TourguidePage extends StatefulWidget {
+class addCodePage extends StatefulWidget {
   final String id, channel;
-  TourguidePage(this.id, this.channel);
+  addCodePage(this.id, this.channel);
   @override
-  _TourguidePage createState() => _TourguidePage(this.id, channel);
+  _addCodePage createState() => _addCodePage(this.id, channel);
 }
 
-class _TourguidePage extends State<TourguidePage> {
+class _addCodePage extends State<addCodePage> {
   final String id, channel;
-  _TourguidePage(this.id, this.channel);
+  _addCodePage(this.id, this.channel);
 
-  /// create a channelController to retrieve text value
+
   final _channelController = TextEditingController();
-
-  /// if channel textField is validated to have error
   bool _validateError = false;
-
-  ClientRole _role = ClientRole.Broadcaster;
-
-  @override
-  void dispose() {
-    // dispose input controller
-    _channelController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    if (channel.isNotEmpty) {
-      onJoin(channel);
-    } else
       return Scaffold(
         body: Column(
           children: <Widget>[
@@ -109,39 +98,59 @@ class _TourguidePage extends State<TourguidePage> {
                     ),
                   ),
                 ),
-                ListTile(
-                  title: Text(ClientRole.Broadcaster.toString()),
-                  leading: Radio(
-                    value: ClientRole.Broadcaster,
-                    groupValue: _role,
-                    onChanged: (ClientRole value) {
-                      setState(() {
-                        _role = value;
-                      });
-                    },
-                  ),
-                ),
-                Container(
-                  width: 213,
-                  height: 51,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    color: Colors.orange[800],
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      onJoin(
-                        _channelController.text.trim(),
+                FutureBuilder(
+                    future: getName(),
+                  builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot){
+                      if(snapshot.connectionState == ConnectionState.done){
+                        return Container(
+                          width: 213,
+                          height: 51,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.0),
+                            color: Colors.orange[800],
+                          ),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        BroadcastPage(
+                                          channelName: _channelController.text,
+                                          userName: snapshot.data.get('Name'),
+                                          isBroadcaster: true,
+                                        )
+                                ),
+                              );
+                              addCode(this.id, this.channel);
+                            },
+                            child: Text(
+                              'Create',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      return Container(
+                        width: 213,
+                        height: 51,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0),
+                          color: Colors.orange[800],
+                        ),
+                        child: TextButton(
+                          child: Text(
+                            'Create',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       );
-                    },
-                    child: Text(
-                      'Create',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                  },
+                )
               ],
             ),
           ],
@@ -150,70 +159,4 @@ class _TourguidePage extends State<TourguidePage> {
     return Container();
   }
 
-  Future<String> getRtcToken(String channel) async {
-    if (FirebaseAuth.instance.currentUser != null) {
-      HttpsCallable callable =
-          FirebaseFunctions.instance.httpsCallable('generateRtcToken');
-
-      var rtcToken = await callable({"channelName": channel, "duration": 300});
-
-      return rtcToken.data;
-    } else {
-      //user is not logged in
-      throw new Exception("You are not logged in");
-    }
-  }
-
-  Future<void> onJoin(String channel) async {
-    // update input validation
-    setState(() {
-      channel.isEmpty ? _validateError = true : _validateError = false;
-    });
-    if (channel.isNotEmpty) {
-      // await for camera and mic permissions before pushing video page
-      addCode(this.id, channel);
-      await _handleCameraAndMic(Permission.camera);
-      await _handleCameraAndMic(Permission.microphone);
-
-      //await for RTC token to be created
-      String rtcToken;
-      try {
-        rtcToken = await getRtcToken(channel);
-      } catch (error) {
-        showDialog(
-            context: context,
-            builder: (_) => new AlertDialog(
-                  title: new Text("Error"),
-                  content: new Text(error.toString()),
-                  actions: <Widget>[
-                    TextButton(
-                      child: Text('OK'),
-                      onPressed: () {
-                        Navigator.of(context, rootNavigator: true).pop();
-                      },
-                    )
-                  ],
-                ));
-
-        return;
-      }
-
-      // push video page with given channel name
-      await Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CallPage(
-            channelName: channel,
-            role: _role,
-            rtcToken: rtcToken,
-          ),
-        ),
-      );
-    }
-  }
-
-  Future<void> _handleCameraAndMic(Permission permission) async {
-    final status = await permission.request();
-    print(status);
-  }
 }

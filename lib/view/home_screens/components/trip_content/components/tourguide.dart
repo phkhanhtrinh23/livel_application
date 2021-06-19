@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
 class TourGuide extends StatelessWidget {
@@ -18,28 +19,17 @@ class TourGuide extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(
                   right: 16,
-                  left: 16,
-                  top: 42,
+                  left: 18,
+                  top: 23,
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.map_outlined),
-                    Padding(padding: const EdgeInsets.only(right: 8)),
-                    Text(
-                      'Tour Guide',
-                      style: TextStyle(
-                        fontSize: 28,
-                        color: Color(0xFF4EAFC1),
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Padding(padding: const EdgeInsets.only(right: 8)),
                     Expanded(
                       child: Column(
                         children: <Widget>[
                           Divider(
-                            color: Colors.grey,
-                            thickness: 1,
+                            color: Color(0xFF289CB4),
+                            thickness: 2.0,
                           )
                         ],
                       ),
@@ -48,12 +38,27 @@ class TourGuide extends StatelessWidget {
                 ),
               ),
               Container(
+                alignment: Alignment.centerLeft,
+                margin: const EdgeInsets.only(
+                  right: 16,
+                  left: 18,
+                  top: 23,
+                ),
+                child: Text(
+                  'Tour Guide',
+                  style: GoogleFonts.rubik(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Container(
                 alignment: Alignment.center,
                 margin: const EdgeInsets.only(
                   bottom: 23,
                   right: 16,
                   left: 16,
-                  top: 34,
+                  top: 23,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -136,36 +141,39 @@ class TourGuide extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   right: 16,
-                  left: 16,
-                  top: 42,
-                  bottom: 23,
+                  left: 18,
+                  top: 23,
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.map_outlined),
-                    Padding(padding: const EdgeInsets.only(right: 8)),
-                    Text(
-                      'Reviews',
-                      style: TextStyle(
-                        fontSize: 28,
-                        color: Color(0xFF4EAFC1),
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Padding(padding: const EdgeInsets.only(right: 8)),
                     Expanded(
                       child: Column(
                         children: <Widget>[
                           Divider(
-                            color: Colors.grey,
-                            thickness: 1,
+                            color: Color(0xFF289CB4),
+                            thickness: 2.0,
                           )
                         ],
                       ),
                     ),
                   ],
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                margin: const EdgeInsets.only(
+                  right: 16,
+                  left: 18,
+                  top: 23,
+                ),
+                child: Text(
+                  'Agenda',
+                  style: GoogleFonts.rubik(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

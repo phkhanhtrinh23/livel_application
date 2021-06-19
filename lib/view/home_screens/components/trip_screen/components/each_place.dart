@@ -34,6 +34,7 @@ class PlaceScreen extends StatelessWidget {
                   builder: (context) => TripContent(
                     id: this.id,
                     checkHomeScreen: false,
+                    list: list,
                   ),
                 ),
               );
@@ -76,7 +77,7 @@ class PlaceScreen extends StatelessWidget {
                             top: 8.0,
                             left: 15.0,
                           ),
-                          width: 329,
+                          width: 320,
                           height: 70,
                           child: Row(
                             children: [
@@ -117,7 +118,7 @@ class PlaceScreen extends StatelessWidget {
                                   Text(
                                     DateFormat.yMMMd().format(date.toDate()),
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 14,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -128,7 +129,7 @@ class PlaceScreen extends StatelessWidget {
                                         '/5',
                                     style: GoogleFonts.rubik(
                                       color: Colors.yellow[600],
-                                      fontSize: 15,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

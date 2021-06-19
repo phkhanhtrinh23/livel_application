@@ -8,7 +8,6 @@ import 'package:livel_application/view/home_screens/HomeScreen.dart';
 import 'package:livel_application/model/payment.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
-
 class JoinRegister extends StatefulWidget {
   final String id, code, cost;
   final bool checkHomeScreen;
@@ -80,7 +79,7 @@ class JoinRegisterState extends State<JoinRegister> {
                       height: 51,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0),
-                        color: Color(0xFF4EAFC1),
+                        color: Color(0xFF289CB4),
                       ),
                       child: TextButton(
                         child: Text(
@@ -89,12 +88,18 @@ class JoinRegisterState extends State<JoinRegister> {
                             color: Colors.white,
                           ),
                         ),
-                        onPressed: () async{
+                        onPressed: () async {
                           if (code.isNotEmpty) {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => BroadcastPage(userName: snapshot.data.get('Name').toString(), channelName: code, isBroadcaster: false,)),
+                                  builder: (context) => BroadcastPage(
+                                        userName: snapshot.data
+                                            .get('Name')
+                                            .toString(),
+                                        channelName: code,
+                                        isBroadcaster: false,
+                                      )),
                             );
                           } else {
                             return showDialog<void>(
@@ -166,7 +171,7 @@ class JoinRegisterState extends State<JoinRegister> {
                   height: 51,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    color: Color(0xFF4EAFC1),
+                    color: Color(0xFF289CB4),
                   ),
                   child: TextButton(
                     child: Text(

@@ -97,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          width: 320,
+                          width: _width - 32,
                           height: 45,
                           padding: const EdgeInsets.only(left: 8.0),
                           margin: const EdgeInsets.only(
@@ -129,7 +129,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          width: 320,
+                          width: _width - 32,
                           height: 45,
                           padding: const EdgeInsets.only(left: 8.0),
                           margin: const EdgeInsets.only(
@@ -147,7 +147,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 320,
+                          width: _width - 32,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -170,7 +170,7 @@ class ProfileScreen extends StatelessWidget {
                                   Container(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     alignment: Alignment.centerLeft,
-                                    width: 140,
+                                    width: (_width - 32) / 2,
                                     height: 45,
                                     margin: const EdgeInsets.only(
                                       bottom: 16,
@@ -189,7 +189,6 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Spacer(),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -209,7 +208,7 @@ class ProfileScreen extends StatelessWidget {
                                   Container(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     alignment: Alignment.centerLeft,
-                                    width: 140,
+                                    width: (_width - 32) / 2,
                                     height: 45,
                                     margin: const EdgeInsets.only(
                                       bottom: 16,
@@ -246,7 +245,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          width: 320,
+                          width: _width - 32,
                           height: 45,
                           padding: const EdgeInsets.only(left: 8.0),
                           margin: const EdgeInsets.only(

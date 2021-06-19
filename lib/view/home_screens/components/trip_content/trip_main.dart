@@ -6,9 +6,10 @@ class TripContent extends StatelessWidget {
     Key key,
     this.id,
     this.checkHomeScreen,
+    this.list,
   }) : super(key: key);
 
-  final String id;
+  final String id, list;
   final bool checkHomeScreen;
 
   @override
@@ -16,7 +17,8 @@ class TripContent extends StatelessWidget {
     return Scaffold(
       body: MainContent(
         id: this.id,
-        checkHomeScreen: checkHomeScreen,
+        checkHomeScreen: this.checkHomeScreen,
+        list: this.list,
       ),
     );
   }

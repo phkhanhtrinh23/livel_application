@@ -1,7 +1,13 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:livel_application/model/database/storage.dart';
+import 'package:path/path.dart';
 import '../../../state_home.dart';
 
 class PersonalInfo extends StatefulWidget {
@@ -25,7 +31,66 @@ class _PersonalInfo extends State<PersonalInfo> {
   bool checkNo = true;
 
   final _form = GlobalKey<FormState>();
+  File avatar;  final picker = ImagePicker();
+  Widget Avatar(){
+    return Container(
+      alignment: Alignment.center,
+      height: (avatar == null)?80:280,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 180,
+            height: 53,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                //color: Color(0xFF289CB4),
+              ),
+            ),
+            child: TextButton(
+              child: Text(
+                'Add Avatar',
+                style: GoogleFonts.rubik(
+                  color: Color(0xFF289CB4),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: getImage,
+            ),
+          ),
+          avatar == null
+              ? Text(
+            'No image selected.',
+            style: GoogleFonts.rubik(
+              color: Colors.black45,
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+            ),
+          ) : Container(
+            alignment: Alignment.topCenter,
+            padding: EdgeInsets.only(top:20, bottom: 20),
+            child: Image.file(avatar),
+            height: 200,
+            width: 200,
+          )
+        ],
+      ),
+    );
+  }
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
+    setState(() {
+      if (pickedFile != null) {
+        avatar = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -233,12 +298,14 @@ class _PersonalInfo extends State<PersonalInfo> {
                   ],
                 ),
               ),
+              Avatar(),
               Padding(padding: const EdgeInsets.only(bottom: 48.0)),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 18),
                 child: TextButton(
                   onPressed: () async {
                     if (_form.currentState.validate()) {
+                      addImage(avatar);
                       await FirebaseFirestore.instance
                           .collection('Users')
                           .doc(FirebaseAuth.instance.currentUser.uid)
@@ -253,6 +320,7 @@ class _PersonalInfo extends State<PersonalInfo> {
                           'TripList': [],
                           'TourGuide': tourguide,
                           'Mail': email,
+                          'Avatar': avatar==null?"unknown.jpg":basename(avatar.path),
                         },
                       );
                       await FirebaseAuth.instance.currentUser.updateProfile(

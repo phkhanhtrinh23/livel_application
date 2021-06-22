@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/database/storage.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -61,14 +62,31 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                      top: 8.0,
-                      bottom: 32.0,
+                      top: 50.0,
                     ),
                     width: 200,
                     height: 100,
                     child: Center(
                       child: ClipOval(
-                        child: Image.asset('images/unknown.jpg'),
+                        child:FutureBuilder(
+                          future: getNetWorkImage(snapshot.data.get('Avatar')),
+                          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshotImage){
+                            if(snapshotImage.connectionState == ConnectionState.done){
+                              return Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: snapshotImage.data,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              );
+                            }
+                            return Container();
+                          },
+                        ),
                       ),
                     ),
                   ),

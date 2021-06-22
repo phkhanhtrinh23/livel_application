@@ -6,6 +6,8 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/addAll.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/database/storage.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/components/image_list.dart';
 import 'package:livel_application/view/log_in_screens/sign_in.dart';
 import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
 // import 'package:livel_application/view/home_screens/user_screen/components/guidelines.dart';
@@ -22,192 +24,213 @@ class UserScreen extends StatelessWidget {
     return FutureBuilder(
       future: getName(),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        return Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  width: _width,
-                  height: 148,
-                  alignment: Alignment.bottomCenter,
-                  padding: const EdgeInsets.only(top: 24, bottom: 16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16),
-                    ),
-                    color: Color(0xFF289CB4),
-                  ),
-                  child: Text(
-                    'Your Account',
-                    style: GoogleFonts.rubik(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 8.0,
-                  ),
-                  width: 200,
-                  height: 100,
-                  child: Center(
-                    child: ClipOval(
-                      child: Image.asset('images/unknown.jpg'),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: _height - 260 - 58,
-                  margin: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                  ),
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      ProfileMenu(
-                        text: "My Profile",
-                        icon: Icon(Icons.person_outline,
-                            color: Color(0xFF477983)),
-                        press: () => {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ProfileScreen(),
-                            ),
-                          ),
-                        },
+        if(snapshot.connectionState==ConnectionState.done){
+          return Scaffold(
+            body: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: _width,
+                    height: 148,
+                    alignment: Alignment.bottomCenter,
+                    padding: const EdgeInsets.only(top: 24, bottom: 16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
                       ),
-                      ProfileMenu(
-                        text: "Help Center",
-                        icon: Icon(Icons.help_center_outlined,
-                            color: Color(0xFF477983)),
-                        press: () => {addThumnailAndImageList()},
+                      color: Color(0xFF289CB4),
+                    ),
+                    child: Text(
+                      'Your Account',
+                      style: GoogleFonts.rubik(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
                       ),
-                      // ProfileMenu(
-                      //   text: "Help Center",
-                      //   icon: Icon(Icons.help_center_outlined,
-                      //       color: Color(0xFF477983)),
-                      //   press: () => {
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //         builder: (BuildContext context) => HelpCenterScreen(),
-                      //       ),
-                      //     ),
-                      //   },
-                      // ),
-                      // ProfileMenu(
-                      //   text: "Guidelines",
-                      //   icon: Icon(Icons.bookmark_border_outlined,
-                      //       color: Color(0xFF477983)),
-                      //   press: () => {
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //         builder: (BuildContext context) => GuidelinesScreen(),
-                      //       ),
-                      //     ),
-                      //   },
-                      // ),
-                      ProfileMenu(
-                        text: "Log In As A Tour Guide",
-                        icon:
-                            Icon(Icons.tour_outlined, color: Color(0xFF477983)),
-                        press: () async {
-                          if (snapshot.data.get('TourGuide') == 'Yes') {
-                            return Navigator.push(
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 50.0,
+                    ),
+                    width: 200,
+                    height: 100,
+                    child: Center(
+                      child: ClipOval(
+                        child:FutureBuilder(
+                          future: getNetWorkImage(snapshot.data.get('Avatar')),
+                          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshotImage){
+                            if(snapshotImage.connectionState == ConnectionState.done){
+                              return Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: snapshotImage.data,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              );
+                            }
+                            return Container();
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: _height - 260 - 58,
+                    margin: const EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                    ),
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        ProfileMenu(
+                          text: "My Profile",
+                          icon: Icon(Icons.person_outline,
+                              color: Color(0xFF477983)),
+                          press: () => {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => GuideMainScreen(),
+                                builder: (BuildContext context) =>
+                                    ProfileScreen(),
                               ),
-                            );
-                          }
-                          return showDialog<void>(
-                            context: context,
-                            barrierDismissible: false, // user must tap button!
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                content: Text(
-                                    'You cannot log in because you are not a tour guide.'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: Text(
-                                      'Confirm',
-                                      style: TextStyle(
-                                        color: Color(0xFF289CB4),
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop(true);
-                                    },
-                                  ),
-                                ],
+                            ),
+                          },
+                        ),
+                        ProfileMenu(
+                          text: "Help Center",
+                          icon: Icon(Icons.help_center_outlined,
+                              color: Color(0xFF477983)),
+                          press: () => {addThumnailAndImageList()},
+                        ),
+                        // ProfileMenu(
+                        //   text: "Help Center",
+                        //   icon: Icon(Icons.help_center_outlined,
+                        //       color: Color(0xFF477983)),
+                        //   press: () => {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (BuildContext context) => HelpCenterScreen(),
+                        //       ),
+                        //     ),
+                        //   },
+                        // ),
+                        // ProfileMenu(
+                        //   text: "Guidelines",
+                        //   icon: Icon(Icons.bookmark_border_outlined,
+                        //       color: Color(0xFF477983)),
+                        //   press: () => {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (BuildContext context) => GuidelinesScreen(),
+                        //       ),
+                        //     ),
+                        //   },
+                        // ),
+                        ProfileMenu(
+                          text: "Log In As A Tour Guide",
+                          icon:
+                          Icon(Icons.tour_outlined, color: Color(0xFF477983)),
+                          press: () async {
+                            if (snapshot.data.get('TourGuide') == 'Yes') {
+                              return Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => GuideMainScreen(),
+                                ),
                               );
-                            },
-                          );
-                        },
-                      ),
-                      ProfileMenu(
-                        text: "Log Out",
-                        icon: Icon(Icons.logout, color: Color(0xFF477983)),
-                        press: () async {
-                          return showDialog<void>(
-                            context: context,
-                            barrierDismissible: false, // user must tap button!
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                content: Text('Do you want to log out?'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: Text(
-                                      'Yes',
-                                      style: TextStyle(
-                                        color: Color(0xFF289CB4),
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    onPressed: () async {
-                                      await FirebaseAuth.instance.signOut();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => SignInPage(),
+                            }
+                            return showDialog<void>(
+                              context: context,
+                              barrierDismissible: false, // user must tap button!
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  content: Text(
+                                      'You cannot log in because you are not a tour guide.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: Text(
+                                        'Confirm',
+                                        style: TextStyle(
+                                          color: Color(0xFF289CB4),
+                                          fontWeight: FontWeight.normal,
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  TextButton(
-                                    child: Text(
-                                      'No',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.normal,
                                       ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop(true);
+                                      },
                                     ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ],
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
+                        ProfileMenu(
+                          text: "Log Out",
+                          icon: Icon(Icons.logout, color: Color(0xFF477983)),
+                          press: () async {
+                            return showDialog<void>(
+                              context: context,
+                              barrierDismissible: false, // user must tap button!
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  content: Text('Do you want to log out?'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: Text(
+                                        'Yes',
+                                        style: TextStyle(
+                                          color: Color(0xFF289CB4),
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                      onPressed: () async {
+                                        await FirebaseAuth.instance.signOut();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => SignInPage(),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    TextButton(
+                                      child: Text(
+                                        'No',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
+          );
+        }
+        return Container();
       },
     );
   }

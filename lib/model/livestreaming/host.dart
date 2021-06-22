@@ -316,6 +316,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
                 ? ListView.builder(
               reverse: true,
               itemBuilder: (context, i) {
+                var tmp = _info[i].split("%");
                 return Container(
                   child: ListTile(
                     title: Align(
@@ -327,7 +328,15 @@ class _BroadcastPageState extends State<BroadcastPage> {
                           crossAxisAlignment: CrossAxisAlignment.start ,
                           children: [
                             Text(
-                              _info[i],
+                              tmp[1],
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white54
+                              ),
+                            ),
+                            Text(
+                              tmp[0],
                               maxLines: 10,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.right,
@@ -336,14 +345,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
                                 fontWeight: FontWeight.bold
                               ),
                             ),
-                            Text(
-                              widget.userName,
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white54
-                              ),
-                            )
+
                           ],
                         ),
                       ),
@@ -530,7 +532,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
   void _logPeer(String info){
     print(info);
     setState(() {
-      _info.insert(0,info);
+      _info.insert(0,info+"%"+widget.userName);
     });
 
   }
@@ -538,7 +540,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
   void _log(String info) {
     print(info);
     setState(() {
-      _info.insert(0, info);
+      _info.insert(0, info+"%"+widget.userName);
     });
   }
 }

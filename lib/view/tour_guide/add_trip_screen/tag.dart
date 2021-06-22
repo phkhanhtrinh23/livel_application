@@ -20,45 +20,50 @@ class TagState extends State<Tag> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: getTagList(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot>snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
-          if(AddTripState.queryTag != null)AddTripState.queryTag.clear();
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (AddTripState.queryTag != null) AddTripState.queryTag.clear();
           var tagList = (snapshot.data.get('TagList'));
           int tagLength = tagList.length;
-          for(int i=0; i<tagLength;i++){
+          for (int i = 0; i < tagLength; i++) {
             selected.add(false);
           }
           return AlertDialog(
             title: Text(
-              'Filter your trips',
+              'Favorite Types',
               style: GoogleFonts.rubik(
                 color: Color(0xFF289CB4),
                 fontSize: 24,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
               ),
               textAlign: TextAlign.center,
             ),
             content: Container(
+              margin: const EdgeInsets.only(
+                top: 16,
+              ),
               alignment: Alignment.center,
               padding: const EdgeInsets.only(
-                left: 32,
-                right: 16,
+                left: 8,
+                right: 8,
               ),
-              width: 300,
+              width: 500,
               child: ListView.builder(
-                itemCount: (tagLength/2).ceil(),
-                itemBuilder: (BuildContext context, int index){
+                itemCount: (tagLength / 2).ceil(),
+                itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
                       RowElements(
-                          tagList[2*index],
-                          (2*index+1<tagLength)?tagList[2*index+1]:null,
-                          2*index,
-                          (2*index+1<tagLength)?(2*index+1):(-1)
-                      ),
+                          tagList[2 * index],
+                          (2 * index + 1 < tagLength)
+                              ? tagList[2 * index + 1]
+                              : null,
+                          2 * index,
+                          (2 * index + 1 < tagLength) ? (2 * index + 1) : (-1)),
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom:32
+                          bottom: 16,
                         ),
                       )
                     ],
@@ -67,23 +72,37 @@ class TagState extends State<Tag> {
               ),
             ),
             actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  for(int i=0;i<tagLength;i++){
-                    if(selected[i]){
-                      AddTripState.queryTag.add(tagList[i]);
-                    }
-                  }
-                  Navigator.of(context).pop();
-                },
-                child: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Color(0xFF289CB4),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    width: 198,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4.0),
+                      color: Color(0xFF289CB4),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        for (int i = 0; i < tagLength; i++) {
+                          if (selected[i]) {
+                            AddTripState.queryTag.add(tagList[i]);
+                          }
+                        }
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ],
           );
@@ -111,7 +130,7 @@ class _RowElements extends State<RowElements> {
 
   final String tag1;
   final String tag2;
-  final int index1,index2;
+  final int index1, index2;
   List<bool> bePressed = [false, false];
 
   @override
@@ -119,11 +138,11 @@ class _RowElements extends State<RowElements> {
     return Row(
       children: [
         Container(
-          width: 100,
-          height: 50,
+          width: tag1.length < 11 ? tag1.length + 80.0 : tag1.length + 90.0,
+          height: 45,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            color: bePressed[0] ? Color(0xFF289CB4) : Colors.grey,
+            borderRadius: BorderRadius.circular(8.0),
+            color: bePressed[0] ? Color(0xFF289CB4) : Colors.grey[400],
           ),
           child: TextButton(
             child: Text(
@@ -131,12 +150,13 @@ class _RowElements extends State<RowElements> {
               style: GoogleFonts.rubik(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+                fontSize: 12,
               ),
             ),
             onPressed: () => {
               setState(
-                    () {
-                  bePressed[0]=!bePressed[0];
+                () {
+                  bePressed[0] = !bePressed[0];
                   TagState.selected[index1] = !TagState.selected[index1];
                 },
               ),
@@ -145,34 +165,40 @@ class _RowElements extends State<RowElements> {
         ),
         Padding(
           padding: const EdgeInsets.only(
-            right: 32,
+            right: 16,
           ),
         ),
-        tag2!=null?Container(
-          width: 100,
-          height: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            color: bePressed[1] ? Color(0xFF289CB4) : Colors.grey,
-          ),
-          child: TextButton(
-            child: Text(
-              '#' + tag2,
-              style: GoogleFonts.rubik(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () => {
-              setState(
-                    () {
-                  bePressed[1]=!bePressed[1];
-                  if(index2!=-1) TagState.selected[index2] = !TagState.selected[index2];
-                },
-              ),
-            },
-          ),
-        ):Container()
+        tag2 != null
+            ? Container(
+                width:
+                    tag2.length < 11 ? tag2.length + 80.0 : tag2.length + 90.0,
+                height: 45,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  color: bePressed[1] ? Color(0xFF289CB4) : Colors.grey[400],
+                ),
+                child: TextButton(
+                  child: Text(
+                    '#' + tag2,
+                    style: GoogleFonts.rubik(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                  onPressed: () => {
+                    setState(
+                      () {
+                        bePressed[1] = !bePressed[1];
+                        if (index2 != -1)
+                          TagState.selected[index2] =
+                              !TagState.selected[index2];
+                      },
+                    ),
+                  },
+                ),
+              )
+            : Container(),
       ],
     );
   }

@@ -29,7 +29,6 @@ class _PopUpDialog extends State<PopUpDialog> {
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          //queryTag.clear();
           var tagList = (snapshot.data.get('TagList'));
           int tagLength = tagList.length;
           for (int i = 0; i < tagLength; i++) {
@@ -37,11 +36,11 @@ class _PopUpDialog extends State<PopUpDialog> {
           }
           return AlertDialog(
             title: Text(
-              'Filter your trips',
+              'Favorite Types',
               style: GoogleFonts.rubik(
                 color: Color(0xFF289CB4),
                 fontSize: 24,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
               ),
               textAlign: TextAlign.center,
             ),
@@ -76,25 +75,39 @@ class _PopUpDialog extends State<PopUpDialog> {
               ),
             ),
             actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  for (int i = 0; i < tagLength; i++) {
-                    if (selected[i]) {
-                      queryTag.add(tagList[i]);
-                      print(tagList[i]);
-                    }
-                  }
-                  this.widget.callback(this.queryTag);
-                  Navigator.of(context).pop();
-                },
-                child: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Color(0xFF289CB4),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    width: 198,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4.0),
+                      color: Color(0xFF289CB4),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        for (int i = 0; i < tagLength; i++) {
+                          if (selected[i]) {
+                            queryTag.add(tagList[i]);
+                            print(tagList[i]);
+                          }
+                        }
+                        this.widget.callback(this.queryTag);
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ],
           );
@@ -130,8 +143,8 @@ class _RowElements extends State<RowElements> {
     return Row(
       children: [
         Container(
-          width: tag1.length < 11 ? tag1.length + 90.0 : tag1.length + 120.0,
-          height: 35,
+          width: tag1.length < 11 ? tag1.length + 80.0 : tag1.length + 90.0,
+          height: 45,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
             color: bePressed[0] ? Color(0xFF289CB4) : Colors.grey[400],
@@ -142,7 +155,7 @@ class _RowElements extends State<RowElements> {
               style: GoogleFonts.rubik(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 15,
+                fontSize: 12,
               ),
             ),
             onPressed: () => {
@@ -164,8 +177,8 @@ class _RowElements extends State<RowElements> {
         tag2 != null
             ? Container(
                 width:
-                    tag2.length < 11 ? tag2.length + 90.0 : tag2.length + 120.0,
-                height: 35,
+                    tag2.length < 11 ? tag2.length + 80.0 : tag2.length + 90.0,
+                height: 45,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   color: bePressed[1] ? Color(0xFF289CB4) : Colors.grey[400],
@@ -176,7 +189,7 @@ class _RowElements extends State<RowElements> {
                     style: GoogleFonts.rubik(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                      fontSize: 12,
                     ),
                   ),
                   onPressed: () => {

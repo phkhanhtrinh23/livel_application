@@ -117,15 +117,6 @@ class RecommendedElement extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              // Text(
-                              //   snapshot.data.get('UserList').length.toString() +
-                              //       " people registered",
-                              //   style: TextStyle(
-                              //     fontSize: 15,
-                              //     fontWeight: FontWeight.normal,
-                              //     color: Colors.black,
-                              //   ),
-                              // ),
                               Text(
                                 DateFormat.yMMMd().format(
                                     (snapshot.data.get('Date')).toDate()),

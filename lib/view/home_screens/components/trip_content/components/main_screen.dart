@@ -8,16 +8,30 @@ import 'package:livel_application/view/home_screens/components/trip_content/join
 import 'package:livel_application/view/home_screens/components/trip_content/components/tourguide.dart';
 import 'package:livel_application/model/database/storage.dart';
 
-class MainContent extends StatelessWidget {
-  const MainContent({Key key, this.id, this.list, this.checkHomeScreen})
+class MainContent extends StatefulWidget {
+  MainContent({Key key, this.id, this.list, this.checkHomeScreen})
       : super(key: key);
 
   final String id, list;
   final bool checkHomeScreen;
+
+  @override
+  _MainContent createState() => _MainContent(
+      id: this.id, list: this.list, checkHomeScreen: this.checkHomeScreen);
+}
+
+class _MainContent extends State<MainContent> {
+  _MainContent({this.id, this.list, this.checkHomeScreen});
+
+  final String id, list;
+  final bool checkHomeScreen;
+
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController(initialPage: 0);
+    PageController controller = PageController(initialPage: 0);
     double _width = MediaQuery.of(context).size.width;
+    bool changedPage = false;
+
     return FutureBuilder(
       future: getTrip(id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -30,22 +44,55 @@ class MainContent extends StatelessWidget {
               children: [
                 Container(
                   width: _width,
-                  height: 300, //373,
+                  height: 300,
                   child: PageView.builder(
                     itemCount: imageList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return FutureBuilder(
-                        future: getNetWorkImage(imageList[index].toString()),
-                        builder: (BuildContext context,
-                            AsyncSnapshot<dynamic> snapshotImage) {
-                          if (snapshotImage.connectionState ==
-                              ConnectionState.done) {
-                            return ImageList(
-                              image: snapshotImage.data,
-                            );
-                          }
-                          return Container();
-                        },
+                      List<Widget> listIcon = [];
+                      for (var i = 0; i < imageList.length; i++) {
+                        if (i == index) {
+                          listIcon.add(
+                            Icon(
+                              Icons.circle_sharp,
+                              color: Colors.white,
+                              size: 10,
+                            ),
+                          );
+                        } else {
+                          listIcon.add(
+                            Icon(
+                              Icons.circle_outlined,
+                              color: Colors.white,
+                              size: 10,
+                            ),
+                          );
+                        }
+                      }
+                      return Stack(
+                        children: [
+                          FutureBuilder(
+                            future:
+                                getNetWorkImage(imageList[index].toString()),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<dynamic> snapshotImage) {
+                              if (snapshotImage.connectionState ==
+                                  ConnectionState.done) {
+                                return ImageList(
+                                  image: snapshotImage.data,
+                                );
+                              }
+                              return Container();
+                            },
+                          ),
+                          Positioned(
+                            left: _width / 2 - 20,
+                            top: 275,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: listIcon,
+                            ),
+                          ),
+                        ],
                       );
                     },
                   ),
@@ -68,12 +115,12 @@ class MainContent extends StatelessWidget {
                                   padding:
                                       EdgeInsets.only(left: 4.0, right: 4.0),
                                   alignment: Alignment.center,
-                                  width: 13 *
-                                      tagList[index]
+                                  width: tagList[index]
                                           .toString()
                                           .trim()
                                           .length
-                                          .toDouble(),
+                                          .toDouble() +
+                                      90.0,
                                   height: 34,
                                   decoration: BoxDecoration(
                                     color: Color(0xFF289CB4),
@@ -83,7 +130,7 @@ class MainContent extends StatelessWidget {
                                     '#' + tagList[index].toString(),
                                     style: GoogleFonts.rubik(
                                       color: Colors.white,
-                                      fontSize: 16,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -381,10 +428,11 @@ class MainContent extends StatelessWidget {
                               bottom: 16,
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  index.toString(),
+                                  (index + 1).toString(),
                                   style: TextStyle(
                                     color: Color(0xFF289CB4),
                                     fontSize: 24,

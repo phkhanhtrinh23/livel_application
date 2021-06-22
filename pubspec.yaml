@@ -52,6 +52,7 @@ dependencies:
   path: ^1.8.0
   speech_to_text: ^4.2.1
   avatar_glow: ^2.0.1
+  translator: ^0.1.7
 
 
 dev_dependencies:

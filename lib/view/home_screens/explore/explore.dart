@@ -6,6 +6,7 @@ import '../components/trip_screen/components/each_place.dart';
 import 'package:flutter/widgets.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:translator/translator.dart';
 
 import 'components/filter.dart';
 
@@ -25,10 +26,11 @@ class ExploreScreenState extends State<ExploreScreen> {
   String lSearch = '';
   String lField = 'All';
   bool set = false;
-  List<String> queryTag=[];
+  List<String> queryTag = [];
   stt.SpeechToText _speech;
   bool _isListening = false;
   double _confidence = 1.0;
+  final translator = GoogleTranslator();
 
   @override
   initState() {
@@ -59,13 +61,13 @@ class ExploreScreenState extends State<ExploreScreen> {
   List show = [];
   QuerySnapshot res;
 
-  void callback(List<String> query){
+  void callback(List<String> query) {
     setState(() {
       this.queryTag = query;
-
     });
     getTag();
   }
+
   getList() async {
     List<String> temp = [];
     DocumentSnapshot dictionary = await FirebaseFirestore.instance
@@ -144,7 +146,7 @@ class ExploreScreenState extends State<ExploreScreen> {
     }
     setState(
       () {
-        if(queryTag.isNotEmpty) show = tmp;
+        if (queryTag.isNotEmpty) show = tmp;
       },
     );
   }
@@ -170,8 +172,12 @@ class ExploreScreenState extends State<ExploreScreen> {
         onError: (val) => print('onError: $val'),
       );
       if (available) {
+        var systemLocale = await _speech.systemLocale();
+        var _localeId = systemLocale.localeId;
+        print(_localeId);
         setState(() => _isListening = true);
         _speech.listen(
+          localeId: _localeId,
           onResult: (val) => setState(
             () {
               search.text = val.recognizedWords;
@@ -284,8 +290,14 @@ class ExploreScreenState extends State<ExploreScreen> {
                         Icons.search,
                         color: Color(0xFF289CB4),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
+                        if (search != null) {
+                          var translation =
+                              await translator.translate(search.text, to: 'en');
+                          search.text = translation.toString().toLowerCase();
+                        }
                         getSearch();
+                        _isListening = false;
                       },
                     ),
                     AvatarGlow(
@@ -331,7 +343,8 @@ class ExploreScreenState extends State<ExploreScreen> {
                       context: context,
                       barrierDismissible: true,
                       builder: (BuildContext context) {
-                        return PopUpDialog(callback); // !! This is where tag goes
+                        return PopUpDialog(
+                            callback); // !! This is where tag goes
                       },
                     );
                   },

@@ -32,8 +32,7 @@ class AddTripState extends State<AddTrip> {
 
   final List<TextEditingController> agenda_time = [];
   final List<TextEditingController> agenda_place = [];
-  
-  
+
   File thumnail;
   List<File> _image = [];
 
@@ -48,9 +47,9 @@ class AddTripState extends State<AddTrip> {
 
   CollectionReference imgRef;
 
-  static List<String>queryTag = [];
+  static List<String> queryTag = [];
 
-  int dropdown=0;
+  int dropdown = 0;
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -89,7 +88,7 @@ class AddTripState extends State<AddTrip> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    for(int i=0;i<=3;i++){
+    for (int i = 0; i <= 3; i++) {
       agenda_place.add(new TextEditingController());
       agenda_time.add(new TextEditingController());
     }
@@ -141,46 +140,40 @@ class AddTripState extends State<AddTrip> {
                   ],
                 ),
               ),
-              TextFill("Name", place, false, 343),
-              TextFill("City", city, false, 343),
-              TextFill("Country", country, false, 343),
+              textFill("Name", place, false, 343),
+              textFill("City", city, false, 343),
+              textFill("Country", country, false, 343),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextFill("Duration (Mins)", duration, true, 160),
-                  Container(width: 20,),
-                  TextFill("Cost (\$)", cost, true, 160),
+                  textFill("Duration (Mins)", duration, true, 160),
+                  Container(
+                    width: 20,
+                  ),
+                  textFill("Cost (\$)", cost, true, 160),
                 ],
               ),
-              TextFill("Description", description, false, 343),
+              textFill("Description", description, false, 343),
               Container(
-                margin: const EdgeInsets.only(
-                  top: 30
-                ),
+                margin: const EdgeInsets.only(top: 30),
                 alignment: Alignment.center,
                 width: 500,
                 height: 65,
-
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      height: 45,
+                      height: 50,
                       width: 200,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16.0),
-                          //color: Color(0xFF289CB4),
-                          border: Border.all(
-                              color: Color(0xFF289CB4)
-                          )
-                      ),
+                          border: Border.all(color: Color(0xFF289CB4))),
                       child: TextButton(
                         child: Text(
-                          "Add tag",
+                          "Add A Tag",
                           style: GoogleFonts.rubik(
                             color: Color(0xFF289CB4),
                             fontSize: 16,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         onPressed: () {
@@ -194,64 +187,60 @@ class AddTripState extends State<AddTrip> {
                         },
                       ),
                     ),
-                    queryTag.length==0?Container():Text(
-                        queryTag.toString(),
-                      style: GoogleFonts.rubik(
-                        color: Colors.black45,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    queryTag.length == 0
+                        ? Container()
+                        : Text(
+                            queryTag.toString(),
+                            style: GoogleFonts.rubik(
+                              color: Colors.black45,
+                              fontSize: 16,
+                            ),
+                          ),
                   ],
                 ),
-
               ),
               Container(
                 margin: const EdgeInsets.only(
-                    bottom: 16,
-                    top: 15
+                  bottom: 18,
+                  top: 8,
                 ),
                 alignment: Alignment.center,
                 width: 300,
-                height: 50 + (dropdown*70).ceilToDouble(),
+                height: 55 + (dropdown * 70).ceilToDouble(),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.0),
-                  //color: Color(0xFF289CB4).withOpacity(0.2),
-                  border: Border.all(
-                    color: Color(0xFF289CB4)
-                  )
-                ),
+                    borderRadius: BorderRadius.circular(16.0),
+                    border: Border.all(color: Color(0xFF289CB4))),
                 child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(width:10),
+                        Container(width: 10),
                         Text(
                           "Agenda: Number of places",
                           style: GoogleFonts.rubik(
                             color: Color(0xFF289CB4),
                             fontSize: 16,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Container(width:10),
+                        Container(width: 10),
                         DropdownButton<int>(
                           value: dropdown,
-                          icon: const Icon(Icons.arrow_drop_down_circle_outlined),
+                          icon:
+                              const Icon(Icons.arrow_drop_down_circle_outlined),
                           iconSize: 20,
                           elevation: 16,
                           style: const TextStyle(color: Colors.black),
                           underline: Container(
                             height: 2,
-                            color: Colors.cyanAccent,
+                            color: Color(0xFF289CB4),
                           ),
                           onChanged: (int newValue) {
                             setState(() {
                               dropdown = newValue;
                             });
                           },
-                          items: <int>[0,1,2,3,4]
+                          items: <int>[0, 1, 2, 3, 4]
                               .map<DropdownMenuItem<int>>((int value) {
                             return DropdownMenuItem<int>(
                               value: value,
@@ -261,95 +250,98 @@ class AddTripState extends State<AddTrip> {
                         ),
                       ],
                     ),
-                  dropdown==0?Container():
-                  Container(
-                    height: 70*dropdown.toDouble(),
-                    child: ListView.builder(
-                      itemCount: dropdown,
-                      itemBuilder: (BuildContext context, int index){
-                        return Column(
-                          children: [
-                            Row(
-                          children: [
-                            Container(width: 10,),
-                            Container(
-                                width: 80,
-                                height: 60,
-                                child: TextFormField(
-                                  autofocus: true,
-                                  controller: agenda_time[index],
-                                  decoration: InputDecoration(
-                                    labelText: "Time",
-                                    labelStyle: GoogleFonts.rubik(
-                                      color: Colors.black45,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                    dropdown == 0
+                        ? Container()
+                        : Container(
+                            height: 70 * dropdown.toDouble(),
+                            child: ListView.builder(
+                              itemCount: dropdown,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          width: 80,
+                                          height: 60,
+                                          child: TextFormField(
+                                            autofocus: true,
+                                            controller: agenda_time[index],
+                                            decoration: InputDecoration(
+                                              labelText: "Time",
+                                              labelStyle: GoogleFonts.rubik(
+                                                color: Colors.black45,
+                                                fontSize: 15,
+                                              ),
+                                              hintText: "hh:mm",
+                                              hintStyle: GoogleFonts.rubik(
+                                                color: Colors.black45,
+                                                fontSize: 15,
+                                              ),
+                                              fillColor: Colors.white,
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(16.0),
+                                                borderSide: BorderSide(),
+                                              ),
+                                            ),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return "This field is empty";
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                        Container(width: 15),
+                                        Container(
+                                          width: 180,
+                                          height: 60,
+                                          child: TextFormField(
+                                            autofocus: true,
+                                            controller: agenda_place[index],
+                                            decoration: InputDecoration(
+                                              labelText: "Detailed agenda",
+                                              labelStyle: GoogleFonts.rubik(
+                                                color: Colors.black45,
+                                                fontSize: 15,
+                                              ),
+                                              fillColor: Colors.white,
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(16.0),
+                                                borderSide: BorderSide(),
+                                              ),
+                                            ),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return "This field is empty";
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                        //),
+                                      ],
                                     ),
-                                    hintText: "hh:mm",
-                                    hintStyle: GoogleFonts.rubik(
-                                      color: Colors.black45,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                    Container(
+                                      height: 10,
                                     ),
-                                    fillColor: Colors.white,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                      borderSide: BorderSide(
-                                      ),
-                                    ),
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return "This field is empty";
-                                    }
-                                    return null;
-                                  },
-                                ),
-                              ),
-                            Container(width:15),
-                            Container(
-                                width: 180,
-                                height: 60,
-                                child: TextFormField(
-                                  autofocus: true,
-                                  controller: agenda_place[index],
-                                  decoration: InputDecoration(
-                                    labelText: "Detailed agenda",
-                                    labelStyle: GoogleFonts.rubik(
-                                      color: Colors.black45,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    fillColor: Colors.white,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                      borderSide: BorderSide(),
-                                    ),
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return "This field is empty";
-                                    }
-                                    return null;
-                                  },
-                                ),
-                              ),
-                            //),
-                          ],
-                        ),
-                            Container(height: 10,),
-                          ],
-                        );
-                      },
-                    ),
-                  )
+                                  ],
+                                );
+                              },
+                            ),
+                          )
                   ],
-                )
+                ),
               ),
-              DepartureTime(context),
-              Thumbnail(),
-              MultiImage(),
-              Submit(context),
+              departureTime(context),
+              selectThumbnail(),
+              multiImages(),
+              makeSubmit(context),
             ],
           ),
         ),
@@ -357,7 +349,8 @@ class AddTripState extends State<AddTrip> {
     );
   }
 
-  Widget TextFill(String field, TextEditingController controller, bool isDigit, int width ){
+  Widget textFill(
+      String field, TextEditingController controller, bool isDigit, int width) {
     return Padding(
       padding: EdgeInsets.only(
         top: 16.0,
@@ -371,10 +364,9 @@ class AddTripState extends State<AddTrip> {
           decoration: InputDecoration(
             labelText: field,
             labelStyle: GoogleFonts.rubik(
-            color: Colors.black45,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+              color: Colors.black45,
+              fontSize: 16,
+            ),
             fillColor: Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16.0),
@@ -385,24 +377,24 @@ class AddTripState extends State<AddTrip> {
             if (value.isEmpty) {
               return "This field is empty";
             }
-            if(isDigit){
+            if (isDigit) {
               final isDigitsOnly = int.tryParse(value);
               return isDigitsOnly == null
                   ? 'Input needs to be digits only'
                   : null;
             }
-              return null;
+            return null;
           },
         ),
       ),
     );
   }
-  Widget DepartureTime(BuildContext context){
+
+  Widget departureTime(BuildContext context) {
     return Container(
         width: 180,
         height: 80,
         alignment: Alignment.center,
-
         child: Column(
           children: [
             Container(
@@ -420,7 +412,6 @@ class AddTripState extends State<AddTrip> {
                   style: GoogleFonts.rubik(
                     color: Color(0xFF289CB4),
                     fontSize: 15,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 onPressed: () async {
@@ -443,23 +434,20 @@ class AddTripState extends State<AddTrip> {
               ),
             ),
             Text(
-              DateFormat.yMMMd().add_jm().format(
-                  (this.selectedDate)),
+              DateFormat.yMMMd().add_jm().format((this.selectedDate)),
               style: GoogleFonts.rubik(
                 color: Colors.black45,
                 fontSize: 15,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ],
-        )
-      );
+        ));
   }
 
-  Widget Thumbnail(){
+  Widget selectThumbnail() {
     return Container(
       alignment: Alignment.center,
-      height: (thumnail == null)?80:280,
+      height: (thumnail == null) ? 80 : 280,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -479,7 +467,6 @@ class AddTripState extends State<AddTrip> {
                 style: GoogleFonts.rubik(
                   color: Color(0xFF289CB4),
                   fontSize: 15,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
               onPressed: getImage,
@@ -487,28 +474,28 @@ class AddTripState extends State<AddTrip> {
           ),
           thumnail == null
               ? Text(
-              'No image selected.',
-            style: GoogleFonts.rubik(
-              color: Colors.black45,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
-          ) : Container(
-            alignment: Alignment.topCenter,
-            padding: EdgeInsets.only(top:20, bottom: 20),
-            child: Image.file(thumnail),
-            height: 200,
-            width: 200,
-          )
+                  'No image selected.',
+                  style: GoogleFonts.rubik(
+                    color: Colors.black45,
+                    fontSize: 15,
+                  ),
+                )
+              : Container(
+                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.only(top: 20, bottom: 20),
+                  child: Image.file(thumnail),
+                  height: 200,
+                  width: 200,
+                )
         ],
       ),
     );
   }
 
-  Widget MultiImage(){
+  Widget multiImages() {
     return Container(
         alignment: Alignment.center,
-        height: _image.length==0?100:360,
+        height: _image.length == 0 ? 100 : 360,
         width: 600,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -529,44 +516,42 @@ class AddTripState extends State<AddTrip> {
                   style: GoogleFonts.rubik(
                     color: Color(0xFF289CB4),
                     fontSize: 15,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 onPressed: chooseImage,
               ),
             ),
-            (_image.length==0)?Text(
-                "No image selected",
-                style: GoogleFonts.rubik(
-                  color: Colors.black45,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-            ):Container(
-              height: 300,
-              width: 400,
-              padding: EdgeInsets.all(4),
-              child: GridView.builder(
-                  itemCount: _image.length,
-                  gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.all(3),
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: FileImage(_image[index]),
-                              fit: BoxFit.cover)),
-                    );
-                  }),
-            ),
+            (_image.length == 0)
+                ? Text(
+                    "No image selected",
+                    style: GoogleFonts.rubik(
+                      color: Colors.black45,
+                      fontSize: 15,
+                    ),
+                  )
+                : Container(
+                    height: 300,
+                    width: 400,
+                    padding: EdgeInsets.all(4),
+                    child: GridView.builder(
+                        itemCount: _image.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: FileImage(_image[index]),
+                                    fit: BoxFit.cover)),
+                          );
+                        }),
+                  ),
           ],
-        )
-    );
+        ));
   }
 
-  Widget Submit(BuildContext context){
+  Widget makeSubmit(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
         bottom: 40,
@@ -575,9 +560,9 @@ class AddTripState extends State<AddTrip> {
           onPressed: () async {
             if (_form.currentState.validate()) {
               String uid = FirebaseAuth.instance.currentUser.uid;
-              List<String> time_agenda=[];
+              List<String> time_agenda = [];
               List<String> place_agenda = [];
-              for(int i=0;i<dropdown;i++){
+              for (int i = 0; i < dropdown; i++) {
                 time_agenda.add(agenda_time[i].text);
                 place_agenda.add(agenda_place[i].text);
               }
@@ -602,10 +587,8 @@ class AddTripState extends State<AddTrip> {
               for (var i in _image) {
                 addImage(i);
               }
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => GuideMainScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => GuideMainScreen()));
             }
             return "Please check again";
           },

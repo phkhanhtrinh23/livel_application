@@ -86,6 +86,7 @@ class JoinRegisterState extends State<JoinRegister> {
                           'JOIN',
                           style: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         onPressed: () async {
@@ -178,6 +179,7 @@ class JoinRegisterState extends State<JoinRegister> {
                       'REGISTER',
                       style: TextStyle(
                         color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     onPressed: () {

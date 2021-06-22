@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/database/storage.dart';
 
 class TourGuide extends StatelessWidget {
   final String id;
@@ -68,10 +69,27 @@ class TourGuide extends StatelessWidget {
                       child: Column(
                         children: [
                           ClipOval(
-                            child: Image.asset(
-                              'images/unknown.jpg',
-                              width: 100,
-                              height: 100,
+                            child: FutureBuilder(
+                              future:
+                                  getNetWorkImage(snapshot.data.get('Avatar')),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<dynamic> snapshotImage) {
+                                if (snapshotImage.connectionState ==
+                                    ConnectionState.done) {
+                                  return Container(
+                                    width: 100,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: snapshotImage.data,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  );
+                                }
+                                return Container();
+                              },
                             ),
                           ),
                           Padding(

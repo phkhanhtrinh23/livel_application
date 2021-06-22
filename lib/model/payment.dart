@@ -59,7 +59,7 @@ class StripeState extends State<Stripe> {
                 bottomLeft: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
-              color: Color(0xFF4EAFC1),
+              color: Color(0xFF289CB4),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,7 +109,7 @@ class StripeState extends State<Stripe> {
                     child: Text(
                       "Credit Card",
                       style: TextStyle(
-                        color: Color(0xFF4EAFC1),
+                        color: Color(0xFF289CB4),
                         fontSize: 24,
                       ),
                     ),
@@ -163,11 +163,11 @@ class StripeState extends State<Stripe> {
                     child: Text(
                       'Free',
                       style: TextStyle(
-                        color: Color(0xFF4EAFC1),
+                        color: Color(0xFF289CB4),
                         fontSize: 24,
                       ),
                     ),
-                    onPressed: () async{
+                    onPressed: () async {
                       await FirebaseFirestore.instance
                           .collection('Users')
                           .doc(uid)
@@ -193,7 +193,6 @@ class StripeState extends State<Stripe> {
                           ),
                         ),
                       );
-
                     },
                   ),
                 ),

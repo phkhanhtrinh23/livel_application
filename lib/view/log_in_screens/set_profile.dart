@@ -31,11 +31,12 @@ class _PersonalInfo extends State<PersonalInfo> {
   bool checkNo = true;
 
   final _form = GlobalKey<FormState>();
-  File avatar;  final picker = ImagePicker();
-  Widget Avatar(){
+  File avatar;
+  final picker = ImagePicker();
+  Widget selectAvatar() {
     return Container(
       alignment: Alignment.center,
-      height: (avatar == null)?80:280,
+      height: (avatar == null) ? 80 : 280,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -45,17 +46,14 @@ class _PersonalInfo extends State<PersonalInfo> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                //color: Color(0xFF289CB4),
-              ),
+              color: Color(0xFF289CB4),
             ),
             child: TextButton(
               child: Text(
                 'Add Avatar',
-                style: GoogleFonts.rubik(
-                  color: Color(0xFF289CB4),
+                style: TextStyle(
+                  color: Colors.white,
                   fontSize: 15,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
               onPressed: getImage,
@@ -63,23 +61,25 @@ class _PersonalInfo extends State<PersonalInfo> {
           ),
           avatar == null
               ? Text(
-            'No image selected.',
-            style: GoogleFonts.rubik(
-              color: Colors.black45,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
-          ) : Container(
-            alignment: Alignment.topCenter,
-            padding: EdgeInsets.only(top:20, bottom: 20),
-            child: Image.file(avatar),
-            height: 200,
-            width: 200,
-          )
+                  'No image selected.',
+                  style: GoogleFonts.rubik(
+                    color: Colors.black45,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              : Container(
+                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.only(top: 20, bottom: 20),
+                  child: Image.file(avatar),
+                  height: 200,
+                  width: 200,
+                )
         ],
       ),
     );
   }
+
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
@@ -91,6 +91,7 @@ class _PersonalInfo extends State<PersonalInfo> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -298,7 +299,7 @@ class _PersonalInfo extends State<PersonalInfo> {
                   ],
                 ),
               ),
-              Avatar(),
+              selectAvatar(),
               Padding(padding: const EdgeInsets.only(bottom: 48.0)),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 18),
@@ -320,7 +321,9 @@ class _PersonalInfo extends State<PersonalInfo> {
                           'TripList': [],
                           'TourGuide': tourguide,
                           'Mail': email,
-                          'Avatar': avatar==null?"unknown.jpg":basename(avatar.path),
+                          'Avatar': avatar == null
+                              ? "unknown.jpg"
+                              : basename(avatar.path),
                         },
                       );
                       await FirebaseAuth.instance.currentUser.updateProfile(

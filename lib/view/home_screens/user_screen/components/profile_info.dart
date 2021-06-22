@@ -64,17 +64,17 @@ class ProfileScreen extends StatelessWidget {
                     margin: const EdgeInsets.only(
                       top: 50.0,
                     ),
-                    width: 200,
-                    height: 100,
                     child: Center(
                       child: ClipOval(
-                        child:FutureBuilder(
+                        child: FutureBuilder(
                           future: getNetWorkImage(snapshot.data.get('Avatar')),
-                          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshotImage){
-                            if(snapshotImage.connectionState == ConnectionState.done){
+                          builder: (BuildContext context,
+                              AsyncSnapshot<dynamic> snapshotImage) {
+                            if (snapshotImage.connectionState ==
+                                ConnectionState.done) {
                               return Container(
                                 width: 100,
-                                height: 100,
+                                height: 150,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: snapshotImage.data,
@@ -116,19 +116,20 @@ class ProfileScreen extends StatelessWidget {
                         Container(
                           alignment: Alignment.centerLeft,
                           width: _width - 32,
-                          height: 45,
+                          height: 60,
                           padding: const EdgeInsets.only(left: 8.0),
                           margin: const EdgeInsets.only(
                             bottom: 16,
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(color: Color(0xFF4EAFC1)),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(8),
+                            color: Color(0xFFF5FDFF),
                           ),
                           child: Text(
                             snapshot.data.get('Name'),
-                            style: TextStyle(
-                              fontSize: 16,
+                            style: GoogleFonts.rubik(
+                              fontSize: 20,
                             ),
                           ),
                         ),
@@ -148,19 +149,20 @@ class ProfileScreen extends StatelessWidget {
                         Container(
                           alignment: Alignment.centerLeft,
                           width: _width - 32,
-                          height: 45,
+                          height: 60,
                           padding: const EdgeInsets.only(left: 8.0),
                           margin: const EdgeInsets.only(
                             bottom: 16,
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(color: Color(0xFF4EAFC1)),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(8),
+                            color: Color(0xFFF5FDFF),
                           ),
                           child: Text(
                             snapshot.data.get('Country'),
-                            style: TextStyle(
-                              fontSize: 16,
+                            style: GoogleFonts.rubik(
+                              fontSize: 20,
                             ),
                           ),
                         ),
@@ -189,19 +191,20 @@ class ProfileScreen extends StatelessWidget {
                                     padding: const EdgeInsets.only(left: 8.0),
                                     alignment: Alignment.centerLeft,
                                     width: (_width - 32) / 2,
-                                    height: 45,
+                                    height: 60,
                                     margin: const EdgeInsets.only(
                                       bottom: 16,
                                     ),
                                     decoration: BoxDecoration(
                                       border:
                                           Border.all(color: Color(0xFF4EAFC1)),
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Color(0xFFF5FDFF),
                                     ),
                                     child: Text(
                                       snapshot.data.get('Age'),
-                                      style: TextStyle(
-                                        fontSize: 16,
+                                      style: GoogleFonts.rubik(
+                                        fontSize: 20,
                                       ),
                                     ),
                                   ),
@@ -216,7 +219,7 @@ class ProfileScreen extends StatelessWidget {
                                       bottom: 8,
                                     ),
                                     child: Text(
-                                      'Phone number',
+                                      'Phone Number',
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -227,19 +230,20 @@ class ProfileScreen extends StatelessWidget {
                                     padding: const EdgeInsets.only(left: 8.0),
                                     alignment: Alignment.centerLeft,
                                     width: (_width - 32) / 2,
-                                    height: 45,
+                                    height: 60,
                                     margin: const EdgeInsets.only(
                                       bottom: 16,
                                     ),
                                     decoration: BoxDecoration(
                                       border:
                                           Border.all(color: Color(0xFF4EAFC1)),
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Color(0xFFF5FDFF),
                                     ),
                                     child: Text(
                                       snapshot.data.get('Phone'),
-                                      style: TextStyle(
-                                        fontSize: 16,
+                                      style: GoogleFonts.rubik(
+                                        fontSize: 20,
                                       ),
                                     ),
                                   ),
@@ -254,7 +258,7 @@ class ProfileScreen extends StatelessWidget {
                             bottom: 8,
                           ),
                           child: Text(
-                            'Your email',
+                            'Your Email',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -264,19 +268,20 @@ class ProfileScreen extends StatelessWidget {
                         Container(
                           alignment: Alignment.centerLeft,
                           width: _width - 32,
-                          height: 45,
+                          height: 60,
                           padding: const EdgeInsets.only(left: 8.0),
                           margin: const EdgeInsets.only(
                             bottom: 32,
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(color: Color(0xFF4EAFC1)),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(8),
+                            color: Color(0xFFF5FDFF),
                           ),
                           child: Text(
                             snapshot.data.get('Mail'),
-                            style: TextStyle(
-                              fontSize: 16,
+                            style: GoogleFonts.rubik(
+                              fontSize: 20,
                             ),
                           ),
                         ),

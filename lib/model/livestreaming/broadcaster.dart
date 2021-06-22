@@ -110,6 +110,7 @@ class _addCodePage extends State<addCodePage> {
                       ),
                       child: TextButton(
                         onPressed: () {
+                          addCode(this.id, this._channelController.text.trim().toLowerCase());
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -119,7 +120,6 @@ class _addCodePage extends State<addCodePage> {
                                       isBroadcaster: true,
                                     )),
                           );
-                          addCode(this.id, this.channel);
                         },
                         child: Text(
                           'Create',

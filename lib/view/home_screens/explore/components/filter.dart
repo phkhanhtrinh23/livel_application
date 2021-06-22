@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/view/home_screens/explore/explore.dart';
 
 class PopUpDialog extends StatefulWidget {
-  PopUpDialog();
+  Function callback;
+  PopUpDialog(this.callback);
 
   @override
   _PopUpDialog createState() => _PopUpDialog();
@@ -10,94 +15,111 @@ class PopUpDialog extends StatefulWidget {
 
 class _PopUpDialog extends State<PopUpDialog> {
   _PopUpDialog();
-
+  List<String> queryTag = [];
+  @override
+  initState(){
+    queryTag=[];
+    selected=[];
+}
+  static List<bool> selected = [];
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text(
-        'Filter your trips',
-        style: GoogleFonts.rubik(
-          color: Color(0xFF289CB4),
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
-        textAlign: TextAlign.center,
-      ),
-      content: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(
-          left: 32,
-          right: 16,
-        ),
-        width: 300,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              RowElements('Tag 1', 'Tag 2'),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 32,
-                ),
-              ),
-              RowElements('Tag 3', 'Tag 4'),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 32,
-                ),
-              ),
-              RowElements('Tag 5', 'Tag 6'),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 32,
-                ),
-              ),
-              RowElements('Tag 7', 'Tag 8'),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 32,
-                ),
-              ),
-              RowElements('Tag 9', 'Tag 10'),
-            ],
-          ),
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text(
-            'Submit',
-            style: TextStyle(
-              color: Color(0xFF289CB4),
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
+    return FutureBuilder(
+      future: getTagList(),
+      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot>snapshot){
+       if(snapshot.connectionState == ConnectionState.done){
+         //queryTag.clear();
+         var tagList = (snapshot.data.get('TagList'));
+         int tagLength = tagList.length;
+         for(int i=0; i<tagLength;i++){
+           selected.add(false);
+         }
+         return AlertDialog(
+           title: Text(
+             'Filter your trips',
+             style: GoogleFonts.rubik(
+               color: Color(0xFF289CB4),
+               fontSize: 24,
+               fontWeight: FontWeight.bold,
+             ),
+             textAlign: TextAlign.center,
+           ),
+           content: Container(
+             alignment: Alignment.center,
+             padding: const EdgeInsets.only(
+               left: 32,
+               right: 16,
+             ),
+             width: 300,
+             child: ListView.builder(
+               itemCount: (tagLength/2).ceil(),
+               itemBuilder: (BuildContext context, int index){
+                 return Column(
+                   children: [
+                     RowElements(
+                         tagList[2*index],
+                         (2*index+1<tagLength)?tagList[2*index+1]:null,
+                          2*index,
+                         (2*index+1<tagLength)?(2*index+1):(-1)
+                     ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom:32
+                        ),
+                      )
+                   ],
+                 );
+               },
+             ),
+           ),
+           actions: <Widget>[
+             TextButton(
+               onPressed: () {
+                 for(int i=0;i<tagLength;i++){
+                   if(selected[i]){
+                     queryTag.add(tagList[i]);
+                     print(tagList[i]);
+                   }
+                 }
+                 this.widget.callback(this.queryTag);
+                 Navigator.of(context).pop();
+               },
+               child: Text(
+                 'Submit',
+                 style: TextStyle(
+                   color: Color(0xFF289CB4),
+                   fontSize: 20,
+                   fontWeight: FontWeight.bold,
+                 ),
+               ),
+             ),
+           ],
+         );
+       }
+       return Container();
+      },
     );
   }
 }
 
 class RowElements extends StatefulWidget {
-  RowElements(this.tag1, this.tag2);
+  RowElements(this.tag1, this.tag2, this.index1, this.index2);
 
   final String tag1;
   final String tag2;
+  final int index1;
+  final int index2;
 
   @override
-  _RowElements createState() => _RowElements(tag1, tag2);
+  _RowElements createState() => _RowElements(tag1, tag2, index1, index2);
 }
 
 class _RowElements extends State<RowElements> {
-  _RowElements(this.tag1, this.tag2);
+  _RowElements(this.tag1, this.tag2, this.index1, this.index2);
 
   final String tag1;
   final String tag2;
-
+ final int index1,index2;
   List<bool> bePressed = [false, false];
 
   @override
@@ -122,7 +144,8 @@ class _RowElements extends State<RowElements> {
             onPressed: () => {
               setState(
                 () {
-                  bePressed[0] = !bePressed[0];
+                  bePressed[0]=!bePressed[0];
+                  _PopUpDialog.selected[index1] = !_PopUpDialog.selected[index1];
                 },
               ),
             },
@@ -133,7 +156,7 @@ class _RowElements extends State<RowElements> {
             right: 32,
           ),
         ),
-        Container(
+        tag2!=null?Container(
           width: 100,
           height: 50,
           decoration: BoxDecoration(
@@ -151,12 +174,13 @@ class _RowElements extends State<RowElements> {
             onPressed: () => {
               setState(
                 () {
-                  bePressed[1] = !bePressed[1];
+                  bePressed[1]=!bePressed[1];
+                  if(index2!=-1) _PopUpDialog.selected[index2] = !_PopUpDialog.selected[index2];
                 },
               ),
             },
           ),
-        ),
+        ):Container()
       ],
     );
   }

@@ -45,11 +45,13 @@ class GuideTripScreen extends StatelessWidget {
                                     addCodePage(this.id, "")),
                           );
                         }
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => BroadcastPage(channelName: snapshot.data.get('Code').toString(),
+                        else{
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BroadcastPage(channelName: snapshot.data.get('Code').toString(),
                                   userName: snap.data.get('Name'), isBroadcaster: true,)));
+                      }
                       },
                       child: Row(
                         children: [

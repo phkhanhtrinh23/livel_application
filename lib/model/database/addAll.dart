@@ -59,7 +59,7 @@ Future<void> addUserList() async {
     FirebaseFirestore.instance
         .collection('Trips')
         .doc(doc.id)
-        .update({"UserList": []});
+        .update({"TagList": []});
   }
 }
 Future<void> addThumnailAndImageList() async {

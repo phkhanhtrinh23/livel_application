@@ -22,84 +22,70 @@ class MainContent extends StatelessWidget {
       future: getTrip(id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+           var tagList = snapshot.data.get('TagList');
+           var imageList = snapshot.data.get('Image');
           return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FutureBuilder(
-                  future: getNetWorkImage(snapshot.data.get('Thumbnail')),
-                  builder: (context, AsyncSnapshot<dynamic> snapshotImage) {
-                    if (snapshotImage.connectionState == ConnectionState.done) {
-                      return Container(
-                        width: _width,
-                        height: 373,
-                        child: PageView(
-                          controller: controller,
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            ImageList(
-                              image: snapshotImage.data,
-                            ),
-                            ImageList(
-                              image: snapshotImage.data,
-                            ),
-                            ImageList(
-                              image: snapshotImage.data,
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                    return Container();
-                  },
-                ),
+              Container(
+              width: _width,
+              height: 300,//373,
+              child: PageView.builder(
+                itemCount: imageList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FutureBuilder(
+                    future: getNetWorkImage(imageList[index].toString()),
+                    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshotImage){
+                      if(snapshotImage.connectionState == ConnectionState.done){
+                        return ImageList(
+                          image: snapshotImage.data,
+                        );
+                      }
+                      return Container();
+                    },
+                  );
+                },
+              ),
+            ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 8,
                     left: 16,
                     right: 16,
                   ),
-                  child: Row(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        width: 82,
-                        height: 34,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF289CB4),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Text(
-                          '#' + 'Tag',
-                          style: GoogleFonts.rubik(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
+                  child: Container(
+                    height: 40,
+                    child: ListView.builder(
+                        itemCount: tagList.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, int index){
+                          return Row(
+                            children: [
+                              Container(
+                            alignment: Alignment.center,
+                            width: 12*tagList[index].toString().trim().length.toDouble(),
+                            height: 34,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF289CB4),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Text(
+                              '#' + tagList[index].toString(),
+                              style: GoogleFonts.rubik(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
-                      ), // !!This is where #tag goes
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        width: 82,
-                        height: 34,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF289CB4),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Text(
-                          '#' + 'Tag',
-                          style: GoogleFonts.rubik(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ), // !!This is where #tag goes
-                    ],
-                  ),
+                              Container(width: 10,),
+                            ],
+                          );
+                        }
+                    ),
+                  )
+                  
                 ),
                 Container(
                   margin: const EdgeInsets.only(
@@ -372,123 +358,70 @@ class MainContent extends StatelessWidget {
                     right: 23,
                     left: 18,
                     bottom: 42,
-                    top: 23,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(
-                          right: 23,
-                          left: 18,
-                          bottom: 16,
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '1',
-                              style: TextStyle(
-                                color: Color(0xFF289CB4),
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                  height: 120*snapshot.data.get("Time Agenda").length.toDouble(),
+                  width: 500,
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: snapshot.data.get("Time Agenda").length,
+                      itemBuilder: (BuildContext context, int index){
+                        return Container(
+                          margin: const EdgeInsets.only(
+                            right: 23,
+                            left: 18,
+                            bottom: 16,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                index.toString(),
+                                style: TextStyle(
+                                  color: Color(0xFF289CB4),
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Container(
-                              height: 100,
-                              width: 16,
-                              child: Row(
-                                children: [
-                                  VerticalDivider(
-                                    color: Color(0xFF289CB4),
-                                    thickness: 2.0,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 280,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'First',
-                                    style: TextStyle(
+                              Container(
+                                height: 100,
+                                width: 16,
+                                child: Row(
+                                  children: [
+                                    VerticalDivider(
                                       color: Color(0xFF289CB4),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
+                                      thickness: 2.0,
                                     ),
-                                  ),
-                                  Text(
-                                    snapshot.data.get('Note').toString(),
-                                    style: TextStyle(
-                                      fontSize: 16,
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: 280,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      snapshot.data.get("Time Agenda")[index].toString(),
+                                      style: TextStyle(
+                                        color: Color(0xFF289CB4),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ), // !! Agenda
-                      Container(
-                        margin: const EdgeInsets.only(
-                          right: 23,
-                          left: 18,
-                          bottom: 16,
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '2',
-                              style: TextStyle(
-                                color: Color(0xFF289CB4),
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Container(
-                              height: 100,
-                              width: 16,
-                              child: Row(
-                                children: [
-                                  VerticalDivider(
-                                    color: Color(0xFF289CB4),
-                                    thickness: 2.0,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 280,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Second',
-                                    style: TextStyle(
-                                      color: Color(0xFF289CB4),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
+                                    Text(
+                                      snapshot.data.get('Place Agenda')[index].toString(),
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    snapshot.data.get('Note').toString(),
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ), // !! Agenda
-                    ],
-                  ),
+                            ],
+                          ),
+                        );
+                      }// !! Agenda
+                  )
                 ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 16),

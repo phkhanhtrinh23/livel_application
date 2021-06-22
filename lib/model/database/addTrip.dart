@@ -6,7 +6,6 @@ Future<void> addTrip(
   String city1,
   String country1,
   String description1,
-  String note1,
   String gid,
   String thumbnail,
   int cost,
@@ -15,6 +14,9 @@ Future<void> addTrip(
   int time1,
   DateTime date,
   List<String> _image,
+    List<String> tagList,
+    List<String> time_agenda,
+    List<String> place_agenda
 ) async {
   DocumentSnapshot dictionary = await FirebaseFirestore.instance
       .collection('Dictionary')
@@ -42,7 +44,7 @@ Future<void> addTrip(
     );
   }
 
-  return await FirebaseFirestore.instance.collection('TripList').add(
+  return await FirebaseFirestore.instance.collection('Trips').add(
     {
       'Place': place1,
       'City': city1,
@@ -50,7 +52,6 @@ Future<void> addTrip(
       'Country': country1,
       'Duration': duration1,
       'Description': description1,
-      'Note': note1,
       'Time': time1,
       'Code': "",
       'Date': date,
@@ -58,7 +59,10 @@ Future<void> addTrip(
       "Rating": rating,
       "Thumbnail": thumbnail,
       "Image": _image,
-      "UserList": []
+      "UserList": [],
+      "TagList": tagList,
+      "Time Agenda": time_agenda,
+      "Place Agenda": place_agenda
     },
   );
 }

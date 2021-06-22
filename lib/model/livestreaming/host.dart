@@ -52,7 +52,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
   }
 
   Future<void> initialize() async {
-    print('Client Role: ${widget.isBroadcaster}');
     await _initAgoraRtcEngine();
     _addAgoraEventHandlers();
     await _engine.joinChannel(null, widget.channelName, null, 0);
@@ -62,7 +61,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
     _engine = await RtcEngine.create("6efcbe6ffce7439ebba67a7c547846e3");
     await _engine.enableVideo();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
-     // if (widget.isBroadcaster) {
+      // if (widget.isBroadcaster) {
       await _engine.setClientRole(ClientRole.Broadcaster);
     // } else {
     //   await _engine.setClientRole(ClientRole.Audience);
@@ -91,10 +90,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(40)),
-          // border: Border.all(
-          //   color: Colors.cyan,
-          //   width: 2,
-          // )
       ),
       child: IconButton(
         icon: Icon(
@@ -111,10 +106,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(40)),
-          // border: Border.all(
-          //   color: Colors.cyan,
-          //   width: 2,
-          // )
       ),
       child: IconButton(
         icon: Icon(
@@ -130,10 +121,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(40)),
-          // border: Border.all(
-          //   color: Colors.cyan,
-          //   width: 2,
-          // )
       ),
       child: IconButton(
         icon: Icon(
@@ -149,10 +136,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(40)),
-        // border: Border.all(
-        //   color: Colors.cyan,
-        //   width: 2,
-        // )
       ),
       child: IconButton(
         icon: Icon(
@@ -259,10 +242,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
                   color: Colors.white70,
                   fontWeight: FontWeight.bold
                 ),
-                // border: OutlineInputBorder(
-                //   borderRadius: BorderRadius.circular(20),
-                //   borderSide: BorderSide(color: Colors.cyan.withOpacity(0), width: 1),
-                // ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                   borderSide: BorderSide(color: Colors.grey.withOpacity(0)),
@@ -283,10 +262,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(40)),
-          // border: Border.all(
-          //   color: Colors.cyan,
-          //   width: 2,
-          // )
       ),
       child: IconButton(
         icon: Icon(Icons.send, color: Color(0xFF3BACCF)),

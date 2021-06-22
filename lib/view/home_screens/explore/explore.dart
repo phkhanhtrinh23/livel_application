@@ -25,7 +25,7 @@ class ExploreScreenState extends State<ExploreScreen> {
   String lSearch = '';
   String lField = 'All';
   bool set = false;
-
+  List<String> queryTag=[];
   stt.SpeechToText _speech;
   bool _isListening = false;
   double _confidence = 1.0;
@@ -35,6 +35,7 @@ class ExploreScreenState extends State<ExploreScreen> {
     super.initState();
     _speech = stt.SpeechToText();
     search.addListener(_onSearchChanged);
+    getTag();
   }
 
   @override
@@ -58,6 +59,13 @@ class ExploreScreenState extends State<ExploreScreen> {
   List show = [];
   QuerySnapshot res;
 
+  void callback(List<String> query){
+    setState(() {
+      this.queryTag = query;
+
+    });
+    getTag();
+  }
   getList() async {
     List<String> temp = [];
     DocumentSnapshot dictionary = await FirebaseFirestore.instance
@@ -121,14 +129,14 @@ class ExploreScreenState extends State<ExploreScreen> {
     );
   }
 
-  getTag(List<String> tagList) async {
+  getTag() async {
     List tmp = [];
     for (var doc in res.docs) {
-      for (var tag in tagList) {
-        if (tag == tagList.last) {
-          tmp.add(doc);
-        }
+      for (var tag in queryTag) {
         if (doc.get('TagList').contains(tag)) {
+          if (tag == queryTag.last) {
+            tmp.add(doc);
+          }
           continue;
         }
         break;
@@ -136,7 +144,7 @@ class ExploreScreenState extends State<ExploreScreen> {
     }
     setState(
       () {
-        show = tmp;
+        if(queryTag.isNotEmpty) show = tmp;
       },
     );
   }
@@ -323,7 +331,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                       context: context,
                       barrierDismissible: true,
                       builder: (BuildContext context) {
-                        return PopUpDialog(); // !! This is where tag goes
+                        return PopUpDialog(callback); // !! This is where tag goes
                       },
                     );
                   },

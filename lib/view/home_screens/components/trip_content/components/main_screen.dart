@@ -63,8 +63,9 @@ class MainContent extends StatelessWidget {
                           return Row(
                             children: [
                               Container(
+                                padding: EdgeInsets.only(left: 4.0, right: 4.0),
                             alignment: Alignment.center,
-                            width: 12*tagList[index].toString().trim().length.toDouble(),
+                            width: 13*tagList[index].toString().trim().length.toDouble(),
                             height: 34,
                             decoration: BoxDecoration(
                               color: Color(0xFF289CB4),

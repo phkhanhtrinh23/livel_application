@@ -110,8 +110,7 @@ class _YourTripScreen extends State<YourTripScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        DateFormat.jm()
-                            .format((snapshot.data.get('Date')).toDate()),
+                        DateFormat.jm().format((snapshot.data.get('Date')).toDate()),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

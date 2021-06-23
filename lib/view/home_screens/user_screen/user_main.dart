@@ -8,7 +8,7 @@ import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/model/database/storage.dart';
 import 'package:livel_application/view/log_in_screens/sign_in.dart';
 import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
-import 'package:livel_application/view/home_screens/user_screen/components/help_center.dart';
+// import 'package:livel_application/view/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/view/home_screens/user_screen/components/profile_info.dart';
 
 import 'components/profile.dart';
@@ -60,12 +60,12 @@ class UserScreen extends StatelessWidget {
                             if (snapshotImage.connectionState ==
                                 ConnectionState.done) {
                               return Container(
-                                width: 100,
+                                width: 150,
                                 height: 150,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: snapshotImage.data,
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -89,19 +89,19 @@ class UserScreen extends StatelessWidget {
                       ),
                     },
                   ),
-                  ProfileMenu(
-                    text: "Help Center",
-                    icon: Icon(Icons.help_center_outlined,
-                        color: Color(0xFF477983)),
-                    press: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => HelpCenterScreen(),
-                        ),
-                      ),
-                    },
-                  ),
+                  // ProfileMenu(
+                  //   text: "Help Center",
+                  //   icon: Icon(Icons.help_center_outlined,
+                  //       color: Color(0xFF477983)),
+                  //   press: () => {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (BuildContext context) => HelpCenterScreen(),
+                  //       ),
+                  //     ),
+                  //   },
+                  // ),
                   ProfileMenu(
                     text: "Log In As A Tour Guide",
                     icon: Icon(Icons.tour_outlined, color: Color(0xFF477983)),
@@ -153,6 +153,18 @@ class UserScreen extends StatelessWidget {
                             actions: <Widget>[
                               TextButton(
                                 child: Text(
+                                  'No',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              TextButton(
+                                child: Text(
                                   'Yes',
                                   style: TextStyle(
                                     color: Color(0xFF289CB4),
@@ -167,18 +179,6 @@ class UserScreen extends StatelessWidget {
                                       builder: (context) => SignInPage(),
                                     ),
                                   );
-                                },
-                              ),
-                              TextButton(
-                                child: Text(
-                                  'No',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
                                 },
                               ),
                             ],

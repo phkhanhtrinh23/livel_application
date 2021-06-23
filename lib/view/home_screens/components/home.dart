@@ -35,17 +35,6 @@ class MainHome extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          'Today: $day/$month/$year',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color(0xFFEAB25D),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
                       FutureBuilder(
                         future: getName(),
                         builder: (context,
@@ -102,6 +91,7 @@ class MainHome extends StatelessWidget {
                 'Upcoming Events',
                 style: TextStyle(
                   fontSize: 22,
+                  color: Color(0xFF323232),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -124,6 +114,7 @@ class MainHome extends StatelessWidget {
                     'Explore Countries',
                     style: TextStyle(
                       fontSize: 22,
+                      color: Color(0xFF323232),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -164,6 +155,7 @@ class MainHome extends StatelessWidget {
                     'Recommended Trips',
                     style: TextStyle(
                       fontSize: 22,
+                      color: Color(0xFF323232),
                       fontWeight: FontWeight.bold,
                     ),
                   ),

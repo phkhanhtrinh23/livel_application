@@ -39,10 +39,13 @@ class _FirstScreen extends State<FirstScreen> {
               'LIVEL',
               style: GoogleFonts.permanentMarker(
                 color: Colors.white,
-                fontSize: 90,
+                fontSize: 100,
               ),
             ),
-            Image.asset('images/logo.png'),
+            Image.asset(
+              'images/logo.png',
+              scale: 0.8,
+            ),
           ],
         ),
       ),

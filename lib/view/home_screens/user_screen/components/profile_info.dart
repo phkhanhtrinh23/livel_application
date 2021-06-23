@@ -62,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                      top: 50.0,
+                      top: 32.0,
                     ),
                     child: Center(
                       child: ClipOval(
@@ -73,13 +73,12 @@ class ProfileScreen extends StatelessWidget {
                             if (snapshotImage.connectionState ==
                                 ConnectionState.done) {
                               return Container(
-                                width: 100,
+                                width: 150,
                                 height: 150,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: snapshotImage.data,
-                                    fit: BoxFit.fill,
-                                  ),
+                                      image: snapshotImage.data,
+                                      fit: BoxFit.contain),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                               );

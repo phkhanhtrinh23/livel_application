@@ -54,7 +54,7 @@ class TripElement extends StatelessWidget {
                 bottomRight: Radius.circular(16),
                 topLeft: Radius.circular(16),
               ),
-              color: Color(0xFF4EAFC1),
+              color: Color(0xFF289CB4),
             ),
             width: 100,
             height: 45,

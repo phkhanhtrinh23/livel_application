@@ -31,16 +31,6 @@ class _HomeScreen extends State<HomeScreen> {
           actions: <Widget>[
             TextButton(
               child: Text(
-                'Quit',
-                style: TextStyle(
-                  color: Color(0xFF289CB4),
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-              onPressed: () => SystemNavigator.pop(),
-            ),
-            TextButton(
-              child: Text(
                 'Cancel',
                 style: TextStyle(
                   color: Colors.black,
@@ -48,6 +38,16 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
               ),
               onPressed: () => Navigator.of(context).pop(),
+            ),
+            TextButton(
+              child: Text(
+                'Quit',
+                style: TextStyle(
+                  color: Color(0xFF289CB4),
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onPressed: () => SystemNavigator.pop(),
             ),
           ],
         ),

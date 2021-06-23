@@ -31,7 +31,7 @@ class _SignUpPage extends State<SignUpPage> {
                   padding: const EdgeInsets.only(bottom: 80),
                 ),
                 Image.asset(
-                  'images/coolkid.png',
+                  'images/sign_up.png',
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 16.0),

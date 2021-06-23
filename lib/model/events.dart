@@ -62,7 +62,7 @@ class EventElements extends StatelessWidget {
         left: 16,
       ),
       decoration: BoxDecoration(
-        color: Color(0xFF4EAFC1),
+        color: Color(0xFF289CB4),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(

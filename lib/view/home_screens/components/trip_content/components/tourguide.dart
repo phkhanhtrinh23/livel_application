@@ -65,7 +65,9 @@ class TourGuide extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(right: 32),
+                      margin: const EdgeInsets.only(
+                        right: 24,
+                      ),
                       child: Column(
                         children: [
                           ClipOval(
@@ -77,12 +79,12 @@ class TourGuide extends StatelessWidget {
                                 if (snapshotImage.connectionState ==
                                     ConnectionState.done) {
                                   return Container(
-                                    width: 100,
+                                    width: 150,
                                     height: 150,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         image: snapshotImage.data,
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.contain,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),

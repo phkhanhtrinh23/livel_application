@@ -86,13 +86,13 @@ flutter:
     - images/trip_image.png
     - images/saly.png
     - images/saly2.png
-    - images/coolkid.png
     - images/swhere.png
     - images/logo.png
     - images/newimage.png
     - images/saly_22.png
     - images/unknown.jpg
     - images/saly_15.png
+    - images/sign_up.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

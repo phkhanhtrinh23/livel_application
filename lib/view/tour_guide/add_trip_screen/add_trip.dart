@@ -83,6 +83,7 @@ class AddTripState extends State<AddTrip> {
   void initState() {
     super.initState();
     imgRef = FirebaseFirestore.instance.collection('imageURLs');
+    queryTag=[];
   }
 
   @override

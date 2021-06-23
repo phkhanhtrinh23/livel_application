@@ -43,7 +43,27 @@ Future<void> addTrip(
       },
     );
   }
-
+  if (!(dictionary.get('CityList').contains(city1.trim().toLowerCase()))) {
+    FirebaseFirestore.instance.collection('Dictionary').doc('trip-info').update(
+      {
+        "CityList": FieldValue.arrayUnion([city1.trim().toLowerCase()])
+      },
+    );
+  }
+  if (!(dictionary.get('CountryList').contains(city1.trim().toLowerCase()))) {
+    FirebaseFirestore.instance.collection('Dictionary').doc('trip-info').update(
+      {
+        "CountryList": FieldValue.arrayUnion([country1.trim().toLowerCase()])
+      },
+    );
+  }
+  if (!(dictionary.get('PlaceList').contains(city1.trim().toLowerCase()))) {
+    FirebaseFirestore.instance.collection('Dictionary').doc('trip-info').update(
+      {
+        "PLaceList": FieldValue.arrayUnion([place1.trim().toLowerCase()])
+      },
+    );
+  }
   return await FirebaseFirestore.instance.collection('Trips').add(
     {
       'Place': place1,

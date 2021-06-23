@@ -109,16 +109,15 @@ class JoinRegisterState extends State<JoinRegister> {
                                   false, // user must tap button!
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text('Announcement'),
                                   content: Text(
-                                    'You can only join the video call 10 minutes early',
+                                    'You can only join the video call 10 minutes early.',
                                   ),
                                   actions: <Widget>[
                                     TextButton(
                                       child: Text(
                                         'Confirm',
                                         style: TextStyle(
-                                          color: Color(0xFFEE6C4D),
+                                          color: Color(0xFF289CB4),
                                         ),
                                       ),
                                       onPressed: () {

@@ -2,7 +2,6 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtm/agora_rtm.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/model/livestreaming/rating.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 
@@ -11,7 +10,9 @@ class BroadcastPage extends StatefulWidget {
   final String userName;
   final bool isBroadcaster;
 
-  const BroadcastPage({Key key, this.channelName, this.userName, this.isBroadcaster}) : super(key: key);
+  const BroadcastPage(
+      {Key key, this.channelName, this.userName, this.isBroadcaster})
+      : super(key: key);
 
   @override
   _BroadcastPageState createState() => _BroadcastPageState();
@@ -22,7 +23,6 @@ class _BroadcastPageState extends State<BroadcastPage> {
   final _infoStrings = <String>[];
   RtcEngine _engine;
   bool muted = false;
-  //############Messaging
   bool _isLogin = false;
   bool _isInChannel = false;
   bool message = true;
@@ -61,15 +61,16 @@ class _BroadcastPageState extends State<BroadcastPage> {
     _engine = await RtcEngine.create("6efcbe6ffce7439ebba67a7c547846e3");
     await _engine.enableVideo();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
-      // if (widget.isBroadcaster) {
-      await _engine.setClientRole(ClientRole.Broadcaster);
+    // if (widget.isBroadcaster) {
+    await _engine.setClientRole(ClientRole.Broadcaster);
     // } else {
     //   await _engine.setClientRole(ClientRole.Audience);
     // }
   }
 
   void _createClient() async {
-    _client = await AgoraRtmClient.createInstance("6efcbe6ffce7439ebba67a7c547846e3");
+    _client =
+        await AgoraRtmClient.createInstance("6efcbe6ffce7439ebba67a7c547846e3");
     _client.onMessageReceived = (AgoraRtmMessage message, String peerId) {
       _logPeer(message.text);
     };
@@ -86,26 +87,26 @@ class _BroadcastPageState extends State<BroadcastPage> {
     _toggleLogin();
     _toggleJoinChannel();
   }
-  Widget endCall(){
+
+  Widget endCall() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(40)),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: IconButton(
-        icon: Icon(
-          Icons.call_end,
-          color: Colors.redAccent,
-          size: 40.0,
-        ),
-        onPressed: () =>_onCallEnd(context)
-      ),
+          icon: Icon(
+            Icons.call_end,
+            color: Colors.redAccent,
+            size: 40.0,
+          ),
+          onPressed: () => _onCallEnd(context)),
     );
-
   }
-  Widget unMute(){
+
+  Widget unMute() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(40)),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: IconButton(
         icon: Icon(
@@ -117,10 +118,11 @@ class _BroadcastPageState extends State<BroadcastPage> {
       ),
     );
   }
-  Widget swicthCamera(){
+
+  Widget swicthCamera() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(40)),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: IconButton(
         icon: Icon(
@@ -132,7 +134,8 @@ class _BroadcastPageState extends State<BroadcastPage> {
       ),
     );
   }
-  Widget _toggleMessage(){
+
+  Widget _toggleMessage() {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(40)),
@@ -150,7 +153,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
 
   List<Widget> _getRenderViews() {
     final List<StatefulWidget> list = [];
-    if(widget.isBroadcaster) {
+    if (widget.isBroadcaster) {
       list.add(RtcLocalView.SurfaceView());
     }
     _users.forEach((int uid) => list.add(RtcRemoteView.SurfaceView(uid: uid)));
@@ -175,54 +178,50 @@ class _BroadcastPageState extends State<BroadcastPage> {
     switch (views.length) {
       case 1:
         return Container(
-
             child: Column(
-              children: <Widget>[_videoView(views[0])],
-            ));
+          children: <Widget>[_videoView(views[0])],
+        ));
       case 2:
         return Container(
             child: Column(
-              children: <Widget>[
-                _expandedVideoRow([views[0]]),
-                _expandedVideoRow([views[1]])
-              ],
-            ));
+          children: <Widget>[
+            _expandedVideoRow([views[0]]),
+            _expandedVideoRow([views[1]])
+          ],
+        ));
       case 3:
         return Container(
             child: Column(
-              children: <Widget>[
-                _expandedVideoRow(views.sublist(0, 2)),
-                _expandedVideoRow(views.sublist(2, 3))
-              ],
-            ));
+          children: <Widget>[
+            _expandedVideoRow(views.sublist(0, 2)),
+            _expandedVideoRow(views.sublist(2, 3))
+          ],
+        ));
       case 4:
         return Container(
             child: Column(
-              children: <Widget>[
-                _expandedVideoRow(views.sublist(0, 2)),
-                _expandedVideoRow(views.sublist(2, 4))
-              ],
-            ));
+          children: <Widget>[
+            _expandedVideoRow(views.sublist(0, 2)),
+            _expandedVideoRow(views.sublist(2, 4))
+          ],
+        ));
       default:
     }
     return Container();
   }
 
-
-  Widget messageBox(){
+  Widget messageBox() {
     return Container(
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width * 0.55,
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Color(0xFF3BACCF)
-        ),
+        border: Border.all(color: Color(0xFF3BACCF)),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: Row(
         children: [
-            Container(
-              padding: EdgeInsets.only(left:10),
+          Container(
+            padding: EdgeInsets.only(left: 10),
             width: MediaQuery.of(context).size.width * 0.4,
             child: TextFormField(
               //showCursor: true,
@@ -239,9 +238,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
                 ),
                 hintText: 'Comment...',
                 hintStyle: TextStyle(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.bold
-                ),
+                    color: Colors.white70, fontWeight: FontWeight.bold),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                   borderSide: BorderSide(color: Colors.grey.withOpacity(0)),
@@ -258,10 +255,11 @@ class _BroadcastPageState extends State<BroadcastPage> {
       ),
     );
   }
-  Widget sendButton(){
+
+  Widget sendButton() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(40)),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: IconButton(
         icon: Icon(Icons.send, color: Color(0xFF3BACCF)),
@@ -269,95 +267,91 @@ class _BroadcastPageState extends State<BroadcastPage> {
       ),
     );
   }
+
   Widget _buildSendChannelMessage() {
     if (!_isLogin || !_isInChannel) {
       return Container();
     }
-    return widget.isBroadcaster?Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        messageBox(),
-        swicthCamera(),
-        unMute(),
-        Container(
-          width: 10,
-        ),
-        endCall(),
-      ],
-    ):Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        _toggleMessage(),
-        messageBox(),
-        unMute(),
-        endCall(),
-        //swicthCamera()
-      ],
-    );
+    return widget.isBroadcaster
+        ? Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              messageBox(),
+              swicthCamera(),
+              unMute(),
+              Container(
+                width: 10,
+              ),
+              endCall(),
+            ],
+          )
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              _toggleMessage(),
+              messageBox(),
+              unMute(),
+              endCall(),
+              //swicthCamera()
+            ],
+          );
   }
-
 
   Widget _buildInfoList() {
     return Expanded(
         child: Container(
-          //color: Colors.cyan.withOpacity(0),
+            //color: Colors.cyan.withOpacity(0),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0.4),
-
-                  ],
-                )
-            ),
-            child: (_info.length > 0 && message==true)
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.black.withOpacity(0.1),
+                Colors.black.withOpacity(0.4),
+              ],
+            )),
+            child: (_info.length > 0 && message == true)
                 ? ListView.builder(
-              reverse: true,
-              itemBuilder: (context, i) {
-                var tmp = _info[i].split("%");
-                return Container(
-                  child: ListTile(
-                    title: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-                        color: Colors.grey.withOpacity(0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start ,
-                          children: [
-                            Text(
-                              tmp[1],
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white54
+                    reverse: true,
+                    itemBuilder: (context, i) {
+                      var tmp = _info[i].split("%");
+                      return Container(
+                        child: ListTile(
+                          title: Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 6, vertical: 3),
+                              color: Colors.grey.withOpacity(0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    tmp[1],
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white54),
+                                  ),
+                                  Text(
+                                    tmp[0],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
                             ),
-                            Text(
-                              tmp[0],
-                              maxLines: 10,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
-                              ),
-                            ),
-
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-              itemCount: _info.length,
-            )
+                      );
+                    },
+                    itemCount: _info.length,
+                  )
                 : Container()));
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -369,33 +363,29 @@ class _BroadcastPageState extends State<BroadcastPage> {
             Column(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height*0.4,
+                  height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.black.withOpacity(0),
-                          Colors.black.withOpacity(0.1),
-
-                        ],
-                      )
-                  ),
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black.withOpacity(0),
+                      Colors.black.withOpacity(0.1),
+                    ],
+                  )),
                 ),
                 _buildInfoList(),
                 Container(
-                  width:MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black.withOpacity(0.4),
-                        Colors.black.withOpacity(0.8),
-
-                      ],
-                    )
-                  ),
+                      gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.4),
+                      Colors.black.withOpacity(0.8),
+                    ],
+                  )),
                   alignment: Alignment.bottomLeft,
                   child: _buildSendChannelMessage(),
                 ),
@@ -407,6 +397,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
       ),
     );
   }
+
   /// Add agora event handlers
   void _addAgoraEventHandlers() {
     _engine.setEventHandler(RtcEngineEventHandler(error: (code) {
@@ -444,12 +435,12 @@ class _BroadcastPageState extends State<BroadcastPage> {
       });
     }));
   }
+
   void _onCallEnd(BuildContext context) {
     if (widget.isBroadcaster == false) {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => RatingScreen()));
     } else if (widget.isBroadcaster == true) {
-      int count = 0;
       Navigator.pop(context);
     }
   }
@@ -464,28 +455,29 @@ class _BroadcastPageState extends State<BroadcastPage> {
   void _onSwitchCamera() {
     _engine.switchCamera();
   }
-  void _onToggleMessage(){
+
+  void _onToggleMessage() {
     setState(() {
       message = !message;
     });
   }
 
-
-
-
   Future<AgoraRtmChannel> _createChannel(String name) async {
     AgoraRtmChannel channel = await _client.createChannel(name);
     channel.onMemberJoined = (AgoraRtmMember member) {
-      print("Member joined: " + member.userId + ', channel: ' + member.channelId);
+      print(
+          "Member joined: " + member.userId + ', channel: ' + member.channelId);
     };
     channel.onMemberLeft = (AgoraRtmMember member) {
       print("Member left: " + member.userId + ', channel: ' + member.channelId);
     };
-    channel.onMessageReceived = (AgoraRtmMessage message, AgoraRtmMember member) {
+    channel.onMessageReceived =
+        (AgoraRtmMessage message, AgoraRtmMember member) {
       _logPeer(message.text);
     };
     return channel;
   }
+
   void _toggleLogin() async {
     if (!_isLogin) {
       try {
@@ -529,18 +521,17 @@ class _BroadcastPageState extends State<BroadcastPage> {
     }
   }
 
-  void _logPeer(String info){
+  void _logPeer(String info) {
     print(info);
     setState(() {
-      _info.insert(0,info+"%"+widget.userName);
+      _info.insert(0, info + "%" + widget.userName);
     });
-
   }
 
   void _log(String info) {
     print(info);
     setState(() {
-      _info.insert(0, info+"%"+widget.userName);
+      _info.insert(0, info + "%" + widget.userName);
     });
   }
 }

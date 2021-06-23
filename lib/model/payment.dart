@@ -184,6 +184,26 @@ class StripeState extends State<Stripe> {
                           "UserList": FieldValue.arrayUnion([uid])
                         },
                       );
+                      await showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text(
+                            'This trip has successfully been added to your list.',
+                          ),
+                          actions: [
+                            TextButton(
+                              child: Text(
+                                'Confirm',
+                                style: TextStyle(
+                                  color: Color(0xFF289CB4),
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              onPressed: () => Navigator.of(context).pop(true),
+                            ),
+                          ],
+                        ),
+                      );
                       Navigator.push(
                         context,
                         MaterialPageRoute(

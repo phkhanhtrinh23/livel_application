@@ -1,26 +1,20 @@
-import 'dart:async';
-
-import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/addCode.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/model/livestreaming/host.dart';
-import 'package:livel_application/view/video_call/call_page.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 
-class addCodePage extends StatefulWidget {
+class AddCodePage extends StatefulWidget {
   final String id, channel;
-  addCodePage(this.id, this.channel);
+  AddCodePage(this.id, this.channel);
   @override
-  _addCodePage createState() => _addCodePage(this.id, channel);
+  _AddCodePage createState() => _AddCodePage(this.id, channel);
 }
 
-class _addCodePage extends State<addCodePage> {
+class _AddCodePage extends State<AddCodePage> {
   final String id, channel;
-  _addCodePage(this.id, this.channel);
+  _AddCodePage(this.id, this.channel);
 
   final _channelController = TextEditingController();
   bool _validateError = false;
@@ -41,7 +35,7 @@ class _addCodePage extends State<addCodePage> {
                 bottomLeft: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
-              color: Colors.teal[300],
+              color: Color(0xFF289CB4),
             ),
             child: Column(
               children: [
@@ -57,7 +51,7 @@ class _addCodePage extends State<addCodePage> {
                 Spacer(),
                 Text(
                   'Livel',
-                  style: TextStyle(
+                  style: GoogleFonts.rubik(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 32,
@@ -71,7 +65,8 @@ class _addCodePage extends State<addCodePage> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(
-                  top: 32,
+                  top: 48,
+                  bottom: 32,
                 ),
                 padding: EdgeInsets.all(8.0),
                 height: 54,
@@ -106,47 +101,39 @@ class _addCodePage extends State<addCodePage> {
                       height: 51,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0),
-                        color: Colors.orange[800],
+                        color: Color(0xFF289CB4),
                       ),
                       child: TextButton(
                         onPressed: () {
-                          addCode(this.id, this._channelController.text.trim().toLowerCase());
+                          addCode(
+                              this.id,
+                              this
+                                  ._channelController
+                                  .text
+                                  .trim()
+                                  .toLowerCase());
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => BroadcastPage(
-                                      channelName: _channelController.text,
-                                      userName: snapshot.data.get('Name'),
-                                      isBroadcaster: true,
-                                    )),
+                              builder: (context) => BroadcastPage(
+                                channelName: _channelController.text,
+                                userName: snapshot.data.get('Name'),
+                                isBroadcaster: true,
+                              ),
+                            ),
                           );
                         },
                         child: Text(
                           'Create',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
+                          style: GoogleFonts.rubik(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                     );
                   }
-                  return Container(
-                    width: 213,
-                    height: 51,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0),
-                      color: Colors.orange[800],
-                    ),
-                    child: TextButton(
-                      child: Text(
-                        'Create',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                  );
+                  return Container();
                 },
               )
             ],
@@ -154,6 +141,5 @@ class _addCodePage extends State<addCodePage> {
         ],
       ),
     );
-    return Container();
   }
 }

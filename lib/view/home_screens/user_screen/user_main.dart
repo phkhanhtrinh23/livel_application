@@ -17,7 +17,6 @@ class UserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
     return FutureBuilder(
       future: getName(),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {

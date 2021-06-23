@@ -33,108 +33,111 @@ class GuideTripScreen extends StatelessWidget {
             ),
             child: FutureBuilder(
               future: getName(),
-              builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snap){
-                if(snap.connectionState == ConnectionState.done){
+              builder:
+                  (BuildContext context, AsyncSnapshot<DocumentSnapshot> snap) {
+                if (snap.connectionState == ConnectionState.done) {
                   return TextButton(
-                      onPressed: () {
-                        if (snapshot.data.get('Code').toString().isEmpty) {
-                          Navigator.push(
+                    onPressed: () {
+                      if (snapshot.data.get('Code').toString().isEmpty) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddCodePage(this.id, "")),
+                        );
+                      } else {
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    addCodePage(this.id, "")),
-                          );
-                        }
-                        else{
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BroadcastPage(channelName: snapshot.data.get('Code').toString(),
-                                  userName: snap.data.get('Name'), isBroadcaster: true,)));
+                                builder: (context) => BroadcastPage(
+                                      channelName:
+                                          snapshot.data.get('Code').toString(),
+                                      userName: snap.data.get('Name'),
+                                      isBroadcaster: true,
+                                    )));
                       }
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(right: 16),
-                            child: Image.asset(
-                              'images/trip_image.png',
-                              width: 150,
-                              height: 120,
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 16),
+                          child: Image.asset(
+                            'images/trip_image.png',
+                            width: 150,
+                            height: 120,
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              DateFormat.jm()
+                                  .format((snapshot.data.get('Date')).toDate()),
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF4EAFC1),
+                              ),
                             ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                DateFormat.jm()
-                                    .format((snapshot.data.get('Date')).toDate()),
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.calendar_today_outlined,
                                   color: Color(0xFF4EAFC1),
+                                  size: 20,
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8),
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.calendar_today_outlined,
-                                    color: Color(0xFF4EAFC1),
-                                    size: 20,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 8),
-                                  ),
-                                  Text(
-                                    DateFormat.yMMMd()
-                                        .format((snapshot.data.get('Date')).toDate()),
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.location_on_outlined,
-                                    color: Color(0xFF4EAFC1),
-                                    size: 20,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 8),
-                                  ),
-                                  Text(
-                                    snapshot.data.get('Place').toString(),
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8),
-                              ),
-                              Text(
-                                "\$" + snapshot.data.get('Cost').toString(),
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8),
                                 ),
+                                Text(
+                                  DateFormat.yMMMd().format(
+                                      (snapshot.data.get('Date')).toDate()),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  color: Color(0xFF4EAFC1),
+                                  size: 20,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8),
+                                ),
+                                Text(
+                                  snapshot.data.get('Place').toString(),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                            ),
+                            Text(
+                              "\$" + snapshot.data.get('Cost').toString(),
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   );
                 }
                 return Container();

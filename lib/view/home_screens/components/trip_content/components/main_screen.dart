@@ -28,10 +28,7 @@ class _MainContent extends State<MainContent> {
 
   @override
   Widget build(BuildContext context) {
-    PageController controller = PageController(initialPage: 0);
     double _width = MediaQuery.of(context).size.width;
-    bool changedPage = false;
-
     return FutureBuilder(
       future: getTrip(id),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {

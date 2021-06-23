@@ -30,8 +30,8 @@ class AddTripState extends State<AddTrip> {
   final TextEditingController cost = new TextEditingController();
   final _form = GlobalKey<FormState>();
 
-  final List<TextEditingController> agenda_time = [];
-  final List<TextEditingController> agenda_place = [];
+  final List<TextEditingController> _timeagenda = [];
+  final List<TextEditingController> _placeagenda = [];
 
   File thumnail;
   List<File> _image = [];
@@ -89,8 +89,8 @@ class AddTripState extends State<AddTrip> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     for (int i = 0; i <= 3; i++) {
-      agenda_place.add(new TextEditingController());
-      agenda_time.add(new TextEditingController());
+      _placeagenda.add(new TextEditingController());
+      _timeagenda.add(new TextEditingController());
     }
     return Scaffold(
       body: SingleChildScrollView(
@@ -269,7 +269,7 @@ class AddTripState extends State<AddTrip> {
                                           height: 60,
                                           child: TextFormField(
                                             autofocus: true,
-                                            controller: agenda_time[index],
+                                            controller: _timeagenda[index],
                                             decoration: InputDecoration(
                                               labelText: "Time",
                                               labelStyle: GoogleFonts.rubik(
@@ -302,7 +302,7 @@ class AddTripState extends State<AddTrip> {
                                           height: 60,
                                           child: TextFormField(
                                             autofocus: true,
-                                            controller: agenda_place[index],
+                                            controller: _placeagenda[index],
                                             decoration: InputDecoration(
                                               labelText: "Detailed agenda",
                                               labelStyle: GoogleFonts.rubik(
@@ -560,11 +560,11 @@ class AddTripState extends State<AddTrip> {
           onPressed: () async {
             if (_form.currentState.validate()) {
               String uid = FirebaseAuth.instance.currentUser.uid;
-              List<String> time_agenda = [];
-              List<String> place_agenda = [];
+              List<String> timeagenda = [];
+              List<String> placeagenda = [];
               for (int i = 0; i < dropdown; i++) {
-                time_agenda.add(agenda_time[i].text);
-                place_agenda.add(agenda_place[i].text);
+                timeagenda.add(_timeagenda[i].text);
+                placeagenda.add(_placeagenda[i].text);
               }
               addTrip(
                 place.text.trim(),
@@ -580,13 +580,33 @@ class AddTripState extends State<AddTrip> {
                 this.selectedDate,
                 process(),
                 queryTag,
-                time_agenda,
-                place_agenda,
+                timeagenda,
+                placeagenda,
               );
               addImage(thumnail);
               for (var i in _image) {
                 addImage(i);
               }
+              await showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  content: Text(
+                    'This trip has successfully been added to Livel.',
+                  ),
+                  actions: [
+                    TextButton(
+                      child: Text(
+                        'Confirm',
+                        style: TextStyle(
+                          color: Color(0xFF289CB4),
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      onPressed: () => Navigator.of(context).pop(true),
+                    ),
+                  ],
+                ),
+              );
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => GuideMainScreen()));
             }

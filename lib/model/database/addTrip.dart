@@ -14,9 +14,9 @@ Future<void> addTrip(
   int time1,
   DateTime date,
   List<String> _image,
-    List<String> tagList,
-    List<String> time_agenda,
-    List<String> place_agenda
+  List<String> tagList,
+  List<String> _timeagenda,
+  List<String> _placeagenda,
 ) async {
   DocumentSnapshot dictionary = await FirebaseFirestore.instance
       .collection('Dictionary')
@@ -61,8 +61,8 @@ Future<void> addTrip(
       "Image": _image,
       "UserList": [],
       "TagList": tagList,
-      "Time Agenda": time_agenda,
-      "Place Agenda": place_agenda
+      "Time Agenda": _timeagenda,
+      "Place Agenda": _placeagenda,
     },
   );
 }

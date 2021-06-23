@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:livel_application/model/database/addAll.dart';
 
 class HelpCenterScreen extends StatelessWidget {
   const HelpCenterScreen({Key key}) : super(key: key);

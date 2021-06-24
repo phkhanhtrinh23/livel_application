@@ -72,7 +72,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
     _client =
         await AgoraRtmClient.createInstance("6efcbe6ffce7439ebba67a7c547846e3");
     _client.onMessageReceived = (AgoraRtmMessage message, String peerId) {
-      _logPeer(message.text);
+      _log(message.text);
     };
     _client.onConnectionStateChanged = (int state, int reason) {
       if (state == 5) {
@@ -441,6 +441,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
   }
 
   void _onCallEnd(BuildContext context) {
+    _engine.leaveChannel();
     if (widget.isBroadcaster == false) {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => RatingScreen()));
@@ -477,7 +478,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
     };
     channel.onMessageReceived =
         (AgoraRtmMessage message, AgoraRtmMember member) {
-      _logPeer(message.text);
+      _log(message.text);
     };
     return channel;
   }
@@ -517,25 +518,19 @@ class _BroadcastPageState extends State<BroadcastPage> {
       return;
     }
     try {
-      await _channel.sendMessage(AgoraRtmMessage.fromText(text));
-      _log(text);
+      await _channel.sendMessage(AgoraRtmMessage.fromText(text+"%"+widget.userName));
+      _log(text+"%"+widget.userName);
       _channelMessageController.clear();
     } catch (errorCode) {
       print('Send channel message error: ' + errorCode.toString());
     }
   }
 
-  void _logPeer(String info) {
-    print(info);
-    setState(() {
-      _info.insert(0, info + "%" + widget.userName);
-    });
-  }
 
   void _log(String info) {
     print(info);
     setState(() {
-      _info.insert(0, info + "%" + widget.userName);
+      _info.insert(0, info);
     });
   }
 }

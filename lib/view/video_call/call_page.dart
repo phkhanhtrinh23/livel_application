@@ -258,6 +258,9 @@ class _CallPageState extends State<CallPage> {
   }
 
   void _onCallEnd(BuildContext context) {
+    _engine.leaveChannel();
+    _engine.destroy();
+    Navigator.pop(context);
     if (widget.role == ClientRole.Audience) {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => RatingScreen()));

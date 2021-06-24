@@ -59,7 +59,7 @@ class YourTrip extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: _height - 225,
+                  height: _height - 265,
                   child: ListView.builder(
                     itemCount: arr.length,
                     itemBuilder: (BuildContext context, int index) {

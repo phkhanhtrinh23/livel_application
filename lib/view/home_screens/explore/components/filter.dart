@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 
 class PopUpDialog extends StatefulWidget {
-  Function callback;
+  final Function callback;
   PopUpDialog(this.callback);
 
   @override
@@ -15,8 +15,10 @@ class PopUpDialog extends StatefulWidget {
 class _PopUpDialog extends State<PopUpDialog> {
   _PopUpDialog();
   List<String> queryTag = [];
+
   @override
-  initState() {
+  void initState() {
+    super.initState();
     queryTag = [];
     selected = [];
   }

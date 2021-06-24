@@ -9,8 +9,6 @@ import 'package:livel_application/model/database/queryFunction.dart';
 class MainHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var date = DateTime.now();
-    var day = date.day, month = date.month, year = date.year;
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,

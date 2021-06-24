@@ -276,13 +276,13 @@ class _BroadcastPageState extends State<BroadcastPage> {
         ? Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              messageBox(),
               swicthCamera(),
               unMute(),
-              Container(
-                width: 10,
-              ),
               endCall(),
+              Padding(
+                padding: const EdgeInsets.only(right: 4),
+              ),
+              messageBox(),
             ],
           )
         : Row(
@@ -292,65 +292,69 @@ class _BroadcastPageState extends State<BroadcastPage> {
               messageBox(),
               unMute(),
               endCall(),
-              //swicthCamera()
             ],
           );
   }
 
   Widget _buildInfoList() {
     return Expanded(
-        child: Container(
-            //color: Colors.cyan.withOpacity(0),
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.black.withOpacity(0.1),
-                Colors.black.withOpacity(0.4),
-              ],
-            )),
-            child: (_info.length > 0 && message == true)
-                ? ListView.builder(
-                    reverse: true,
-                    itemBuilder: (context, i) {
-                      var tmp = _info[i].split("%");
-                      return Container(
-                        child: ListTile(
-                          title: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 6, vertical: 3),
-                              color: Colors.grey.withOpacity(0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    tmp[1],
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                        fontSize: 15, color: Colors.white54),
-                                  ),
-                                  Text(
-                                    tmp[0],
-                                    maxLines: 10,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+      child: Container(
+        //color: Colors.cyan.withOpacity(0),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.black.withOpacity(0.1),
+            Colors.black.withOpacity(0.4),
+          ],
+        )),
+        child: (_info.length > 0 && message == true)
+            ? ListView.builder(
+                reverse: true,
+                itemBuilder: (context, i) {
+                  var tmp = _info[i].split("%");
+                  return Container(
+                    child: ListTile(
+                      title: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                          color: Colors.grey.withOpacity(0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                tmp[1],
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white54,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ),
+                              Text(
+                                tmp[0],
+                                maxLines: 10,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    },
-                    itemCount: _info.length,
-                  )
-                : Container()));
+                      ),
+                    ),
+                  );
+                },
+                itemCount: _info.length,
+              )
+            : Container(),
+      ),
+    );
   }
 
   @override
@@ -363,7 +367,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
             Column(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.2,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                     begin: Alignment.topCenter,

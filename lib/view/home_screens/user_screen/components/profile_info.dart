@@ -76,10 +76,11 @@ class ProfileScreen extends StatelessWidget {
                                 width: 150,
                                 height: 150,
                                 decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   image: DecorationImage(
-                                      image: snapshotImage.data,
-                                      fit: BoxFit.contain),
-                                  borderRadius: BorderRadius.circular(8),
+                                    image: snapshotImage.data,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               );
                             }

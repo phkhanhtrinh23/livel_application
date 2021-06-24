@@ -245,7 +245,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                 ),
                 child: Row(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
                     DropdownButton<String>(
                       value: dropdown,
                       icon: const Icon(
@@ -281,7 +281,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                         },
                       ).toList(),
                     ),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
                     Expanded(
                       child: buildCity(),
                     ),
@@ -291,7 +291,7 @@ class ExploreScreenState extends State<ExploreScreen> {
                         color: Color(0xFF289CB4),
                       ),
                       onPressed: () async {
-                        if (search != null) {
+                        if (search.text.length != 0) {
                           var translation =
                               await translator.translate(search.text, to: 'en');
                           search.text = translation.toString().toLowerCase();
@@ -404,7 +404,7 @@ class ExploreScreenState extends State<ExploreScreen> {
           search.text = suggestion,
         },
         validator: (value) =>
-            value != null && value.isEmpty ? 'Please select a city' : null,
+            value != null && value.isEmpty ? 'Please enter a name' : null,
         onSaved: (value) => selectedCity = value,
       );
 

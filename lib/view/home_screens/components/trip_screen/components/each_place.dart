@@ -75,7 +75,7 @@ class PlaceScreen extends StatelessWidget {
                         return Container(
                           margin: const EdgeInsets.only(
                             top: 8.0,
-                            left: 15.0,
+                            left: 8.0,
                           ),
                           width: 320,
                           height: 70,
@@ -88,7 +88,7 @@ class PlaceScreen extends StatelessWidget {
                                     snapshot.data.get('Place'),
                                     style: GoogleFonts.rubik(
                                       color: Colors.black,
-                                      fontSize: 22,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),

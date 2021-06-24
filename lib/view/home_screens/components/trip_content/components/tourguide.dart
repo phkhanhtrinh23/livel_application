@@ -79,14 +79,14 @@ class TourGuide extends StatelessWidget {
                                 if (snapshotImage.connectionState ==
                                     ConnectionState.done) {
                                   return Container(
-                                    width: 150,
-                                    height: 150,
+                                    width: 100,
+                                    height: 100,
                                     decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
                                       image: DecorationImage(
                                         image: snapshotImage.data,
-                                        fit: BoxFit.contain,
+                                        fit: BoxFit.fill,
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
                                     ),
                                   );
                                 }

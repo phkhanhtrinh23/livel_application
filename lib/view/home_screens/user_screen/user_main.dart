@@ -50,30 +50,29 @@ class UserScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(
                       top: 50.0,
+                      bottom: 48.0,
                     ),
                     child: Center(
-                      child: ClipOval(
-                        child: FutureBuilder(
-                          future: getNetWorkImage(snapshot.data.get('Avatar')),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<dynamic> snapshotImage) {
-                            if (snapshotImage.connectionState ==
-                                ConnectionState.done) {
-                              return Container(
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: snapshotImage.data,
-                                    fit: BoxFit.contain,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
+                      child: FutureBuilder(
+                        future: getNetWorkImage(snapshot.data.get('Avatar')),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<dynamic> snapshotImage) {
+                          if (snapshotImage.connectionState ==
+                              ConnectionState.done) {
+                            return Container(
+                              width: 150,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: snapshotImage.data,
+                                  fit: BoxFit.fill,
                                 ),
-                              );
-                            }
-                            return Container();
-                          },
-                        ),
+                              ),
+                            );
+                          }
+                          return Container();
+                        },
                       ),
                     ),
                   ),

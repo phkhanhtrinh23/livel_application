@@ -28,7 +28,10 @@ class JoinRegisterState extends State<JoinRegister> {
   final String id, code, cost;
 
   JoinRegisterState(this.id, this.code, this.cost);
-
+  Future<void> _handleCameraAndMic(Permission permission) async {
+    final status = await permission.request();
+    print(status);
+  }
   @override
   Widget build(BuildContext context) {
     String uid = FirebaseAuth.instance.currentUser.uid;
@@ -91,6 +94,8 @@ class JoinRegisterState extends State<JoinRegister> {
                         ),
                         onPressed: () async {
                           if (code.isNotEmpty) {
+                            await _handleCameraAndMic(Permission.camera);
+                            await _handleCameraAndMic(Permission.microphone);
                             Navigator.push(
                               context,
                               MaterialPageRoute(

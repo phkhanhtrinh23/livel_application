@@ -7,6 +7,7 @@ import 'package:livel_application/model/livestreaming/host.dart';
 import 'package:livel_application/view/home_screens/HomeScreen.dart';
 import 'package:livel_application/model/payment.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class JoinRegister extends StatefulWidget {
   final String id, code, cost;

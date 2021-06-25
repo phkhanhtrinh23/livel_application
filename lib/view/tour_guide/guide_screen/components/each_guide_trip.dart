@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/model/database/addCode.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/model/livestreaming/broadcaster.dart';
 import 'package:livel_application/model/livestreaming/host.dart';
 import 'package:permission_handler/permission_handler.dart';
 

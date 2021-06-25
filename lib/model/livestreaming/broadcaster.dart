@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/addCode.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/model/livestreaming/host.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class AddCodePage extends StatefulWidget {
   final String id, channel;
@@ -18,7 +19,10 @@ class _AddCodePage extends State<AddCodePage> {
 
   final _channelController = TextEditingController();
   bool _validateError = false;
-
+  Future<void> _handleCameraAndMic(Permission permission) async {
+    final status = await permission.request();
+    print(status);
+  }
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -104,7 +108,7 @@ class _AddCodePage extends State<AddCodePage> {
                         color: Color(0xFF289CB4),
                       ),
                       child: TextButton(
-                        onPressed: () {
+                        onPressed: () async{
                           addCode(
                               this.id,
                               this
@@ -112,6 +116,8 @@ class _AddCodePage extends State<AddCodePage> {
                                   .text
                                   .trim()
                                   .toLowerCase());
+                          await _handleCameraAndMic(Permission.camera);
+                          await _handleCameraAndMic(Permission.microphone);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

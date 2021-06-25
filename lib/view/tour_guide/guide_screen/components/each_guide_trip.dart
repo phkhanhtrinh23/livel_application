@@ -2,14 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:livel_application/model/database/addCode.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/model/livestreaming/broadcaster.dart';
 import 'package:livel_application/model/livestreaming/host.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class GuideTripScreen extends StatelessWidget {
   const GuideTripScreen({Key key, this.id, this.name});
   final String id;
   final String name;
+  Future<void> _handleCameraAndMic(Permission permission) async {
+    final status = await permission.request();
+    print(status);
+  }
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -37,14 +43,26 @@ class GuideTripScreen extends StatelessWidget {
                   (BuildContext context, AsyncSnapshot<DocumentSnapshot> snap) {
                 if (snap.connectionState == ConnectionState.done) {
                   return TextButton(
-                    onPressed: () {
+                    onPressed: () async{
                       if (snapshot.data.get('Code').toString().isEmpty) {
+                        await _handleCameraAndMic(Permission.camera);
+                        await _handleCameraAndMic(Permission.microphone);
+                        addCode(
+                            this.id,
+                            snapshot.data.get('Place')+snapshot.data.get('Date').toString());
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddCodePage(this.id, "")),
+                            builder: (context) => BroadcastPage(
+                              channelName: snapshot.data.get('Place')+snapshot.data.get('Date').toString(),
+                              userName: snap.data.get('Name'),
+                              isBroadcaster: true,
+                            ),
+                          ),
                         );
                       } else {
+                        await _handleCameraAndMic(Permission.camera);
+                        await _handleCameraAndMic(Permission.microphone);
                         Navigator.push(
                             context,
                             MaterialPageRoute(

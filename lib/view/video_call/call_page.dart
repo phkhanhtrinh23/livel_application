@@ -262,8 +262,8 @@ class _CallPageState extends State<CallPage> {
     _engine.destroy();
     Navigator.pop(context);
     if (widget.role == ClientRole.Audience) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => RatingScreen()));
+      // Navigator.of(context)
+      //     .push(MaterialPageRoute(builder: (context) => RatingScreen()));
     } else if (widget.role == ClientRole.Broadcaster) {
       int count = 0;
       Navigator.popUntil(

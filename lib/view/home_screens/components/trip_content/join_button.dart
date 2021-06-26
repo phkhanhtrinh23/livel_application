@@ -106,6 +106,7 @@ class JoinRegisterState extends State<JoinRegister> {
                                             .toString(),
                                         channelName: code,
                                         isBroadcaster: false,
+                                    id:id
                                       )),
                             );
                           } else {

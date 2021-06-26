@@ -56,6 +56,7 @@ class GuideTripScreen extends StatelessWidget {
                               channelName: snapshot.data.get('Place')+snapshot.data.get('Date').toString(),
                               userName: snap.data.get('Name'),
                               isBroadcaster: true,
+                              id:id
                             ),
                           ),
                         );
@@ -70,6 +71,7 @@ class GuideTripScreen extends StatelessWidget {
                                           snapshot.data.get('Code').toString(),
                                       userName: snap.data.get('Name'),
                                       isBroadcaster: true,
+                                  id:id
                                     )));
                       }
                     },

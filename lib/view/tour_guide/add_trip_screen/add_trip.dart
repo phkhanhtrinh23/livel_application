@@ -576,7 +576,7 @@ class AddTripState extends State<AddTrip> {
                 basename(thumnail.path),
                 int.parse(cost.text),
                 duration.text,
-                4.8,
+                0,
                 this.selectedDate.hour,
                 this.selectedDate,
                 process(),

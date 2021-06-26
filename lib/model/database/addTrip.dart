@@ -60,9 +60,15 @@ Future<void> addTrip(
   if (!(dictionary.get('PlaceList').contains(city1.trim().toLowerCase()))) {
     FirebaseFirestore.instance.collection('Dictionary').doc('trip-info').update(
       {
-        "PLaceList": FieldValue.arrayUnion([place1.trim().toLowerCase()])
+        "PlaceList": FieldValue.arrayUnion([place1.trim().toLowerCase()])
       },
     );
+    FirebaseFirestore.instance.collection('Dictionary').doc('rating').update(
+      {
+        "list": {place1:[0,0]},
+      },
+    );
+
   }
   return await FirebaseFirestore.instance.collection('Trips').add(
     {

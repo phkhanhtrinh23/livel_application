@@ -9,9 +9,9 @@ class BroadcastPage extends StatefulWidget {
   final String channelName;
   final String userName;
   final bool isBroadcaster;
-
+  final String id;
   const BroadcastPage(
-      {Key key, this.channelName, this.userName, this.isBroadcaster})
+      {Key key, this.channelName, this.userName, this.isBroadcaster, this.id})
       : super(key: key);
 
   @override
@@ -444,7 +444,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
     _engine.leaveChannel();
     if (widget.isBroadcaster == false) {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => RatingScreen()));
+          .push(MaterialPageRoute(builder: (context) => RatingScreen(this.widget.id)));
     } else if (widget.isBroadcaster == true) {
       Navigator.pop(context);
     }

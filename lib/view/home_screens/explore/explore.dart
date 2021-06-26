@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../components/trip_screen/components/each_place.dart';
 import 'package:flutter/widgets.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -166,6 +167,7 @@ class ExploreScreenState extends State<ExploreScreen> {
   }
 
   void _listen() async {
+    //await _handleCameraAndMic(Permission.microphone);
     if (!_isListening) {
       bool available = await _speech.initialize(
         onStatus: (val) => print('onStatus: $val'),
@@ -193,7 +195,10 @@ class ExploreScreenState extends State<ExploreScreen> {
       _speech.stop();
     }
   }
-
+  // Future<void> _handleCameraAndMic(Permission permission) async {
+  //   final status = await permission.request();
+  //   print(status);
+  // }
   bool bePressed = false;
 
   @override

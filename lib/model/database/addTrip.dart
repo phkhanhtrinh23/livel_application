@@ -65,7 +65,7 @@ Future<void> addTrip(
     );
     FirebaseFirestore.instance.collection('Dictionary').doc('rating').update(
       {
-        "list": {place1:[0,0]},
+        place1: [0,0],
       },
     );
 

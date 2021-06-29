@@ -40,11 +40,8 @@ dependencies:
   google_fonts: ^2.1.0
   provider: ^5.0.0
   permission_handler: ^8.0.0+2
-  pedantic: ^1.11.0
   stripe_payment: ^1.1.1
-  progress_dialog: ^1.2.2
   rating_bar: ^0.2.0
-  path: ^1.8.0
   speech_to_text: ^4.2.1
   avatar_glow: ^2.0.1
   translator: ^0.1.7

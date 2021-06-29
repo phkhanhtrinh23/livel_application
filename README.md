@@ -48,8 +48,8 @@ Our team consists of 4 members and all of us are studying Computer Science at Ho
 Our application is built with these frameworks and tools:
 * **Emulator: Google Pixel 4 XL API 30 1440 x 3040: 560dpi**
 * **Operating System: Android 11.0 (Google APIs)**
-* [Flutter: 1.22.6](https://flutter.dev/docs/development/tools/sdk/releases)
-* [Dart: 2.10.5](https://dart.dev/)
+* [Flutter: 2.2.2](https://flutter.dev/docs/development/tools/sdk/releases)
+* [Dart: 2.13.3](https://dart.dev/)
 * [Firebase](https://firebase.google.com/)
 
 
@@ -64,7 +64,7 @@ To get started, you should have prior knowledge on **Flutter** and **Dart Progra
 
 Then, you need to install Flutter on your device in order to run this program. This is a comprehensive guide on how to install Flutter on your device:
 
-- [Reference: Flutter Install 1.22.6 Version](https://flutter.dev/docs/development/tools/sdk/releases)
+- [Reference: Flutter Install 2.2.2 Version](https://flutter.dev/docs/development/tools/sdk/releases)
 
 Besides, if you have no prior knowledge on **Firebase**, you can refer to this site:
 
@@ -74,7 +74,7 @@ Besides, if you have no prior knowledge on **Firebase**, you can refer to this s
 
 ### Prerequisites
 
-At first, you need to check whether your Flutter version is **1.22.6**. Then, you should check whether your Dart version is **2.10.5**.
+At first, you need to check whether your Flutter version is **up-to-date**. Then, you should check whether your Dart version is **up-to-date** as well.
 
 * flutter
 

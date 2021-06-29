@@ -34,12 +34,11 @@ class _BroadcastPageState extends State<BroadcastPage> {
   bool _isInChannel = false;
   bool message = true;
   final _channelMessageController = TextEditingController();
-  bool check_cam = true;
   final _info = <String>[];
   int uid;
   AgoraRtmClient _client;
   AgoraRtmChannel _channel;
-  int mute_uid = -1;
+  int muteid = -1;
   bool video = true;
 
   @override
@@ -185,7 +184,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
       list.add(RtcLocalView.SurfaceView());
     }
     if (widget.isBroadcaster)
-      _users.forEach((int uid) => (uid != mute_uid)
+      _users.forEach((int uid) => (uid != muteid)
           ? list.add(RtcRemoteView.SurfaceView(uid: uid))
           : null);
     else
@@ -480,11 +479,11 @@ class _BroadcastPageState extends State<BroadcastPage> {
     }, userMuteVideo: (int uid, mute) {
       if (mute) {
         setState(() {
-          mute_uid = uid;
+          muteid = uid;
         });
       } else {
         setState(() {
-          mute_uid = -1;
+          muteid = -1;
         });
       }
     }));

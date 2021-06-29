@@ -1,4 +1,4 @@
-[Update: Our submission has got into **Top 50 Google Solution Challenge 2021**. Words cannot convey how happy we are now!]
+[Update: Our submission has got into **Top 50 The 2021 Solution Challenge**. Words cannot convey how happy we are now!]
 
 <p align="center">
 <img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=400 height=800>
@@ -10,23 +10,23 @@
 
 ### Introduction
 
-Our project is called **Livel**. This is an application on **live traveling** which helps people travel online and broadcast the journey on the Internet.
+Our project is called **Livel**. This is an application on **live traveling** which helps people travel online and broadcast the journey through the Internet.
 
-Our team aims to create a mobile application which helps the global tourism industry cope with negative economic impacts of the COVID-19 pandemic.
+Our team aims to create a mobile application which helps the global tourism industry cope with negative economic impacts of the COVID-19 pandemic, offers more job opportunities to tour guides and brings a whole new traveling experience to tourists around the world.
 
-Moreover, this application is the solution we have come up with to participate in **Solution Challenge 2021** contest from **Google Developer Student Clubs**.
+Moreover, this application is the solution we have come up with to participate in **The 2021 Solution Challenge** contest from **Google Developers**.
 
 We want to address **Goal 8** - more specifically, **Target 8.9** -  from the **17 Sustainable Development Goals** of **the United Nations General Assembly**:
 
 - *Goal 8*: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.
 - *Target 8.9*: By 2030, devise and implement policies to promote sustainable tourism that creates jobs and promotes local culture and products.
 
-You can get the released version, or .apk files, of this application at [Google Drive](https://drive.google.com/drive/folders/1vTHi49cROESE3qXBQavpcfnnCKv4vlAr?usp=sharing) or you can follow the path:
+You can get the released version, or *.apk files*, of this application at [Google Drive](https://drive.google.com/drive/folders/11CuZw9MEu0m5IIXgmZs5H5Zhy9mDSRVI) or you can follow the path:
 
   ```sh
   build\app\outputs\flutter-apk\app-release.apk
   ```
-You can only see this path when you clone the repository.
+*Note: You can only see this path when you have cloned the repository.*
 
 After you have downloaded the .apk file, you should check whether this file is the original one or not by using [Checksum](https://www.howtogeek.com/363735/what-is-a-checksum-and-why-should-you-care/) to compare your checksums with ours. Our checksums file is located at [Google Drive](https://drive.google.com/drive/folders/1o77G3AW-q6T6-L511ZFN1XONtv6puDIm?usp=sharing).
 
@@ -35,7 +35,7 @@ Last but not least, we have recorded a video content of our application on [YouT
 
 ### Team Members
 
-Our team consists of 4 members and all of us are studying Computer Science at Ho Chi Minh City University Of Technology, Vietnam.
+Our team consists of 4 members and all of us are studying Computer Science at **Ho Chi Minh City University Of Technology, Vietnam**.
 
 - Nguyen Thanh Ngan - Project Manager
 
@@ -106,7 +106,7 @@ After all, you should check whether you have connected an external device or an 
  
 3. Download and start an emulator at Android Studio (AVD Manager). **Google Pixel 4 XL** is highly recommended.
 
-4. You should check whether you have gotten enough packages or not:
+4. You should check whether you have got enough packages or not:
 
     ```sh
     flutter pub get

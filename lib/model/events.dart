@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class Events extends StatefulWidget {
@@ -49,6 +50,7 @@ class EventElements extends StatelessWidget {
   const EventElements({Key key, this.image}) : super(key: key);
 
   final String image;
+
   @override
   Widget build(BuildContext context) {
     return Container(

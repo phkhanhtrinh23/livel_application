@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:livel_application/view/home_screens/components/home_components/countries_elements.dart';
-import 'package:livel_application/model/events.dart';
-import 'package:livel_application/view/home_screens/components/home_components/upcoming.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/events.dart';
+import 'package:livel_application/view/home_screens/components/home_components/countries_elements.dart';
+import 'package:livel_application/view/home_screens/components/home_components/upcoming.dart';
 
 class MainHome extends StatelessWidget {
   @override

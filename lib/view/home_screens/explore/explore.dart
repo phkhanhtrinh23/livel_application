@@ -1,14 +1,13 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:permission_handler/permission_handler.dart';
-import '../components/trip_screen/components/each_place.dart';
-import 'package:flutter/widgets.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:avatar_glow/avatar_glow.dart';
 import 'package:translator/translator.dart';
 
+import '../components/trip_screen/components/each_place.dart';
 import 'components/filter.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -20,6 +19,7 @@ class ExploreScreen extends StatefulWidget {
 
 class ExploreScreenState extends State<ExploreScreen> {
   ExploreScreenState();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String selectedCity;
   TextEditingController search = new TextEditingController();
@@ -195,6 +195,7 @@ class ExploreScreenState extends State<ExploreScreen> {
       _speech.stop();
     }
   }
+
   // Future<void> _handleCameraAndMic(Permission permission) async {
   //   final status = await permission.request();
   //   print(status);

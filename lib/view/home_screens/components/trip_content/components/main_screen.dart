@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/view/home_screens/components/trip_content/components/image_list.dart';
-import 'package:livel_application/view/home_screens/components/trip_content/join_button.dart';
-import 'package:livel_application/view/home_screens/components/trip_content/components/tourguide.dart';
 import 'package:livel_application/model/database/storage.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/components/image_list.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/components/tourguide.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/join_button.dart';
 
 class MainContent extends StatefulWidget {
   MainContent({Key key, this.id, this.list, this.checkHomeScreen})
@@ -521,6 +521,7 @@ class _MainContent extends State<MainContent> {
                   code: snapshot.data.get('Code'),
                   cost: snapshot.data.get('Cost').toString(),
                   checkHomeScreen: checkHomeScreen,
+                  gid: snapshot.data.get("Id_call"),
                 ),
               ],
             ),

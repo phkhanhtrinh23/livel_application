@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:livel_application/model/authentication.dart';
 import 'package:livel_application/view/home_screens/HomeScreen.dart';
 import 'package:livel_application/view/splash_screens/splash_screen_1.dart';
 import 'package:provider/provider.dart';
-import 'package:livel_application/model/authentication.dart';
 
 class HomeMain extends StatelessWidget {
   @override

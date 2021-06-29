@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
-import 'package:livel_application/view/home_screens/components/trip_content/trip_main.dart';
 import 'package:livel_application/model/database/storage.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/trip_main.dart';
 
 class PlaceScreen extends StatelessWidget {
   const PlaceScreen(

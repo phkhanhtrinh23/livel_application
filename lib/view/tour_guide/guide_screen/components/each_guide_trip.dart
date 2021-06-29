@@ -9,12 +9,15 @@ import 'package:permission_handler/permission_handler.dart';
 
 class GuideTripScreen extends StatelessWidget {
   const GuideTripScreen({Key key, this.id, this.name});
+
   final String id;
   final String name;
+
   Future<void> _handleCameraAndMic(Permission permission) async {
     final status = await permission.request();
     print(status);
   }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -42,21 +45,24 @@ class GuideTripScreen extends StatelessWidget {
                   (BuildContext context, AsyncSnapshot<DocumentSnapshot> snap) {
                 if (snap.connectionState == ConnectionState.done) {
                   return TextButton(
-                    onPressed: () async{
+                    onPressed: () async {
                       if (snapshot.data.get('Code').toString().isEmpty) {
                         await _handleCameraAndMic(Permission.camera);
                         await _handleCameraAndMic(Permission.microphone);
                         addCode(
                             this.id,
-                            snapshot.data.get('Place')+snapshot.data.get('Date').toString());
+                            snapshot.data.get('Place') +
+                                snapshot.data.get('Date').toString());
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => BroadcastPage(
-                              channelName: snapshot.data.get('Place')+snapshot.data.get('Date').toString(),
+                              channelName: snapshot.data.get('Place') +
+                                  snapshot.data.get('Date').toString(),
                               userName: snap.data.get('Name'),
                               isBroadcaster: true,
-                              id:id
+                              id: id,
+                              gid: snapshot.data.get('Id_call'),
                             ),
                           ),
                         );
@@ -71,7 +77,8 @@ class GuideTripScreen extends StatelessWidget {
                                           snapshot.data.get('Code').toString(),
                                       userName: snap.data.get('Name'),
                                       isBroadcaster: true,
-                                  id:id
+                                      id: id,
+                                      gid: snapshot.data.get('Id_call'),
                                     )));
                       }
                     },

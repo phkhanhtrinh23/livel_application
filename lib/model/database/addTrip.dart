@@ -65,10 +65,9 @@ Future<void> addTrip(
     );
     FirebaseFirestore.instance.collection('Dictionary').doc('rating').update(
       {
-        place1: [0,0],
+        place1: [0, 0],
       },
     );
-
   }
   return await FirebaseFirestore.instance.collection('Trips').add(
     {
@@ -81,6 +80,7 @@ Future<void> addTrip(
       'Time': time1,
       'Code': "",
       'Date': date,
+      "Id_call": thumbnail.replaceAll(new RegExp(r'[^0-9]'), ''),
       "Guide's ID": gid,
       "Rating": rating,
       "Thumbnail": thumbnail,

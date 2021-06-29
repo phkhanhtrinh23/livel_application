@@ -8,10 +8,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:livel_application/model/database/storage.dart';
 import 'package:path/path.dart';
+
 import '../../../state_home.dart';
 
 class PersonalInfo extends StatefulWidget {
   final String email, password;
+
   PersonalInfo(this.email, this.password);
 
   @override
@@ -20,6 +22,7 @@ class PersonalInfo extends StatefulWidget {
 
 class _PersonalInfo extends State<PersonalInfo> {
   final String email, password;
+
   _PersonalInfo(this.email, this.password);
 
   final TextEditingController name = new TextEditingController();
@@ -33,6 +36,7 @@ class _PersonalInfo extends State<PersonalInfo> {
   final _form = GlobalKey<FormState>();
   File avatar;
   final picker = ImagePicker();
+
   Widget selectAvatar() {
     return Container(
       alignment: Alignment.center,

@@ -5,14 +5,18 @@ import 'package:stripe_payment/stripe_payment.dart';
 
 class Stripe extends StatefulWidget {
   final String id, uid, cost;
+
   const Stripe(this.id, this.uid, this.cost);
+
   @override
   StripeState createState() => new StripeState(id, uid, cost);
 }
 
 class StripeState extends State<Stripe> {
   final String id, uid, cost;
+
   StripeState(this.id, this.uid, this.cost);
+
   Token _paymentToken;
   String _error;
   final CreditCard testCard = CreditCard(

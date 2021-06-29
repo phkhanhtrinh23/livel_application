@@ -15,7 +15,9 @@ class Tag extends StatefulWidget {
 
 class TagState extends State<Tag> {
   TagState();
+
   static List<bool> selected = [];
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

@@ -6,6 +6,7 @@ import 'package:livel_application/model/database/queryFunction.dart';
 
 class PopUpDialog extends StatefulWidget {
   final Function callback;
+
   PopUpDialog(this.callback);
 
   @override
@@ -14,6 +15,7 @@ class PopUpDialog extends StatefulWidget {
 
 class _PopUpDialog extends State<PopUpDialog> {
   _PopUpDialog();
+
   List<String> queryTag = [];
 
   @override
@@ -24,6 +26,7 @@ class _PopUpDialog extends State<PopUpDialog> {
   }
 
   static List<bool> selected = [];
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

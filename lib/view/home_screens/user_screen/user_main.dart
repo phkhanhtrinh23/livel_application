@@ -6,10 +6,10 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
 import 'package:livel_application/model/database/storage.dart';
-import 'package:livel_application/view/log_in_screens/sign_in.dart';
-import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
 // import 'package:livel_application/view/home_screens/user_screen/components/help_center.dart';
 import 'package:livel_application/view/home_screens/user_screen/components/profile_info.dart';
+import 'package:livel_application/view/log_in_screens/sign_in.dart';
+import 'package:livel_application/view/tour_guide/guide_main_screen.dart';
 
 import 'components/profile.dart';
 
@@ -92,14 +92,7 @@ class UserScreen extends StatelessWidget {
                   //   text: "Help Center",
                   //   icon: Icon(Icons.help_center_outlined,
                   //       color: Color(0xFF477983)),
-                  //   press: () => {
-                  //     Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (BuildContext context) => HelpCenterScreen(),
-                  //       ),
-                  //     ),
-                  //   },
+                  //   press: addUserList
                   // ),
                   ProfileMenu(
                     text: "Log In As A Tour Guide",

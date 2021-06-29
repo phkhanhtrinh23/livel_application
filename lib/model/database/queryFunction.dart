@@ -41,6 +41,10 @@ Future<DocumentSnapshot> getJoin(String id) async {
 Future<DocumentSnapshot> getTrip(String id) async {
   return await FirebaseFirestore.instance.collection('Trips').doc(id).get();
 }
+
 Future<DocumentSnapshot> getTagList() async {
-  return await FirebaseFirestore.instance.collection('Dictionary').doc('TagSystem').get();
+  return await FirebaseFirestore.instance
+      .collection('Dictionary')
+      .doc('TagSystem')
+      .get();
 }

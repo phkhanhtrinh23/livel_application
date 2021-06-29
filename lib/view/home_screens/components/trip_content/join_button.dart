@@ -3,36 +3,37 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:livel_application/model/livestreaming/host.dart';
-import 'package:livel_application/view/home_screens/HomeScreen.dart';
-import 'package:livel_application/model/payment.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/model/livestreaming/host.dart';
+import 'package:livel_application/model/payment.dart';
+import 'package:livel_application/view/home_screens/HomeScreen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class JoinRegister extends StatefulWidget {
   final String id, code, cost;
   final bool checkHomeScreen;
-  const JoinRegister({
-    Key key,
-    this.id,
-    this.code,
-    this.cost,
-    this.checkHomeScreen,
-  }) : super(key: key);
+  final int gid;
+
+  const JoinRegister(
+      {Key key, this.id, this.code, this.cost, this.checkHomeScreen, this.gid})
+      : super(key: key);
 
   @override
   JoinRegisterState createState() =>
-      new JoinRegisterState(this.id, this.code, this.cost);
+      new JoinRegisterState(this.id, this.code, this.cost, this.gid);
 }
 
 class JoinRegisterState extends State<JoinRegister> {
   final String id, code, cost;
+  final int gid;
 
-  JoinRegisterState(this.id, this.code, this.cost);
+  JoinRegisterState(this.id, this.code, this.cost, this.gid);
+
   Future<void> _handleCameraAndMic(Permission permission) async {
     final status = await permission.request();
     print(status);
   }
+
   @override
   Widget build(BuildContext context) {
     String uid = FirebaseAuth.instance.currentUser.uid;
@@ -106,7 +107,8 @@ class JoinRegisterState extends State<JoinRegister> {
                                             .toString(),
                                         channelName: code,
                                         isBroadcaster: false,
-                                    id:id
+                                        id: id,
+                                        gid: gid,
                                       )),
                             );
                           } else {

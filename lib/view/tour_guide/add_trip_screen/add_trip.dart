@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -83,7 +84,7 @@ class AddTripState extends State<AddTrip> {
   void initState() {
     super.initState();
     imgRef = FirebaseFirestore.instance.collection('imageURLs');
-    queryTag=[];
+    queryTag = [];
   }
 
   @override

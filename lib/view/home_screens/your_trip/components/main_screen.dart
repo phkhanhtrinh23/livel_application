@@ -2,11 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:livel_application/view/home_screens/components/trip_content/trip_main.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/view/home_screens/components/trip_content/trip_main.dart';
 
 class YourTripScreen extends StatefulWidget {
   const YourTripScreen({Key key, this.id});
+
   final String id;
 
   @override
@@ -15,6 +16,7 @@ class YourTripScreen extends StatefulWidget {
 
 class _YourTripScreen extends State<YourTripScreen> {
   _YourTripScreen({this.id});
+
   final String id;
 
   @override
@@ -110,7 +112,8 @@ class _YourTripScreen extends State<YourTripScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        DateFormat.jm().format((snapshot.data.get('Date')).toDate()),
+                        DateFormat.jm()
+                            .format((snapshot.data.get('Date')).toDate()),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

@@ -7,7 +7,9 @@ import 'package:livel_application/model/database/storage.dart';
 
 class TourGuide extends StatelessWidget {
   final String id;
+
   const TourGuide({Key key, this.id}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

@@ -1,17 +1,24 @@
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
+import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:agora_rtm/agora_rtm.dart';
 import 'package:flutter/material.dart';
 import 'package:livel_application/model/livestreaming/rating.dart';
-import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
-import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 
 class BroadcastPage extends StatefulWidget {
   final String channelName;
   final String userName;
   final bool isBroadcaster;
   final String id;
+  final int gid;
+
   const BroadcastPage(
-      {Key key, this.channelName, this.userName, this.isBroadcaster, this.id})
+      {Key key,
+      this.channelName,
+      this.userName,
+      this.isBroadcaster,
+      this.id,
+      this.gid})
       : super(key: key);
 
   @override
@@ -27,11 +34,13 @@ class _BroadcastPageState extends State<BroadcastPage> {
   bool _isInChannel = false;
   bool message = true;
   final _channelMessageController = TextEditingController();
-
+  bool check_cam = true;
   final _info = <String>[];
-
+  int uid;
   AgoraRtmClient _client;
   AgoraRtmChannel _channel;
+  int mute_uid = -1;
+  bool video = true;
 
   @override
   void dispose() {
@@ -46,7 +55,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
   void initState() {
     super.initState();
     // initialize agora sdk
-
+    this.video = true;
     initialize();
     _createClient();
   }
@@ -54,7 +63,10 @@ class _BroadcastPageState extends State<BroadcastPage> {
   Future<void> initialize() async {
     await _initAgoraRtcEngine();
     _addAgoraEventHandlers();
-    await _engine.joinChannel(null, widget.channelName, null, 0);
+    if (widget.isBroadcaster)
+      await _engine.joinChannel(null, widget.channelName, null, widget.gid);
+    else
+      await _engine.joinChannel(null, widget.channelName, null, 0);
   }
 
   Future<void> _initAgoraRtcEngine() async {
@@ -135,6 +147,22 @@ class _BroadcastPageState extends State<BroadcastPage> {
     );
   }
 
+  Widget toggleCamera() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(40)),
+      ),
+      child: IconButton(
+        icon: Icon(
+          video ? Icons.videocam : Icons.videocam_off,
+          color: Color(0xFF3BACCF),
+          size: 30.0,
+        ),
+        onPressed: _onChangeCamera,
+      ),
+    );
+  }
+
   Widget _toggleMessage() {
     return Container(
       decoration: BoxDecoration(
@@ -156,7 +184,14 @@ class _BroadcastPageState extends State<BroadcastPage> {
     if (widget.isBroadcaster) {
       list.add(RtcLocalView.SurfaceView());
     }
-    _users.forEach((int uid) => list.add(RtcRemoteView.SurfaceView(uid: uid)));
+    if (widget.isBroadcaster)
+      _users.forEach((int uid) => (uid != mute_uid)
+          ? list.add(RtcRemoteView.SurfaceView(uid: uid))
+          : null);
+    else
+      list.add(RtcRemoteView.SurfaceView(
+        uid: widget.gid,
+      ));
     return list;
   }
 
@@ -213,7 +248,9 @@ class _BroadcastPageState extends State<BroadcastPage> {
   Widget messageBox() {
     return Container(
       alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width * 0.55,
+      width: widget.isBroadcaster
+          ? MediaQuery.of(context).size.width * 0.55
+          : MediaQuery.of(context).size.width * 0.5,
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFF3BACCF)),
         borderRadius: BorderRadius.all(Radius.circular(40)),
@@ -222,7 +259,9 @@ class _BroadcastPageState extends State<BroadcastPage> {
         children: [
           Container(
             padding: EdgeInsets.only(left: 10),
-            width: MediaQuery.of(context).size.width * 0.4,
+            width: widget.isBroadcaster
+                ? MediaQuery.of(context).size.width * 0.4
+                : MediaQuery.of(context).size.width * 0.35,
             child: TextFormField(
               //showCursor: true,
               //enableSuggestions: true,
@@ -291,6 +330,7 @@ class _BroadcastPageState extends State<BroadcastPage> {
               _toggleMessage(),
               messageBox(),
               unMute(),
+              toggleCamera(),
               endCall(),
             ],
           );
@@ -423,8 +463,8 @@ class _BroadcastPageState extends State<BroadcastPage> {
       setState(() {
         final info = 'userJoined: $uid';
         _infoStrings.add(info);
-        //if(widget.isBroadcaster)
         _users.add(uid);
+        this.uid = uid;
       });
     }, userOffline: (uid, elapsed) {
       setState(() {
@@ -437,14 +477,24 @@ class _BroadcastPageState extends State<BroadcastPage> {
         final info = 'firstRemoteVideo: $uid ${width}x $height';
         _infoStrings.add(info);
       });
+    }, userMuteVideo: (int uid, mute) {
+      if (mute) {
+        setState(() {
+          mute_uid = uid;
+        });
+      } else {
+        setState(() {
+          mute_uid = -1;
+        });
+      }
     }));
   }
 
   void _onCallEnd(BuildContext context) {
     _engine.leaveChannel();
     if (widget.isBroadcaster == false) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => RatingScreen(this.widget.id)));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => RatingScreen(this.widget.id)));
     } else if (widget.isBroadcaster == true) {
       Navigator.pop(context);
     }
@@ -459,6 +509,20 @@ class _BroadcastPageState extends State<BroadcastPage> {
 
   void _onSwitchCamera() {
     _engine.switchCamera();
+  }
+
+  void _onChangeCamera() {
+    if (video) {
+      _engine.muteLocalVideoStream(true);
+      setState(() {
+        video = false;
+      });
+    } else {
+      _engine.muteLocalVideoStream(false);
+      setState(() {
+        video = true;
+      });
+    }
   }
 
   void _onToggleMessage() {
@@ -518,14 +582,14 @@ class _BroadcastPageState extends State<BroadcastPage> {
       return;
     }
     try {
-      await _channel.sendMessage(AgoraRtmMessage.fromText(text+"%"+widget.userName));
-      _log(text+"%"+widget.userName);
+      await _channel
+          .sendMessage(AgoraRtmMessage.fromText(text + "%" + widget.userName));
+      _log(text + "%" + widget.userName);
       _channelMessageController.clear();
     } catch (errorCode) {
       print('Send channel message error: ' + errorCode.toString());
     }
   }
-
 
   void _log(String info) {
     print(info);

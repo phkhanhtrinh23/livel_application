@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/view/home_screens/components/trip_screen/components/each_place.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/view/home_screens/components/trip_screen/components/each_place.dart';
 
 class ListScreen extends StatelessWidget {
   final String name;
+
   ListScreen({Key key, this.name}) : super(key: key);
 
   @override

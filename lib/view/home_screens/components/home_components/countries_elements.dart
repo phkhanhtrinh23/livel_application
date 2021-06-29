@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:livel_application/view/home_screens/components/trip_screen/trip_screen.dart';
 import 'package:livel_application/model/database/queryFunction.dart';
+import 'package:livel_application/view/home_screens/components/trip_screen/trip_screen.dart';
 
 class TripElement extends StatelessWidget {
   const TripElement({

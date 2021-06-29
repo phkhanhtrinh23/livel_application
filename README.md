@@ -1,3 +1,5 @@
+[Update: Our submission have got into Top 50 Google Solution Challenge 2021. Words cannot convey how happy we are now!]
+
 <p align="center">
 <img src="https://github.com/phkhanhtrinh23/livel_application/blob/main/images/screenshot.png" alt="Screenshot" width=400 height=800>
 </p>

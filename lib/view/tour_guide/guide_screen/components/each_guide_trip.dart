@@ -62,7 +62,7 @@ class GuideTripScreen extends StatelessWidget {
                               userName: snap.data.get('Name'),
                               isBroadcaster: true,
                               id: id,
-                              gid: snapshot.data.get('Id_call'),
+                              gid: snapshot.data.get('Id_call').toInt(),
                             ),
                           ),
                         );
@@ -70,16 +70,17 @@ class GuideTripScreen extends StatelessWidget {
                         await _handleCameraAndMic(Permission.camera);
                         await _handleCameraAndMic(Permission.microphone);
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => BroadcastPage(
-                                      channelName:
-                                          snapshot.data.get('Code').toString(),
-                                      userName: snap.data.get('Name'),
-                                      isBroadcaster: true,
-                                      id: id,
-                                      gid: snapshot.data.get('Id_call'),
-                                    )));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BroadcastPage(
+                              channelName: snapshot.data.get('Code').toString(),
+                              userName: snap.data.get('Name'),
+                              isBroadcaster: true,
+                              id: id,
+                              gid: snapshot.data.get('Id_call').toInt(),
+                            ),
+                          ),
+                        );
                       }
                     },
                     child: Row(

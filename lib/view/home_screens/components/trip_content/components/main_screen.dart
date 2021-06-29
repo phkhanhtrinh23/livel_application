@@ -258,7 +258,8 @@ class _MainContent extends State<MainContent> {
                             padding: const EdgeInsets.only(bottom: 4.0),
                           ),
                           Text(
-                            snapshot.data.get('Rating').toString() + '/5',
+                            snapshot.data.get('Rating').toStringAsFixed(1) +
+                                '/5',
                             style: TextStyle(
                               fontSize: 20,
                             ),
@@ -521,7 +522,7 @@ class _MainContent extends State<MainContent> {
                   code: snapshot.data.get('Code'),
                   cost: snapshot.data.get('Cost').toString(),
                   checkHomeScreen: checkHomeScreen,
-                  gid: snapshot.data.get("Id_call"),
+                  gid: snapshot.data.get("Id_call").toInt(),
                 ),
               ],
             ),

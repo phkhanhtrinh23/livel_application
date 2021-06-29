@@ -80,7 +80,7 @@ Future<void> addTrip(
       'Time': time1,
       'Code': "",
       'Date': date,
-      "Id_call": thumbnail.replaceAll(new RegExp(r'[^0-9]'), ''),
+      "Id_call": thumbnail.replaceAll(RegExp(r'[^0-9]'), ''),
       "Guide's ID": gid,
       "Rating": rating,
       "Thumbnail": thumbnail,

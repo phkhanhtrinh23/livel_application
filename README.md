@@ -118,6 +118,10 @@ After all, you should check whether you have connected an external device or an 
    flutter run
    ```
 
+## Testing
+You can test the application by using this account:
+1. Email: livel@gmail.com
+2. Password: livel03012021
 
 
 ## Contribution

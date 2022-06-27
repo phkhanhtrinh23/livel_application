@@ -84,7 +84,7 @@ At first, you need to check whether your Flutter version is **up-to-date**. Then
 
 After all, you should check whether you have connected an external device or an emulator.
 
-```sh
+  ```sh
   flutter doctor
   ```
 
